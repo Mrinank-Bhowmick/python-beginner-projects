@@ -1,4 +1,7 @@
+# Added by Mrinank Bhowmick
+
 import pygame
+
 pygame.init()
 window = pygame.display.set_mode((1200, 400))
 track = pygame.image.load('track6.png')
