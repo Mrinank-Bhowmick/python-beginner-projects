@@ -15,13 +15,6 @@ Awesome python projects under 100 lines of code.
             <br />
             <sub><b>Mrinank Bhowmick</b></sub>
         </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/lint-action">
-            <img src="https://avatars.githubusercontent.com/u/59283862?v=4" width="100;" alt="lint-action"/>
-            <br />
-            <sub><b>Lint Action</b></sub>
-        </a>
     </td></tr>
 </table>
 <!-- readme: contributors -end -->
