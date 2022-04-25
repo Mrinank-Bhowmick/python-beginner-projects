@@ -4,15 +4,15 @@ import pygame
 
 pygame.init()
 window = pygame.display.set_mode((1200, 400))
-track = pygame.image.load('track6.png')
-car = pygame.image.load('tesla.png')
+track = pygame.image.load("track6.png")
+car = pygame.image.load("tesla.png")
 car = pygame.transform.scale(car, (30, 60))
 car_x = 155
 car_y = 300
 focal_dis = 25
 cam_x_offset = 0
 cam_y_offset = 0
-direction = 'up'
+direction = "up"
 drive = True
 clock = pygame.time.Clock()
 while drive:
@@ -28,33 +28,33 @@ while drive:
     print(up_px, right_px, down_px)
 
     # change direction (take turn)
-    if direction == 'up' and up_px != 255 and right_px == 255:
-        direction = 'right'
+    if direction == "up" and up_px != 255 and right_px == 255:
+        direction = "right"
         cam_x_offset = 30
         car = pygame.transform.rotate(car, -90)
-    elif direction == 'right' and right_px != 255 and down_px == 255:
-        direction = 'down'
+    elif direction == "right" and right_px != 255 and down_px == 255:
+        direction = "down"
         car_x = car_x + 30
         cam_x_offset = 0
         cam_y_offset = 30
         car = pygame.transform.rotate(car, -90)
-    elif direction == 'down' and down_px != 255 and right_px == 255:
-        direction = 'right'
+    elif direction == "down" and down_px != 255 and right_px == 255:
+        direction = "right"
         car_y = car_y + 30
         cam_x_offset = 30
         cam_y_offset = 0
         car = pygame.transform.rotate(car, 90)
-    elif direction == 'right' and right_px != 255 and up_px == 255:
-        direction = 'up'
+    elif direction == "right" and right_px != 255 and up_px == 255:
+        direction = "up"
         car_x = car_x + 30
         cam_x_offset = 0
         car = pygame.transform.rotate(car, 90)
     # drive
-    if direction == 'up' and up_px == 255:
+    if direction == "up" and up_px == 255:
         car_y = car_y - 2
-    elif direction == 'right' and right_px == 255:
+    elif direction == "right" and right_px == 255:
         car_x = car_x + 2
-    elif direction == 'down' and down_px == 255:
+    elif direction == "down" and down_px == 255:
         car_y = car_y + 2
     window.blit(track, (0, 0))
     window.blit(car, (car_x, car_y))
