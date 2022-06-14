@@ -1,6 +1,6 @@
 # python-projects-under-100
 
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Some%20awesome%20python%20beginner%20projects%20to%20kick%20start%20your%20learning%20journey&url=https://github.com/MrinankBhowmick/python-beginner-projects&via=_mrinank_&hashtags=python,programming,coding,developers)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Some%20awesome%20python%20beginner%20projects%20to%20kick%20start%20your%20learning%20journey&url=https://github.com/MrinankBhowmick/python-beginner-projects&via=_mrinank_&hashtags=python,programming,100DaysOfCode,opensource,DataScience)
 
 Awesome python projects under 100 lines of code.
 
