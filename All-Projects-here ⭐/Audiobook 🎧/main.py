@@ -1,9 +1,7 @@
-# Enter all the required modules
-
 import pyttsx3
 import PyPDF2
 
-book = open("oop.pdf", "rb")  # Enter your PDF file path
+book = open("Article.pdf", "rb")  # Enter your own PDF file path
 pdfReader = PyPDF2.PdfFileReader(book)
 pages = pdfReader.numPages
 
