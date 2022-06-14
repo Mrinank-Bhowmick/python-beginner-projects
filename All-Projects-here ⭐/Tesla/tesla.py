@@ -67,7 +67,7 @@ while drive:
 
     elif direction == "down" and down_px == 255:
         car_y = car_y + 2
-        
+
     window.blit(track, (0, 0))
     window.blit(car, (car_x, car_y))
     pygame.draw.circle(window, (0, 255, 0), (cam_x, cam_y), 5, 5)
