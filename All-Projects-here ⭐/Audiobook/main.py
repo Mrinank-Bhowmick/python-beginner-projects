@@ -1,14 +1,25 @@
 import pyttsx3
 import PyPDF2
 
-book = open("Article.pdf", "rb")  # Enter your own PDF file path
+def play(pdfReader):
+    speaker = pyttsx3.init()
+
+    for page_num in range(pdfReader.numPages):
+        text =  pdfReader.getPage(page_num).extractText()
+        speaker.say(text)
+        speaker.runAndWait()
+    
+    speaker.stop()
+
+file=input("Enter your PDF file name : ")    # Enter your own PDF file path
+
+while True:
+    try:
+        book = open(file, "rb")
+        break
+
+    except Exception as e:
+        print("An error occured:\n",e)
+        print("\nEnter again\n")
+
 pdfReader = PyPDF2.PdfFileReader(book)
-pages = pdfReader.numPages
-
-speaker = pyttsx3.init()
-
-for num in range(7, pages):
-    page = pdfReader.getPage(num)
-    text = page.extractText()
-    speaker.say(text)
-    speaker.runAndWait()
