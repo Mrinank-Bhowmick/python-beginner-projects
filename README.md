@@ -131,6 +131,13 @@
             <br />
             <sub><b>Lint Action</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ZackeryRSmith">
+            <img src="https://avatars.githubusercontent.com/u/72983221?v=4" width="100;" alt="ZackeryRSmith"/>
+            <br />
+            <sub><b>Zackery .R. Smith</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: contributors -end -->
