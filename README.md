@@ -20,9 +20,11 @@
 
 💠 _This language deserves a lot of attention in today's world, and why not since it can address so many real-world problems?_
 
-<h2> <I> Tweet this project </I> </h2>
+<h2> <I> Tweet this repository </I> </h2>
 
 <a href="https://twitter.com/intent/tweet?text=Some%20awesome%20python%20beginner%20projects%20to%20kick%20start%20your%20learning%20journey&url=https://github.com/MrinankBhowmick/python-beginner-projects&via=_mrinank_&hashtags=python,programming,100DaysOfCode,opensource,DataScience"> <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="InfiniteGraph Logo" width="120"> </a>
+
+## All Projects are under [projects](https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects) folder.
 
 <h1> Projects So Far ... </h1>
 
@@ -30,25 +32,25 @@
 <tr>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Audiobook">
             <sub><b>Audiobook</b></sub>
         </a>
 </td>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Desktop-Notification">
             <sub><b>Desktop-Notification</b></sub>
         </a>
 </td>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Dice-Roll-Simulator">
             <sub><b>Dice-Roll-Simulator</b></sub>
         </a>
 </td>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Madlibs-Generator">
             <sub><b>Madlibs-Generator</b></sub>
         </a>
 </td>
@@ -57,25 +59,25 @@
 <tr>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Make-API">
             <sub><b>Make-API</b></sub>
         </a>
 </td>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Medium%20Article%20Reader">
             <sub><b>Medium Article Reader</b></sub>
         </a>
 </td>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Quiz%20Game">
             <sub><b>Quiz Game</b></sub>
         </a>
 </td>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Rock_Paper_Scissors">
             <sub><b>Rock-Paper-Scissors</b></sub>
         </a>
 </td>
@@ -83,33 +85,39 @@
 </tr>
 <tr>
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Send-Email">
             <sub><b>Send-Email</b></sub>
         </a>
 </td>
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Tesla">
             <sub><b>Tesla</b></sub>
         </a>
 </td>
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/MorseCode%20Translator">
             <sub><b>MorseCode Translator</b></sub>
         </a>
 </td>
 
 <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Weather">
             <sub><b>Weather</b></sub>
         </a>
 </td>
 
-
-
 </tr>
+<tr>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/ProjectEuler">
+            <sub><b>ProjectEuler</b></sub>
+        </a>
+  </td>
+</tr>
+  
 </table>
 
-## Run these projects in online :
+## Run these projects online :
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Mrinank-Bhowmick/python-beginner-projects.git)
 
