@@ -1,9 +1,10 @@
 import random
 from RandomWords import wordlist
 
+
 def hangman(tries):
     stages = [  # final state: head, torso, both arms, and both legs
-                """
+        """
                    --------
                    |      |
                    |      O
@@ -12,8 +13,8 @@ def hangman(tries):
                    |     / \\
                    -
                 """,
-                # head, torso, both arms, and one leg
-                """
+        # head, torso, both arms, and one leg
+        """
                    --------
                    |      |
                    |      O
@@ -22,8 +23,8 @@ def hangman(tries):
                    |     / 
                    -
                 """,
-                # head, torso, and both arms
-                """
+        # head, torso, and both arms
+        """
                    --------
                    |      |
                    |      O
@@ -32,8 +33,8 @@ def hangman(tries):
                    |      
                    -
                 """,
-                # head, torso, and one arm
-                """
+        # head, torso, and one arm
+        """
                    --------
                    |      |
                    |      O
@@ -42,8 +43,8 @@ def hangman(tries):
                    |     
                    -
                 """,
-                # head and torso
-                """
+        # head and torso
+        """
                    --------
                    |      |
                    |      O
@@ -52,8 +53,8 @@ def hangman(tries):
                    |     
                    -
                 """,
-                # head
-                """
+        # head
+        """
                    --------
                    |      |
                    |      O
@@ -62,8 +63,8 @@ def hangman(tries):
                    |     
                    -
                 """,
-                # initial empty state
-                """
+        # initial empty state
+        """
                    --------
                    |      |
                    |      
@@ -71,9 +72,10 @@ def hangman(tries):
                    |      
                    |     
                    -
-                """
+                """,
     ]
     return stages[tries]
+
 
 def get_word():
     word = random.choice(wordlist)
@@ -132,9 +134,10 @@ def play(word):
 
     if guessed:
         print("Congrats, you guessed the word! You win!")
-        
+
     else:
         print("Sorry, you ran out of tries. The word was " + word + ". play again :)")
+
 
 def main():
     word = get_word()
