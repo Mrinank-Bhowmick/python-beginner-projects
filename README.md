@@ -11,7 +11,7 @@
 
 [![made-with-python](https://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-# 💭 **Why these projects ??**
+# 💭 **Why these awesome projects ??**
 💠 _This repository offers a variety of fascinating mini-projects written in Python._ 
 
 💠 _Working on Python projects will undoubtedly improve your skills and raise your profile in preparation for the globalised marketplace outside._
@@ -19,6 +19,7 @@
 💠 _Projects are a potential method to begin your career in this area._
 
 💠 _This language deserves a lot of attention in today's world, and why not since it can address so many real-world problems?_
+
 
 <h2> <I> Tweet this repository </I> </h2>
 
@@ -113,9 +114,37 @@
             <sub><b>ProjectEuler</b></sub>
         </a>
   </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/AudioRecorder">
+            <sub><b>AudioRecorder</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Hangman">
+            <sub><b>Hangman</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Voice-to-Text">
+            <sub><b>VoiceToText</b></sub>
+        </a>
+  </td>
+</tr>
+<tr>
+<td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/text-translate">
+            <sub><b>TextTranslate</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Browser">
+            <sub><b>Own_browser</b></sub>
+        </a>
+  </td>
 </tr>
   
 </table>
+
 
 ## Run these projects online :
 
