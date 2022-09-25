@@ -141,6 +141,11 @@
             <sub><b>Own_browser</b></sub>
         </a>
   </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/HandCricket">
+            <sub><b>HandCricket</b></sub>
+        </a>
+  </td>
 </tr>
   
 </table>
