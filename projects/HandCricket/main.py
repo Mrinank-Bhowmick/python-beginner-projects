@@ -3,6 +3,7 @@
 import random
 import time
 
+
 def main():
     print("Welcome to Hand Cricket")
     print("You will be playing against the computer")
@@ -16,6 +17,7 @@ def main():
     else:
         print("Invalid choice")
         main()
+
 
 def bat():
     print("You are batting")
@@ -41,6 +43,7 @@ def bat():
                 score += user
                 print("Your score is", score)
 
+
 def bowl():
     print("You are bowling")
     print("Enter a number between 1 and 6")
@@ -65,8 +68,6 @@ def bowl():
                 score += comp
                 print("Computer score is", score)
 
+
 if __name__ == "__main__":
     main()
-
-    
-    
