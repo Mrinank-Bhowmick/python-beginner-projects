@@ -11,6 +11,7 @@ wordlist = [
     "hallway",
     "secure",
     "sow",
+    'orange',
     "general",
     "brick",
     "absence",
