@@ -190,7 +190,7 @@
         <a href="https://github.com/bim22614">
             <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
             <br />
-            <sub><b>bim22614</b></sub>
+            <sub><b>Bim22614</b></sub>
         </a>
     </td>
     <td align="center">
@@ -205,6 +205,14 @@
             <img src="https://avatars.githubusercontent.com/u/75674235?v=4" width="100;" alt="Surya-29"/>
             <br />
             <sub><b>Surya Narayan</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/d-coder111">
+            <img src="https://avatars.githubusercontent.com/u/82580017?v=4" width="100;" alt="d-coder111"/>
+            <br />
+            <sub><b>d-coder111</b></sub>
         </a>
     </td></tr>
 </table>
