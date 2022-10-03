@@ -1,4 +1,4 @@
-from turtle import *
+from turtle import * #importing libraries
 import turtle as t
 import random
 import time
@@ -6,18 +6,19 @@ import time
 tim = t.Turtle()
 
 t.colormode(255)
-def random_colour():
+def random_colour(): #random colour generator
     r=random.randint(0,255)
     g=random.randint(0,255)
     b=random.randint(0,255)
 
-    return r,g,b
+    return r,g,b #red,blue,green
 
 def turtle_movement():
-    tim.pensize(10)
+    tim.pensize(10) #sets the size 
     rgb = random_colour()
     direction = random.randint(1, 4)
-    tim.pencolor(rgb[0],rgb[1],rgb[2])
+    tim.pencolor(rgb[0],rgb[1],rgb[2]) 
+    #defining the movement
     if direction  == 1:
         tim.left(90)
         tim.forward(30)
