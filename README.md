@@ -188,9 +188,9 @@
     </td>
     <td align="center">
         <a href="https://github.com/Surya-29">
-            <img src="https://avatars.githubusercontent.com/u/75674235?v=4" width="100;" alt="Surya"/>
+            <img src="https://avatars.githubusercontent.com/u/75674235?v=4" width="100;" alt="Surya-29"/>
             <br />
-            <sub><b>Surya</b></sub>
+            <sub><b>Surya Narayan</b></sub>
         </a>
     </td></tr>
 </table>
