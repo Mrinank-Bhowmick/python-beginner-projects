@@ -187,6 +187,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Raashika0201">
+            <img src="https://avatars.githubusercontent.com/u/110974003?v=4" width="100;" alt="Raashika0201"/>
+            <br />
+            <sub><b>Raashika0201</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/Surya-29">
             <img src="https://avatars.githubusercontent.com/u/75674235?v=4" width="100;" alt="Surya-29"/>
             <br />
