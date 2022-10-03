@@ -187,6 +187,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/bim22614">
+            <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
+            <br />
+            <sub><b>bim22614</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/Raashika0201">
             <img src="https://avatars.githubusercontent.com/u/110974003?v=4" width="100;" alt="Raashika0201"/>
             <br />
