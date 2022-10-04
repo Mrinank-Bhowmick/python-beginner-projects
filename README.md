@@ -209,6 +209,13 @@
     </td></tr>
 <tr>
     <td align="center">
+        <a href="https://github.com/NischayGoyal1">
+            <img src="https://avatars.githubusercontent.com/u/81116984?v=4" width="100;" alt="NischayGoyal1"/>
+            <br />
+            <sub><b>Nischay Goyal</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/Raashika0201">
             <img src="https://avatars.githubusercontent.com/u/110974003?v=4" width="100;" alt="Raashika0201"/>
             <br />
