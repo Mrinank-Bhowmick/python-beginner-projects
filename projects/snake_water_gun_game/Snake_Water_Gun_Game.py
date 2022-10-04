@@ -1,4 +1,4 @@
-#snake water gun
+# snake water gun
 # 10 times play using while
 
 # Snake water gun
@@ -10,7 +10,7 @@
 
 import random
 
-lst = ['s', 'w', 'g']
+lst = ["s", "w", "g"]
 
 chance = 10
 no_of_chance = 0
@@ -22,7 +22,7 @@ print("s for snake \nw for water \ng for gun \n")
 
 # making the game in while
 while no_of_chance < chance:
-    _input = input('Snake,Water,Gun:')
+    _input = input("Snake,Water,Gun:")
     _random = random.choice(lst)
 
     if _input == _random:
@@ -62,7 +62,6 @@ while no_of_chance < chance:
         print("Human wins 1 point \n")
         print(f"computer_point is {computer_point} and your point is {human_point} \n")
 
-
     elif _input == "g" and _random == "w":
         computer_point = computer_point + 1
         print(f"your guess {_input} and computer guess is {_random} \n")
@@ -87,6 +86,3 @@ else:
     print("you win and computer loose")
 
 print(f"your point is {human_point} and computer point is {computer_point}")
-
-
-
