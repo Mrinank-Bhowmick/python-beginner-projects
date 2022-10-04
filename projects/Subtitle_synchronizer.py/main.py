@@ -1,5 +1,5 @@
 def convertToMilliseconds(time):
-    #convert the timestamp into milliseconds
+    # convert the timestamp into milliseconds
     milliseconds = 0
     hh, mm, ms = time.split(":")
     ms = ms.strip().replace(",", "")
@@ -12,12 +12,12 @@ def convertToMilliseconds(time):
 
 
 def synchronize(time, shift):
-    #calculate new time by applying the shift
+    # calculate new time by applying the shift
     return time-shift
 
 
 def convertToTime(milliseconds):
-    #convert milliseconds into timestamp
+    # convert milliseconds into timestamp
     hh = milliseconds//3600000
     milliseconds = milliseconds % 3600000
     hh = str(hh)
@@ -46,12 +46,12 @@ def convertToTime(milliseconds):
 def main():
     SHIFT = int(input("Please enter the shift in milliseconds: "))
 
-    #opening the file input.srt  
+    # opening the file input.srt
     f = open("input.srt", "r", errors="ignore")
     output = open("output.srt", "a")
     for x in f:
         if "-->" in x:
-            #applying the changes and re-writing into the output file
+            # applying the changes and re-writing into the output file
             start, end = x.split("-->")
             start, end = convertToMilliseconds(
                 start), convertToMilliseconds(end)
@@ -59,7 +59,7 @@ def main():
             start, end = convertToTime(start), convertToTime(end)
             output.write(f"{start} --> {end}\n")
         else:
-            #no changes if the line is not a timestamp
+            # no changes if the line is not a timestamp
             output.write(x)
 
 
