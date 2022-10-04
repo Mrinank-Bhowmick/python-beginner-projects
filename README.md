@@ -346,13 +346,20 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/wre9-tesh">
+            <img src="https://avatars.githubusercontent.com/u/96977189?v=4" width="100;" alt="wre9-tesh"/>
+            <br />
+            <sub><b>Amitesh Kumar</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/d-coder111">
             <img src="https://avatars.githubusercontent.com/u/82580017?v=4" width="100;" alt="d-coder111"/>
             <br />
             <sub><b>D-coder111</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/dapoadedire">
             <img src="https://avatars.githubusercontent.com/u/95668340?v=4" width="100;" alt="dapoadedire"/>
