@@ -6,7 +6,7 @@ from time import sleep
 # get the duration from user
 duration = int(input("Enter the duration in seconds: "))
 
-# The current duration 
+# The current duration
 count = 0
 
 # This loop run until the test condition is false
