@@ -209,10 +209,17 @@
     </td></tr>
 <tr>
     <td align="center">
+        <a href="https://github.com/Zedeldi">
+            <img src="https://avatars.githubusercontent.com/u/66186954?v=4" width="100;" alt="Zedeldi"/>
+            <br />
+            <sub><b>Zack Didcott</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/d-coder111">
             <img src="https://avatars.githubusercontent.com/u/82580017?v=4" width="100;" alt="d-coder111"/>
             <br />
-            <sub><b>d-coder111</b></sub>
+            <sub><b>D-coder111</b></sub>
         </a>
     </td></tr>
 </table>
