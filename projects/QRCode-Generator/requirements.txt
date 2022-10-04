@@ -1,0 +1,7 @@
+colorama==0.4.5
+comtypes==1.1.11
+Pillow==9.2.0
+pypiwin32==223
+pyttsx3==2.90
+pywin32==304
+qrcode==7.3.1
