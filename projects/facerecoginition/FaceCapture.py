@@ -1,6 +1,8 @@
 import cv2
 
-face_classsifier = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
+face_classsifier = cv2.CascadeClassifier(
+    "haarcascades/haarcascade_frontalface_default.xml"
+)
 
 
 def face_extractor(img):
@@ -10,7 +12,7 @@ def face_extractor(img):
         return None
     print(faces)
     for (x, y, w, h) in faces:
-        cropped_face = img[y:y + h, x:x + w]
+        cropped_face = img[y : y + h, x : x + w]
         print(cropped_face)
         return cropped_face
 
@@ -28,12 +30,14 @@ while True:
         face = cv2.resize(face_extractor(frame), (300, 300))
         face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
 
-        file_name_path = 'faces/faces' + str(count) + '.jpg'
+        file_name_path = "faces/faces" + str(count) + ".jpg"
         cv2.imwrite(file_name_path, face)
-        cv2.putText(face, str(count), (70, 70), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
-        cv2.imshow('face crop ', face)
+        cv2.putText(
+            face, str(count), (70, 70), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2
+        )
+        cv2.imshow("face crop ", face)
     else:
-        print('no face found')
+        print("no face found")
         pass
     if cv2.waitKey(1) == 13:
         break
