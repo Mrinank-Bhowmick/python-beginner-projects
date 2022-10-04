@@ -187,17 +187,17 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/Adhiraj-11">
-            <img src="https://avatars.githubusercontent.com/u/94843702?v=4" width="100;" alt="Adhiraj-11"/>
-            <br />
-            <sub><b>Konran</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/Zedeldi">
             <img src="https://avatars.githubusercontent.com/u/66186954?v=4" width="100;" alt="Zedeldi"/>
             <br />
             <sub><b>Zack Didcott</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Adhiraj-11">
+            <img src="https://avatars.githubusercontent.com/u/94843702?v=4" width="100;" alt="Adhiraj-11"/>
+            <br />
+            <sub><b>Konran</b></sub>
         </a>
     </td>
     <td align="center">
@@ -227,6 +227,13 @@
             <img src="https://avatars.githubusercontent.com/u/82580017?v=4" width="100;" alt="d-coder111"/>
             <br />
             <sub><b>D-coder111</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/dapoadedire">
+            <img src="https://avatars.githubusercontent.com/u/95668340?v=4" width="100;" alt="dapoadedire"/>
+            <br />
+            <sub><b>Dapo Adedire</b></sub>
         </a>
     </td></tr>
 </table>
