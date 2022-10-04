@@ -187,12 +187,27 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Adhiraj-11">
+            <img src="https://avatars.githubusercontent.com/u/94843702?v=4" width="100;" alt="Adhiraj-11"/>
+            <br />
+            <sub><b>Konran</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Zedeldi">
+            <img src="https://avatars.githubusercontent.com/u/66186954?v=4" width="100;" alt="Zedeldi"/>
+            <br />
+            <sub><b>Zack Didcott</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/bim22614">
             <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
             <br />
             <sub><b>Bim22614</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Raashika0201">
             <img src="https://avatars.githubusercontent.com/u/110974003?v=4" width="100;" alt="Raashika0201"/>
@@ -205,14 +220,6 @@
             <img src="https://avatars.githubusercontent.com/u/75674235?v=4" width="100;" alt="Surya-29"/>
             <br />
             <sub><b>Surya Narayan</b></sub>
-        </a>
-    </td></tr>
-<tr>
-    <td align="center">
-        <a href="https://github.com/Zedeldi">
-            <img src="https://avatars.githubusercontent.com/u/66186954?v=4" width="100;" alt="Zedeldi"/>
-            <br />
-            <sub><b>Zack Didcott</b></sub>
         </a>
     </td>
     <td align="center">
