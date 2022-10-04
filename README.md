@@ -152,7 +152,66 @@
         </a>
   </td>
 </tr>
-  
+<tr>
+<td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/BMI_calculator">
+            <sub><b>BMI_calculator</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Higher-Lower">
+            <sub><b>Higher-Lower</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/IPv4_Calculator-main">
+            <sub><b>IPv4_Calculator</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/KbdXylo">
+            <sub><b>KbdXylo</b></sub>
+        </a>
+  </td>
+</tr>
+<tr>
+<td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/NASA-APOD">
+            <sub><b>NASA-APOD</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Neurons">
+            <sub><b>Neurons</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Qt5_YouTube">
+            <sub><b>Qt5_YouTube</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Tic-Tac-Toe">
+            <sub><b>Tic-Tac-Toe</b></sub>
+        </a>
+  </td>
+</tr>  
+<tr>
+<td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Turtle%20Pattern">
+            <sub><b>TurtlePattern</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/duplicate_search">
+            <sub><b>Duplicate-search</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/snake_water_gun_game">
+            <sub><b>Snake-Water-Gun</b></sub>
+        </a>
+</tr>
 </table>
 
 
