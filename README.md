@@ -152,7 +152,66 @@
         </a>
   </td>
 </tr>
-  
+<tr>
+<td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/BMI_calculator">
+            <sub><b>BMI_calculator</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Higher-Lower">
+            <sub><b>Higher-Lower</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/IPv4_Calculator-main">
+            <sub><b>IPv4_Calculator</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/KbdXylo">
+            <sub><b>KbdXylo</b></sub>
+        </a>
+  </td>
+</tr>
+<tr>
+<td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/NASA-APOD">
+            <sub><b>NASA-APOD</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Neurons">
+            <sub><b>Neurons</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Qt5_YouTube">
+            <sub><b>Qt5_YouTube</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Tic-Tac-Toe">
+            <sub><b>Tic-Tac-Toe</b></sub>
+        </a>
+  </td>
+</tr>  
+<tr>
+<td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Turtle%20Pattern">
+            <sub><b>TurtlePattern</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/duplicate_search">
+            <sub><b>Duplicate-search</b></sub>
+        </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/snake_water_gun_game">
+            <sub><b>Snake-Water-Gun</b></sub>
+        </a>
+</tr>
 </table>
 
 
@@ -180,6 +239,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/UffaModey">
+            <img src="https://avatars.githubusercontent.com/u/83600229?v=4" width="100;" alt="UffaModey"/>
+            <br />
+            <sub><b>Fafa Modey</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/ZackeryRSmith">
             <img src="https://avatars.githubusercontent.com/u/72983221?v=4" width="100;" alt="ZackeryRSmith"/>
             <br />
@@ -187,10 +253,68 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Zedeldi">
+            <img src="https://avatars.githubusercontent.com/u/66186954?v=4" width="100;" alt="Zedeldi"/>
+            <br />
+            <sub><b>Zack Didcott</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/SubramanyaKS">
+            <img src="https://avatars.githubusercontent.com/u/70049779?v=4" width="100;" alt="SubramanyaKS"/>
+            <br />
+            <sub><b>Subramanya K S</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/cj-praveen">
+            <img src="https://avatars.githubusercontent.com/u/80583308?v=4" width="100;" alt="cj-praveen"/>
+            <br />
+            <sub><b>CJ Praveen</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Adhiraj-11">
+            <img src="https://avatars.githubusercontent.com/u/94843702?v=4" width="100;" alt="Adhiraj-11"/>
+            <br />
+            <sub><b>Konran</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Zaryab-Programmer">
+            <img src="https://avatars.githubusercontent.com/u/43227117?v=4" width="100;" alt="Zaryab-Programmer"/>
+            <br />
+            <sub><b>Muhammad  Zaryab Rafique</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/maglionaire">
+            <img src="https://avatars.githubusercontent.com/u/106713745?v=4" width="100;" alt="maglionaire"/>
+            <br />
+            <sub><b>Maglionaire</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/AbhinandanSingla">
+            <img src="https://avatars.githubusercontent.com/u/52960031?v=4" width="100;" alt="AbhinandanSingla"/>
+            <br />
+            <sub><b>Abhinandan Singla</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/bim22614">
             <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
             <br />
             <sub><b>Bim22614</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/NischayGoyal1">
+            <img src="https://avatars.githubusercontent.com/u/81116984?v=4" width="100;" alt="NischayGoyal1"/>
+            <br />
+            <sub><b>Nischay Goyal</b></sub>
         </a>
     </td>
     <td align="center">
@@ -206,13 +330,19 @@
             <br />
             <sub><b>Surya Narayan</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
-        <a href="https://github.com/Zedeldi">
-            <img src="https://avatars.githubusercontent.com/u/66186954?v=4" width="100;" alt="Zedeldi"/>
+        <a href="https://github.com/vk0812">
+            <img src="https://avatars.githubusercontent.com/u/92437375?v=4" width="100;" alt="vk0812"/>
             <br />
-            <sub><b>Zack Didcott</b></sub>
+            <sub><b>Vidit Khazanchi</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/vikash485">
+            <img src="https://avatars.githubusercontent.com/u/114328709?v=4" width="100;" alt="vikash485"/>
+            <br />
+            <sub><b>Vikash</b></sub>
         </a>
     </td>
     <td align="center">
@@ -220,6 +350,21 @@
             <img src="https://avatars.githubusercontent.com/u/82580017?v=4" width="100;" alt="d-coder111"/>
             <br />
             <sub><b>D-coder111</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/dapoadedire">
+            <img src="https://avatars.githubusercontent.com/u/95668340?v=4" width="100;" alt="dapoadedire"/>
+            <br />
+            <sub><b>Dapo Adedire</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/NishantPacharne">
+            <img src="https://avatars.githubusercontent.com/u/71060551?v=4" width="100;" alt="NishantPacharne"/>
+            <br />
+            <sub><b>Nishant Pacharne</b></sub>
         </a>
     </td></tr>
 </table>
