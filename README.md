@@ -289,12 +289,27 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/sudipg4112001">
+            <img src="https://avatars.githubusercontent.com/u/60208804?v=4" width="100;" alt="sudipg4112001"/>
+            <br />
+            <sub><b>Sudip Ghosh</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/vrup0408">
+            <img src="https://avatars.githubusercontent.com/u/91781599?v=4" width="100;" alt="vrup0408"/>
+            <br />
+            <sub><b>VRUSHANG PARIKH</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/vk0812">
             <img src="https://avatars.githubusercontent.com/u/92437375?v=4" width="100;" alt="vk0812"/>
             <br />
             <sub><b>Vidit Khazanchi</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/srujan-landeri">
             <img src="https://avatars.githubusercontent.com/u/66351075?v=4" width="100;" alt="srujan-landeri"/>
@@ -308,8 +323,7 @@
             <br />
             <sub><b>Ankit_Anmol</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/cj-praveen">
             <img src="https://avatars.githubusercontent.com/u/80583308?v=4" width="100;" alt="cj-praveen"/>
@@ -332,12 +346,13 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/sudipg4112001">
-            <img src="https://avatars.githubusercontent.com/u/60208804?v=4" width="100;" alt="sudipg4112001"/>
+        <a href="https://github.com/Morbius00">
+            <img src="https://avatars.githubusercontent.com/u/102956488?v=4" width="100;" alt="Morbius00"/>
             <br />
-            <sub><b>Sudip Ghosh</b></sub>
+            <sub><b>Raj Saha </b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/maglionaire">
             <img src="https://avatars.githubusercontent.com/u/106713745?v=4" width="100;" alt="maglionaire"/>
@@ -351,8 +366,7 @@
             <br />
             <sub><b>ARYAN GULATI</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/AbhinandanSingla">
             <img src="https://avatars.githubusercontent.com/u/52960031?v=4" width="100;" alt="AbhinandanSingla"/>
@@ -367,6 +381,21 @@
             <sub><b>Bim22614</b></sub>
         </a>
     </td>
+    <td align="center">
+        <a href="https://github.com/Dishant10">
+            <img src="https://avatars.githubusercontent.com/u/84343829?v=4" width="100;" alt="Dishant10"/>
+            <br />
+            <sub><b>Dishant Nagpal</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/yashd26">
+            <img src="https://avatars.githubusercontent.com/u/65943606?v=4" width="100;" alt="yashd26"/>
+            <br />
+            <sub><b>Yashwho</b></sub>
+        </a>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/NischayGoyal1">
             <img src="https://avatars.githubusercontent.com/u/81116984?v=4" width="100;" alt="NischayGoyal1"/>
@@ -394,15 +423,22 @@
             <br />
             <sub><b>Vikash</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ambushneupane">
+            <img src="https://avatars.githubusercontent.com/u/56769633?v=4" width="100;" alt="ambushneupane"/>
+            <br />
+            <sub><b>Ambush</b></sub>
+        </a>
+    </td>
     <td align="center">
         <a href="https://github.com/wre9-tesh">
             <img src="https://avatars.githubusercontent.com/u/96977189?v=4" width="100;" alt="wre9-tesh"/>
             <br />
             <sub><b>Amitesh Kumar</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/benedictprajwal">
             <img src="https://avatars.githubusercontent.com/u/114901414?v=4" width="100;" alt="benedictprajwal"/>
