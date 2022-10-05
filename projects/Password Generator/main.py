@@ -1,14 +1,14 @@
 import random
 import string
 
-print('Welcome to this Password Generator')
+print("Welcome to this Password Generator")
 
 # Set the password length with constraints for the password length
-password_length = int(input('\nEnter the length of password: '))
+password_length = int(input("\nEnter the length of password: "))
 
 while password_length < 8:
-    print ("Your password must have at least 8 characters")
-    password_length = int(input('\nEnter the length of password: '))
+    print("Your password must have at least 8 characters")
+    password_length = int(input("\nEnter the length of password: "))
 
 # define the characters
 lower = string.ascii_lowercase
