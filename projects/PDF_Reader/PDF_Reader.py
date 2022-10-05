@@ -1,19 +1,19 @@
-import pyttsx3 #python text to speech version 3
-import PyPDF2 
+import pyttsx3  # python text to speech version 3
+import PyPDF2
 
-pdf= open("Andriy_Burkov.pdf",'rb')
+pdf = open("Andriy_Burkov.pdf", "rb")
 
-pdfreader = PyPDF2.PdfFileReader(pdf,strict=False)
+pdfreader = PyPDF2.PdfFileReader(pdf, strict=False)
 
-pages=pdfreader.numPages
-# print(pages) you can used this to print number of pages 
+pages = pdfreader.numPages
+# print(pages) you can used this to print number of pages
 
 
-dell= pyttsx3.init()
+dell = pyttsx3.init()
 
-pages=pdfreader.getPage(7)
+pages = pdfreader.getPage(7)
 
-text=pages.extractText()
+text = pages.extractText()
 
 # dell.say("Hello How Can I help you")
 dell.say(text)
