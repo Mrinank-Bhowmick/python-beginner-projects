@@ -63,12 +63,7 @@ def isWinner(bo, le):
 
 def getBoardCopy(board):
     # Make a duplicate of the board list and return it the duplicate.
-    dupeBoard = []
-
-    for i in board:
-        dupeBoard.append(i)
-
-    return dupeBoard
+    return board[:]  # slicing the list to include all items
 
 
 def isSpaceFree(board, move):
