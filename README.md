@@ -211,6 +211,12 @@
         <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/snake_water_gun_game">
             <sub><b>Snake-Water-Gun</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Story%20Generator">
+            <sub><b>Story Generator</b></sub>
+        </a>
+    </td>
 </tr>
 </table>
 
@@ -473,6 +479,14 @@
             <br />
             <sub><b>Nishant Pacharne</b></sub>
         </a>
-    </td></tr>
+    </td>
+    <td align="center">
+        <a href="https://github.com/melvincwng">
+            <img src="https://avatars.githubusercontent.com/u/77479885?s=400&u=19ec75c01c6905ae9439e5239372530f0eed3299&v=4" width="100;" alt="melvincwng"/>
+            <br />
+            <sub><b>Melvin Ng</b></sub>
+        </a>
+    </td>
+</tr>
 </table>
 <!-- readme: contributors -end -->
