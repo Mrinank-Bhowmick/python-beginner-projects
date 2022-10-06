@@ -1,6 +1,6 @@
 ## QuickWordCloud
 Quick word cloud is a small and interesting project that can quickly create a word cloud out of a text file.
-Its a helpful project that can be used in websites or for different analysis  
+Its a small & helpful project that can be used in websites or for different analysis.  
 
 ## Installation
 
