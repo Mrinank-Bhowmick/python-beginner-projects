@@ -468,6 +468,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/ta-brook">
+            <img src="https://avatars.githubusercontent.com/u/85091595?v=4" width="100;" alt="ta-brook"/>
+            <br />
+            <sub><b>Tanawat Jirawttanakul</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/NishantPacharne">
             <img src="https://avatars.githubusercontent.com/u/71060551?v=4" width="100;" alt="NishantPacharne"/>
             <br />
