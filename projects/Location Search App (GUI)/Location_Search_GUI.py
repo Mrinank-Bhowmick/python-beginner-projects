@@ -23,19 +23,23 @@ canvas = tk.Canvas(root, height=Height, width=Width, bg=canvas_color)
 canvas.pack()
 
 frame = tk.Frame(root, bg=frame_color, bd=2)
-frame.place(relx=0.075, rely=0.1, relwidth=0.85, relheight=.75)
+frame.place(relx=0.075, rely=0.1, relwidth=0.85, relheight=0.75)
 
 
 entry = tk.Entry(frame, bg=entry_color, font=font_)
-entry.place(relx=.16, rely=.1, relwidth=.60, relheight=.05)
+entry.place(relx=0.16, rely=0.1, relwidth=0.60, relheight=0.05)
 
-label = tk.Label(frame, bg=canvas_color,
-                 text="Enter location to search", font=font_)
-label.place(relx=.20, rely=.2)
+label = tk.Label(frame, bg=canvas_color, text="Enter location to search", font=font_)
+label.place(relx=0.20, rely=0.2)
 
 
-button = tk.Button(frame, font=font_, bg=button_color, text="Search",
-                   command=lambda: search_function(entry.get()))
-button.place(relx=.77, rely=.1, relwidth=.20, relheight=.05)
+button = tk.Button(
+    frame,
+    font=font_,
+    bg=button_color,
+    text="Search",
+    command=lambda: search_function(entry.get()),
+)
+button.place(relx=0.77, rely=0.1, relwidth=0.20, relheight=0.05)
 
 root.mainloop()
