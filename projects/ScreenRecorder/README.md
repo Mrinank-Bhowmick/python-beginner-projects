@@ -12,4 +12,4 @@ pip install pyautogui
 
 # Now run the main.py 
 
-# Great.............You Did it, Check your folder and find screenrecord.mp4 file
+## Great.............You Did it, Check your folder and find "ScreenRecord.mp4" file
