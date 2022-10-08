@@ -4,24 +4,33 @@ import pyautogui as pa
 import time
 import numpy as np
 
+# Easy module names
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
 
 def get_coord(landmrk, image_width, image_height):
-    
+    """
+    converts relative coordinates to pixel coordinates
+    """
     return int(landmrk.x * image_width), int(landmrk.y*image_height)
 
 
+# Measure time
+# this is required to  execute process_inp after every n milliseconds
 _time = time.time()
 
 def process_inp(k, l):
     ## Detect clockwise anticlockwise
     global _time
     #print(time.time() - _time )
+
+    # only detect input every 500 ms
     if  time.time() - _time > 0.5:
         _time = time.time()
+
+        # reject hand if it is far away
         if l > 0.2:
           
           if k<-78:
@@ -34,6 +43,8 @@ def process_inp(k, l):
         
 # For webcam input:
 cap = cv2.VideoCapture(0)
+
+
 with mp_hands.Hands(
     model_complexity=0,
     min_detection_confidence=0.5,
