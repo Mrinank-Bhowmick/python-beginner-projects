@@ -1,19 +1,19 @@
 from multiprocessing.connection import Listener
-import pyttsx3 #pip install pyttsx3
-import speech_recognition as sr #pip install speechRecognition
+import pyttsx3  # pip install pyttsx3
+import speech_recognition as sr  # pip install speechRecognition
 import datetime
-import wikipedia #pip install wikipedia
+import wikipedia  # pip install wikipedia
 import webbrowser
 import os
 import smtplib
-import pyjokes #pip install jokes
+import pyjokes  # pip install jokes
 
 
 Listener = sr.Recognizer()
-engine = pyttsx3.init('sapi5')
-voices = engine.getProperty('voices')
+engine = pyttsx3.init("sapi5")
+voices = engine.getProperty("voices")
 # print(voices[1].id)
-engine.setProperty('voice', voices[0].id)
+engine.setProperty("voice", voices[0].id)
 
 
 def speak(audio):
@@ -23,19 +23,20 @@ def speak(audio):
 
 def wishMe():
     hour = int(datetime.datetime.now().hour)
-    if hour>=0 and hour<12:
+    if hour >= 0 and hour < 12:
         speak("Good Morning!")
 
-    elif hour>=12 and hour<18:
-        speak("Good Afternoon!")   
+    elif hour >= 12 and hour < 18:
+        speak("Good Afternoon!")
 
     else:
-        speak("Good Evening!")  
+        speak("Good Evening!")
 
-    speak("jarvis here at your service sir.How may I help you")       
+    speak("jarvis here at your service sir.How may I help you")
+
 
 def takeCommand():
-    #It takes microphone input from the user and returns string output
+    # It takes microphone input from the user and returns string output
 
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -44,82 +45,83 @@ def takeCommand():
         audio = r.listen(source)
 
     try:
-        print("Recognizing...")    
-        query = r.recognize_google(audio, language='en-in')
+        print("Recognizing...")
+        query = r.recognize_google(audio, language="en-in")
         print(f"User said: {query}\n")
 
     except Exception as e:
-        # print(e)    
-        print("could you please repeat it sir...")  
+        # print(e)
+        print("could you please repeat it sir...")
         return "None"
     return query
 
+
 def sendEmail(to, content):
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP("smtp.gmail.com", 587)
     server.ehlo()
     server.starttls()
-    server.login('youremail@gmail.com', 'your-password')
-    server.sendmail('youremail@gmail.com', to, content)
+    server.login("youremail@gmail.com", "your-password")
+    server.sendmail("youremail@gmail.com", to, content)
     server.close()
+
 
 if __name__ == "__main__":
     wishMe()
     while True:
-    # if 1:
+        # if 1:
         query = takeCommand().lower()
 
         # Logic for executing tasks based on query
-        if 'wikipedia' in query:
-            speak('Searching Wikipedia...')
+        if "wikipedia" in query:
+            speak("Searching Wikipedia...")
             query = query.replace("wikipedia", "")
             results = wikipedia.summary(query, sentences=2)
             speak("According to Wikipedia")
             print(results)
             speak(results)
 
-        elif 'open youtube' in query:
+        elif "open youtube" in query:
             webbrowser.open("youtube.com")
 
-        elif 'open google' in query:
+        elif "open google" in query:
             webbrowser.open("google.com")
 
-        elif 'open stackoverflow' in query:
-            webbrowser.open("stackoverflow.com")   
+        elif "open stackoverflow" in query:
+            webbrowser.open("stackoverflow.com")
 
-
-        elif 'play music' in query:
-            music_dir = 'D:\\Non Critical\\songs\\Favorite Songs2'
+        elif "play music" in query:
+            music_dir = "D:\\Non Critical\\songs\\Favorite Songs2"
             songs = os.listdir(music_dir)
-            print(songs)    
+            print(songs)
             os.startfile(os.path.join(music_dir, songs[0]))
 
-        elif 'the time' in query:
-            strTime = datetime.datetime.now().strftime("%H:%M:%S")    
+        elif "the time" in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
 
-        elif 'open code' in query:
+        elif "open code" in query:
             codePath = "C:\\Users\\your desktop\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(codePath)
 
-        elif 'email to Raj' in query:
+        elif "email to Raj" in query:
             try:
                 speak("What should I say sir ?")
                 content = takeCommand()
-                to = "yourmail@gmail.com"    
+                to = "yourmail@gmail.com"
                 sendEmail(to, content)
                 speak("Email has been sent sir!")
             except Exception as e:
                 print(e)
-                speak("Sorry boss. I am not able to send this email") 
-        elif 'are you single' in query:
-                speak('I am in a relationship with wifi')
+                speak("Sorry boss. I am not able to send this email")
+        elif "are you single" in query:
+            speak("I am in a relationship with wifi")
 
-        elif 'joke' in query:
-                speak(pyjokes.get_joke())
+        elif "joke" in query:
+            speak(pyjokes.get_joke())
 
     else:
-        speak('Please say the command again sir.')
+        speak("Please say the command again sir.")
 
 
-while True: 
-    jarvis()  
+while True:
+    jarvis()
