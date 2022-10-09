@@ -2,6 +2,9 @@ name: Lint
 
 on: [push, pull_request]
 
+permissions:
+  checks: write
+
 jobs:
   run-linters:
     name: Run linters
@@ -22,5 +25,6 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           black: true
           auto_fix: true
