@@ -30,7 +30,7 @@ else:
         num = str(num)
 
         # correct[] list stores digits which are correct
-        correct = ['X'] * 4
+        correct = ["X"] * 4
 
         # for loop runs 4 times since the number has 4 digits.
         for i in range(0, 4):
@@ -49,9 +49,9 @@ else:
             print("Not quite the number. But you did get ", count, " digit(s) correct!")
             print("Also these numbers in your input were correct.")
             for k in correct:
-                print(k, end=' ')
-            print('\n')
-            print('\n')
+                print(k, end=" ")
+            print("\n")
+            print("\n")
             n = int(input("Enter your next choice of numbers: "))
 
         # when none of the digits are guessed correctly.

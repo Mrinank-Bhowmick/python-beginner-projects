@@ -1,4 +1,4 @@
-numbers = '''
+numbers = """
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
@@ -19,13 +19,13 @@ numbers = '''
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450
-'''
-numstring = numbers.strip().replace('\n', '')
+"""
+numstring = numbers.strip().replace("\n", "")
 greatest_product = 0
 
 for i in range(len(numstring)):
     product = 1
-    substring = numstring[i:i+13]
+    substring = numstring[i : i + 13]
     for digit in substring:
         product *= int(digit)
     if product > greatest_product:
