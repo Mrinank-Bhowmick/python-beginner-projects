@@ -17,25 +17,25 @@ format = cv2.VideoWriter_fourcc(*"XVID")
 
 # Here you can change the FPS (Frame Per Second)
 
-video_output = cv2.VideoWriter("ScreenRecord.mp4", format, 30.0, dimension) 
+video_output = cv2.VideoWriter("ScreenRecord.mp4", format, 30.0, dimension)
 
-# Set the time interval of Recording 
-# Take how much time you required in the Duration variable 
+# Set the time interval of Recording
+# Take how much time you required in the Duration variable
 
 Present_time = time.time()
 Duration = 10
-finish_time = Present_time+Duration
+finish_time = Present_time + Duration
 
 while True:
-#   Here pyautogui.screenshot() captured screenshots which merge into a ScreenRecord
+    #   Here pyautogui.screenshot() captured screenshots which merge into a ScreenRecord
     picture = pyautogui.screenshot()
-# Here we store all the screenshots in an array   
+    # Here we store all the screenshots in an array
     frame = nu.array(picture)
-# Here we get the original color by using cv2.COLOR_BGR2RGB
+    # Here we get the original color by using cv2.COLOR_BGR2RGB
     frame_1 = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-# Now we store the video output here
+    # Now we store the video output here
     video_output.write(frame_1)
-# Now check the duration 
+    # Now check the duration
     current_time = time.time()
     if current_time > finish_time:
         break
