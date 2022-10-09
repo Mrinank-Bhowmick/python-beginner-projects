@@ -5,7 +5,7 @@ def input_matrix():
     row = int(input("Choose matrix rows and columns: "))
     column = row
     print(f"Matrix A: {row}x{column}")
-    print('-' * 20)
+    print("-" * 20)
 
     # Input elements of matrix A and B
     print(">>> Input elements of matrix")
@@ -13,7 +13,7 @@ def input_matrix():
         matrix.append([])
         for j in range(column):
             matrix[i].append(int(input(f"A {i + 1}, {j + 1}: ")))
-    print('-' * 20)
+    print("-" * 20)
 
     return matrix
 
@@ -97,10 +97,10 @@ def print_matrix(matrix, text=""):
     column = len(matrix)
     print(f"{text}")
     for i in range(column):
-        print('\t[', end=' ')
+        print("\t[", end=" ")
         for j in range(column):
-            print(f"{round(matrix[i][j], 3)}", end=' ')
-        print(']\n', end='')
+            print(f"{round(matrix[i][j], 3)}", end=" ")
+        print("]\n", end="")
 
 
 def main():
@@ -111,12 +111,12 @@ def main():
         print(">>> Calculation Results")
         print_matrix(matrix, "A:")
         print_matrix(inv_matrix, "A^-1:")
-        print('-' * 20)
+        print("-" * 20)
         pilihan = input(">>> Would you like to make another calculation? (y): ")
-        if pilihan.lower() != 'y':
+        if pilihan.lower() != "y":
             print("Thank you for using this program :)")
             break
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
