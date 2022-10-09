@@ -1,0 +1,6 @@
+1. Python3 or later
+2. pip
+installation guide: https://pip.pypa.io/en/stable/installation/
+3. Pillow
+installation guide: https://pillow.readthedocs.io/en/stable/installation.html
+4. Save image to be coverted to ascii art in this directory as 'test1.jpg'
