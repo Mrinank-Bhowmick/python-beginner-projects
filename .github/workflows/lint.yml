@@ -17,10 +17,11 @@ jobs:
           python-version: 3.8
 
       - name: Install Python dependencies
-        run: pip install black
+        run: pip install black flake8
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           black: true
           auto_fix: true
