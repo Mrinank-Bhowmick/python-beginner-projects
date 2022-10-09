@@ -10,7 +10,9 @@ def speedtester():
     best = st.get_best_server()
     print(f"Found: {best['host']} located in {best['country']}")
 
-    option = int(input('''What speed do you want to test:  
+    option = int(
+        input(
+            """What speed do you want to test:  
     
     1) Download Speed  
     
@@ -18,7 +20,9 @@ def speedtester():
     
     3) Ping 
     
-    Your Choice: '''))
+    Your Choice: """
+        )
+    )
 
     if option == 1:
         print("Performing download test...")
