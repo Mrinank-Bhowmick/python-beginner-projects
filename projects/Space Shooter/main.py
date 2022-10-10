@@ -1,6 +1,7 @@
 import pygame
 import random
 
+
 class Display:
     pygame.init()
     windows = pygame.display.set_mode((640, 480))
@@ -17,6 +18,7 @@ class Display:
     enemy_laser = pygame.image.load("enemy laser.png")
     missile = pygame.image.load("missile.png")
 
+
 class Text:
     def __init__(self, text: str, size: int):
         self.text = text
@@ -28,6 +30,7 @@ class Text:
         color = (255, 0, 0) if self.selected else (255, 255, 255)
         font = pygame.font.Font("SHPinscher-Regular.otf", self.size)
         return font.render(self.text, True, color)
+
 
 class Menu:
     def __init__(self):
@@ -41,7 +44,9 @@ class Menu:
         size_list = [70, 40, 40]
 
         # Create text class and append to list
-        self.text_list = [Text(text_list[i], size_list[i]) for i in range(len(text_list))]
+        self.text_list = [
+            Text(text_list[i], size_list[i]) for i in range(len(text_list))
+        ]
         # Select the first option
         self.text_list[1].selected = True
 
@@ -89,7 +94,13 @@ class Menu:
         Display().windows.blit(Display().background, (0, 0))
         # Display the text
         for text in self.text_list:
-            Display().windows.blit(text.display(), ((Display().windows.get_width() - text.display().get_width()) / 2, spacing))
+            Display().windows.blit(
+                text.display(),
+                (
+                    (Display().windows.get_width() - text.display().get_width()) / 2,
+                    spacing,
+                ),
+            )
             spacing += 100
 
     def execute(self):
@@ -104,6 +115,7 @@ class Menu:
             self.objects()
 
             pygame.display.flip()
+
 
 class GameOver:
     def __init__(self):
@@ -124,14 +136,24 @@ class GameOver:
         # Background
         Display().windows.blit(Display().background, (0, 0))
         # Text
-        Display().windows.blit(self.text(1), ((Display().windows.get_width() - self.text(1).get_width()) / 2, 70))
-        Display().windows.blit(self.text(2), ((Display().windows.get_width() - self.text(2).get_width()) / 2, 200))
+        Display().windows.blit(
+            self.text(1),
+            ((Display().windows.get_width() - self.text(1).get_width()) / 2, 70),
+        )
+        Display().windows.blit(
+            self.text(2),
+            ((Display().windows.get_width() - self.text(2).get_width()) / 2, 200),
+        )
         # Options
         for text in self.text_list:
             if text == self.text_list[0]:
-                ops = (Display().windows.get_width() - text.display().get_width()) / 2 - 50
+                ops = (
+                    Display().windows.get_width() - text.display().get_width()
+                ) / 2 - 50
             else:
-                ops = (Display().windows.get_width() - text.display().get_width()) / 2 + 50
+                ops = (
+                    Display().windows.get_width() - text.display().get_width()
+                ) / 2 + 50
 
             Display().windows.blit(text.display(), (ops, 250))
 
@@ -184,11 +206,15 @@ class GameOver:
 
             pygame.display.flip()
 
+
 class Enemies:
     def __init__(self):
         # Place the enemies at random
         self.x = random.randint(700, 1000)
-        self.y = random.randint(0, Display().windows.get_height() - Display().enemy_spaceship.get_height() + 1)
+        self.y = random.randint(
+            0,
+            Display().windows.get_height() - Display().enemy_spaceship.get_height() + 1,
+        )
         # Randomly select between two types of enemies
         self.type = random.choice([1, 2])
         # List for the location of the lasers/missiles
@@ -196,11 +222,18 @@ class Enemies:
         self.alive = True
 
     def collision_box(self):
-        return pygame.Rect((self.x, self.y), (Display().enemy_spaceship.get_width(), Display().enemy_spaceship.get_height()))
+        return pygame.Rect(
+            (self.x, self.y),
+            (
+                Display().enemy_spaceship.get_width(),
+                Display().enemy_spaceship.get_height(),
+            ),
+        )
 
     def firing(self):
         # Append the location of lasers/missiles
         self.bullets_list.append([self.x, self.y])
+
 
 class Objects:
     def __init__(self):
@@ -236,7 +269,10 @@ class Objects:
         self.score_board()
 
     def collision_box(self):
-        return pygame.Rect((self.x, self.y), (Display().spaceship.get_width(), Display().spaceship.get_height()))
+        return pygame.Rect(
+            (self.x, self.y),
+            (Display().spaceship.get_width(), Display().spaceship.get_height()),
+        )
 
     def background(self):
         for location in self.background_list:
@@ -248,7 +284,9 @@ class Objects:
             if location[0] + Display().background.get_width() <= 0:
                 # Resets the location of the background if it's offscreen
                 index = self.background_list.index(location)
-                self.background_list[index][0] = self.background_list[index - 1][0] + 1800
+                self.background_list[index][0] = (
+                    self.background_list[index - 1][0] + 1800
+                )
 
     def add_enemies(self):
         # Adds enemy if score is more or equals than the limit
@@ -259,7 +297,9 @@ class Objects:
 
     def score_board(self):
         # Display the scoreboard
-        score_board = Display().font.render(f"Score: {self.score}", True, (255, 255, 255))
+        score_board = Display().font.render(
+            f"Score: {self.score}", True, (255, 255, 255)
+        )
         Display().windows.blit(score_board, (10, 0))
 
     def insert_laser(self):
@@ -269,14 +309,21 @@ class Objects:
     def fire_laser(self):
         for location in self.laser_list:
             # Makes a pygame.Rect object to make a collision box
-            rect = pygame.Rect((location[0], location[1] + 15), (Display().laser.get_width(), Display().laser.get_height() - 30))
+            rect = pygame.Rect(
+                (location[0], location[1] + 15),
+                (Display().laser.get_width(), Display().laser.get_height() - 30),
+            )
             # Display the laser
             Display().windows.blit(Display().laser, (location[0], location[1]))
 
             # Checks whether or not the laser hits an enemy
             self.laser_hit(rect, location)
             # Removes the laser if it's offscreen
-            if location[0] + Display().laser.get_width() >= Display().windows.get_width() and location in self.laser_list:
+            if (
+                location[0] + Display().laser.get_width()
+                >= Display().windows.get_width()
+                and location in self.laser_list
+            ):
                 self.laser_list.remove(location)
             # Changes the location of the laser to move it
             location[0] += 5
@@ -314,9 +361,13 @@ class Objects:
         for enemies in self.enemies_list:
             # Spawn enemies
             if enemies.type == 1 and enemies.alive:
-                Display().windows.blit(Display().enemy_spaceship, (enemies.x, enemies.y))
+                Display().windows.blit(
+                    Display().enemy_spaceship, (enemies.x, enemies.y)
+                )
             if enemies.type == 2 and enemies.alive:
-                Display().windows.blit(Display().enemy_missile_craft, (enemies.x, enemies.y))
+                Display().windows.blit(
+                    Display().enemy_missile_craft, (enemies.x, enemies.y)
+                )
 
             # Moves the enemy if not in limit
             if enemies.x >= 550:
@@ -342,9 +393,15 @@ class Objects:
     def enemy_type1_firing(self, enemy: Enemies):
         for laser in enemy.bullets_list:
             # Display the laser
-            Display().windows.blit(Display().enemy_laser, (laser[0] - Display().enemy_spaceship.get_width(), laser[1] + 28))
+            Display().windows.blit(
+                Display().enemy_laser,
+                (laser[0] - Display().enemy_spaceship.get_width(), laser[1] + 28),
+            )
             # Creates the collision box
-            collision = pygame.Rect((laser[0] - Display().enemy_spaceship.get_width(), laser[1] + 28), (Display().enemy_laser.get_width(), Display().enemy_laser.get_height()))
+            collision = pygame.Rect(
+                (laser[0] - Display().enemy_spaceship.get_width(), laser[1] + 28),
+                (Display().enemy_laser.get_width(), Display().enemy_laser.get_height()),
+            )
 
             # Removes the laser if out of screen
             if laser[0] + Display().enemy_laser.get_width() <= 0:
@@ -359,9 +416,15 @@ class Objects:
     def enemy_type2_firing(self, enemy: Enemies):
         for missile in enemy.bullets_list:
             # Display the missile
-            Display().windows.blit(Display().missile, (missile[0] - Display().enemy_missile_craft.get_width(), missile[1]))
+            Display().windows.blit(
+                Display().missile,
+                (missile[0] - Display().enemy_missile_craft.get_width(), missile[1]),
+            )
             # Creates the collision box
-            collision = pygame.Rect((missile[0] - 80, missile[1]), (Display().missile.get_width(), Display().missile.get_height()))
+            collision = pygame.Rect(
+                (missile[0] - 80, missile[1]),
+                (Display().missile.get_width(), Display().missile.get_height()),
+            )
 
             # Removes the missile if out of screen
             if missile[0] + Display().missile.get_width() <= 0:
@@ -391,6 +454,7 @@ class Objects:
         if hit:
             GameOver().execute()
 
+
 class Start:
     def __init__(self):
         self.object = Objects()
@@ -417,7 +481,11 @@ class Start:
     def movements(self):
         if self.up and self.object.y >= 0:
             self.object.y -= 5
-        if self.down and self.object.y + Display().spaceship.get_height() <= Display().windows.get_height():
+        if (
+            self.down
+            and self.object.y + Display().spaceship.get_height()
+            <= Display().windows.get_height()
+        ):
             self.object.y += 5
 
     def execute(self):
@@ -435,5 +503,6 @@ class Start:
 
             pygame.display.flip()
             Display().clock.tick(60)
+
 
 Menu().execute()

@@ -2,9 +2,6 @@ name: Lint
 
 on: [push, pull_request]
 
-permissions:
-  checks: write
-
 jobs:
   run-linters:
     name: Run linters
@@ -20,7 +17,7 @@ jobs:
           python-version: 3.8
 
       - name: Install Python dependencies
-        run: pip install black
+        run: pip install black flake8
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
