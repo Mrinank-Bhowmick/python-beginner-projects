@@ -7,20 +7,27 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Menu',
+            name="Menu",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Item_name', models.CharField(max_length=100)),
-                ('Image', models.ImageField(default='', upload_to='menu/images')),
-                ('Category', models.CharField(max_length=50)),
-                ('Price', models.FloatField()),
-                ('Discount', models.FloatField()),
-                ('Plate_size', models.IntegerField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("Item_name", models.CharField(max_length=100)),
+                ("Image", models.ImageField(default="", upload_to="menu/images")),
+                ("Category", models.CharField(max_length=50)),
+                ("Price", models.FloatField()),
+                ("Discount", models.FloatField()),
+                ("Plate_size", models.IntegerField()),
             ],
         ),
     ]

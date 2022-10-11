@@ -7,13 +7,13 @@ import menu.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('menu', '0001_initial'),
+        ("menu", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='menu',
-            name='Image',
-            field=models.ImageField(default='', upload_to=menu.models.upload_to),
+            model_name="menu",
+            name="Image",
+            field=models.ImageField(default="", upload_to=menu.models.upload_to),
         ),
     ]

@@ -5,7 +5,12 @@ Optional: Add syntax highlighting and other features.
 """
 
 from tkinter import *
-from tkinter.filedialog import askopenfile, asksaveasfile, askopenfilename, asksaveasfilename
+from tkinter.filedialog import (
+    askopenfile,
+    asksaveasfile,
+    askopenfilename,
+    asksaveasfilename,
+)
 import os
 from pygments import highlight
 
@@ -13,26 +18,23 @@ counter = 1
 
 
 class TextEditor:
-
     def donothing(self):
         self.filewin = Toplevel(self.root)
         button = Button(self.filewin, text="Do not do anything")
         button.pack()
 
     def open_file(self):
-        self.file = askopenfile(mode='r')
+        self.file = askopenfile(mode="r")
         if self.file is not None:
             self.text.delete(1.0, "end-1c")
             content = self.file.read()
             self.filename = self.file.name
             self.text.insert(INSERT, content)
             self.filename_only = self.filename.split("/")[-1]
-            self.root.title(self.filename_only+"-TryCatch Text Editor")
-
-
+            self.root.title(self.filename_only + "-TryCatch Text Editor")
 
     def save_file(self):
-        if(self.filename != None and self.file != None):
+        if self.filename != None and self.file != None:
             f = open(self.filename, "r+")
             f.seek(0)
             f.truncate()
@@ -46,9 +48,7 @@ class TextEditor:
             f = open(self.filename, "r+")
             f.write(self.text_data)
             self.filename_only = self.filename.split("/")[-1]
-            self.root.title(self.filename_only+"-TryCatch Text Editor")
-
-
+            self.root.title(self.filename_only + "-TryCatch Text Editor")
 
     def save_as_file(self):
         self.file = asksaveasfile()
@@ -57,33 +57,34 @@ class TextEditor:
         f = open(self.filename, "r+")
         f.write(self.text_data)
         self.filename_only = self.filename.split("/")[-1]
-        self.root.title(self.filename_only+"-TryCatch Text Editor")
-
+        self.root.title(self.filename_only + "-TryCatch Text Editor")
 
     def close_file(self):
-        self.text.delete(1.0,"end-1c")
-        self.root.title("Untitled"+"-TryCatch Text Editor")
+        self.text.delete(1.0, "end-1c")
+        self.root.title("Untitled" + "-TryCatch Text Editor")
         self.file.close()
         self.file = None
         self.filename = None
-    
+
     def new(self):
-        global counter,win
-        
-        counter +=1
+        global counter, win
+
+        counter += 1
         win[counter] = TextEditor()
-        
+
     def dark(self):
-        self.text.config(foreground = "white",background="black",insertbackground="white")
+        self.text.config(
+            foreground="white", background="black", insertbackground="white"
+        )
 
     def light(self):
-        self.text.config(foreground = "black",background="white",insertbackground="black")
-        
+        self.text.config(
+            foreground="black", background="white", insertbackground="black"
+        )
 
-        
     def __init__(self):
         self.root = Tk()
-        
+
         # Adding Scorll Bar
         scrollbar = Scrollbar(self.root)
         scrollbar.pack(side=RIGHT, fill=Y)
@@ -91,8 +92,8 @@ class TextEditor:
 
         self.file = None
         self.filename = None
-        
-        #Adding Menu Bar
+
+        # Adding Menu Bar
         menubar = Menu(self.root)
         self.filemenu = Menu(menubar, tearoff=0)
         self.filemenu.add_command(label="New", command=self.new)
@@ -118,8 +119,6 @@ class TextEditor:
         editmenu.add_command(label="Light", command=self.light)
         menubar.add_cascade(label="Theme", menu=editmenu)
 
-
-
         helpmenu = Menu(menubar, tearoff=0)
         helpmenu.add_command(label="Help Index", command=self.donothing)
         helpmenu.add_command(label="About...", command=self.donothing)
@@ -135,14 +134,14 @@ class TextEditor:
         self.text.tag_config("here", background="yellow", foreground="blue")
         self.text.tag_config("start", background="aqua", foreground="green")
         self.text.config(insertbackground="black")
-        
-        self.photo = PhotoImage(file = "Projects-1/edit-text.png")
+
+        self.photo = PhotoImage(file="Projects-1/edit-text.png")
         self.root.iconphoto(False, self.photo)
-        
+
         # Running GUI application
         self.root.mainloop()
 
-    
+
 # print(filename)
 win = dict()
 
