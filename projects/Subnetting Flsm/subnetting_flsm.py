@@ -8,6 +8,10 @@ def start_v():
     max_value_dev = int(input("Max value of hosts for one sub: "))
     return [network_addr, prefix, num_of_sub, max_value_dev]
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 576df113796b54473d4621593365ad6b92990bb2
 start_list = start_v()
 network_addr = start_list[0]
 prefix = start_list[1]
