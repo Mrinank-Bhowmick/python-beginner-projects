@@ -86,7 +86,7 @@ pip install -r requirements.txt
 ### **Push New Branch to "Origin" Repository**
 
 9. To make sure there are no conflict, Pull from upstream using `git pull upstream main`
-10. Push your branch changes to the Repo using
+10. Push your branch changes to the Repo using.
     `git push upstream main`
 
 ### **Create Pull Request**
