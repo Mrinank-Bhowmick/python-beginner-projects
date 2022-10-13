@@ -1,131 +1,133 @@
 # Calculator
 
-def addition ():
+def addition():
 
-print("Addition")
+    print("Addition")
 
-n = float(input("Enter the number: "))
+    n = float(input("Enter the number: "))
 
-t = 0 #Total number enter
+    t = 0  # Total number enter
 
-ans = 0
+    ans = 0
 
-while n != 0:
+    while n != 0:
 
-ans = ans + n
+        ans = ans + n
 
-t+=1
+        t += 1
 
-n = float(input("Enter another number (0 to calculate): "))
+        n = float(input("Enter another number (0 to calculate): "))
 
-return [ans,t]
+        return [ans, t]
 
-def subtraction ():
 
-print("Subtraction");
+def subtraction():
 
-n = float(input("Enter the number: "))
+    print("Subtraction")
 
-t = 0 #Total number enter
+    n = float(input("Enter the number: "))
 
-sum = 0
+    t = 0  # Total number enter
 
-while n != 0:
+    sum = 0
 
-ans = ans - n
+    while n != 0:
 
-t+=1
+        ans = ans - n
 
-n = float(input("Enter another number (0 to calculate): "))
+        t += 1
 
-return [ans,t]
+        n = float(input("Enter another number (0 to calculate): "))
 
-def multiplication ():
+        return [ans, t]
 
-print("Multiplication")
 
-n = float(input("Enter the number: "))
+def multiplication():
 
-t = 0 #Total number enter
+    print("Multiplication")
 
-ans = 1
+    n = float(input("Enter the number: "))
 
-while n != 0:
+    t = 0  # Total number enter
 
-ans = ans * n
+    ans = 1
 
-t+=1
+    while n != 0:
 
-n = float(input("Enter another number (0 to calculate): "))
+        ans = ans * n
 
-return [ans,t]
+        t += 1
 
-def average():
+        n = float(input("Enter another number (0 to calculate): "))
 
-an = []
+        return [ans, t]
 
-an = addition()
 
-t = an[1]
+def average(an):
 
-a = an[0]
+    an = []
 
-ans = a / t
+    an = addition()
 
-return [ans,t]
+    t = an[1]
 
-# main...
+    a = an[0]
+
+    ans = a / t
+
+    return [ans, t]
+
+    # main...
+
 
 while True:
 
-list = []
+    list = []
 
-print(" My first python program!")
+    print(" My first python program!")
 
-print(" Simple Calculator in python by Malik Umer Farooq")
+    print(" Simple Calculator in python by Malik Umer Farooq")
 
-print(" Enter 'a' for addition")
+    print(" Enter 'a' for addition")
 
-print(" Enter 's' for substraction")
+    print(" Enter 's' for subtraction")
 
-print(" Enter 'm' for multiplication")
+    print(" Enter 'm' for multiplication")
 
-print(" Enter 'v' for average")
+    print(" Enter 'v' for average")
 
-print(" Enter 'q' for quit")
+    print(" Enter 'q' for quit")
 
-c = input(" ")
+    c = input(" ")
 
-if c != 'q':
+    if c != 'q':
 
-if c == 'a':
+        if c == 'a':
 
-list = addition()
+            list = addition()
 
-print("Ans = ", list[0], " total inputs ",list[1])
+            print("Ans = ", list[0], " total inputs ", list[1])
 
-elif c == 's':
+        elif c == 's':
 
-list = subtraction()
+            list = subtraction()
 
-print("Ans = ", list[0], " total inputs ",list[1])
+            print("Ans = ", list[0], " total inputs ", list[1])
 
-elif c == 'm':
+        elif c == 'm':
 
-list = multiplication()
+            list = multiplication()
 
-print("Ans = ", list[0], " total inputs ",list[1])
+            print("Ans = ", list[0], " total inputs ", list[1])
 
-elif c == 'v':
+        elif c == 'v':
 
-list = average()
+            list = average()
 
-print("Ans = ", list[0], " total inputs ",list[1])
+            print("Ans = ", list[0], " total inputs ", list[1])
 
-else:
+        else:
 
-print ("Sorry, invilid character")
-
-else:
-
-break
+            print("Sorry, invalid character")
+    else:
+        break
