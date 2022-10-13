@@ -1,5 +1,6 @@
 # Calculator
 
+
 def addition():
 
     print("Addition")
@@ -100,27 +101,27 @@ while True:
 
     c = input(" ")
 
-    if c != 'q':
+    if c != "q":
 
-        if c == 'a':
+        if c == "a":
 
             list = addition()
 
             print("Ans = ", list[0], " total inputs ", list[1])
 
-        elif c == 's':
+        elif c == "s":
 
             list = subtraction()
 
             print("Ans = ", list[0], " total inputs ", list[1])
 
-        elif c == 'm':
+        elif c == "m":
 
             list = multiplication()
 
             print("Ans = ", list[0], " total inputs ", list[1])
 
-        elif c == 'v':
+        elif c == "v":
 
             list = average()
 

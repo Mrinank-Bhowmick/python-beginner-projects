@@ -5,14 +5,14 @@ import glob
 import os
 
 image_list = []
-for filename in glob.glob('images/*.jpeg'):  # assuming gif
+for filename in glob.glob("images/*.jpeg"):  # assuming gif
     img = Image.open(filename)
     image_list.append(img)
     # this open the photo viewer
     # img.show()
     plt.imshow(img)
 
-    watermark = Image.open('mord.png')
+    watermark = Image.open("mord.png")
     # image watermark
     size = (500, 50)
     crop_image = watermark
@@ -26,10 +26,10 @@ for filename in glob.glob('images/*.jpeg'):  # assuming gif
     # copied_image.show()
 
     # create the output folder if not exists
-    if not os.path.exists('output'):
-        os.makedirs('output')
+    if not os.path.exists("output"):
+        os.makedirs("output")
 
-    copied_image.save('output/' + os.path.basename('mord' + filename))
+    copied_image.save("output/" + os.path.basename("mord" + filename))
     # this save the image in the output folder
     # copied_image.show()
     # pasted the crop image onto the base image

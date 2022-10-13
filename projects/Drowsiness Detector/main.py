@@ -15,11 +15,13 @@ import cv2
 
 # the alarm function
 
+
 def sound_alarm(path):
     playsound.playsound(path)
 
 
 # Eye Aspect Ratio
+
 
 def eye_aspect_ratio(eye):
     # find the Euclidean distance between the two sets of vertical eye landmark
@@ -39,7 +41,9 @@ def eye_aspect_ratio(eye):
 # parse our command line arguments
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=True, help="path to facial landmark predictor")
+ap.add_argument(
+    "-p", "--shape-predictor", required=True, help="path to facial landmark predictor"
+)
 ap.add_argument("-a", "--alarm", type=str, default="", help="path alarm file")
 ap.add_argument("-w", "--webcam", type=int, default=0, help="index of webcam on system")
 args = vars(ap.parse_args())
@@ -64,8 +68,8 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(args["shape_predictor"])
 
 # Extract the Eye Region
-(lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS['left_eye']
-(rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS['right_eye']
+(lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
+(rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]
 
 # start the video stream thread
 print("[INFO] starting video stream thread...")
@@ -119,13 +123,19 @@ while True:
                     # and if so, start a thread to have the alarm
                     # sound played in the background
                     if args["alarm"] != "":
-                        t = Thread(target=sound_alarm,
-                                   args=(args["alarm"],))
+                        t = Thread(target=sound_alarm, args=(args["alarm"],))
                         t.deamon = True
                         t.start()
                 # draw an alarm on the frame
-                cv2.putText(frame, "DROWSINESS ALERT!", (10, 30),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+                cv2.putText(
+                    frame,
+                    "DROWSINESS ALERT!",
+                    (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.7,
+                    (0, 0, 255),
+                    2,
+                )
         # otherwise, the eye aspect ratio is not below the blink
         # threshold, so reset the counter and alarm
         else:
@@ -135,8 +145,15 @@ while True:
             # draw the computed eye aspect ratio on the frame to help
             # with debugging and setting the correct eye aspect ratio
             # thresholds and frame counters
-            cv2.putText(frame, "EAR: {:.2f}".format(ear), (300, 30),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+            cv2.putText(
+                frame,
+                "EAR: {:.2f}".format(ear),
+                (300, 30),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.7,
+                (0, 0, 255),
+                2,
+            )
 
             # show the frame
         cv2.imshow("Frame", frame)

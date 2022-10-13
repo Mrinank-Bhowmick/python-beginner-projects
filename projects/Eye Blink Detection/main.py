@@ -1,5 +1,6 @@
 # import the necessary packages
 import argparse
+
 # import the necessary packages
 from scipy.spatial import distance as dist
 from imutils.video import FileVideoStream
@@ -31,10 +32,10 @@ def eye_aspect_ratio(eye):
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=True,
-                help="path to facial landmark predictor")
-ap.add_argument("-v", "--video", type=str, default="",
-                help="path to input video file")
+ap.add_argument(
+    "-p", "--shape-predictor", required=True, help="path to facial landmark predictor"
+)
+ap.add_argument("-v", "--video", type=str, default="", help="path to input video file")
 args = vars(ap.parse_args())
 
 # define two constants, one for the eye aspect ratio to indicate
@@ -120,10 +121,24 @@ while True:
 
             # draw the total number of blinks on the frame along with
             # the computed eye aspect ratio for the frame
-            cv2.putText(frame, "Blinks: {}".format(TOTAL), (10, 30),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-            cv2.putText(frame, "EAR: {:.2f}".format(ear), (300, 30),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+            cv2.putText(
+                frame,
+                "Blinks: {}".format(TOTAL),
+                (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.7,
+                (0, 0, 255),
+                2,
+            )
+            cv2.putText(
+                frame,
+                "EAR: {:.2f}".format(ear),
+                (300, 30),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.7,
+                (0, 0, 255),
+                2,
+            )
 
             # show the frame
         cv2.imshow("Frame", frame)
@@ -135,6 +150,3 @@ while True:
 # do a bit of cleanup
 cv2.destroyAllWindows()
 vs.stop()
-
-
-
