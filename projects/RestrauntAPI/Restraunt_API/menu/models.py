@@ -1,8 +1,9 @@
 from django.db import models
 import datetime
 
-def upload_to(instance,filename):
-    return f'posts/{filename}'.format(filename=filename)
+
+def upload_to(instance, filename):
+    return f"posts/{filename}".format(filename=filename)
 
 
 # Create your models here.
