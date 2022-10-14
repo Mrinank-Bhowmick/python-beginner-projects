@@ -30,6 +30,8 @@ def main():
                 print("You Lose.")
         except:
             print("Invalid choice.")
+            attempts -=1
+            break
 
     print(f"Your score is {score}/{attempts}")
     print("Thanks for playing.")
