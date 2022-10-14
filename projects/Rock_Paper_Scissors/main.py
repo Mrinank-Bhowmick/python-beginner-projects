@@ -12,7 +12,8 @@ def main():
 
             if your_choice == 4:
                 break
-
+            if your_choice not in {1, 2, 3}:
+                attempts -= 1
 
             computer_choice = randint(1, 3)
             attempts += 1
@@ -30,7 +31,6 @@ def main():
                 print("You Lose.")
         except:
             print("Invalid choice.")
-            attempts -=1
             break
 
     print(f"Your score is {score}/{attempts}")
