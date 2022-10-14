@@ -18,12 +18,13 @@ def main():
         computer_choice = randint(1, 3)
         attempts += 1
         print(
-            f"You chose {choices[your_choice]} and computer chose {choices[computer_choice]}")
+            f"You chose {choices[your_choice]} and computer chose {choices[computer_choice]}"
+        )
 
         if your_choice == computer_choice:
             print("Its a draw.")
             attempts -= 1
-        elif str(your_choice)+str(computer_choice) in ["13", "21", "32"]:
+        elif str(your_choice) + str(computer_choice) in ["13", "21", "32"]:
             print("You Win!")
             score += 1
         else:
