@@ -7,13 +7,17 @@ def main():
     attempts = 0
 
     while True:
+
+        # With this if a user enters a number other then 1 2 or 3 it does not give error
+        # If users enters a string or a character it will also not give an error
+
         try:
             your_choice = int(input("\n1. Rock, 2. Paper, 3. Scissors, 4. Exit: "))
 
             if your_choice == 4:
                 break
             if your_choice not in {1, 2, 3}:
-                attempts -= 1
+                attempts -= 1                                          # if the user enters a number except 1, 2, 3 the program ends but it adds one to the number of attempts so this was needed
 
             computer_choice = randint(1, 3)
             attempts += 1
