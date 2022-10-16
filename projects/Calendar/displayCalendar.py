@@ -1,8 +1,11 @@
 # Program to display calendar
 
-import calendar
+def display_calendar(y,m):
+    import calendar
+
+    print(calendar.month(y, m))
 
 y = int(input("Enter year: "))
 m = int(input("Enter month: "))
 
-print(calendar.month(y, m))
+display_calendar(y,m)
