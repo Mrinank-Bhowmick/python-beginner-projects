@@ -418,17 +418,17 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/ducheharsh">
+            <img src="https://avatars.githubusercontent.com/u/79721045?v=4" width="100;" alt="ducheharsh"/>
+            <br />
+            <sub><b>Harsh Mahadev Duche</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/Adhiraj-11">
             <img src="https://avatars.githubusercontent.com/u/94843702?v=4" width="100;" alt="Adhiraj-11"/>
             <br />
             <sub><b>Konran</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/yashd26">
-            <img src="https://avatars.githubusercontent.com/u/65943606?v=4" width="100;" alt="yashd26"/>
-            <br />
-            <sub><b>Yashwho</b></sub>
         </a>
     </td>
     <td align="center">
