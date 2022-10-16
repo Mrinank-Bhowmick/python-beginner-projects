@@ -3,10 +3,10 @@ from RandomWords import wordlist
 
 
 def hangman(tries):
-    '''
+    """
     List of Symbolic representation of losing the tries / for wrong attempts
     (THE HANGMAN)
-    '''
+    """
     stages = [  # final state: head, torso, both arms, and both legs
         """
                    --------
@@ -84,7 +84,7 @@ def hangman(tries):
 def get_word():
     """
     wordlist (list): list of words (strings)
-    
+
     Returns a word from wordlist at random
     """
     word = random.choice(wordlist)
@@ -92,27 +92,27 @@ def get_word():
 
 
 def play(word):
-    '''
+    """
       Starts up an interactive game of Hangman.
-    
-    * At the start of the game, let the user know how many 
+
+    * At the start of the game, let the user know how many
       letters the secret_word contains and how many guesses s/he starts with.
-      
+
     * The user should start with 6 guesses
 
     * Before each round, you should display to the user how many guesses
       s/he has left and the letters that the user has not yet guessed.
-    
+
     * Ask the user to supply one guess per round. Remember to make
       sure that the user puts in a letter!
-    
-    * The user should receive feedback immediately after each guess 
+
+    * The user should receive feedback immediately after each guess
       about whether their guess appears in the computer's word.
 
-    * After each guess, you should display to the user the 
+    * After each guess, you should display to the user the
       partially guessed word so far.
-    
-    '''
+
+    """
     word_completion = "_" * len(word)
     guessed = False
     guessed_letters = []
@@ -169,9 +169,9 @@ def play(word):
 
 
 def main():
-    '''
+    """
     * This triggers the game by asking for intialization
-    '''
+    """
     word = get_word()
     play(word)
     while input("Do you want to play Hangman? (y/n): ").upper() == "Y":
