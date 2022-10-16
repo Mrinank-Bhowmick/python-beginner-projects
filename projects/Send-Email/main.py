@@ -7,9 +7,9 @@ import os
 # It can be assigned by running the following command
 # export username=abc@abc.com     -> linux
 # The same can be done for password
-username = os.environ['username']
+username = os.environ["username"]
 receiver_add = "reciver789@gmail.com"
-password = os.environ['password']
+password = os.environ["password"]
 
 # creating the SMTP server object by giving SMPT server address and port number
 
