@@ -3,9 +3,10 @@
 # create a dictionary that will have the drawings of the dice
 
 import random
+
 dice_drawing = {
     1: (
-        " __________" ,
+        " __________",
         "|          |",
         "|    1     |",
         "|     ●    |",
@@ -13,7 +14,7 @@ dice_drawing = {
         "|__________|",
     ),
     2: (
-        " __________" ,
+        " __________",
         "|          |",
         "|       ●  |",
         "|    2     |",
@@ -21,31 +22,31 @@ dice_drawing = {
         "|__________|",
     ),
     3: (
-        " __________" ,
+        " __________",
         "|          |",
         "|   3  ●   |",
         "|    ●     |",
         "|  ●       |",
-        "|__________|",  
+        "|__________|",
     ),
     4: (
-        " __________" ,
+        " __________",
         "|          |",
         "|  ●    ●  |",
         "|    4     |",
         "|  ●    ●  |",
-        "|__________|", 
+        "|__________|",
     ),
     5: (
-        " __________" ,
+        " __________",
         "|          |",
         "|  ● 5  ●  |",
         "|    ●     |",
         "|  ●    ●  |",
-        "|__________|", 
+        "|__________|",
     ),
     6: (
-        " __________" ,
+        " __________",
         "|          |",
         "|  ●    ●  |",
         "|  ●  6 ●  |",
@@ -54,18 +55,19 @@ dice_drawing = {
     ),
 }
 
-def roll_dice () :
+
+def roll_dice():
     roll = input("Roll the dice? (y/n) : ")
-    
-    while roll.lower() == "y".lower() :
-        dice1 = random.randint(1,6)
-        dice2 = random.randint(1,6)
-        
+
+    while roll.lower() == "y".lower():
+        dice1 = random.randint(1, 6)
+        dice2 = random.randint(1, 6)
+
         print("dice rolled {} and {}".format(dice1, dice2))
         print("\n".join(dice_drawing[dice1]))
         print("\n".join(dice_drawing[dice2]))
-        
-        roll = input("\nRoll again? (y/n): ")
-        
-roll_dice()
 
+        roll = input("\nRoll again? (y/n): ")
+
+
+roll_dice()
