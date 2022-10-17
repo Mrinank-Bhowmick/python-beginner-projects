@@ -8,9 +8,16 @@
 
 import re
 
-training_corpus = """This is an example of how an algorithm is able to autocomplete the text you write.
-This works good in the case when we use higher level n-gram models to predict the word.
-For example, a Trigram model provides more context to an algorithm to work."""
+training_corpus = input("""Insert the training corpus here (can be multiline)""")
+
+
+# Function for cleaning and tokenizing the text.
+# 1st line converts complete text string to lower case and splits it.
+# 2nd line uses regex to remove all punctuation marks and special characters ...
+# to space from all splitted text statements.
+
+# 3rd line pads the statements with <s> and </s> as starting and ending of statements.
+# 2nd last line rejoins the clean and padded text and it is finally returned.
 
 def text_clean_and_tokenize(training_corpus):
 	text = training_corpus.lower().split("\n")
@@ -19,10 +26,15 @@ def text_clean_and_tokenize(training_corpus):
 	tokenized_text = " ".join(text).split()
 	return tokenized_text
 
+
+# This function just calculates the frequencies of various ...
+# pairs of words which occur together.
+# The most frequent pair of words forms the highest probability ...
+# of the 2nd word following the first.
+
 def autocomplete(starting_word, training_corpus):
 	tokenized = text_clean_and_tokenize(training_corpus)
 	max_freq = 0
-	max_probab_word = ""
 	freq_dict = {}
 	# starting word = <s>
 	for i in range(len(tokenized)):
@@ -32,6 +44,7 @@ def autocomplete(starting_word, training_corpus):
 			else:
 				freq_dict[tokenized[i+1]] = 1
 
+	max_probab_word = ""
 	for i in freq_dict:
 		if max_freq <= freq_dict[i]:
 			max_freq = freq_dict[i]
@@ -48,4 +61,12 @@ if __name__ == "__main__":
 		word.append(autocomplete(word[i], training_corpus))
 
 	print(" ".join(word))
+
+
+#####################################
+
+# CODE CONTRIBUTED BY: HRIDAY AGRAWAL
+# GITHUB ID: HridayAg0102
+
+#####################################
 
