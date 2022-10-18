@@ -1,9 +1,9 @@
 from random import randint
 from Jogadores import Jogadores
 
-class Partida(Jogadores):
 
-    def __init__(self, jogador_um, jogador_dois): # Construtor da classe
+class Partida(Jogadores):
+    def __init__(self, jogador_um, jogador_dois):  # Construtor da classe
         self.jogador_um = jogador_um
         self.jogador_dois = jogador_dois
 
@@ -17,10 +17,14 @@ class Partida(Jogadores):
             carta_jogador1 = int(input("Escolha sua carta: "))
             # print(self.traduzir_cartas(self.jogador_um.cartas[carta_jogador1]))
 
-            carta_jogador2 = randint(0, len(self.jogador_dois.cartas)-1)
+            carta_jogador2 = randint(0, len(self.jogador_dois.cartas) - 1)
             # print(self.traduzir_cartas(self.jogador_dois.cartas[carta_jogador2]))
 
-            rodadas.append(self.traduzir_cartas(str(self.jogador_um.cartas[carta_jogador1])) + " x " + self.traduzir_cartas(str(self.jogador_dois.cartas[carta_jogador2])))
+            rodadas.append(
+                self.traduzir_cartas(str(self.jogador_um.cartas[carta_jogador1]))
+                + " x "
+                + self.traduzir_cartas(str(self.jogador_dois.cartas[carta_jogador2]))
+            )
             for rodada in rodadas:
                 print(rodada)
 
@@ -52,15 +56,14 @@ class Partida(Jogadores):
             return print("Jogador 1 - Venceu")
         return print("Jogador 2 - Venceu")
 
-
-    def simular(self): # Método para iniciar o jogo
+    def simular(self):  # Método para iniciar o jogo
         count_jogador1 = 0
         count_jogador2 = 0
         count_Empate = 0
 
         for round in range(3):
             if self.jogador_um.cartas[round] == self.jogador_dois.cartas[round]:
-                print("Round("+str(round+1)+") - Empate")
+                print("Round(" + str(round + 1) + ") - Empate")
                 count_Empate += 1
                 if count_Empate == 3:
                     return print("Todos os rounds Empataram !")
