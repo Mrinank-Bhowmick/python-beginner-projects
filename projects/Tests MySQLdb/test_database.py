@@ -12,10 +12,11 @@ PORT = 3306
 
 
 class TestDataBase(TestCase):
-
     @mock.patch("app.database.MySQLdb")
     def test_create_connection_and_cursor_works(self, mock_mysql):
-        mock_mysql.connect.return_value = MySQLdb.connect(host=HOST, user=USER, port=PORT)
+        mock_mysql.connect.return_value = MySQLdb.connect(
+            host=HOST, user=USER, port=PORT
+        )
 
         DataBase().create_connection_and_cursor()
         mock_mysql.connect.assert_called_once()
@@ -47,7 +48,9 @@ class TestDataBase(TestCase):
 
     @mock.patch("app.database.DataBase.is_database_selected")
     @mock.patch("app.database.DataBase.conn_and_cursor_exist")
-    def test_insert_data_works(self, mock_conn_and_cursor_exist, mock_is_database_selected):
+    def test_insert_data_works(
+        self, mock_conn_and_cursor_exist, mock_is_database_selected
+    ):
 
         mock_conn_and_cursor_exist.return_value = False
         with self.assertRaises(Exception) as error:
@@ -85,7 +88,9 @@ class TestDataBase(TestCase):
 
     @mock.patch("app.database.DataBase.is_database_selected")
     @mock.patch("app.database.DataBase.conn_and_cursor_exist")
-    def test_delete_data_works(self, mock_conn_and_cursor_exist, mock_is_database_selected):
+    def test_delete_data_works(
+        self, mock_conn_and_cursor_exist, mock_is_database_selected
+    ):
 
         mock_conn_and_cursor_exist.return_value = False
         with self.assertRaises(Exception) as error:
@@ -95,7 +100,7 @@ class TestDataBase(TestCase):
 
         mock_conn_and_cursor_exist.return_value = True
 
-    # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         mock_is_database_selected.return_value = False
         with self.assertRaises(Exception) as error:
@@ -105,7 +110,7 @@ class TestDataBase(TestCase):
 
         mock_is_database_selected.return_value = True
 
-    # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         with mock.patch("app.database.DataBase.cursor", create=True) as mock_cursor:
             mock_cursor.execute.side_effect = [0, 1]
@@ -116,7 +121,9 @@ class TestDataBase(TestCase):
 
     @mock.patch("app.database.DataBase.is_database_selected")
     @mock.patch("app.database.DataBase.conn_and_cursor_exist")
-    def test_update_data_works(self, mock_conn_and_cursor_exist, mock_is_database_selected):
+    def test_update_data_works(
+        self, mock_conn_and_cursor_exist, mock_is_database_selected
+    ):
         mock_conn_and_cursor_exist.return_value = False
         with self.assertRaises(Exception) as error:
             DataBase().update_data("", dict(id=1, Nome="bla"))
@@ -153,10 +160,11 @@ class TestDataBase(TestCase):
 
         self.assertFalse(DataBase().update_data("", dict(id=1, Nome="1")))
 
-
     @mock.patch("app.database.DataBase.is_database_selected")
     @mock.patch("app.database.DataBase.conn_and_cursor_exist")
-    def test_select_data_works(self, mock_conn_and_cursor_exist, mock_is_database_selected):
+    def test_select_data_works(
+        self, mock_conn_and_cursor_exist, mock_is_database_selected
+    ):
 
         mock_conn_and_cursor_exist.return_value = False
         with self.assertRaises(Exception) as error:
@@ -186,6 +194,9 @@ class TestDataBase(TestCase):
         self.assertFalse(DataBase().select_data("", 0))
 
     def test_convert_dict_sql_works(self):
-        result = DataBase().convert_dict_to_sql("exemplotabela", dict(id=1, Nome="Teste"))
-        self.assertEqual(result, "UPDATE exemplotabela SET id = 1 , Nome = 'Teste'  WHERE id = 1 ")
-    
+        result = DataBase().convert_dict_to_sql(
+            "exemplotabela", dict(id=1, Nome="Teste")
+        )
+        self.assertEqual(
+            result, "UPDATE exemplotabela SET id = 1 , Nome = 'Teste'  WHERE id = 1 "
+        )

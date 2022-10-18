@@ -8,7 +8,6 @@ PORT = 3306
 
 
 class DataBase:
-
     def convert_dict_to_sql(self, table_to_update, data: dict) -> str:
         sql = f"UPDATE {table_to_update} SET"
         values = []
@@ -26,7 +25,9 @@ class DataBase:
         return sql
 
     def create_connection_and_cursor(self, db_name: str = "") -> None:
-        self.conn = MySQLdb.connect(host=HOST, user=USER, password=PASSWORD, port=PORT, db=db_name)
+        self.conn = MySQLdb.connect(
+            host=HOST, user=USER, password=PASSWORD, port=PORT, db=db_name
+        )
         self.conn.autocommit(True)
         self.cursor = self.conn.cursor()
 
@@ -50,10 +51,14 @@ class DataBase:
         self.conn.select_db(new_database_name)
 
     def convert_list_to_sql_string(self, data: list) -> str:
-        converted_to_sql_data = [f"'{value}'"
-                                 if isinstance(value, str) and value.upper() != "DEFAULT" and value.upper() != "NULL"
-                                 else str(value)
-                                 for value in data]
+        converted_to_sql_data = [
+            f"'{value}'"
+            if isinstance(value, str)
+            and value.upper() != "DEFAULT"
+            and value.upper() != "NULL"
+            else str(value)
+            for value in data
+        ]
         string_values = ",".join(converted_to_sql_data)
         return string_values
 
@@ -130,6 +135,7 @@ class DataBase:
             return False
 
         return False
+
 
 teste = DataBase()
 teste.create_connection_and_cursor("aula_bd")
