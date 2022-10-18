@@ -50,9 +50,9 @@ def get_all_chapter_links():
     print("4/7 Iterating through links . . .")
     for l in links:
         link = l.get_attribute("href")
-        if(type(link) == str):
+        if type(link) == str:
             # Getting only chapter links
-            if(re.search(pattern, link)):
+            if re.search(pattern, link):
                 x.append(link)
     print("5/7 Iterating through links completed . . .")
 
@@ -65,7 +65,7 @@ def get_all_chapter_links():
     # So, if in the future, you want to use this or check
     # the URL pattern, you could do so without using
     # selenium web driver.
-    content = '\n'.join(x)
+    content = "\n".join(x)
     print("6/7 Writing link to files . . .")
 
     with open("links.txt", "w") as f:
@@ -86,8 +86,9 @@ def scrape_data():
 
     # Cleaning all the chapter  links and sorting them
     # numerically ( note that initially they were strings )
-    chapters = sorted(chapters, key=lambda x: int(
-        x.split("-")[3].replace("\n", "").replace("/", "")))
+    chapters = sorted(
+        chapters, key=lambda x: int(x.split("-")[3].replace("\n", "").replace("/", ""))
+    )
 
     # Iterating through every chapter link
 
@@ -109,8 +110,13 @@ def scrape_data():
     for i in range(len(chapters)):
         chapter = chapters[i]
 
-        chapter = chapter.split("jujutsu-kaisen-")[1].replace(
-            "/", "").replace("\n", "").replace("manga", "chapter").replace("-", "_")
+        chapter = (
+            chapter.split("jujutsu-kaisen-")[1]
+            .replace("/", "")
+            .replace("\n", "")
+            .replace("manga", "chapter")
+            .replace("-", "_")
+        )
 
         chapter_no = int(chapter.split("_")[1])
 
@@ -129,8 +135,7 @@ def scrape_data():
         # Creating a separate folder for each chapter
         folder_name = "{}".format(chapter)
         current_directory = os.getcwd()
-        final_directory = os.path.join(
-            current_directory, r'{}'.format(folder_name))
+        final_directory = os.path.join(current_directory, r"{}".format(folder_name))
         if not os.path.exists(final_directory):
             os.makedirs(final_directory)
 
@@ -148,7 +153,7 @@ def scrape_data():
             # the website itself and we don't want those images.
             # Please take a look at the dev tools to get a better idea
             # behind this.
-            if(re.match(r"^https?://", src)):
+            if re.match(r"^https?://", src):
 
                 # Dynamically creating the file name for every image
                 # in a given chapter. Please feel free to change
@@ -162,17 +167,14 @@ def scrape_data():
                 #    in a raw binary form
                 # 3. Save it the file and close the file
 
-                f = open(fname, 'wb')
+                f = open(fname, "wb")
 
                 # The headers were necessary because the website blocked
                 # automated requests. So, to bypass it, we mimic human
                 # behaviour by adding a header stating that the request
                 # was indeed genuine and was made from the mentioned
                 # agent. We could be other agents as well
-                req = Request(
-                    url=src,
-                    headers={'User-Agent': 'Mozilla/5.0'}
-                )
+                req = Request(url=src, headers={"User-Agent": "Mozilla/5.0"})
                 try:
                     f.write(urlopen(req).read())
                 finally:
@@ -183,19 +185,24 @@ def scrape_data():
 
 def zip_files():
     file_paths = []
-    for (root, dirs, files) in os.walk('./'):
+    for (root, dirs, files) in os.walk("./"):
         for f in files:
             fname = "{}/{}".format(root, f)
             file_paths.append(fname)
 
     # Sort numerically wrt Chapter No. then the Image No.
-    file_paths = sorted(file_paths[4:], key=lambda x: (
-        int(re.sub("\D", "", x.split("_")[1])), int(re.sub("\D", "", x.split("_")[-1]))))
+    file_paths = sorted(
+        file_paths[4:],
+        key=lambda x: (
+            int(re.sub("\D", "", x.split("_")[1])),
+            int(re.sub("\D", "", x.split("_")[-1])),
+        ),
+    )
 
     # Zipping ALL the chapters into 1 .cbz
     # NOTE : The file size can be huge ( around 1 GB ) if
     # you plan to download all the chapters
-    with ZipFile("Jujutsu_Kaisen.cbz", 'w') as zip:
+    with ZipFile("Jujutsu_Kaisen.cbz", "w") as zip:
         for file in file_paths:
             msg = "Zipping {} . . . ".format(file)
             print(msg)
