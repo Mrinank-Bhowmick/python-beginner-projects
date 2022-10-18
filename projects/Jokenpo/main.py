@@ -1,6 +1,7 @@
 from Partida import Partida
 from Jogadores import Jogadores
 
+
 def jogar():
     print("====== JOGAR ======")
     try:
@@ -15,6 +16,7 @@ def jogar():
         partida.jogar()
     except Exception as e:
         print("Erro: " + str(e))
+
 
 def simularJogo():
     print("====== SIMULAÇÃO ======")
@@ -33,10 +35,7 @@ def simularJogo():
         print("Erro: " + str(e))
 
 
-print("Escolha um opção:\n"
-      "1 - Jogar\n"
-      "2 - Simular um jogo\n"
-      "0 - Sair\n")
+print("Escolha um opção:\n" "1 - Jogar\n" "2 - Simular um jogo\n" "0 - Sair\n")
 menu = int(input("Digite: "))
 
 if menu == 1:
@@ -45,4 +44,3 @@ elif menu == 2:
     simularJogo()
 else:
     print("Finalizando jogo...")
-
