@@ -1,7 +1,10 @@
 import random
 
+# s_char for small letters
 s_char = 'abcdefghijklmnopqrstuvwxyz'
+# b_char for capital letters
 b_char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+# d_char for digits
 d_char = '123456789'
 
 
@@ -10,6 +13,7 @@ class Otp:
     def __init__(self, len):
         self.len = len
 
+    # this method generate number otp
     @property
     def digits(self):
         num = 0
@@ -21,6 +25,7 @@ class Otp:
         value = ''.join(result)
         return value
 
+    # this method generate number and capital letters otp
     @property
     def bd_digits(self):
         num = 0
@@ -34,6 +39,7 @@ class Otp:
         value = ''.join(result[0:self.len])
         return value
 
+    # this method generate number and small letters otp
     @property
     def sd_digits(self):
         num = 0
@@ -47,6 +53,7 @@ class Otp:
         value = ''.join(result[0:self.len])
         return value
 
+    # this method generate both small, capital letters and number otp all together
     @property
     def sbd_digits(self):
         num = 0
