@@ -1,17 +1,20 @@
 import random
 
+# define upper and lower bound for game
 smaller_number = 1
 larger_number = 10
 
+# function to prompt user for input. will continue to ask user for proper int if invalid num passed
 def prompt_user():
     while True:
         try:
             user_guess = int(input(f"\nEnter number between 1 to {larger_number}: "))
             return user_guess
         except Exception as e:
+            # will catch strings when inputed into user_guess
             print("\nThat guess was invalid. Try again.")
     
-
+# function to handle checking user input against random number and upper/lower bounds
 def guess_number(user_guess):
     num = random.randint(smaller_number, larger_number)
     while num != user_guess:
@@ -31,6 +34,7 @@ def guess_number(user_guess):
             print()
     print(f"\nCongrats! You've guessed the correct number! It was {num}.\n")
 
+# while loop to prompt user to play intially, then continue to play or not 
 while True:
     play_y_n = input("Welcome to Number Guesser. If you'd like to play, press 'Y': ")
     if play_y_n.lower() == 'y':
