@@ -211,6 +211,12 @@
         <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/snake_water_gun_game">
             <sub><b>Snake-Water-Gun</b></sub>
         </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/Mean-Median-Mode">
+            <sub><b>Calculate Mean Median Mode</b></sub>
+        </a>
+  </td>
 </tr>
 </table>
 
