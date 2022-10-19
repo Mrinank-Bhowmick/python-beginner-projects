@@ -24,7 +24,7 @@ def edge_mask(img, line_size, blur_value):
     return edges
 
 
-img = cv2.imread("filename.jpg")
+img = cv2.imread("images\filename.jpg")
 
 line_size = 7
 blur_value = 7

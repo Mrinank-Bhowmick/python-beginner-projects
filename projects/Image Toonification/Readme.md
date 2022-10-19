@@ -12,5 +12,7 @@ Simple, Just clone this repository to your local storage and run the below comma
 ` pip install -r requirements.txt `
 
 ## Execution
-Run the below command in command prompt or terminal.
+ - Place your images in the images/Folder
+
+ - Run the below command in command prompt or terminal.
 `python3 main.py`
