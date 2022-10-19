@@ -24,18 +24,18 @@ def edge_mask(img, line_size, blur_value):
     return edges
 
 
-img = cv2.imread("images\filename.jpg")
+img = cv2.imread(r"E:\Projects for Learning purpose\python-beginner-projects\projects\Image Toonification\images\filename.jpg")
 
-line_size = 7
+line_size = 5
 blur_value = 7
 
 edges = edge_mask(img, line_size, blur_value)
 
-total_color = 9
+total_color = 49
 
 img = color_quantization(img, total_color)
 
-blurred = cv2.bilateralFilter(img, d=7, sigmaColor=200, sigmaSpace=200)
+blurred = cv2.bilateralFilter(img, d=5, sigmaColor=200, sigmaSpace=200)
 
 cartoon = cv2.bitwise_and(blurred, blurred, mask=edges)
-cv2.imwrite("cartoon.png", cartoon)
+cv2.imwrite(r"E:\Projects for Learning purpose\python-beginner-projects\projects\Image Toonification\images\filename.png", cartoon)
