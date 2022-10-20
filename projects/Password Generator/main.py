@@ -6,8 +6,14 @@ def main():
     print("_____________________________________")
     print("| Welcome to this Password Generator |")
     print("-------------------------------------\n")
+    try:
+        length = int(
+            input("how long do you want your password to be (minimum of 8 number)")
+        )
+    except:
+        print("Input numners only")
     password_length = 0
-    while password_length < 8:
+    while password_length < length:
         print("Your password must have at least 8 characters")
         password_length = getPasswordLength()
 
