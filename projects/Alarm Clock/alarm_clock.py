@@ -22,7 +22,7 @@ def alarm():
         print(current_time, set_alarm_time)
 
         if current_time == set_alarm_time:
-            print("Wake Up")
+            print("Wake Up now!")
             winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
 
 
