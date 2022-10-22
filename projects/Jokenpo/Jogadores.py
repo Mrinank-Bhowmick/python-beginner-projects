@@ -14,7 +14,7 @@ class Jogadores:
         self.cartas = []
 
     # Return a list of cards
-    def distribuir_cartas(self) -> list: 
+    def distribuir_cartas(self) -> list:
         for i in range(3):
             carta = randint(1, 3)
             self.cartas.append(carta)
@@ -25,14 +25,14 @@ class Jogadores:
         cartasTraduzidas = ""
         for i in cartas:
             if i == 1 or i == "1":
-                cartasTraduzidas += "Stone " # Translated letters.append("Stone")
+                cartasTraduzidas += "Stone "  # Translated letters.append("Stone")
             elif i == 2 or i == "2":
-                cartasTraduzidas += "Paper " # Translated letters.append("Paper")
+                cartasTraduzidas += "Paper "  # Translated letters.append("Paper")
             else:
-                cartasTraduzidas += "Scissors " # Translated letters.append("Scissors")
+                cartasTraduzidas += "Scissors "  # Translated letters.append("Scissors")
 
         return cartasTraduzidas
 
     # Clear list
-    def limpar_cartas(self):  
+    def limpar_cartas(self):
         return self.cartas.clear()

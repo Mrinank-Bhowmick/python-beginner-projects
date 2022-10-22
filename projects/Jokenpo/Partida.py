@@ -57,7 +57,7 @@ class Partida(Jogadores):
         return print("Jogador 2 - Venceu")
 
     # Method to start the game
-    def simular(self):  
+    def simular(self):
         count_jogador1 = 0
         count_jogador2 = 0
         count_Empate = 0
