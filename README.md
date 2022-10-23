@@ -246,6 +246,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/bim22614">
+            <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
+            <br />
+            <sub><b>Bim22614</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/sudipg4112001">
             <img src="https://avatars.githubusercontent.com/u/60208804?v=4" width="100;" alt="sudipg4112001"/>
             <br />
@@ -258,15 +265,15 @@
             <br />
             <sub><b>Shriyans Naik</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/bibaswanroy">
             <img src="https://avatars.githubusercontent.com/u/50978591?v=4" width="100;" alt="bibaswanroy"/>
             <br />
             <sub><b>Bibaswan Roy</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/MonitSharma">
             <img src="https://avatars.githubusercontent.com/u/65262068?v=4" width="100;" alt="MonitSharma"/>
@@ -301,15 +308,15 @@
             <br />
             <sub><b>Zackery .R. Smith</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/snehafarkya">
             <img src="https://avatars.githubusercontent.com/u/63949465?v=4" width="100;" alt="snehafarkya"/>
             <br />
             <sub><b>Sneha Farkya</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Harry830">
             <img src="https://avatars.githubusercontent.com/u/114953309?v=4" width="100;" alt="Harry830"/>
@@ -344,15 +351,15 @@
             <br />
             <sub><b>Zack Didcott</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/guiszk">
             <img src="https://avatars.githubusercontent.com/u/23110500?v=4" width="100;" alt="guiszk"/>
             <br />
             <sub><b>Guiszk</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/SubramanyaKS">
             <img src="https://avatars.githubusercontent.com/u/70049779?v=4" width="100;" alt="SubramanyaKS"/>
@@ -372,13 +379,6 @@
             <img src="https://avatars.githubusercontent.com/u/99896373?v=4" width="100;" alt="oyeanmol"/>
             <br />
             <sub><b>Anmol Shah</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/bim22614">
-            <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
-            <br />
-            <sub><b>Bim22614</b></sub>
         </a>
     </td>
     <td align="center">
