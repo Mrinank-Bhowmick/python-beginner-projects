@@ -34,6 +34,7 @@ frame.pack()
 
 hour = StringVar(root)
 hours = (
+    'Hr',
     "00",
     "01",
     "02",
@@ -67,6 +68,7 @@ hrs.pack(side=LEFT)
 
 minute = StringVar(root)
 minutes = (
+    'Min',
     "00",
     "01",
     "02",
@@ -136,6 +138,7 @@ mins.pack(side=LEFT)
 
 second = StringVar(root)
 seconds = (
+    'Sec'
     "00",
     "01",
     "02",
