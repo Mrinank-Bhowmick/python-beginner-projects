@@ -3,9 +3,8 @@ from constants import *
 
 # Data input
 firstValue = int(input("Insert first value : "))
-secondValue  = int(input("Inser second value: "))
-operation      = input("Functions: + .. - .. * .. /\n"
-                      "Choose your operation: ")
+secondValue = int(input("Inser second value: "))
+operation = input("Functions: + .. - .. * .. /\n" "Choose your operation: ")
 
 # Rules
 if operation == SUM:
