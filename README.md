@@ -289,6 +289,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/jrbublitz">
+            <img src="https://avatars.githubusercontent.com/u/67718795?v=4" width="100;" alt="jrbublitz"/>
+            <br />
+            <sub><b>Jefferson Bublitz</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/KartikRN">
             <img src="https://avatars.githubusercontent.com/u/93515675?v=4" width="100;" alt="KartikRN"/>
             <br />
@@ -301,15 +308,15 @@
             <br />
             <sub><b>SirRomey</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/ZackeryRSmith">
             <img src="https://avatars.githubusercontent.com/u/72983221?v=4" width="100;" alt="ZackeryRSmith"/>
             <br />
             <sub><b>Zackery .R. Smith</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/snehafarkya">
             <img src="https://avatars.githubusercontent.com/u/63949465?v=4" width="100;" alt="snehafarkya"/>
@@ -322,13 +329,6 @@
             <img src="https://avatars.githubusercontent.com/u/114953309?v=4" width="100;" alt="Harry830"/>
             <br />
             <sub><b>Harry830</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/jrbublitz">
-            <img src="https://avatars.githubusercontent.com/u/67718795?v=4" width="100;" alt="jrbublitz"/>
-            <br />
-            <sub><b>Jefferson Bublitz</b></sub>
         </a>
     </td>
     <td align="center">
@@ -698,8 +698,8 @@
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/Shreejan-35">
-            <img src="https://avatars.githubusercontent.com/u/93109967?v=4" width="100;" alt="Shreejan-35"/>
+        <a href="https://github.com/CapedDemon">
+            <img src="https://avatars.githubusercontent.com/u/93109967?v=4" width="100;" alt="CapedDemon"/>
             <br />
             <sub><b>Shreejan Dolai</b></sub>
         </a>
