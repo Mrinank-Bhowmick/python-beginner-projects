@@ -9,7 +9,7 @@ roo.speed(20)  # setting the speed of the turtle
 
 
 def draw(l):  # recursive function taking length 'l' as argument
-    if (l < 10):
+    if l < 10:
         return
     else:
 
@@ -17,9 +17,13 @@ def draw(l):  # recursive function taking length 'l' as argument
         roo.pencolor("yellow")  # Setting Pencolor as yellow
         roo.forward(l)  # moving turtle forward by 'l'
         roo.left(30)  # moving the turtle 30 degrees towards left
-        draw(3 * l / 4)  # drawing a fractal on the left of the turtle object 'roo' with 3/4th of its length
+        draw(
+            3 * l / 4
+        )  # drawing a fractal on the left of the turtle object 'roo' with 3/4th of its length
         roo.right(60)  # moving the turtle 60 degrees towards right
-        draw(3 * l / 4)  # drawing a fractal on the right of the turtle object 'roo' with 3/4th of its length
+        draw(
+            3 * l / 4
+        )  # drawing a fractal on the right of the turtle object 'roo' with 3/4th of its length
         roo.left(30)  # moving the turtle 30 degrees towards left
         roo.pensize(2)
         roo.backward(l)  # returning the turtle back to its original psition
@@ -33,7 +37,7 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(2)
@@ -56,7 +60,7 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(2)
@@ -79,11 +83,11 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(2)
-        roo.pencolor('#FFF8DC')  # white
+        roo.pencolor("#FFF8DC")  # white
         roo.forward(l)
         roo.left(30)
         draw(3 * l / 4)
@@ -99,8 +103,9 @@ draw(20)
 
 ########################################################
 
+
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
 
@@ -124,7 +129,7 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(3)
@@ -147,7 +152,7 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(3)
@@ -170,11 +175,11 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(3)
-        roo.pencolor('#FFF8DC')  # white
+        roo.pencolor("#FFF8DC")  # white
         roo.forward(l)
         roo.left(30)
         draw(4 * l / 5)
@@ -190,7 +195,7 @@ draw(40)
 
 ########################################################
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
 
@@ -214,7 +219,7 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(2)
@@ -237,7 +242,7 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(2)
@@ -260,11 +265,11 @@ roo.speed(2000)
 
 # recursion
 def draw(l):
-    if (l < 10):
+    if l < 10:
         return
     else:
         roo.pensize(2)
-        roo.pencolor('#FFF8DC')  # white
+        roo.pencolor("#FFF8DC")  # white
         roo.forward(l)
         roo.left(30)
         draw(6 * l / 7)
