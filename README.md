@@ -31,7 +31,6 @@
 
 <table>
 <tr>
-
 <td align="center">
         <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Audiobook">
             <sub><b>Audiobook</b></sub>
@@ -211,6 +210,23 @@
         <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/snake_water_gun_game">
             <sub><b>Snake-Water-Gun</b></sub>
         </a>
+  <td align="center">
+    <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/AES256">
+         <sub><b>AES 256 Encryption and Decryption</b></sub>
+    </a>
+  <tr>
+  <td align="center">
+    <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/BMI_calculator">
+         <sub><b>BMI calculator</b></sub>
+    </a>
+         
+  <td align="center">
+    <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Alarm%20Clock">
+         <sub><b>Alarm Clock</b></sub>
+    </a>
+      
+      
+  </td>
 </tr>
 </table>
 
