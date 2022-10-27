@@ -4,6 +4,7 @@ import time
 import winsound
 from threading import *
 
+#create object
 root = Tk()
 root.geometry("500x250")
 
@@ -14,13 +15,17 @@ def Threading():
 
 
 def alarm():
+    #alarm set to an infinite loop
     while True:
+        #alarm set
         set_alarm_time = f"{hour.get()}:{minute.get()}:{second.get()}"
         time.sleep(1)
-
+ 
+        #get current time
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
         print(current_time, set_alarm_time)
 
+        #condition to check if set time is equal to current time
         if current_time == set_alarm_time:
             print("Wake Up now!")
             winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
