@@ -1,29 +1,53 @@
 import random
 
 # setting values of global variables
-suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
-         'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8,
-          'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11}
+suits = ("Hearts", "Diamonds", "Spades", "Clubs")
+ranks = (
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Jack",
+    "Queen",
+    "King",
+    "Ace",
+)
+values = {
+    "Two": 2,
+    "Three": 3,
+    "Four": 4,
+    "Five": 5,
+    "Six": 6,
+    "Seven": 7,
+    "Eight": 8,
+    "Nine": 9,
+    "Ten": 10,
+    "Jack": 10,
+    "Queen": 10,
+    "King": 10,
+    "Ace": 11,
+}
 chips = 100
 game_num = 0
 game_on = True
 
 
 class Card:
-
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
         self.value = values[rank]
 
     def __str__(self):
-        return self.rank + ' of ' + self.suit
+        return self.rank + " of " + self.suit
 
 
 class Deck:
-
     def __init__(self):
         self.all_cards = []
         for suit in suits:
@@ -43,17 +67,18 @@ def check_ace(card):
     """
     function to check for ace and adjust its value according to the user
     """
-    if card.rank == 'Ace':
+    if card.rank == "Ace":
         while True:
             ace_val = int(
-                input("\nWhat value do you want to consider for Ace (1/11)? :"))
+                input("\nWhat value do you want to consider for Ace (1/11)? :")
+            )
 
             if ace_val == 1:
-                values['Ace'] = 1
+                values["Ace"] = 1
 
                 break
             elif ace_val == 11:
-                values['Ace'] = 11
+                values["Ace"] = 11
 
                 break
             else:
@@ -61,17 +86,20 @@ def check_ace(card):
                 continue
 
 
-print('\n'*100)  # clears up the terminal for a cleaner look
+print("\n" * 100)  # clears up the terminal for a cleaner look
 
-print('''
+print(
+    """
 ██████╗░██╗░░░░░░█████╗░░█████╗░██╗░░██╗░░░░░██╗░█████╗░░█████╗░██╗░░██╗
 ██╔══██╗██║░░░░░██╔══██╗██╔══██╗██║░██╔╝░░░░░██║██╔══██╗██╔══██╗██║░██╔╝
 ██████╦╝██║░░░░░███████║██║░░╚═╝█████═╝░░░░░░██║███████║██║░░╚═╝█████═╝░
 ██╔══██╗██║░░░░░██╔══██║██║░░██╗██╔═██╗░██╗░░██║██╔══██║██║░░██╗██╔═██╗░
 ██████╦╝███████╗██║░░██║╚█████╔╝██║░╚██╗╚█████╔╝██║░░██║╚█████╔╝██║░╚██╗
-╚═════╝░╚══════╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝''')
+╚═════╝░╚══════╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝"""
+)
 
-print('''
+print(
+    """
 BlackJack is very popular card game mainly played in casinos around the world.
 Let's imagine this program as a virtual casino with computer as the Dealer.
 The purpose of this game is to beat the Dealer, which can be done in various ways.
@@ -93,7 +121,8 @@ If none of the above cases are met ,the person with closer value to 21 wins.
 (winning like this returns 2x the bet money)
 ---------------------------------------------------------------------------------------------------------------
 
-Let the game begin!''')
+Let the game begin!"""
+)
 
 while game_on:
 
@@ -122,8 +151,7 @@ while game_on:
         # to both user and dealer(computer)
         [dealer_table_cards.append(new_deck.deal_one()) for i in range(2)]
 
-        print(
-            f"\nPlayer cards are {player_table_cards[0]} and {player_table_cards[1]}")
+        print(f"\nPlayer cards are {player_table_cards[0]} and {player_table_cards[1]}")
         print(f"Dealer cards are {dealer_table_cards[0]} and Hidden.")
 
         # checking both the cards given to the user for being ace
@@ -134,7 +162,7 @@ while game_on:
 
             hit_or_stand = input("Do you want to hit or stand? :").lower()
 
-            if hit_or_stand == 'hit':
+            if hit_or_stand == "hit":
 
                 player_table_cards.append(new_deck.deal_one())
                 check_ace(player_table_cards[-1])
@@ -162,7 +190,7 @@ while game_on:
                     print("YOU BUSTED!")
                     break
 
-            elif hit_or_stand == 'stand':
+            elif hit_or_stand == "stand":
 
                 player_cards_val = 0
                 for i in player_table_cards:
@@ -230,25 +258,27 @@ while game_on:
         # checking for busts first
         if player_cards_val > 21:
             print(
-                "\nSince the Player busted , the round is lost.\nPlayer lost the bet money")
+                "\nSince the Player busted , the round is lost.\nPlayer lost the bet money"
+            )
 
         elif dealer_cards_val > 21:
             print(
-                "\n Since the Dealer busted , Player won the round! \nPlayer got twice the money bet.")
-            chips += bet*2
+                "\n Since the Dealer busted , Player won the round! \nPlayer got twice the money bet."
+            )
+            chips += bet * 2
 
         # checking for player's blackjack then
         elif player_cards_val == 21:
             print("\nPlayer won with a blackjack! \nPlayer got thrice the money bet.")
-            chips += bet*3
+            chips += bet * 3
 
         # checking whose value is closer to 21
-        elif 21-player_cards_val > 21-dealer_cards_val:
+        elif 21 - player_cards_val > 21 - dealer_cards_val:
             print("\nDealer won the round. \nPlayer lost the bet money")
 
-        elif 21-dealer_cards_val > 21-player_cards_val:
+        elif 21 - dealer_cards_val > 21 - player_cards_val:
             print("\nPlayer won the round. \nPlayer got twice the money bet.")
-            chips += bet*2
+            chips += bet * 2
 
         # last situation can only be a tie
         else:
@@ -263,22 +293,23 @@ while game_on:
 
             cont = input("Do you want to continue? (y/n) :")
 
-            if cont == 'y':
-                print('\n'*100)
+            if cont == "y":
+                print("\n" * 100)
 
-                print('''
+                print(
+                    """
 ██████╗░██╗░░░░░░█████╗░░█████╗░██╗░░██╗░░░░░██╗░█████╗░░█████╗░██╗░░██╗
 ██╔══██╗██║░░░░░██╔══██╗██╔══██╗██║░██╔╝░░░░░██║██╔══██╗██╔══██╗██║░██╔╝
 ██████╦╝██║░░░░░███████║██║░░╚═╝█████═╝░░░░░░██║███████║██║░░╚═╝█████═╝░
 ██╔══██╗██║░░░░░██╔══██║██║░░██╗██╔═██╗░██╗░░██║██╔══██║██║░░██╗██╔═██╗░
 ██████╦╝███████╗██║░░██║╚█████╔╝██║░╚██╗╚█████╔╝██║░░██║╚█████╔╝██║░╚██╗
-╚═════╝░╚══════╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝''')
+╚═════╝░╚══════╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝"""
+                )
 
                 continue
 
             else:
-                print(
-                    f"\nTotal amount of chips left with the player = {chips}")
+                print(f"\nTotal amount of chips left with the player = {chips}")
                 print(input("Press Enter to exit the terminal..."))
                 break
 
