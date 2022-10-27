@@ -208,9 +208,27 @@
         </a>
   </td>
   <td align="center">
-        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/snake_water_gun_game">
-            <sub><b>Snake-Water-Gun</b></sub>
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Tic-Tac-Toe">
+            <sub><b>Tic-Tac-Toe</b></sub>
         </a>
+  </td>
+  <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Desktop-Notification">
+            <sub><b>Desktop-Notification</b></sub>
+        </a>
+  </tr>
+  <tr>
+    </td>
+    <td align="center">
+          <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/reciept%20generator">
+              <sub><b>Reciept generator</b></sub>
+        </a>
+</td>
+<td align="center">
+          <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Website%20Blocker">
+              <sub><b>Website Blocker</b></sub>
+        </a>
+</td>
 </tr>
 </table>
 
