@@ -13,11 +13,11 @@ We are looking for better documention and optimization of code.
 
 ### Writing some code!
 
-Contributing to a project on Github is pretty straight forward. If this is you're first time, these are the steps you should take.
+Contributing to a project on Github is pretty straight forward. If this is your first time, these are the steps you should take.
 
 - Fork this repo.
 
-And that's it! Read the code available and change the part you don't like! You're change should not break the existing code.
+And that's it! Read the code available and change the part you don't like! Your change should not break the existing code.
  
 If you're adding a new functionality, start from the branch **main**. It would be a better practice to create a new branch and work in there.
 
