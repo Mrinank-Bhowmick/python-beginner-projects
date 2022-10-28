@@ -16,7 +16,7 @@ def life():
 
 @app.route("/quote", methods=[POST])
 def add_data(quote):
-    entry = open("quote.txt", "w")
+    entry = open("quote.txt", "w") #the second argument in the open is the files permissions. W = write, allowing us to write to the file itself. 
     entry.write("All warfare is based on deception.")
     return jsonify(quote)
 
