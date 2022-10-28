@@ -12,6 +12,13 @@ def life():
     quote = fin.readlines()[Random_line]
     return jsonify(quote[0:-1])
 
+#add a sentence to the poem with a post request! 
+
+@app.route("/quote", methods=[POST])
+def add_data(quote):
+    entry = open("quote.txt", "w")
+    entry.write("All warfare is based on deception.")
+    return jsonify(quote)
 
 if __name__ == "__main__":
     app.run(debug=True)
