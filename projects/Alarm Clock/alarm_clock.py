@@ -28,7 +28,11 @@ def alarm():
         #condition to check if set time is equal to current time
         if current_time == set_alarm_time:
             print("Wake Up now!")
-            winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
+            # play sound continuously
+            winsound.PlaySound(
+                "sound.wav",
+                winsound.SND_ASYNC | winsound.SND_LOOP | winsound.SND_FILENAME,
+            )
 
 
 Label(root, text="Alarm Clock", font=("Helvetica 20 bold"), fg="red").pack(pady=10)
@@ -209,5 +213,10 @@ secs = OptionMenu(frame, second, *seconds)
 secs.pack(side=LEFT)
 
 Button(root, text="Set Alarm", font=("Helvetica 15"), command=Threading).pack(pady=20)
+
+stop_alarm = lambda: winsound.PlaySound(None, winsound.SND_PURGE)
+button = Button(root, text="Stop Alarm", bg="red", fg="white", command=stop_alarm).pack(
+    pady=30
+)
 
 root.mainloop()
