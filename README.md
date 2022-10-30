@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
   <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects">
-  <img src="Banner.png" align="center" alt="SecureTea" width="400"></a>
+  <img src="Banner.png" align="center" alt="banner" width="400"></a>
 
   <br>
   <B>Python Projects For Beginners</B>
