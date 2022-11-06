@@ -4,6 +4,10 @@
 
 # Imports
 import random
+import time
+
+# Records time in the beginning
+start = time.time()
 
 if __name__ == "__main__":
     print("Program Starts from here")
@@ -254,3 +258,12 @@ Name: {p4.first} {p4.last}, School: {p4.school}
         runup = p2
         print(CHAMPNAMESTR + champ.first, champ.last + CHAMPSCHOOLSTR + champ.school, CHAMPSKILLSTR + str(champ.skill))
         print(RUNUPNAMESTR + runup.first, runup.last + RUNUPSCHOOLSTR + runup.school, RUNUPSKILLSTR + str(runup.skill))
+
+# Record end time
+end = time.time()
+
+# print the difference between start
+# and end time in milli. secs
+print("\n")
+print("The time of execution of above program is:",
+      (end-start) * 10**3, "ms")
