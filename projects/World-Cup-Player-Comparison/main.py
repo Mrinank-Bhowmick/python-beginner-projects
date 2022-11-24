@@ -72,22 +72,18 @@ def main():
   second_player = ""
 
   first_country = input("Please type country name for first player: ")
-  #first_country = "Argentina"
   try:
     first_link = team_data_link[first_country]
 
     first_player = input(f"Please type name of player from {first_country}: ")
-    #first_player = "Lionel Messi"
   except Exception as e:
     print("Sorry that is not a valid country name, please re-run program ")
 
   second_country = input("Please type country name for second player: ")
-  #second_country = "United States"
 
   try: 
     second_link = team_data_link[second_country]
     second_player = input(f"Please type name of player from {second_country}: ")
-    #second_player = "Tim Ream"
   except Exception as e:
     print("Sorry that is not a valid country name, please re-run program ")
 
