@@ -1,12 +1,12 @@
 username = "username"
 clientID = "client_id"
 clientSecret = "client_secret"
-redirectURI = "your_redirect_url" 
+redirectURI = "your_redirect_url"
 
 # Your Account SID from twilio.com/console
 account_sid = "acc_sid"
 # Your Auth Token from twilio.com/console
-auth_token  = "auth_token"
+auth_token = "auth_token"
 # Your phone number
 acc_number = "phone number"
 
