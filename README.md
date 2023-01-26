@@ -1341,8 +1341,8 @@
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/R0merol">
-            <img src="https://avatars.githubusercontent.com/u/87220004?v=4" width="100;" alt="R0merol"/>
+        <a href="https://github.com/farisfaikar">
+            <img src="https://avatars.githubusercontent.com/u/87220004?v=4" width="100;" alt="farisfaikar"/>
             <br />
             <sub><b>Faris Faikar</b></sub>
         </a>
@@ -1534,6 +1534,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/pratyusha0710">
+            <img src="https://avatars.githubusercontent.com/u/115498333?v=4" width="100;" alt="pratyusha0710"/>
+            <br />
+            <sub><b>PRATYUSHA CHATURVEDI</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/rathoreshreya">
             <img src="https://avatars.githubusercontent.com/u/109817678?v=4" width="100;" alt="rathoreshreya"/>
             <br />
@@ -1546,7 +1553,8 @@
             <br />
             <sub><b>Tanawat Jirawttanakul</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/NishantPacharne">
             <img src="https://avatars.githubusercontent.com/u/71060551?v=4" width="100;" alt="NishantPacharne"/>
