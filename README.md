@@ -772,6 +772,7 @@
 </table>
 
 ##Example of Rock Paper Scissors 
+<br>
 <img src="rock-paper-scissors.png" align="center" alt="banner" width="450"></a>
 
 <h1>Running Projects Locally </h1>
