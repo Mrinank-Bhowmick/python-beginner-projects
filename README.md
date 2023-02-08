@@ -771,11 +771,12 @@
   </tr>
 </table>
 
-##Example of Rock Paper Scissors 
+## Example of Rock Paper Scissors 
 <br>
 <img src="rock-paper-scissors.png" align="center" alt="banner" width="450"></a>
 
-<h1>Running Projects Locally </h1>
+## Running Projects Locally 
+
 <ol>
 <li> Clone this repository into your favorite IDE </li>
 <li> Check what version of Python you have installed </li>
