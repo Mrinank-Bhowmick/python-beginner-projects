@@ -771,6 +771,23 @@
   </tr>
 </table>
 
+##Example of Rock Paper Scissors 
+<img src="rock-paper-scissors.png" align="center" alt="banner" width="450"></a>
+
+<h1>Running Projects Locally </h1>
+<ol>
+<li> Clone this repository into your favorite IDE </li>
+<li> Check what version of Python you have installed </li>
+<ul> 
+<li> In the command prompt type "python --version" </li>
+<li> Make sure you have atleast Python 3.6 installed </li>
+<li> Python can be downloaded here: https://www.python.org/downloads/ </li>
+<li> Many of the projects use f strings which requires Python 3.6. You can learn more about f strings here: https://www.geeksforgeeks.org/formatted-string-literals-f-strings-python/ </li>
+</ul>
+<li> Within your IDE navigate to the Python file associated with the project you want to run. In the case of rock-paper-scissors we go to projects/Rock_Paper_Scissors/main.py. If your IDE has a play button to run code such as Visual Studio Code does use that to run the program. You should see it start in the terminal and be able to enter inputs. 
+<li> Another option to get the projects running locally is to use a virtual environment within your IDE. Within the terminal within your IDE run the following code "python -m venv env". This creates the files for a virtual environment within a newly created env directory. Then start your virtual environment with "source env/bin/activate". You should see (env) in your terminal. Now in the terminal run the following command "python /path/to/program/to/run". In the case of the Rock Paper Scissors project we would run "python projects/Rock_Paper_Scissors/main.py". Your project should be running and in this case you should be playing Rock Paper Scissors.   
+</li>
+
 
 ## Run these projects online :
 
