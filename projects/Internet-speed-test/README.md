@@ -35,10 +35,18 @@ pip3 install speedtest-cli
 ## Troubleshooting
 if you have an error of "AttributeError: module 'speedtest' has no attribute 'Speedtest'" when running
 following https://stackoverflow.com/questions/66249874/python-speedtest-has-no-attribute-speedtest
+
 try:
-1) pip uninstall speedtest
-2) pip install speedtest-cli
-3) run again
+
+First
+```
+pip uninstall speedtest
+```
+Followed by
+```
+pip install speedtest-cli
+```
+and then run again
 
 
 
