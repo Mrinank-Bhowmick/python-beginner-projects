@@ -11,9 +11,9 @@ def countdown(time_sec):
 
     print("Time Up")
 
+
 try:
     t = input("Enter the time in seconds: ")
     countdown(int(t))
 except:
     print("Invalid input please try again...")
-

@@ -19,7 +19,6 @@ soup = BeautifulSoup(res.text, "html.parser")
 articles = []
 
 for i in range(len(soup.select(".p"))):
-
     article = soup.select(".p")[i].getText().strip()
     articles.append(article)
 

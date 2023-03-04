@@ -10,6 +10,7 @@ from Cryptodome.Random import get_random_bytes
 
 os.system("cls")
 
+
 # Start of Encryption Function
 def encrypt(plain_text, password):
     # generate a random salt

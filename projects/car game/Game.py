@@ -182,7 +182,6 @@ def countdown():
 
 # defining our gameloop function
 def gameloop():
-
     ####### music #######
     pygame.mixer.music.load("BackgroundMusic.mp3")
     pygame.mixer.music.play()
@@ -212,7 +211,6 @@ def gameloop():
         gameoverImg = pygame.image.load("gameover.png")
         run = True
         while run:
-
             screen.blit(gameoverImg, (0, 0))
             time.sleep(0.5)
             show_score(330, 400)
@@ -400,7 +398,6 @@ def gameloop():
 
         # if coll1 occur
         if coll1:
-
             car1Ychange = 0
             car2Ychange = 0
             car3Ychange = 0
@@ -417,7 +414,6 @@ def gameloop():
 
         # if coll2 occur
         if coll2:
-
             car1Ychange = 0
             car2Ychange = 0
             car3Ychange = 0
@@ -434,7 +430,6 @@ def gameloop():
 
         # if coll3 occur
         if coll3:
-
             car1Ychange = 0
             car2Ychange = 0
             car3Ychange = 0

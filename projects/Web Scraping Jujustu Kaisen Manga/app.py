@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 
 
 def get_all_chapter_links():
-
     # Importing Selenium
     from selenium import webdriver
     from selenium.webdriver.common.by import By
@@ -76,7 +75,6 @@ def get_all_chapter_links():
 
 
 def scrape_data():
-
     f = open("links.txt", "r")
     chapters = f.readlines()
     f.close()
@@ -154,7 +152,6 @@ def scrape_data():
             # Please take a look at the dev tools to get a better idea
             # behind this.
             if re.match(r"^https?://", src):
-
                 # Dynamically creating the file name for every image
                 # in a given chapter. Please feel free to change
                 # this to your liking
@@ -185,7 +182,7 @@ def scrape_data():
 
 def zip_files():
     file_paths = []
-    for (root, dirs, files) in os.walk("./"):
+    for root, dirs, files in os.walk("./"):
         for f in files:
             fname = "{}/{}".format(root, f)
             file_paths.append(fname)

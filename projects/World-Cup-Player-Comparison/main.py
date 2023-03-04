@@ -7,7 +7,6 @@ import uuid
 
 
 def main():
-
     # This gets a dictionary that contains all the links to the team's World Cup Stats Page
     def get_team_data_links():
         url = "https://fbref.com/en/comps/1/stats/World-Cup-Stats"

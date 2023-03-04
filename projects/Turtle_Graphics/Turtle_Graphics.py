@@ -12,7 +12,6 @@ def draw(l):  # recursive function taking length 'l' as argument
     if l < 10:
         return
     else:
-
         roo.pensize(2)  # Setting Pensize
         roo.pencolor("yellow")  # Setting Pencolor as yellow
         roo.forward(l)  # moving turtle forward by 'l'
@@ -108,7 +107,6 @@ def draw(l):
     if l < 10:
         return
     else:
-
         roo.pensize(3)
         roo.pencolor("lightgreen")  # lightgreen
         roo.forward(l)
@@ -198,7 +196,6 @@ def draw(l):
     if l < 10:
         return
     else:
-
         roo.pensize(2)
         roo.pencolor("cyan")  # cyan
         roo.forward(l)
