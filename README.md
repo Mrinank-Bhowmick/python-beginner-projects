@@ -776,6 +776,11 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Mrinank-Bhowmick/python-beginner-projects.git)
 
+## Star History Graph
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Mrinank-Bhowmick/python-beginner-projects&type=Date)](https://star-history.com/#Mrinank-Bhowmick/python-beginner-projects&Date)
+
+
 <h1> Contributors </h1>
 
 <!-- readme: contributors -start -->
