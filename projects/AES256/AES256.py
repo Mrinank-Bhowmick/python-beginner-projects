@@ -71,7 +71,7 @@ def main():
         print("\n".join("{}: {}".format(k, v) for k, v in encrypted.items()))
 
     # Now let us decrypt the message using our original password
-    if x == 2 :
+    if x == 2:
         encrypted = input("Enter the encrypted message")
         password = input("Enter the password")
         decrypted = decrypt(encrypted, password)

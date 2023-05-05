@@ -1,5 +1,6 @@
 import time
 
+
 def countdown(time_sec):
     while time_sec:
         mins, secs = divmod(time_sec, 60)
@@ -10,7 +11,8 @@ def countdown(time_sec):
 
     print("Time Up")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     try:
         t = input("Enter the time in seconds: ")
         countdown(int(t))
