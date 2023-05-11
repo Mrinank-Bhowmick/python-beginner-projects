@@ -17,7 +17,7 @@ def enter_and_verification(lower_limit, upper_limit):
                     f"\nYour guess exceeds the upper range. Lower your guess and try again.\nEnter number between {lower_limit} to {upper_limit}: "
                 )
             )
-        if user_guess < upper_limit:
+        if user_guess < lower_limit:
             user_guess = int(
                 input(
                     f"\nYour guess exceeds the lower range. Increase your guess and try again.\nEnter number between {lower_limit} to {upper_limit}: "
