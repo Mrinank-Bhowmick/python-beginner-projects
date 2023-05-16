@@ -32,6 +32,6 @@ print(
     score,
     "questions correctly!",
 )
-mark = (score / total_questions) * 100
-print("Marks obtained:", mark)
+mark = int((score / total_questions) * 100)
+print(f"Marks obtained:{mark}%")
 print("BYE!")
