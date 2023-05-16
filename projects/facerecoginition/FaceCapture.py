@@ -11,7 +11,7 @@ def face_extractor(img):
     if faces is ():  # if there is no face
         return None
     print(faces)
-    for (x, y, w, h) in faces:
+    for x, y, w, h in faces:
         cropped_face = img[y : y + h, x : x + w]
         print(cropped_face)
         return cropped_face

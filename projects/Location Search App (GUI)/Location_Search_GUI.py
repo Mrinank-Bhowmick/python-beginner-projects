@@ -15,7 +15,6 @@ font_ = ("Handlee", 16)
 
 
 def search_function(search_term):
-
     webbrowser.open("https://google.com/maps/place/" + str(search_term))
 
 
