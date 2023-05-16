@@ -844,6 +844,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/DevTomilola-OS">
+            <img src="https://avatars.githubusercontent.com/u/114832204?v=4" width="100;" alt="DevTomilola-OS"/>
+            <br />
+            <sub><b>Oluwatomilola</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/herepete">
             <img src="https://avatars.githubusercontent.com/u/40490116?v=4" width="100;" alt="herepete"/>
             <br />
@@ -862,13 +869,6 @@
             <img src="https://avatars.githubusercontent.com/u/65262068?v=4" width="100;" alt="MonitSharma"/>
             <br />
             <sub><b>Monit Sharma</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/DevTomilola-OS">
-            <img src="https://avatars.githubusercontent.com/u/114832204?v=4" width="100;" alt="DevTomilola-OS"/>
-            <br />
-            <sub><b>Oluwatomilola</b></sub>
         </a>
     </td></tr>
 <tr>
