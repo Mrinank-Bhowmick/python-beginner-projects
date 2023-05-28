@@ -21,13 +21,13 @@
 💠 _This language deserves a lot of attention in today's world, and why not since it can address so many real-world problems?_
 
 
-<h2> <I> Tweet this repository </I> </h2>
+<h2> 📈<I> Tweet this repository </I> </h2>
 
 <a href="https://twitter.com/intent/tweet?text=Some%20awesome%20python%20beginner%20projects%20to%20kick%20start%20your%20learning%20journey&url=https://github.com/MrinankBhowmick/python-beginner-projects&via=_mrinank_&hashtags=python,programming,100DaysOfCode,opensource,DataScience"> <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="InfiniteGraph Logo" width="120"> </a>
 
-## All Projects are under [projects](https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects) folder.
+## 📁 All Projects are under [projects](https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects) folder.
 
-<h1> Projects So Far ... </h1>
+<h1> 🖥️ Projects So Far ... </h1>
 
 <table>
 <tr>
