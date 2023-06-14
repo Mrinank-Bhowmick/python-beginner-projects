@@ -67,7 +67,9 @@ for line in films:
             # If the title of the film from our list is found in the scraped names
             if title in name:
                 # Extract film rating and genre from container and append to respective lists
-                rating = result.find("div", class_="inline-block ratings-imdb-rating")["data-value"]
+                rating = result.find("div", class_="inline-block ratings-imdb-rating")[
+                    "data-value"
+                ]
                 genre = result.p.find("span", class_="genre")
                 genre = genre.contents[0]
 

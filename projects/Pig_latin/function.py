@@ -6,7 +6,6 @@ def to_pig(eng_string):
 
     for word in eng_words:
         for i in range(len(word)):
-
             if word[0] in vowels or word[0] in cap_vowels:
                 pig_words.append(word + "yay")
                 break
@@ -17,7 +16,7 @@ def to_pig(eng_string):
                     pig_words.append(remain + word[:i].lower() + "ay")
                     break
 
-            else: 
+            else:
                 if word[i] in vowels or word[0] in cap_vowels:
                     pig_words.append(word[i:] + word[:i] + "ay")
                     break
