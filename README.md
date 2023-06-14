@@ -1618,6 +1618,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/LionLostInCode">
+            <img src="https://avatars.githubusercontent.com/u/133058949?v=4" width="100;" alt="LionLostInCode"/>
+            <br />
+            <sub><b>Leon Heinrich</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/NishantPacharne">
             <img src="https://avatars.githubusercontent.com/u/71060551?v=4" width="100;" alt="NishantPacharne"/>
             <br />
