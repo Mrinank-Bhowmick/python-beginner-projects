@@ -769,6 +769,13 @@
         </a>
      </td>
   </tr>
+  <tr>
+     <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/TicTacToe-TylerPear">
+            <sub><b>TicTacToe-TylerPear</b></sub>
+        </a>
+     </td>
+  </tr>
 </table>
 
 
