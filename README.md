@@ -1639,7 +1639,7 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/NishantPacharne">
+        <a href="https://github.com/TylerPear">
             <img src="https://avatars.githubusercontent.com/u/128009824?v=4" width="100;" alt="TylerPear"/>
             <br />
             <sub><b>TylerPear</b></sub>
