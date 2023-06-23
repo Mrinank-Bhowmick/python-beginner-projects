@@ -769,13 +769,6 @@
         </a>
      </td>
   </tr>
-  <tr>
-     <td align="center">
-        <a href="https://github.com/Tyler-Pear/python-beginner-projects/tree/main/projects/TicTacToe-TylerPear">
-            <sub><b>TicTacToe-TylerPear</b></sub>
-        </a>
-     </td>
-  </tr>
 </table>
 
 
@@ -1636,13 +1629,6 @@
             <img src="https://avatars.githubusercontent.com/u/71060551?v=4" width="100;" alt="NishantPacharne"/>
             <br />
             <sub><b>Nishant Pacharne</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/Tyler-Pear">
-            <img src="https://avatars.githubusercontent.com/u/128009824?v=4" width="100;" alt="TylerPear"/>
-            <br />
-            <sub><b>TylerPear</b></sub>
         </a>
     </td></tr>
 </table>
