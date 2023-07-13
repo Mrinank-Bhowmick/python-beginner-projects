@@ -1,8 +1,8 @@
 from tkinter import *
 import datetime
 import time
-import winsound
 from threading import *
+from pygame import mixer
 
 # create object
 root = Tk()
@@ -29,11 +29,12 @@ def alarm():
         if current_time == set_alarm_time:
             print("Wake Up now!")
             # play sound continuously
-            winsound.PlaySound(
-                "sound.wav",
-                winsound.SND_ASYNC | winsound.SND_LOOP | winsound.SND_FILENAME,
-            )
+            mixer.init()
+            mixer.music.load('sound.wav')
+            mixer.music.play()
 
+def stop_alarm():
+    mixer.music.stop()
 
 Label(root, text="Alarm Clock", font=("Helvetica 20 bold"), fg="red").pack(pady=10)
 Label(root, text="Set Time", font=("Helvetica 15 bold")).pack()
@@ -214,7 +215,6 @@ secs.pack(side=LEFT)
 
 Button(root, text="Set Alarm", font=("Helvetica 15"), command=Threading).pack(pady=20)
 
-stop_alarm = lambda: winsound.PlaySound(None, winsound.SND_PURGE)
 button = Button(root, text="Stop Alarm", bg="red", fg="white", command=stop_alarm).pack(
     pady=30
 )
