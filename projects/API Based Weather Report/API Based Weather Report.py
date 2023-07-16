@@ -2,9 +2,12 @@ import requests
 import os
 from datetime import datetime
 
+# Set the API key for OpenWeatherMap
 api_key = "Enter your api key here"
+
 location = input("\nEnter the city name   : ")
 
+# Construct the API URL using the provided city and API key
 complete_api_link = (
     "https://api.openweathermap.org/data/2.5/weather?q="
     + location
