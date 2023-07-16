@@ -106,11 +106,32 @@ def start_location(maze_1, start):
 
 
 def main(stdscr):
-    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
-    curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
+    while True:
+        curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
+        curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
 
-    find_path(maze_1, stdscr)
-    stdscr.getch()
+        # Print a message and wait for the user to press a key before starting
+        stdscr.addstr("Press any key to start...")
+        stdscr.getch()
+        stdscr.clear()
 
+        # Call find_path and get the result
+        path = find_path(maze_1, stdscr)
+        
+        # Check if a path was found and print a message
+        if path is None:
+            stdscr.addstr("No path was found.\n")
+        else:
+            stdscr.addstr("A path was found!\n")
+        
+        # Print a message and wait for the user to press a key before continuing
+        stdscr.addstr("Press any key to continue or 'q' to quit...")
+        ch = stdscr.getch()
+        
+        # If the user pressed 'q', break out of the loop and end the program
+        if ch == ord('q'):
+            break
+
+        stdscr.clear()
 
 wrapper(main)
