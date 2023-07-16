@@ -24,4 +24,9 @@ while True:
         print("An error occured:\n", e)
         print("\nEnter again\n")
 
-pdfReader = PyPDF2.PdfFileReader(book)
+
+#Change to PdfReader
+pdfReader = PyPDF2.PdfReader(book)
+
+# Call the play function
+play(pdfReader)
