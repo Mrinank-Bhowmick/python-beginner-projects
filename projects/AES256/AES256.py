@@ -6,9 +6,13 @@ from base64 import b64encode, b64decode
 import os
 from Cryptodome.Cipher import AES
 from Cryptodome.Random import get_random_bytes
+import platform
 
-
-os.system("cls")
+#For different OS
+if platform.system() == "Windows":
+    os.system("cls")
+else:
+    os.system("clear")
 
 
 # Start of Encryption Function
