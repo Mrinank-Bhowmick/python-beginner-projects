@@ -12,6 +12,7 @@ print("Welcome to Blind Auction")
 bids = {}
 is_game_finished = False
 
+
 # Function to compare the bids and find the highest bidder
 def compare(bidding_record):
     highest_bidder = 0
@@ -22,6 +23,7 @@ def compare(bidding_record):
             highest_bidder = bid_amount
             winner = bidder
     print(f"The winner is {winner} with the highest bid of {highest_bidder}.")
+
 
 # Main loop for the bidding process
 while not is_game_finished:
