@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
   <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects">
-  <img src="Banner.png" align="center" alt="banner" width="450"></a>
+  <img src="https://i.imgur.com/FpIFb14_d.webp?maxwidth=1520&fidelity=grand" align="center" alt="banner" width="450"></a>
 
   <br>
   <B>Python Projects For Beginners</B>
