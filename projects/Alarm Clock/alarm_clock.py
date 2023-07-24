@@ -30,11 +30,13 @@ def alarm():
             print("Wake Up now!")
             # play sound continuously
             mixer.init()
-            mixer.music.load('sound.wav')
+            mixer.music.load("sound.wav")
             mixer.music.play()
+
 
 def stop_alarm():
     mixer.music.stop()
+
 
 Label(root, text="Alarm Clock", font=("Helvetica 20 bold"), fg="red").pack(pady=10)
 Label(root, text="Set Time", font=("Helvetica 15 bold")).pack()
