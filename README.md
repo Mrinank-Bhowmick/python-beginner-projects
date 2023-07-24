@@ -1059,6 +1059,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/otahina">
+            <img src="https://avatars.githubusercontent.com/u/108225969?v=4" width="100;" alt="otahina"/>
+            <br />
+            <sub><b>Ota Hina</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/srujan-landeri">
             <img src="https://avatars.githubusercontent.com/u/66351075?v=4" width="100;" alt="srujan-landeri"/>
             <br />
@@ -1078,15 +1085,15 @@
             <br />
             <sub><b>Chirag Aggarwal</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Subha-5">
             <img src="https://avatars.githubusercontent.com/u/97968307?v=4" width="100;" alt="Subha-5"/>
             <br />
             <sub><b>Subha Sadhu</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Quantum-Codes">
             <img src="https://avatars.githubusercontent.com/u/87054411?v=4" width="100;" alt="Quantum-Codes"/>
@@ -1121,15 +1128,15 @@
             <br />
             <sub><b>Flourish</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/ducheharsh">
             <img src="https://avatars.githubusercontent.com/u/79721045?v=4" width="100;" alt="ducheharsh"/>
             <br />
             <sub><b>Harsh Mahadev Duche</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/HridayAg0102">
             <img src="https://avatars.githubusercontent.com/u/76818035?v=4" width="100;" alt="HridayAg0102"/>
@@ -1159,20 +1166,20 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/mzaryabrafique">
-            <img src="https://avatars.githubusercontent.com/u/43227117?v=4" width="100;" alt="mzaryabrafique"/>
+        <a href="https://github.com/rust-master">
+            <img src="https://avatars.githubusercontent.com/u/43227117?v=4" width="100;" alt="rust-master"/>
             <br />
-            <sub><b>Muhammad  Zaryab Rafique</b></sub>
+            <sub><b>Rust Master</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/QuantumNovice">
             <img src="https://avatars.githubusercontent.com/u/43876848?v=4" width="100;" alt="QuantumNovice"/>
             <br />
             <sub><b>QuantumNovice</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/QubitMatrix">
             <img src="https://avatars.githubusercontent.com/u/60323193?v=4" width="100;" alt="QubitMatrix"/>
@@ -1207,27 +1214,20 @@
             <br />
             <sub><b>Syeda Nowshin Ibnat</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/dapoadedire">
             <img src="https://avatars.githubusercontent.com/u/95668340?v=4" width="100;" alt="dapoadedire"/>
             <br />
             <sub><b>Dapo Adedire</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/maglionaire">
             <img src="https://avatars.githubusercontent.com/u/106713745?v=4" width="100;" alt="maglionaire"/>
             <br />
             <sub><b>Maglionaire</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/otahina">
-            <img src="https://avatars.githubusercontent.com/u/108225969?v=4" width="100;" alt="otahina"/>
-            <br />
-            <sub><b>Ota Hina</b></sub>
         </a>
     </td>
     <td align="center">
