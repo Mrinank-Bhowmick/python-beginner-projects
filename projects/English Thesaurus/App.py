@@ -12,7 +12,6 @@ data = json.load(open("projects\English Thesaurus\data.json"))
 
 
 def eng_thesaurus(word):
-
     word = word.lower()
 
     # Checks for the exact word in data dictionary

@@ -69,7 +69,6 @@ def decrypt():
 
 
 def main_screen():
-
     global screen
     global code
     global text1

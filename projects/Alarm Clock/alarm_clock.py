@@ -1,9 +1,10 @@
 from tkinter import *
 import datetime
 import time
-import winsound
 from threading import *
+from pygame import mixer
 
+# create object
 root = Tk()
 root.geometry("500x250")
 
@@ -14,16 +15,27 @@ def Threading():
 
 
 def alarm():
+    # alarm set to an infinite loop
     while True:
+        # alarm set
         set_alarm_time = f"{hour.get()}:{minute.get()}:{second.get()}"
         time.sleep(1)
 
+        # get current time
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
         print(current_time, set_alarm_time)
 
+        # condition to check if set time is equal to current time
         if current_time == set_alarm_time:
-            print("Wake Up")
-            winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
+            print("Wake Up now!")
+            # play sound continuously
+            mixer.init()
+            mixer.music.load("sound.wav")
+            mixer.music.play()
+
+
+def stop_alarm():
+    mixer.music.stop()
 
 
 Label(root, text="Alarm Clock", font=("Helvetica 20 bold"), fg="red").pack(pady=10)
@@ -204,5 +216,9 @@ secs = OptionMenu(frame, second, *seconds)
 secs.pack(side=LEFT)
 
 Button(root, text="Set Alarm", font=("Helvetica 15"), command=Threading).pack(pady=20)
+
+button = Button(root, text="Stop Alarm", bg="red", fg="white", command=stop_alarm).pack(
+    pady=30
+)
 
 root.mainloop()

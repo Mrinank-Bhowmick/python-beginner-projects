@@ -5,10 +5,8 @@ LARGEFONT = ("Times New Roman", 35)
 
 
 class tkinterApp(tk.Tk):
-
     # __init__ function for class tkinterApp
     def __init__(self, *args, **kwargs):
-
         # __init__ function for class Tk
         tk.Tk.__init__(self, *args, **kwargs)
 
@@ -25,7 +23,6 @@ class tkinterApp(tk.Tk):
         # iterating through a tuple consisting
         # of the different page layouts
         for F in (std_ca, LandPage, accnt, lgin):
-
             frame = F(container, self)
 
             # initializing frame of that object from
@@ -104,7 +101,6 @@ class LandPage(tk.Frame):
 # second window frame page1
 class accnt(tk.Frame):
     def __init__(self, parent, controller):
-
         tk.Frame.__init__(self, parent)
         label = ttk.Label(self, text="Create your account", font=LARGEFONT)
         label.grid(row=0, column=6, padx=10, pady=10)

@@ -10,7 +10,7 @@ and how to mine with python?
 
 ![alt text](https://editor.analyticsvidhya.com/uploads/77781What%20is%20a%20Bitcoin.jpg)
 
-A bitcoin is an online form of currency that was created in January of 2009 by a mysterious man who goes by the pseudonym “Satoshi Nakamoto”.  The identity of the person is a mystery to date and Bitcoin actually offers a lower transaction fee than a traditional payment system for even a large amount of money and all you need to send someone money is their wallet address.
+A bitcoin is an online form of currency that was created in January of 2009 by a mysterious man who goes by the pseudonym “Satoshi Nakamoto”.  The identity of the person is mystery to date and Bitcoin actually offers a lower transaction fee than a traditional payment system for even a large amount of money and all you need to send someone money is their wallet address.
 
 
 ---

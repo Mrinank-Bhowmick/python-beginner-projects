@@ -6,7 +6,6 @@ import calendar
 
 
 def showCal():
-
     new_window = Tk()
 
     new_window.config(background="white")
@@ -27,7 +26,6 @@ def showCal():
 
 
 if __name__ == "__main__":
-
     root = Tk()
 
     root.config(background="white")

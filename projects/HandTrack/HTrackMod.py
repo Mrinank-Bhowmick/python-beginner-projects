@@ -41,7 +41,6 @@ class handDetector:
         return image
 
     def finPos(self, image, handNo=0):
-
         lmList = []
         if self.results.multi_hand_landmarks:
             myHand = self.results.multi_hand_landmarks[handNo]

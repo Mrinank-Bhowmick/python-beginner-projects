@@ -12,6 +12,9 @@ def countdown(time_sec):
     print("Time Up")
 
 
-t = input("Enter the time in seconds: ")
-
-countdown(int(t))
+if __name__ == "__main__":
+    try:
+        t = input("Enter the time in seconds: ")
+        countdown(int(t))
+    except:
+        print("Invalid input please try again...")
