@@ -73,13 +73,15 @@ class Player:
         self.card = None
         self.name = name
 
-new_lines = '\n' * 10
+
+new_lines = "\n" * 10
+
 
 class Game:
     def __init__(self):
         while True:
-            pattern = r'\W'
-            name1 = input("Player 1 name: ")  
+            pattern = r"\W"
+            name1 = input("Player 1 name: ")
             name2 = input("Player 2 name: ")
             str = name1 + name2
             if re.search(pattern, str) == None:
