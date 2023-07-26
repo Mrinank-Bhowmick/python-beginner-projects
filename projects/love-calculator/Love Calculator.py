@@ -52,14 +52,10 @@ time.sleep(random.randint(1,3))
 
 print("",name1,"and",name2,"have a",love,"% relationship.")
 if ((love>90) or (love == 90)):
-    print("They have an unbreakable relationship that will last 
-    forever.")
+    print("They have an unbreakable relationship that will last forever.")
 if ((love<89) or (love == 89)) and ((love>70) or (love == 70)):
-    print("They have a strong relationship that will most likely 
-    lead to a marriage.")
+    print("They have a strong relationship that will most likely lead to a marriage.")
 if ((love<69) or (love == 69)) and ((love>50) or (love == 50)):
-    print("They have a good relationship that can lead to a 
-    honeymoon to Paris.")
+    print("They have a good relationship that can lead to a honeymoon to Paris.")
 if ((love<49) or (love == 49)):
-    print("They have a weak relationship that could have been a 
-    'match made in heaven'.")
+    print("They have a weak relationship that could have been a 'match made in heaven'.")
