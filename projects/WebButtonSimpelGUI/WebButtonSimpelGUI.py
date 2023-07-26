@@ -1,17 +1,23 @@
-#Dont forget to import icon path
+# Dont forget to import icon path
 import webbrowser as wb
 import tkinter as tk
 from PIL import Image, ImageTk
 
+
 def button1_click():
     print("Button 1 clicked!")
     wb.open("https://www.google.com/")
+
+
 def button2_click():
     print("Button 2 clicked!")
     wb.open("https://www.youtube.com/")
+
+
 def button3_click():
     print("Button 3 clicked!")
     wb.open("https://github.com/")
+
 
 # Create the main window
 window = tk.Tk()
@@ -33,5 +39,3 @@ button3.pack()
 
 # Start the main event loop
 window.mainloop()
-
-
