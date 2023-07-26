@@ -1,19 +1,35 @@
-import requests
+import requests  # Import the 'requests' library for making HTTP requests.
 
 
 def main():
-    r = requests.get("http://themealdb.com/api/json/v1/1/random.php")
-    meal_detail = dict(r.json())["meals"][0]
+    r = requests.get(
+        "http://themealdb.com/api/json/v1/1/random.php"
+    )  # Fetch a random meal data from the API.
+    meal_detail = dict(r.json())["meals"][
+        0
+    ]  # Extract the details of the first meal from the API response.
 
-    # TODO information from menu
-    menu_name = meal_detail["strMeal"]
-    menu_category = meal_detail["strCategory"]
-    menu_tags = meal_detail["strTags"]
-    menu_country = meal_detail["strArea"]
-    menu_instruction = meal_detail["strInstructions"]
-    menu_video = meal_detail["strYoutube"]
+    # TODO: Get information from the menu
+    menu_name = meal_detail[
+        "strMeal"
+    ]  # Extract the name of the meal from the meal detail.
+    menu_category = meal_detail[
+        "strCategory"
+    ]  # Extract the category of the meal from the meal detail.
+    menu_tags = meal_detail[
+        "strTags"
+    ]  # Extract the tags (if available) of the meal from the meal detail.
+    menu_country = meal_detail[
+        "strArea"
+    ]  # Extract the country of the meal from the meal detail.
+    menu_instruction = meal_detail[
+        "strInstructions"
+    ]  # Extract the cooking instructions of the meal.
+    menu_video = meal_detail[
+        "strYoutube"
+    ]  # Extract the YouTube video link for the meal (if available).
 
-    # TODO for coloring output
+    # TODO: Define color codes for printing colored output.
     class bcolors:
         HEADER = "\033[95m"
         OKBLUE = "\033[94m"
@@ -25,14 +41,15 @@ def main():
         BOLD = "\033[1m"
         UNDERLINE = "\033[4m"
 
+    # Print the information about the meal in a stylized format.
     print(f"-------------------------------------------------------------")
-    print(f"Let's have a {bcolors.BOLD}{menu_name}{bcolors.ENDC} for the dinner!")
-    print(f"this menu is {menu_country} and it is {menu_category}!")
+    print(f"Let's have a {bcolors.BOLD}{menu_name}{bcolors.ENDC} for dinner!")
+    print(f"This menu is {menu_country} and it is {menu_category}!")
     print(
-        f"you can follow this link: {bcolors.OKBLUE}{menu_video}{bcolors.ENDC} or instruction to cook it: \n{menu_instruction}"
+        f"You can follow this link: {bcolors.OKBLUE}{menu_video}{bcolors.ENDC} or the instructions to cook it:\n{menu_instruction}"
     )
     print(f"-------------------------------------------------------------")
 
 
 if __name__ == "__main__":
-    main()
+    main()  # Call the main function when the script is executed as the main program.
