@@ -2,14 +2,19 @@
 from pytube import YouTube, exceptions, Playlist, Channel, Search
 
 # Prompt the user to select an option: Video, Playlist, Channel information, or Search
-dat = int(input("""Select The option:
-1. Video   2. Playlist   3. Channel information   4. Search  :\n"""))
+dat = int(
+    input(
+        """Select The option:
+1. Video   2. Playlist   3. Channel information   4. Search  :\n"""
+    )
+)
+
 
 # Function to handle downloading a single video
 def Video():
     # Prompt the user to enter the URL of the video
     url = input("Enter the video URL: ")
-    
+
     try:
         # Try to create a YouTube object for the provided URL
         yt = YouTube(url)
@@ -39,6 +44,7 @@ def Video():
     # Notify the user that the video download process is complete
     print("Video Downloaded successfully...")
 
+
 # Function to download a playlist
 def download_playlist(playlist_url):
     # Create a Playlist object for the provided playlist URL
@@ -48,6 +54,7 @@ def download_playlist(playlist_url):
         video.streams.get_highest_resolution().download()
     # Notify the user that the playlist download process is complete
     print("Playlist downloaded successfully..")
+
 
 # Function to get information about a YouTube channel
 def channel():
@@ -60,6 +67,7 @@ def channel():
     print("Channel Name: " + channel.channel_name)
     # Get the number of videos in the channel and display it
     print("No. of videos in the channel: " + str(len(channel.video_urls)))
+
 
 # Function to perform a YouTube search and display results
 def search():
@@ -75,6 +83,7 @@ def search():
     print("Suggestions regarding the topic:\n")
     for j in s.completion_suggestions:
         print(j)
+
 
 # Based on the user's input, execute the appropriate function
 if dat == 1:
