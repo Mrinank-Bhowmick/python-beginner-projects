@@ -46,7 +46,6 @@ def takeCommand():
         query = r.recognize_google(audio, language="en-in")
         print(f"User said: {query}\n")
 
-
     except Exception as e:
         # If speech recognition fails, prompt the user to repeat the command
         print("Could you please repeat it, sir...")
