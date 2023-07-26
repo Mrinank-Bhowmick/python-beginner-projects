@@ -165,7 +165,6 @@ def playSong(spotifyObject, searchQuery):
 
 
 def recommendSong(spotifyObject, song1, song2, song3):
-
     results_1 = spotifyObject.search(q=song1, type="track")
     song_1_id = results_1["tracks"]["items"][0]["id"]
 
@@ -189,7 +188,6 @@ def recommendSong(spotifyObject, song1, song2, song3):
     play = input("Would you like to play this song [yes/no]: ").lower()
 
     if play in ["y", "yes"]:
-
         print(f"{fore.GREEN}✅ Playing {recommended_song} - {artist}{fore.RESET}")
 
         scope = "user-modify-playback-state"

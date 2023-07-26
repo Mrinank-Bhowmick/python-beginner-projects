@@ -168,6 +168,7 @@ font_box.bind(
     "<<ComboboxSelected>>", change_font
 )  # BINDING THE FUNCTION WITH COMBOBOX(WHICH NAME IS font_box)
 
+
 # FUNCTION FOR CHANGE FONT SIZE
 def change_font_size(event=None):
     global current_font_size
@@ -176,6 +177,7 @@ def change_font_size(event=None):
 
 
 font_size.bind("<<ComboboxSelected>>", change_font_size)
+
 
 ####################################################### button functionality ######################################################
 # print(tk.font.Font(font=text_editor['font']).actual())
@@ -190,6 +192,7 @@ def change_bold():
 
 bold_btn.configure(command=change_bold)
 
+
 # italic functionality
 def change_italic():
     text_property = tk.font.Font(font=text_editor["font"])
@@ -201,6 +204,7 @@ def change_italic():
 
 
 italic_btn.configure(command=change_italic)
+
 
 # UNDER LINE FUNCTIONALITY
 def change_underline():
@@ -218,6 +222,7 @@ underline_btn.configure(command=change_underline)
 
 text_editor.configure(font=("Arial", 12))
 
+
 # -------- Font color functionality-------------
 def change_font_color():
     color_var = tk.colorchooser.askcolor()
@@ -226,6 +231,7 @@ def change_font_color():
 
 
 font_color_btn.configure(command=change_font_color)
+
 
 # ----------- align functionality
 ##left
@@ -238,6 +244,7 @@ def align_left():
 
 align_left_btn.configure(command=align_left)
 
+
 ## center
 def align_center():
     text_content = text_editor.get(1.0, "end")
@@ -247,6 +254,7 @@ def align_center():
 
 
 align_center_btn.configure(command=align_center)
+
 
 ## right
 def align_right():
@@ -288,6 +296,7 @@ text_editor.bind("<<Modified>>", changed)
 ###VARIBALE
 url = ""
 
+
 # NEW FUNCTIONALITY
 def new_file(event=None):
     global url
@@ -303,6 +312,7 @@ file.add_command(
     accelerator="Ctrl+N",
     command=new_file,
 )
+
 
 # OPEN FUNCTIONALITY
 def open_file(event=None):
@@ -331,6 +341,7 @@ file.add_command(
     accelerator="Ctrl+O",
     command=open_file,
 )
+
 
 # save functionality
 def save_file(event=None):
@@ -390,6 +401,7 @@ file.add_command(
     command=save_as,
 )
 
+
 # exit functionality
 def exit_func(event=None):
     global url, text_changed
@@ -432,6 +444,7 @@ file.add_command(
     command=exit_func,
 )  # compound propery only work with image
 # -----------------------------End ---------------------------------------------------------#
+
 
 # find functonality
 def find_func(event=None):

@@ -227,7 +227,6 @@ def compPLAY():
 
         elif r2.count(m) == 2:
             for i in range(len(r2)):
-
                 if r2[i] == "":
                     print("r2 is ", r2)
                     r2[i] = n
@@ -343,7 +342,6 @@ def compPLAY():
     endsideCHECKER()
 
     def endmiddleCHECKER():
-
         if r1[1] == "":
             r1[1] = n
             compCOMPLETER(2)

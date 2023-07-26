@@ -39,7 +39,6 @@ def speedtester():
         print(f"Ping: {ping_result}ms")
 
     else:
-
         print("Please enter the correct choice !")
 
 

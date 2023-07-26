@@ -45,13 +45,13 @@ MORSE_CODE_DICT = {
     ")": "-.--.-",
 }
 
+
 # Function to encrypt the string
 # according to the morse code chart
 def encrypt(message):
     cipher = ""
     for letter in message:
         if letter != " ":
-
             # Looks up the dictionary and adds the
             # corresponding morse code
             # along with a space to separate
@@ -68,7 +68,6 @@ def encrypt(message):
 # Function to decrypt the string
 # from morse to english
 def decrypt(message):
-
     # extra space added at the end to access the
     # last morse code
     message += " "
@@ -76,10 +75,8 @@ def decrypt(message):
     decipher = ""
     citext = ""
     for letter in message:
-
         # checks for space
         if letter != " ":
-
             # counter to keep track of space
             i = 0
 
@@ -93,11 +90,9 @@ def decrypt(message):
 
             # if i = 2 that indicates a new word
             if i == 2:
-
                 # adding space to separate words
                 decipher += " "
             else:
-
                 # accessing the keys using their values (reverse of encryption)
                 decipher += list(MORSE_CODE_DICT.keys())[
                     list(MORSE_CODE_DICT.values()).index(citext)

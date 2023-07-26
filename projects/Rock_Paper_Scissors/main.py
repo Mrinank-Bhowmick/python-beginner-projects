@@ -7,7 +7,6 @@ def main():
     attempts = 0
 
     while True:
-
         try:
             your_choice = int(input("\n1. Rock, 2. Paper, 3. Scissors, 4. Exit: "))
 

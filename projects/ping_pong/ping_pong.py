@@ -47,6 +47,7 @@ pen.hideturtle()
 pen.goto(0, 260)
 pen.write("score", align="center", font=("Arial", 24, "normal"))
 
+
 # code for moving the leftpaddle
 def leftpaddleup():
     y = leftpaddle.ycor()

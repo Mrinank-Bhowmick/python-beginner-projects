@@ -20,7 +20,6 @@ website_list = [
 ]
 
 while True:
-
     # time of your work
     if (
         dt(dt.now().year, dt.now().month, dt.now().day, 8)
