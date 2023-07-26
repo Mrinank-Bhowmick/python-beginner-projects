@@ -2,8 +2,8 @@
 from lyrics_extractor import SongLyrics
  
 # Create GCS_API_KEY & GCS_ENGINE_ID
-GDC_API_KEY = 'AIzaSyC5VTPmhIyI4biGRfB07qWWg9fmuX11HzE'
-GCS_ENGINE_ID = 'e23ba5438f21746db'
+GDC_API_KEY = 'INSERT_YOUR_API_KEY'
+GCS_ENGINE_ID = 'INSERT_YOUR_ID'
 
 extract_lyrics = SongLyrics(GDC_API_KEY, GCS_ENGINE_ID)
 
