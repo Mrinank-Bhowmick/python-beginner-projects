@@ -29,6 +29,7 @@ def enough_ip():
 
 enough_ip()
 
+
 # Function for rules of changing ip by mask
 def rules_ip():
     ip_by_octat = []
@@ -53,7 +54,6 @@ for i in range(0, 32):
 
 # Prefix we will use
 for i in table_of_prefix_value.keys():
-
     if int(int(table_of_prefix_value[i])) >= max_value_dev:
         prefix_need = [i, int(table_of_prefix_value[i])]
         break
@@ -83,7 +83,6 @@ ip_list_sub = []
 
 
 if int(prefix_need[0]) in range(25, 33):
-
     prom_ip_1 = ip_list_octet[3]
     prom_ip_2 = ip_list_octet[3] + prefix_need[1] - 1
     prom_ip_3 = ip_list_octet[2]

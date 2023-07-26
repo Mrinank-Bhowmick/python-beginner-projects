@@ -5,7 +5,6 @@ import csv
 
 
 def get_article_and_link(url_link, filename):
-
     request = requests.get(url_link)
 
     soup = BeautifulSoup(request.text, "lxml")

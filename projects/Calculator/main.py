@@ -1,134 +1,93 @@
-# Calculator
+import os
+import time
 
 
 def addition():
-
-    print("Addition")
-
-    n = float(input("Enter the number: "))
-
-    t = 0  # Total number enter
-
-    ans = 0
-
-    while n != 0:
-
-        ans = ans + n
-
-        t += 1
-
-        n = float(input("Enter another number (0 to calculate): "))
-
-        return [ans, t]
+    nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+    return sum(nums)
 
 
 def subtraction():
+    n1 = float(input("Enter first number: "))
+    n2 = float(input("Enter second number: "))
 
-    print("Subtraction")
-
-    n = float(input("Enter the number: "))
-
-    t = 0  # Total number enter
-
-    sum = 0
-
-    while n != 0:
-
-        ans = ans - n
-
-        t += 1
-
-        n = float(input("Enter another number (0 to calculate): "))
-
-        return [ans, t]
+    return n1 - n2
 
 
 def multiplication():
-
-    print("Multiplication")
-
-    n = float(input("Enter the number: "))
-
-    t = 0  # Total number enter
-
-    ans = 1
-
-    while n != 0:
-
-        ans = ans * n
-
-        t += 1
-
-        n = float(input("Enter another number (0 to calculate): "))
-
-        return [ans, t]
+    nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+    res = 1
+    for num in nums:
+        res *= num
+    return res
 
 
-def average(an):
+def division():
+    n1 = float(input("Enter first number: "))
+    n2 = float(input("Enter second number: "))
 
-    an = []
-
-    an = addition()
-
-    t = an[1]
-
-    a = an[0]
-
-    ans = a / t
-
-    return [ans, t]
-
-    # main...
+    return n1 / n2
 
 
-while True:
+def average():
+    nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+    return sum(nums) / len(nums)
 
-    list = []
 
-    print(" My first python program!")
+c = 0
+while c != "-1":
+    print("Enter '1' for addition")
+    print("Enter '2' for subtraction")
+    print("Enter '3' for multiplication")
+    print("Enter '4' for division")
+    print("Enter '5' for average")
+    print("Enter '-1' to exit.\n")
 
-    print(" Simple Calculator in python by Malik Umer Farooq")
+    c = input("Your choice is: ")
 
-    print(" Enter 'a' for addition")
+    if c == "1":
+        res = addition()
+        os.system("cls")
+        print(f"The answer is {res}")
+        time.sleep(2)
+        os.system("cls")
 
-    print(" Enter 's' for subtraction")
+    elif c == "2":
+        res = subtraction()
+        os.system("cls")
+        print(f"The answer is {res}")
+        time.sleep(2)
+        os.system("cls")
 
-    print(" Enter 'm' for multiplication")
+    elif c == "3":
+        res = multiplication()
+        os.system("cls")
+        print(f"The answer is {res}")
+        time.sleep(2)
+        os.system("cls")
 
-    print(" Enter 'v' for average")
+    elif c == "4":
+        res = division()
+        os.system("cls")
+        print(f"The answer is {res}")
+        time.sleep(2)
+        os.system("cls")
 
-    print(" Enter 'q' for quit")
+    elif c == "5":
+        res = average()
+        os.system("cls")
+        print(f"The answer is {res}")
+        time.sleep(2)
+        os.system("cls")
 
-    c = input(" ")
-
-    if c != "q":
-
-        if c == "a":
-
-            list = addition()
-
-            print("Ans = ", list[0], " total inputs ", list[1])
-
-        elif c == "s":
-
-            list = subtraction()
-
-            print("Ans = ", list[0], " total inputs ", list[1])
-
-        elif c == "m":
-
-            list = multiplication()
-
-            print("Ans = ", list[0], " total inputs ", list[1])
-
-        elif c == "v":
-
-            list = average()
-
-            print("Ans = ", list[0], " total inputs ", list[1])
-
-        else:
-
-            print("Sorry, invalid character")
-    else:
+    elif c == "-1":
+        os.system("cls")
+        print("Thank you for using the calculator!")
+        time.sleep(2)
         break
+
+    else:
+        os.system("cls")
+        print("Sorry, invalid option!")
+        time.sleep(2)
+        os.system("cls")

@@ -11,7 +11,7 @@ mypy-extensions==0.4.3
 numpy==1.23.3
 packaging==21.3
 pathspec==0.10.1
-Pillow==9.2.0
+Pillow==9.3.0
 platformdirs==2.5.2
 pluggy==1.0.0
 pyparsing==3.0.9

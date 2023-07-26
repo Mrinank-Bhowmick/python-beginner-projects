@@ -28,6 +28,7 @@ maze_1 = [
     ["#", "#", "#", "#", "#", "X", "#", "#", "#"],
 ]
 
+
 # to print maze in various stages as algo tries to find the path
 def print_maze(maze_1, stdscr, path=[]):
     GREEN = curses.color_pair(1)
