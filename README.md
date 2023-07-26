@@ -851,6 +851,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Tark-pea">
+            <img src="https://avatars.githubusercontent.com/u/119817620?v=4" width="100;" alt="Tark-pea"/>
+            <br />
+            <sub><b>Tark-pea</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/DevTomilola-OS">
             <img src="https://avatars.githubusercontent.com/u/114832204?v=4" width="100;" alt="DevTomilola-OS"/>
             <br />
@@ -863,15 +870,15 @@
             <br />
             <sub><b>Peter White</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/bibaswanroy">
             <img src="https://avatars.githubusercontent.com/u/50978591?v=4" width="100;" alt="bibaswanroy"/>
             <br />
             <sub><b>Bibaswan Roy</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/MonitSharma">
             <img src="https://avatars.githubusercontent.com/u/65262068?v=4" width="100;" alt="MonitSharma"/>
@@ -906,15 +913,15 @@
             <br />
             <sub><b>Sneha Farkya</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Harry830">
             <img src="https://avatars.githubusercontent.com/u/114953309?v=4" width="100;" alt="Harry830"/>
             <br />
             <sub><b>Harry830</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Sameer-choudhary-git">
             <img src="https://avatars.githubusercontent.com/u/137263706?v=4" width="100;" alt="Sameer-choudhary-git"/>
@@ -949,15 +956,15 @@
             <br />
             <sub><b>Guiszk</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/SubramanyaKS">
             <img src="https://avatars.githubusercontent.com/u/70049779?v=4" width="100;" alt="SubramanyaKS"/>
             <br />
             <sub><b>Subramanya K S</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/tamojeetK">
             <img src="https://avatars.githubusercontent.com/u/89387048?v=4" width="100;" alt="tamojeetK"/>
@@ -992,15 +999,15 @@
             <br />
             <sub><b>Soonam Kalyan Panda</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Logadheep">
             <img src="https://avatars.githubusercontent.com/u/76146062?v=4" width="100;" alt="Logadheep"/>
             <br />
             <sub><b>Logadheep</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/MattBlodgettProjects">
             <img src="https://avatars.githubusercontent.com/u/62157141?v=4" width="100;" alt="MattBlodgettProjects"/>
@@ -1035,15 +1042,15 @@
             <br />
             <sub><b>Rajdeep Das</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/vrup0408">
             <img src="https://avatars.githubusercontent.com/u/91781599?v=4" width="100;" alt="vrup0408"/>
             <br />
             <sub><b>VRUSHANG PARIKH</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/vk0812">
             <img src="https://avatars.githubusercontent.com/u/92437375?v=4" width="100;" alt="vk0812"/>
@@ -1078,15 +1085,15 @@
             <br />
             <sub><b>ChefYeshpal</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/ChiragAgg5k">
             <img src="https://avatars.githubusercontent.com/u/110609663?v=4" width="100;" alt="ChiragAgg5k"/>
             <br />
             <sub><b>Chirag Aggarwal</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Subha-5">
             <img src="https://avatars.githubusercontent.com/u/97968307?v=4" width="100;" alt="Subha-5"/>
@@ -1121,15 +1128,15 @@
             <br />
             <sub><b>GigabyteZ</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/TimTemi">
             <img src="https://avatars.githubusercontent.com/u/93915253?v=4" width="100;" alt="TimTemi"/>
             <br />
             <sub><b>Flourish</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/ducheharsh">
             <img src="https://avatars.githubusercontent.com/u/79721045?v=4" width="100;" alt="ducheharsh"/>
@@ -1164,15 +1171,15 @@
             <br />
             <sub><b>MINHAJ</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/yashd26">
             <img src="https://avatars.githubusercontent.com/u/65943606?v=4" width="100;" alt="yashd26"/>
             <br />
             <sub><b>Yashwho</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/rust-master">
             <img src="https://avatars.githubusercontent.com/u/43227117?v=4" width="100;" alt="rust-master"/>
@@ -1207,27 +1214,20 @@
             <br />
             <sub><b>Saanvibk</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Sayakb03">
             <img src="https://avatars.githubusercontent.com/u/108454817?v=4" width="100;" alt="Sayakb03"/>
             <br />
             <sub><b>Sayakb03</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Nowshin1077">
             <img src="https://avatars.githubusercontent.com/u/47534922?v=4" width="100;" alt="Nowshin1077"/>
             <br />
             <sub><b>Syeda Nowshin Ibnat</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/Tark-pea">
-            <img src="https://avatars.githubusercontent.com/u/119817620?v=4" width="100;" alt="Tark-pea"/>
-            <br />
-            <sub><b>Tark-pea</b></sub>
         </a>
     </td>
     <td align="center">
