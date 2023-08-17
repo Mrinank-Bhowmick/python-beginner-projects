@@ -824,13 +824,20 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/sudipg4112001">
+            <img src="https://avatars.githubusercontent.com/u/60208804?v=4" width="100;" alt="sudipg4112001"/>
+            <br />
+            <sub><b>Sudip Ghosh</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/Tyler-Pear">
             <img src="https://avatars.githubusercontent.com/u/128009824?v=4" width="100;" alt="Tyler-Pear"/>
             <br />
             <sub><b>Tyler-Pear</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/bim22614">
             <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
@@ -850,13 +857,6 @@
             <img src="https://avatars.githubusercontent.com/u/66057990?v=4" width="100;" alt="glacias07"/>
             <br />
             <sub><b>Shriyans Naik</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/sudipg4112001">
-            <img src="https://avatars.githubusercontent.com/u/60208804?v=4" width="100;" alt="sudipg4112001"/>
-            <br />
-            <sub><b>Sudip Ghosh</b></sub>
         </a>
     </td>
     <td align="center">
