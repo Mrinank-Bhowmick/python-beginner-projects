@@ -1,6 +1,7 @@
 import requests
 import tkinter as tk
 
+
 # Function to fetch and display a random quote
 def get_random_quote():
     try:
@@ -12,13 +13,16 @@ def get_random_quote():
     except requests.exceptions.RequestException as e:
         quote_text.set("Failed to fetch a quote. Check your internet connection.")
 
+
 # Create the main window
 root = tk.Tk()
 root.title("Random Quote Generator")
 
 # Create a label to display the quote
 quote_text = tk.StringVar()
-quote_label = tk.Label(root, textvariable=quote_text, wraplength=300, font=("Helvetica", 12))
+quote_label = tk.Label(
+    root, textvariable=quote_text, wraplength=300, font=("Helvetica", 12)
+)
 quote_label.pack(pady=20)
 
 # Create a button to get a new quote
