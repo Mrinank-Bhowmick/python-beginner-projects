@@ -9,7 +9,6 @@
   <br>
 </h1>
 
-[![made-with-python](https://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 # 💭 **Why these awesome projects ??**
 💠 _This repository offers a variety of fascinating mini-projects written in Python._ 
