@@ -1,3 +1,6 @@
+from pickle import dump,load
+
+
 def add_task(task):
     todo_list.append(task)
     print("Task added!")
@@ -36,7 +39,13 @@ def get_choice():
 
 
 if __name__ == "__main__":
-    todo_list = []
+
+    # Loading the pickle file into python as a list
+    try:
+        with open("todo.pickle","rb+") as file_in:
+            todo_list = load(file_in)
+    except FileNotFoundError:
+        todo_list = []
 
     print("Welcome to ToDo List!")
 
@@ -62,6 +71,9 @@ if __name__ == "__main__":
 
         # Quit
         elif user_choice == 4:
+            # Dumping the list into a pickle file
+            with open("todo.pickle","wb") as file_out:
+                dump(todo_list,file_out)
             print("Goodbye!")
             break
 
@@ -69,5 +81,6 @@ if __name__ == "__main__":
 #####################################
 
 # CODE CONTRIBUTED BY: Ota Hina
+# Dynamic funcionality added by : komsenapati
 
 #####################################
