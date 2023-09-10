@@ -1,4 +1,4 @@
-from pickle import dump,load
+from pickle import dump, load
 
 
 def add_task(task):
@@ -39,10 +39,9 @@ def get_choice():
 
 
 if __name__ == "__main__":
-
     # Loading the pickle file into python as a list
     try:
-        with open("todo.pickle","rb+") as file_in:
+        with open("todo.pickle", "rb+") as file_in:
             todo_list = load(file_in)
     except FileNotFoundError:
         todo_list = []
@@ -72,8 +71,8 @@ if __name__ == "__main__":
         # Quit
         elif user_choice == 4:
             # Dumping the list into a pickle file
-            with open("todo.pickle","wb") as file_out:
-                dump(todo_list,file_out)
+            with open("todo.pickle", "wb") as file_out:
+                dump(todo_list, file_out)
             print("Goodbye!")
             break
 
