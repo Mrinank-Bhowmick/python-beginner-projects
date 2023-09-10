@@ -2,7 +2,6 @@ import os
 from datetime import timedelta
 import whisper
 
-
 def transcribe_audio(path):
     model = whisper.load_model("base")  # Change this to your desired model
     print("Whisper model loaded.")
