@@ -15,5 +15,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Greetings! This is an automated message from GitHub Actions. :robot:\nYour pull request has been received and is awaiting review by the repository owner or a maintainer. This may take some time, so please be patient.\nWhile you wait, you can continue to work on other issues or pull requests, or explore the project further. Or you can simply relax and enjoy your day.\nThank you for your contribution to this project! You are awesome! :star:'
+              body: 'Greetings! This is an automated message from GitHub Actions. :robot:\nYour pull request has been received and is awaiting for a review by the repository owner or a maintainer. This may take some time, so please be patient.\nWhile you wait, you can continue to work on other issues or pull requests, or explore the project further. Or you can simply relax and enjoy your day.\nThank you for your contribution to this project! You are awesome! :star:'
             })
