@@ -6,9 +6,14 @@ from base64 import b64encode, b64decode
 import os
 from Cryptodome.Cipher import AES
 from Cryptodome.Random import get_random_bytes
+import platform
 
+# For different OS
+if platform.system() == "Windows":
+    os.system("cls")
+else:
+    os.system("clear")
 
-os.system("cls")
 
 # Start of Encryption Function
 def encrypt(plain_text, password):
@@ -58,20 +63,25 @@ def decrypt(enc_dict, password):
 def main():
     print("\t\tAES 256 Encryption and Decryption Algorithm")
     print("\t\t-------------------------------------------\n\n")
-    password = input("Enter the Password: ")
-    secret_mssg = input("\nEnter the Secret Message: ")
+    x = input("Enter 1 to encrypt and 2 to decrypt :")
+    if x == 1:
+        password = input("Enter the Password: ")
+        secret_mssg = input("\nEnter the Secret Message: ")
 
-    # First let us encrypt secret message
-    encrypted = encrypt(secret_mssg, password)
-    print("\n\nEncrypted:")
-    print("---------------\n")
-    print("\n".join("{}: {}".format(k, v) for k, v in encrypted.items()))
+        # First let us encrypt secret message
+        encrypted = encrypt(secret_mssg, password)
+        print("\n\nEncrypted:")
+        print("---------------\n")
+        print("\n".join("{}: {}".format(k, v) for k, v in encrypted.items()))
 
     # Now let us decrypt the message using our original password
-    decrypted = decrypt(encrypted, password)
-    print("\n\nDecrypted:")
-    print("-----------------\n")
-    print(bytes.decode(decrypted))
+    if x == 2:
+        encrypted = input("Enter the encrypted message")
+        password = input("Enter the password")
+        decrypted = decrypt(encrypted, password)
+        print("\n\nDecrypted:")
+        print("-----------------\n")
+        print(bytes.decode(decrypted))
 
 
 main()

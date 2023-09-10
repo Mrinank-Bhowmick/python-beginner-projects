@@ -1,4 +1,5 @@
 from random import shuffle
+import re
 
 
 class Card:
@@ -73,10 +74,20 @@ class Player:
         self.name = name
 
 
+new_lines = "\n" * 10
+
+
 class Game:
     def __init__(self):
-        name1 = input("p1 name ")
-        name2 = input("p2 name ")
+        while True:
+            pattern = r"\W"
+            name1 = input("Player 1 name: ")
+            name2 = input("Player 2 name: ")
+            str = name1 + name2
+            if re.search(pattern, str) == None:
+                break
+            else:
+                print(f"{new_lines}Please, don't use special characters")
         self.deck = Deck()
         self.p1 = Player(name1)
         self.p2 = Player(name2)
@@ -93,7 +104,7 @@ class Game:
 
     def play_game(self):
         cards = self.deck.cards
-        print("beginning War!")
+        print(f"{new_lines}Beginning War!")
         while len(cards) >= 2:
             m = "q to quit. Any " + "key to play:"
             response = input(m)

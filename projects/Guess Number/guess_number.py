@@ -3,38 +3,42 @@ import random
 # define upper and lower bound for game
 smaller_number = 1
 larger_number = 10
+upper_limit = 10
+lower_limit = 1
+
 
 # function to prompt user for input. will continue to ask user for proper int if invalid num passed
-def prompt_user():
-    while True:
-        try:
-            user_guess = int(input(f"\nEnter number between 1 to {larger_number}: "))
-            return user_guess
-        except Exception as e:
-            # will catch strings when inputed into user_guess
-            print("\nThat guess was invalid. Try again.")
+def enter_and_verification(lower_limit, upper_limit):
+    user_guess = int(input(f"\nEnter number between {lower_limit} to {upper_limit}: "))
+    while user_guess > upper_limit or user_guess < lower_limit:
+        if user_guess > upper_limit:
+            user_guess = int(
+                input(
+                    f"\nYour guess exceeds the upper range. Lower your guess and try again.\nEnter number between {lower_limit} to {upper_limit}: "
+                )
+            )
+        if user_guess < lower_limit:
+            user_guess = int(
+                input(
+                    f"\nYour guess exceeds the lower range. Increase your guess and try again.\nEnter number between {lower_limit} to {upper_limit}: "
+                )
+            )
+    return user_guess
 
 
 # function to handle checking user input against random number and upper/lower bounds
-def guess_number(user_guess):
-    num = random.randint(smaller_number, larger_number)
+def guess(num, user_guess):
+    upper_limit = 10
+    lower_limit = 1
     while num != user_guess:
-        if user_guess > larger_number:
-            print(
-                f"\nYour guess exceeds the upper range. Lower your guess and try again."
-            )
-            user_guess = prompt_user()
-        elif user_guess < smaller_number:
-            print(
-                f"\nYour guess is exceeds the lower range. Increase your guess and try again."
-            )
-            user_guess = prompt_user()
+        if num > user_guess:
+            print(f"\nNumber is higher than {user_guess}")
+            lower_limit = user_guess
+            user_guess = enter_and_verification(lower_limit + 1, upper_limit)
         elif num < user_guess:
             print(f"\nNumber is lower than {user_guess}")
-            user_guess = prompt_user()
-        elif num > user_guess:
-            print(f"\nNumber is higher than {user_guess}")
-            user_guess = prompt_user()
+            upper_limit = user_guess
+            user_guess = enter_and_verification(lower_limit, upper_limit - 1)
         else:
             print()
     print(f"\nCongrats! You've guessed the correct number! It was {num}.\n")
@@ -44,8 +48,9 @@ def guess_number(user_guess):
 while True:
     play_y_n = input("Welcome to Number Guesser. If you'd like to play, press 'Y': ")
     if play_y_n.lower() == "y":
-        user_guess = prompt_user()
-        guess_number(user_guess)
+        num = random.randint(smaller_number, larger_number)
+        user_guess = enter_and_verification(lower_limit, upper_limit)
+        guess(num, user_guess)
     else:
         print("Thanks for playing!")
         break

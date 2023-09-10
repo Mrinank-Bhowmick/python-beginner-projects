@@ -151,7 +151,6 @@ pygame.display.update()
 myfont = pygame.font.SysFont("monospace", 75)
 
 while not game_over:
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()

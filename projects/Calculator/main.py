@@ -8,7 +8,6 @@ def addition():
 
 
 def subtraction():
-
     n1 = float(input("Enter first number: "))
     n2 = float(input("Enter second number: "))
 
@@ -37,7 +36,6 @@ def average():
 
 c = 0
 while c != "-1":
-
     print("Enter '1' for addition")
     print("Enter '2' for subtraction")
     print("Enter '3' for multiplication")

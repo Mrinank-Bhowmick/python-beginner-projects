@@ -5,7 +5,6 @@ import menu.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("menu", "0001_initial"),
     ]

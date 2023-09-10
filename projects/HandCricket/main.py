@@ -11,14 +11,14 @@ def main():
     try:
         choice = int(input())
         if choice == 1:
-            our_score=bat()
-            computers_score=bowl()
-            who_won(our_score,computers_score)
-            
+            our_score = bat()
+            computers_score = bowl()
+            who_won(our_score, computers_score)
+
         elif choice == 2:
-            computers_score=bowl()
-            our_score=bat()
-            who_won(our_score,computers_score)
+            computers_score = bowl()
+            our_score = bat()
+            who_won(our_score, computers_score)
         else:
             print("Invalid choice")
             main()
@@ -26,23 +26,24 @@ def main():
         print("Invalid choice,exiting game")
         print(e)
 
-def who_won(our_score,computers_score):
+
+def who_won(our_score, computers_score):
     print()
-    print ("Match Result")
-    print ("===========")
-    print ("You scored=",our_score)
-    print ("Computer scored=",computers_score)
+    print("Match Result")
+    print("===========")
+    print("You scored=", our_score)
+    print("Computer scored=", computers_score)
     if our_score > computers_score:
-        print ("You won")
-    elif  computers_score > our_score:
-        print ("You lost")
+        print("You won")
+    elif computers_score > our_score:
+        print("You lost")
     else:
-        print ("You Drew")
-    print ("Thank you for playing and have a good day :) ")
-        
+        print("You Drew")
+    print("Thank you for playing and have a good day :) ")
+
 
 def bat():
-    print() 
+    print()
     print("You are batting")
     print("Rules")
     print("=====")
@@ -50,11 +51,11 @@ def bat():
     print("If they are the same you are out")
     print("If they are different you score some runs")
     print()
-    print("Game start") 
-    print("=========") 
+    print("Game start")
+    print("=========")
     score = 0
     while True:
-        print ("Enter a number between 1 and 6 or Enter 0 to quit")
+        print("Enter a number between 1 and 6 or Enter 0 to quit")
         user = int(input())
         if user == 0:
             print("Your score is", score)
@@ -74,7 +75,7 @@ def bat():
             else:
                 score += user
                 print("Your score is", score)
-    return (score)
+    return score
 
 
 def bowl():
@@ -109,7 +110,8 @@ def bowl():
             else:
                 score += comp
                 print("Computer score is", score)
-    return(score)
+    return score
+
 
 if __name__ == "__main__":
     main()

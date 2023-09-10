@@ -5,7 +5,6 @@ import pandas as pd
 
 
 class Usuario:
-
     # CONSTRUCTOR CLASS USER
     def __init__(self, nome="", cpf="", idade=0, altura=0):
         self.nome = nome

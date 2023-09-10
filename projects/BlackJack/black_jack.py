@@ -125,7 +125,6 @@ Let the game begin!"""
 )
 
 while game_on:
-
     try:
         new_deck = Deck()  # new deck will be created and shuffled each round
         new_deck.shuffle()
@@ -159,11 +158,9 @@ while game_on:
         check_ace(player_table_cards[1])
 
         while True:
-
             hit_or_stand = input("Do you want to hit or stand? :").lower()
 
             if hit_or_stand == "hit":
-
                 player_table_cards.append(new_deck.deal_one())
                 check_ace(player_table_cards[-1])
 
@@ -191,7 +188,6 @@ while game_on:
                     break
 
             elif hit_or_stand == "stand":
-
                 player_cards_val = 0
                 for i in player_table_cards:
                     player_cards_val += i.value
@@ -209,7 +205,6 @@ while game_on:
                 break
 
             else:
-
                 print("Enter a valid option. \n")
                 continue
 
@@ -217,7 +212,6 @@ while game_on:
         no_of_hits = 0
 
         while True:
-
             dealer_cards_val = 0
 
             for i in dealer_table_cards:  # updating value of dealer's cards
@@ -242,10 +236,8 @@ while game_on:
                 break
 
             elif dealer_cards_val > 21:
-
                 # checking if player has also busted or not. If player busts , dealer's bust doesn't count.
                 if not (player_cards_val > 21):
-
                     print(f"The Dealer has hit {no_of_hits} times.")
                     print("The Dealer busted!")
                     print("\nDealer's hand :")
@@ -290,7 +282,6 @@ while game_on:
             break
 
         else:
-
             cont = input("Do you want to continue? (y/n) :")
 
             if cont == "y":
@@ -314,7 +305,6 @@ while game_on:
                 break
 
     except Exception as error:
-
         print(f"Following error occurred : {error} \nPlease try again.")
         game_num -= 1  # round with error won't be counted
         continue

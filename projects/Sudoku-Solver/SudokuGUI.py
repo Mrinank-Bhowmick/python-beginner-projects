@@ -11,7 +11,6 @@ pygame.init()
 
 
 def generate():
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -43,7 +42,6 @@ class Board:
         self.window = window
 
     def draw_board(self):
-
         for i in range(9):
             for j in range(9):
                 if j % 3 == 0 and j != 0:
@@ -80,7 +78,6 @@ class Board:
         )
 
     def deselect(self, tile):
-
         for i in range(9):
             for j in range(9):
                 if self.tiles[i][j] != tile:
@@ -92,7 +89,6 @@ class Board:
         wrong,
         time,
     ):
-
         self.window.fill((255, 255, 255))
         self.draw_board()
         for i in range(9):
@@ -100,10 +96,8 @@ class Board:
                 if self.tiles[j][i].selected:
                     self.tiles[j][i].draw((50, 205, 50), 4)
                 elif self.tiles[i][j].correct:
-
                     self.tiles[j][i].draw((34, 139, 34), 4)
                 elif self.tiles[i][j].incorrect:
-
                     self.tiles[j][i].draw((255, 0, 0), 4)
 
         if len(keys) != 0:
@@ -129,7 +123,6 @@ class Board:
         pygame.display.flip()
 
     def visualSolve(self, wrong, time):
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit()
@@ -157,7 +150,6 @@ class Board:
                 self.redraw({}, wrong, time)
 
     def hint(self, keys):
-
         while True:
             i = random.randint(0, 8)
             j = random.randint(0, 8)
@@ -168,7 +160,6 @@ class Board:
                 self.tiles[i][j].value = self.solvedBoard[i][j]
                 return True
             elif self.board == self.solvedBoard:
-
                 return False
 
 
@@ -188,7 +179,6 @@ class Tile:
         self.incorrect = False
 
     def draw(self, color, thickness):
-
         pygame.draw.rect(self.window, color, self.rect, thickness)
 
     def display(
@@ -197,20 +187,17 @@ class Tile:
         position,
         color,
     ):
-
         font = pygame.font.SysFont("lato", 45)
         text = font.render(str(value), True, color)
         self.window.blit(text, position)
 
     def clicked(self, mousePos):
-
         if self.rect.collidepoint(mousePos):
             self.selected = True
         return self.selected
 
 
 def main():
-
     screen = pygame.display.set_mode((540, 590))
     screen.fill((255, 255, 255))
     pygame.display.set_caption("Sudoku Solver")
@@ -246,7 +233,6 @@ def main():
             if event.type == pygame.QUIT:
                 exit()
             elif event.type == pygame.MOUSEBUTTONUP:
-
                 mousePos = pygame.mouse.get_pos()
                 for i in range(9):
                     for j in range(9):
@@ -254,7 +240,6 @@ def main():
                             selected = (i, j)
                             board.deselect(board.tiles[i][j])
             elif event.type == pygame.KEYDOWN:
-
                 if board.board[selected[1]][selected[0]] == 0 and selected != (-1, -1):
                     if event.key == pygame.K_1:
                         keyDict[selected] = 1
@@ -285,12 +270,10 @@ def main():
                     elif (
                         event.key == pygame.K_BACKSPACE or event.key == pygame.K_DELETE
                     ):
-
                         if selected in keyDict:
                             board.tiles[selected[1]][selected[0]].value = 0
                             del keyDict[selected]
                     elif event.key == pygame.K_RETURN:
-
                         if selected in keyDict:
                             if (
                                 keyDict[selected]

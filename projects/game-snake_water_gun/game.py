@@ -22,7 +22,6 @@ lst = ["s", "w", "g"]
 print("[ s ] - Snake\n[ w ] - Water\n[ g ] - Gun\n")
 
 while gameno < totalchances:
-
     gameno = gameno + 1
     print(f"=========Game {gameno} is starting=========")
 

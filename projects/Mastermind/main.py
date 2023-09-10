@@ -34,7 +34,6 @@ else:
 
         # for loop runs 4 times since the number has 4 digits.
         for i in range(0, 4):
-
             # checking for equality of digits
             if n[i] == num[i]:
                 # number of digits guessed correctly increments

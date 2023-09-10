@@ -33,7 +33,6 @@ def process_inp(k, l):
 
         # reject hand if it is far away
         if l > 0.2:
-
             if k < -78:
                 print("left")
                 pa.press("left")

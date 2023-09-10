@@ -28,7 +28,7 @@ def face_detector(img, size=0.5):
     if faces is ():
         return img, []
 
-    for (x, y, w, h) in faces:
+    for x, y, w, h in faces:
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 255), 2)
         roi = img[y : y + h, x : x + w]
         roi = cv2.resize(roi, (200, 200))
