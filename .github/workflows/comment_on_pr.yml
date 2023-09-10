@@ -1,0 +1,28 @@
+name: Comment on Pull Request
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Comment on Pull Request
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Greetings! This is an automated message from GitHub Actions. :robot:
+              Your pull request has been received and is awaiting review by the repository owner or a maintainer. This may take some time, so please be patient.
+              While you wait, you can continue to work on other issues or pull requests, or explore the project further. Or you can simply relax and enjoy your day.
+              Thank you for your contribution to this project! You are awesome! :star:’
+            })
