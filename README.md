@@ -1643,7 +1643,7 @@
         <a href="https://github.com/kodingkin">
             <img src="https://avatars.githubusercontent.com/u/125667216?v=4" width="100;" alt="kodingkin"/>
             <br />
-            <sub><b>kodingkin</b></sub>
+            <sub><b>Kodingkin</b></sub>
         </a>
     </td>
     <td align="center">
