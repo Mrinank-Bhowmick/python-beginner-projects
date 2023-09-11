@@ -9,6 +9,13 @@
   <br>
 </h1>
 
+<p align="center">
+<a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Mrinank-Bhowmick/python-beginner-projects.svg"></a>
+<a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Mrinank-Bhowmick/python-beginner-projects.svg?color=blue"></a>
+<a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Mrinank-Bhowmick/python-beginner-projects.svg?color=blue"></a>
+<a><img alt="Awesome" src="https://awesome.re/badge-flat2.svg"></a>
+</p>
+
 
 # 💭 **Why these awesome projects ??**
 💠 _This repository offers a variety of fascinating mini-projects written in Python._ 
