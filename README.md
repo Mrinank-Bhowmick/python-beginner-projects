@@ -5,7 +5,7 @@
   </br>
   
   <br>
-  <img src="data/python-projects-for-beginners.svg" alt="Python Projects For Beginners">
+  <img src="data/python-projects-for-beginners.svg" align="center" alt="Python Projects For Beginners" width="450">
   </br>
 
 </h1>
