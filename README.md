@@ -2,12 +2,14 @@
   <br>
   <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects">
   <img src="https://i.imgur.com/FpIFb14_d.webp?maxwidth=1520&fidelity=grand" align="center" alt="banner" width="450"></a>
-
+  </br>
+  
   <br>
-  <B>Python Projects For Beginners</B>
+  <img src="data/python-projects-for-beginners.svg" alt="Python Projects For Beginners">
+  </br>
 
-  <br>
 </h1>
+
 
 <p align="center">
 <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Mrinank-Bhowmick/python-beginner-projects.svg"></a>
