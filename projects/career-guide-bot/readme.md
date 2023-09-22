@@ -1,4 +1,3 @@
-Certainly! Here's a basic README for your "Career Guide" project:
 
 # Career Guide
 
