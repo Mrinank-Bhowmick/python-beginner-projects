@@ -35,5 +35,6 @@ The Career Guide is a Python-based interactive program that helps users explore 
 - Python 3.x
 - Matplotlib (for data visualization)
 
-## Screenshots
-[Include screenshots of your program in action, if desired]
+## DEMO
+<img width="290" alt="image" src="https://github.com/ShivaNagachander/python-beginner-projects/assets/123239393/45ac0f22-7331-4055-97c2-053231561f56">
+
