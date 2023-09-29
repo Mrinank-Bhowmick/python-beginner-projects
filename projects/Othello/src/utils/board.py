@@ -21,7 +21,6 @@ class Board:
 
     def all_legal_moves(self, PLAYER: int) -> set:
         '''Return all legal moves for the player'''
-        OPPONENT = Board.WHITE if PLAYER == Board.BLACK else Board.BLACK
 
         all_legal_moves = set()
         for row in range(8):
@@ -33,6 +32,7 @@ class Board:
 
     def legal_moves(self, row: int, col: int) -> list:
         '''Return all legal moves for the cell at the given position'''
+
         PLAYER = self.board[row, col]
         OPPONENT = Board.WHITE if PLAYER == Board.BLACK else Board.BLACK
         legal_moves = list()
@@ -109,6 +109,7 @@ class Board:
 
     def set_discs(self, row: int, col: int, PLAYER: int) -> None:
         '''Set the discs on the board as per the move made on the given cell'''
+        
         self.board[row, col] = PLAYER
         OPPONENT = Board.WHITE if PLAYER == Board.BLACK else Board.BLACK
 
@@ -211,3 +212,36 @@ class Board:
         self.board[3, 4] = self.board[4,3] = Board.BLACK
 
         self.black_disc_count = self.white_disc_count = 2
+
+    def check_game_over(self) -> bool:
+        possibleBlackMoves = self.all_legal_moves(Board.BLACK)
+        possibleWhiteMoves = self.all_legal_moves(Board.WHITE)
+
+        if not possibleBlackMoves or not possibleWhiteMoves:
+            return False
+        return True
+    
+    def evaluate_board(self) -> int:
+        '''Evaluate the board as per various heuristics.'''
+
+        # coin parity heuristic
+        coin_parity = 100 * (self.black_disc_count - self.white_disc_count) / (self.black_disc_count + self.white_disc_count)
+        
+        # mobility heuristic value
+        black_mobility = len(self.all_legal_moves(Board.BLACK))
+        white_mobility = len(self.all_legal_moves(Board.WHITE))
+        if black_mobility + white_mobility == 0:
+            actual_mobility = 0
+        else:
+            actual_mobility = 100 * (black_mobility - white_mobility) / (black_mobility + white_mobility)
+
+        # corner heuristic value
+        corners = (self.board[0, 0], self.board[0,7], self.board[7, 0], self.board[7, 7])
+        black_corners = sum(10 for coin in corners if coin == Board.BLACK)
+        white_corners = sum(-10 for coin in corners if coin == Board.WHITE)
+        if black_corners + white_corners == 0:
+            corner_value = 0
+        else:
+            corner_value = 100 * (black_corners - white_corners) / (black_corners + white_corners)
+
+        return coin_parity + actual_mobility + corner_value
