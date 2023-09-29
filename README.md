@@ -861,8 +861,8 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/glacias07">
-            <img src="https://avatars.githubusercontent.com/u/66057990?v=4" width="100;" alt="glacias07"/>
+        <a href="https://github.com/shriyansnaik">
+            <img src="https://avatars.githubusercontent.com/u/66057990?v=4" width="100;" alt="shriyansnaik"/>
             <br />
             <sub><b>Shriyans Naik</b></sub>
         </a>
