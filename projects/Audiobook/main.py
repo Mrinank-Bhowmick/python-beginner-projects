@@ -6,6 +6,7 @@ import keyboard  # Import the keyboard library
 pdf = None
 stop_thread = False  # Variable to signal stopping the playback
 
+
 def play(pdfReader):
     global pdf
     global stop_thread
@@ -21,10 +22,12 @@ def play(pdfReader):
 
     speaker.stop()
 
+
 def stop_playback():
     global stop_thread
     input("Press Enter to stop playback...")
     stop_thread = True  # Set the flag to stop playback
+
 
 file = input("Enter your PDF file name: ")
 
@@ -42,7 +45,7 @@ playback_thread = threading.Thread(target=play, args=(pdf,))
 playback_thread.start()
 
 # Start a thread for stopping playback with keyboard input
-keyboard.add_hotkey('q', lambda: stop_playback())
+keyboard.add_hotkey("q", lambda: stop_playback())
 keyboard.wait()  # Wait for the hotkey event
 
 # Wait for the playback to finish
