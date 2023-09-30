@@ -24,7 +24,7 @@ def add_expense():
 
     # Get input from user
     print("Enter date (YYYY-MM-DD): ")
-    date = input().split()[0] + "-01"
+    date = input().split()[0]
     print("Enter description: ")
     description = input()
     print("Enter amount: ")
@@ -88,6 +88,18 @@ def total_expenses():
     total = conn.execute("SELECT SUM(amount) FROM expenses;").fetchone()[0]
     print(f"Total expenses: {total}$")
 
+def expense_analysis():
+    # Calculate and display total expenses
+    total = conn.execute("SELECT SUM(amount) FROM expenses;").fetchone()[0]
+    print(f"Total expenses: {total}$")
+    average=conn.execute("SELECT AVG(amount) FROM expenses;").fetchone()[0]
+    print(f"Average expenses: {average}$")
+    maxi=conn.execute("SELECT * FROM expenses WHERE amount = (SELECT MAX(amount) FROM expenses);").fetchall()
+    print(f"Highest expense: {maxi[0][3]}$  Date: {maxi[0][1]}  description: {maxi[0][2]} ")
+    mini=conn.execute("SELECT * FROM expenses WHERE amount = (SELECT MIN(amount) FROM expenses);").fetchall()
+    print(f"Lowest expense: {mini[0][3]}$  Date: {mini[0][1]}  description: {mini[0][2]}")
+    sum_month=conn.execute("SELECT SUM(amount), strftime('%Y-%m', date) AS MonthlyExpenses FROM expenses GROUP BY MonthlyExpenses").fetchall()
+    print(f"Sum of expenses of each month: {sum_month}")
 
 def main_menu():
     while True:
@@ -97,11 +109,14 @@ def main_menu():
         print("3. Total Expenses")
         print("4. Delete Expense")
         print("5. Update Expense Description")
-        print("6. Quit")
+        print("6. Expense Analysis")
+        print("-1. Quit")
 
         choice = input("Enter your choice (1-6): ")
 
-        if choice == "1":
+        if choice == "-1":
+            break
+        elif choice == "1":
             add_expense()
         elif choice == "2":
             view_expenses()
@@ -112,7 +127,7 @@ def main_menu():
         elif choice == "5":
             update_expense()
         elif choice == "6":
-            break
+            expense_analysis()
         else:
             print("Invalid choice. Please try again.")
 
