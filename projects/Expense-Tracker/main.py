@@ -29,7 +29,7 @@ def add_expense():
 
     # Get input from user
     print("Enter date (YYYY-MM-DD): ")
-    date = input().split()[0] + "-01"
+    date = input().split()[0] 
     print("Enter description: ")
     description = input()
     print("Enter amount: ")
@@ -92,6 +92,70 @@ def total_expenses():
     # Calculate and display total expenses
     total = conn.execute("SELECT SUM(amount) FROM expenses;").fetchone()[0]
     print(f"Total expenses: {total}$")
+
+def data_filter():
+    print("Select Filter Option:")
+    print("1. Filter by Date")
+    print("2. Filter by Amount")
+    
+    option = input("Enter your choice (1 or 2): ")
+    
+    if option == "1":
+        print("Select Date Range:")
+        print("1. Today")
+        print("2. Past Month")
+        print("3. Past Year")
+        
+        date_option = input("Enter your choice (1, 2, or 3): ")
+        if date_option == "1":
+            # Filter for today
+            filter_condition = "date = date('now')"
+        elif date_option == "2":
+            # Filter for past month
+            filter_condition = "date >= date('now', '-1 month')"
+        elif date_option == "3":
+            # Filter for past year
+            filter_condition = "date >= date('now', '-1 year')"
+        else:
+            print("Invalid input.")
+            return
+    elif option == "2":
+        print("Select Amount Range:")
+        print("1. 0 to 500")
+        print("2. 500 to 2500")
+        print("3. 2500 and above")
+        
+        amount_option = input("Enter your choice (1, 2, or 3): ")
+        if amount_option == "1":
+            # Filter for 0 to 500
+            filter_condition = "amount >= 0 AND amount <= 500"
+        elif amount_option == "2":
+            # Filter for 500 to 2500
+            filter_condition = "amount > 500 AND amount <= 2500"
+        elif amount_option == "3":
+            # Filter for 2500 and above
+            filter_condition = "amount > 2500"
+        else:
+            print("Invalid input.")
+            return
+    else:
+        print("Invalid input.")
+        return
+    # Writing a single line of sql code which takes the filter condition and returns data accordingly.
+    select_expenses_sql = f"SELECT * FROM expenses WHERE {filter_condition} ORDER BY date;"
+    expenses = conn.execute(select_expenses_sql).fetchall()
+    
+    if not expenses:
+        print("No expenses recorded based on the selected filter.")
+    else:
+        print("Filtered Expenses:")
+        for expense in expenses:
+            print(
+                f"ID: {expense[0]}, Date: {expense[1]}, Description: {expense[2]}, Amount: Rs: {expense[3]}"
+            )
+
+
+
 
 def convert_to_excel():
     # Convert expense data from database to excel
@@ -160,9 +224,10 @@ def main_menu():
         print("5. Update Expense Description")
         print("6. Data Export to Excel")
         print("7. Data Export to PDF")
-        print("8. Quit")
+        print("8. Data Filter")
+        print("9. Quit")
 
-        choice = input("Enter your choice (1-7): ")
+        choice = input("Enter your choice (1-9): ")
 
         if choice == "1":
             add_expense()
@@ -179,6 +244,8 @@ def main_menu():
         elif choice == "7":
             convert_to_pdf()
         elif choice == "8":
+            data_filter()
+        elif choice == "9":
             break
         else:
             print("Invalid choice. Please try again.")
