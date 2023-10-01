@@ -6,9 +6,9 @@ First of all, thank you for taking the time to contribute to this project. We've
 ### Check out the projects folder
 
 We have some awesome projects available on the repository. 
-If you would like to contribute some more projects which is not there in this repository , feel free to contribute. 
+If you would like to contribute some more projects which is not there in this repository, feel free to contribute. 
 If you found a bug please open an issue.
-We are looking for better documention and optimization of code.
+We are looking for better documentation and optimization of code.
 
 
 ### Writing some code!
