@@ -1,6 +1,7 @@
 import sqlite3
 import csv
- # Connect to the database
+
+# Connect to the database
 conn = sqlite3.connect("expenses.db")
 cursor = conn.cursor()
 
@@ -11,14 +12,14 @@ delete_expense_by_id_sql = "DELETE FROM expenses WHERE id=?"
 update_expense_by_id_sql = "UPDATE expenses SET description=? WHERE id=?"
 
 # Check if the database exists, create it if not
-if not conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='expenses';").fetchone():
+if not conn.execute(
+    "SELECT name FROM sqlite_master WHERE type='table' AND name='expenses';"
+).fetchone():
     cursor.execute(create_table_sql)
     conn.commit()
-        
-   
+
 
 # Define SQL statements
-    
 
 
 def add_expense():
@@ -26,7 +27,7 @@ def add_expense():
 
     # Get input from user
     print("Enter date (YYYY-MM-DD): ")
-    date = input().split()[0] 
+    date = input().split()[0]
     print("Enter description: ")
     description = input()
     print("Enter amount: ")
@@ -42,11 +43,10 @@ def add_expense():
 
 def delete_expense():
     global cursor
-    if is_empty()==True:
+    if is_empty() == True:
         print("No expenses recorded yet.")
     else:
-
-    # Get ID from user
+        # Get ID from user
         print("Enter ID to delete: ")
         id = int(input())
 
@@ -60,10 +60,10 @@ def delete_expense():
 
 def update_expense():
     global cursor
-    if is_empty()==True:
+    if is_empty() == True:
         print("No expenses recorded yet.")
     else:
-    # Get ID and new description from user
+        # Get ID and new description from user
         print("Enter ID to update: ")
         id = int(input())
         print("Enter new description: ")
@@ -95,33 +95,37 @@ def total_expenses():
     total = conn.execute("SELECT SUM(amount) FROM expenses;").fetchone()[0]
     print(f"Total expenses: {total}$")
 
-#defining function for exporting to csv
+
+# defining function for exporting to csv
 def print_csv():
-    #opening csv file 
-    with open('expense.csv',"w") as csvfile:
+    # opening csv file
+    with open("expense.csv", "w") as csvfile:
         #
         csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(["ID","DATE","Desc","description"]) # To Define heading of rows of csv
+        csvwriter.writerow(
+            ["ID", "DATE", "Desc", "description"]
+        )  # To Define heading of rows of csv
         csvwriter.writerows(cursor)
         expenses = conn.execute(select_expenses_sql).fetchall()
         for i in expenses:
             print(i)
-            csvwriter.writerow(i) #writing querys to csv
-        total = conn.execute("SELECT SUM(amount) FROM expenses;").fetchone()[0] # For total Expenses 
-        csvwriter.writerow(["","","Total Expenses:",total]) # Printing to CSV
+            csvwriter.writerow(i)  # writing querys to csv
+        total = conn.execute("SELECT SUM(amount) FROM expenses;").fetchone()[
+            0
+        ]  # For total Expenses
+        csvwriter.writerow(["", "", "Total Expenses:", total])  # Printing to CSV
 
 
-
-#defined this funtion to check is database is empty or not
+# defined this funtion to check is database is empty or not
 def is_empty():
-    if conn.execute(select_expenses_sql).fetchall()==[]:
-       
+    if conn.execute(select_expenses_sql).fetchall() == []:
         return True
     else:
         return False
 
+
 def main_menu():
-    #conn=db_init()
+    # conn=db_init()
     while True:
         print("\nExpense Tracker Menu:")
         print("1. Add Expense")
@@ -149,7 +153,6 @@ def main_menu():
         elif choice == "7":
             is_empty()
         else:
-           
             print("Invalid choice. Please try again.")
 
 
