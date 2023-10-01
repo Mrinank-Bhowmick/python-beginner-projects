@@ -98,7 +98,7 @@ def total_expenses():
 #defining function for exporting to csv
 def print_csv():
     #opening csv file 
-    with open('eggs.csv',"w") as csvfile:
+    with open('expense.csv',"w") as csvfile:
         #
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(["ID","DATE","Desc","description"]) # To Define heading of rows of csv
