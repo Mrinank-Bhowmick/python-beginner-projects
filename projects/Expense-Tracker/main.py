@@ -1,5 +1,10 @@
 import sqlite3
+import csv 
 
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
 # Connect to the database
 conn = sqlite3.connect("expenses.db")
 cursor = conn.cursor()
@@ -88,6 +93,62 @@ def total_expenses():
     total = conn.execute("SELECT SUM(amount) FROM expenses;").fetchone()[0]
     print(f"Total expenses: {total}$")
 
+def convert_to_excel():
+    # Convert expense data from database to excel
+    
+    # Define SQL query to select all data from 'expenses' table
+    query = "Select * from expenses"
+    
+    # Execute the query and fetch data
+    cursor.execute(query)
+    data = cursor.fetchall()
+    
+    # Add column headers to the data
+    data = [('Id', 'Date', 'Description', 'Amount')] + data
+        
+    # Write data to a CSV file named 'expenses.csv'
+    with open('expenses.csv', 'w', newline='') as file:
+        csv_writer = csv.writer(file)
+        csv_writer.writerows(data)
+        
+def convert_to_pdf():
+    # Convert expense data from database to PDF
+    
+    # Define SQL query to select all data from 'expenses' table
+    query = "SELECT * FROM expenses"
+    
+    # Execute the query and fetch data
+    cursor.execute(query)
+    data = cursor.fetchall()
+    
+    # Add column headers to the data
+    data = [('Id', 'Date', 'Description', 'Amount')] + data
+
+    # Define PDF filename as 'expenses.pdf' and set page size to letter
+    pdf_filename = 'expenses.pdf'
+    pdf = SimpleDocTemplate(pdf_filename, pagesize=letter)
+    
+    # Create a table from the data
+    table = Table(data)
+    
+    # Define style for the table
+    style = TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+                        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                        ('GRID', (0, 0), (-1, -1), 1, colors.black)])
+    table.setStyle(style)
+    
+    # Define a title for the PDF
+    styles = getSampleStyleSheet()
+    title = Paragraph("<b>Expenses</b>", styles['Title'])
+
+    # Build the PDF with title and table
+    pdf.build([title, table])
+
+
 
 def main_menu():
     while True:
@@ -97,9 +158,11 @@ def main_menu():
         print("3. Total Expenses")
         print("4. Delete Expense")
         print("5. Update Expense Description")
-        print("6. Quit")
+        print("6. Data Export to Excel")
+        print("7. Data Export to PDF")
+        print("8. Quit")
 
-        choice = input("Enter your choice (1-6): ")
+        choice = input("Enter your choice (1-7): ")
 
         if choice == "1":
             add_expense()
@@ -112,6 +175,10 @@ def main_menu():
         elif choice == "5":
             update_expense()
         elif choice == "6":
+            convert_to_excel()
+        elif choice == "7":
+            convert_to_pdf()
+        elif choice == "8":
             break
         else:
             print("Invalid choice. Please try again.")
