@@ -3,16 +3,43 @@ import os
 import sys
 from pikepdf import Pdf
 
+# helper function to list PDF files in a directory
+
 
 def ls(contents):
     for index, pdf in enumerate(contents):
         print(index, ': ', pdf)
 
 
+# modify PDF list based on type (exclude/include)
+def modify(pdfs, type):
+    pdf_selections = input(
+        "\nEnter the PDF filenames which should be excluded/included from the list separated by a SPACE:\n> ").split()
+
+    final_selections = []
+
+    for selection in pdf_selections:
+        if selection not in pdfs:
+            print(
+                f"\n❗️ {selection} does not exist in this directory! Skipping it...\n")
+        else:
+            print(f"\n❌ Removing '{selection}' from merger...")
+            final_selections.append(selection)
+
+    for selection in final_selections:
+        if type == "exclude":
+            pdfs = list(filter(lambda x: x != selection, pdfs))
+        else:
+            pdfs = list(filter(lambda x: x == selection, pdfs))
+
+    return pdfs
+
+
 if __name__ == '__main__':
 
     merger = Pdf.new()
 
+    # take directory location from command line argument (if given) else choose current directory as default
     if len(sys.argv[1:]) > 0:
         dir = sys.argv[1]
         contents = os.listdir(dir)
@@ -23,19 +50,24 @@ if __name__ == '__main__':
     print("\n\nContents of directory:\n")
     ls(contents)
 
+    # sort PDFs by created time in a given directory
     sorted_contents = sorted(
         list(map(lambda x: os.path.join(dir, x), contents)), key=os.path.getctime)
     contents = [s.split(os.path.sep)[-1] for s in sorted_contents]
     pdfs = list(filter(lambda x: x.endswith('.pdf'), contents))
 
+    # start the loop in 'do-while' format:
     confirmation = 'n'
-
     while confirmation not in ['y', 'Y']:
+        if not pdfs:
+            exit('No PDFs to merge... Exiting...')
+
         print("\nThe final list of PDFs to be merged: \n")
         ls(pdfs)
 
+        # option to modify the list of PDFs
         confirmation = input(
-            f"\nTotal: {len(pdfs)}\n\nCONTINUE? ['y'/'Y'] OR ADD ANY MORE EXCEPTIONS TO THE LIST? ['n'/'N']\n> ")
+            f"\nTotal: {len(pdfs)}\n\nCONTINUE? ['y'/'Y'] OR MODIFY THIS LIST? ['n'/'N']\n> ")
 
         if confirmation in ['y', 'Y']:
             file_name = input(
@@ -68,18 +100,13 @@ if __name__ == '__main__':
                   os.path.abspath(file_name), " ✅")
 
         else:
-            pdf_exceptions = input(
-                "\nEnter the PDF file names which should be excluded from the list separated by comma:\n> ").split(',')
+            type = input(
+                "\n1: Specify filenames to EXCLUDE\n2: Specify filenames to INCLUDE\n\nEnter the choice (number):\n> ")
 
-            final_exceptions = []
+            while type not in ('1', '2'):
+                type = input(
+                    "\n1: Specify filenames to EXCLUDE\n2: Specify filenames to INCLUDE\n\nEnter the choice (please enter '1' or '2'):\n> ")
 
-            for exception in pdf_exceptions:
-                if exception not in pdfs:
-                    print(
-                        f"\n❗️ {exception} does not exist in this directory! Skipping it...\n")
-                else:
-                    print(f"\n❌ Removing '{exception}' from merger...")
-                    final_exceptions.append(exception)
+            type = 'exclude' if type == '1' else 'include'
 
-            for exception in final_exceptions:
-                pdfs = list(filter(lambda x: x != exception, pdfs))
+            pdfs = modify(pdfs, type)
