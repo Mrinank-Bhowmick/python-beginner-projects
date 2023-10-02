@@ -1,4 +1,4 @@
-class Colors():
+class Colors:
     CHARCOAL = (64, 64, 64)
     DARK_CHARCOAL = (48, 50, 48)
     RED = (255, 0, 0)
