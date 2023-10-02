@@ -1731,7 +1731,7 @@
         <a href="https://github.com/mangnez">
             <img src="https://avatars.githubusercontent.com/u/110713609?v=4" width="100;" alt="mangnez"/>
             <br />
-            <sub><b>mangnez</b></sub>
+            <sub><b>Mangnez</b></sub>
         </a>
     </td>
     <td align="center">
