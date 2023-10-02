@@ -1,12 +1,12 @@
-# PredictO
+# Diabetes Monitoring Dashboard
 
-Aiding health management and disease prediction. PredictO is a healthcare application that uses Machine Learning algorithms to predict whether a person is diabetic or not.
+This is a healthcare web-application that uses Machine Learning algorithms to predict whether a person is diabetic or not, while also providing valuable life style improvement suggestions through chatGPT api.
 
 ## How is it unique and different from other diabetes prediction models ?
 
 - It uses only the information from the user which he/she can fill in real-time.
 - This application is integrated with an IOT device responsible for measuring real-time blood glucose levels.
-- PredictO evaluates the data and returns not only the prediction but also a good suggestion on how to keep up a good fitness for every individual.
+- App evaluates the data and returns not only the prediction but also a good suggestion on how to keep up a good fitness for every individual.
 
 Chat-GPT is already integrated in the dashboard to help user with further insights regarding results.😊
 
