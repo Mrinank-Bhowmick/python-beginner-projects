@@ -30,7 +30,7 @@ Before you begin, ensure you have met the following requirements:
 
     ```
 4. ## Running the Application
-    ### To run the FastAPI application, use the following command:
+    ### To run the FastAPI application, use the following command: 
 
     ```
     uvicorn main:app --reload
