@@ -25,6 +25,10 @@ def multiplication():
 def division():
     n1 = float(input("Enter first number: "))
     n2 = float(input("Enter second number: "))
+    if n2==0:
+        print("Invalid entry")
+        return "Invalid entry"
+    print(n1/n2)
 
     return n1 / n2
 
@@ -126,6 +130,8 @@ while c != "-1":
     elif c == "4":
         res = division()
         os.system("cls")
+        if res =="Invalid entry":
+            continue
         print(f"The answer is {res}")
         time.sleep(2)
         os.system("cls")
