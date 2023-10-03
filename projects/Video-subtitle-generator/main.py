@@ -11,7 +11,9 @@ def transcribe_audio(path, output_filetype="srt", whisper_model="base"):
     if os.path.exists(output_filename):
         i = 1
         while os.path.exists(output_filename):
-            output_filename = os.path.join("SrtFiles", f"{filename}({i}).{output_filetype}")
+            output_filename = os.path.join(
+                "SrtFiles", f"{filename}({i}).{output_filetype}"
+            )
             i += 1
     if output_filetype == "srt":
         # open the output file in write mode
@@ -31,11 +33,11 @@ def transcribe_audio(path, output_filetype="srt", whisper_model="base"):
             with open(output_filename, "a", encoding="utf-8") as srtFile:
                 srtFile.write(segment)
         return srtFile
-    
+
     elif output_filetype == "json":
         with open(output_filename, "w", encoding="utf-8") as jsonFile:
-            jsonFile.write("{\n \"captions\": [\n")
-        model = whisper.load_model(whisper_model)  
+            jsonFile.write('{\n "captions": [\n')
+        model = whisper.load_model(whisper_model)
         print("Whisper model loaded.")
         transcribe = model.transcribe(audio=path)
         segments = transcribe["segments"]
@@ -48,17 +50,17 @@ def transcribe_audio(path, output_filetype="srt", whisper_model="base"):
             duration_str = str(0) + str(duration) + ",000"
             text = segment["text"]
             segmentId = segment["id"] + 1
-            segment = f"{{\t\n\"id\": {segmentId},\n\"start\": \"{startTime_str}\",\n\"end\": \"{endTime_str}\",\n\"duration\": \"{duration_str}\",\n\"text\": \"{text[1:] if text[0] == ' ' else text}\"\n}},\n"           
+            segment = f"{{\t\n\"id\": {segmentId},\n\"start\": \"{startTime_str}\",\n\"end\": \"{endTime_str}\",\n\"duration\": \"{duration_str}\",\n\"text\": \"{text[1:] if text[0] == ' ' else text}\"\n}},\n"
             with open(output_filename, "a", encoding="utf-8") as jsonFile:
                 jsonFile.write(segment)
-        # remove the last comma 
+        # remove the last comma
         with open(output_filename, "rb+") as jsonFile:
             jsonFile.seek(-2, os.SEEK_END)
             jsonFile.truncate()
         with open(output_filename, "a", encoding="utf-8") as jsonFile:
             jsonFile.write("\n]\n}")
         return jsonFile
-    
+
     elif output_filetype == "txt":
         with open(output_filename, "w", encoding="utf-8") as txtFile:
             txtFile.write("")
@@ -82,7 +84,11 @@ output_dir = "SrtFiles"
 if not os.path.exists(output_dir):
     os.mkdir("SrtFiles")
 path = input("Please enter the path of the audio file:")
-output_filetype = int(input("Please enter the output file type (SRT is selected by default):\n1.SRT\n2.JSON\n3.TXT\n"))
+output_filetype = int(
+    input(
+        "Please enter the output file type (SRT is selected by default):\n1.SRT\n2.JSON\n3.TXT\n"
+    )
+)
 if output_filetype == 1:
     output_filetype = "srt"
 elif output_filetype == 2:
@@ -90,7 +96,11 @@ elif output_filetype == 2:
 elif output_filetype == 3:
     output_filetype = "txt"
 
-whisper_model = int(input("Please enter the name of the whisper model you want to use (base is selected by default):\n1.Tiny\n2.Base\n3.Small\n4.Medium\n5.Large\n"))
+whisper_model = int(
+    input(
+        "Please enter the name of the whisper model you want to use (base is selected by default):\n1.Tiny\n2.Base\n3.Small\n4.Medium\n5.Large\n"
+    )
+)
 if whisper_model == 1:
     whisper_model = "tiny"
 elif whisper_model == 2:
