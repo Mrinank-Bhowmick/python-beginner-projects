@@ -2,7 +2,15 @@ import socket
 import pyfiglet
 
 
-port_to_check = 22
+def int_checker(x):
+    while True:
+        try:
+            x = int(x)
+            break
+        except ValueError:
+            print("Error: Invalid input! Please enter an integer.")
+            x = input("Enter the port to check: ")
+    return x
 
 
 def port_checker(port):
@@ -17,5 +25,6 @@ def port_checker(port):
 
 
 print(pyfiglet.figlet_format("Port Scanner"))
-print("Is port {} open?".format(port_to_check))
+print("Port Scanner")
+port_to_check = int_checker(input("Enter the port to check: "))
 port_checker(port_to_check)
