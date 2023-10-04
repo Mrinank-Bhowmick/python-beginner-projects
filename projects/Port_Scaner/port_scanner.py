@@ -1,6 +1,7 @@
 import socket
 import pyfiglet
 
+
 def int_checker(x):
     while True:
         try:
@@ -11,6 +12,7 @@ def int_checker(x):
             x = input("Enter the port to check: ")
     return x
 
+
 def port_checker(port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     result = sock.connect_ex(("127.0.0.1", port))
@@ -20,6 +22,7 @@ def port_checker(port):
         print("Port is not open")
 
     sock.close()
+
 
 print(pyfiglet.figlet_format("Port Scanner"))
 print("Port Scanner")
