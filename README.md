@@ -1337,7 +1337,7 @@
         <a href="https://github.com/payallenka">
             <img src="https://avatars.githubusercontent.com/u/83643171?v=4" width="100;" alt="payallenka"/>
             <br />
-            <sub><b>payallenka</b></sub>
+            <sub><b>Payallenka</b></sub>
         </a>
     </td>
     <td align="center">
