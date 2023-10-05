@@ -6,14 +6,17 @@ from tkinter import messagebox
 # Database initialization
 conn = sqlite3.connect("budget.db")
 c = conn.cursor()
-c.execute('''CREATE TABLE IF NOT EXISTS transactions (
+c.execute(
+    """CREATE TABLE IF NOT EXISTS transactions (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 date TEXT NOT NULL,
                 description TEXT NOT NULL,
                 amount REAL NOT NULL,
                 category TEXT NOT NULL
-            )''')
+            )"""
+)
 conn.commit()
+
 
 # Function to add a transaction to the database
 def add_transaction():
@@ -23,8 +26,10 @@ def add_transaction():
     category = category_combobox.get()
 
     if date and description and amount and category:
-        c.execute("INSERT INTO transactions (date, description, amount, category) VALUES (?, ?, ?, ?)",
-                  (date, description, amount, category))
+        c.execute(
+            "INSERT INTO transactions (date, description, amount, category) VALUES (?, ?, ?, ?)",
+            (date, description, amount, category),
+        )
         conn.commit()
         clear_entries()
         messagebox.showinfo("Success", "Transaction added successfully!")
@@ -33,12 +38,14 @@ def add_transaction():
     else:
         messagebox.showwarning("Warning", "Please fill in all fields.")
 
+
 # Function to clear input fields
 def clear_entries():
     date_entry.delete(0, tk.END)
     description_entry.delete(0, tk.END)
     amount_entry.delete(0, tk.END)
     category_combobox.set("")
+
 
 # Function to update the transaction list
 def update_transaction_list():
@@ -47,6 +54,7 @@ def update_transaction_list():
     transactions = c.fetchall()
     for transaction in transactions:
         transaction_listbox.insert(tk.END, transaction)
+
 
 # Function to calculate and display the current balance
 def update_balance():
@@ -61,6 +69,7 @@ def update_balance():
     balance = total_income - total_expense
     balance_label.config(text=f"Current Balance: ${balance:.2f}")
 
+
 # Create the main window
 root = tk.Tk()
 root.title("Personal Budget Manager")
@@ -73,7 +82,19 @@ description_entry = tk.Entry(root, width=30)
 amount_label = tk.Label(root, text="Amount ($):")
 amount_entry = tk.Entry(root, width=15)
 category_label = tk.Label(root, text="Category:")
-category_combobox = ttk.Combobox(root, values=["Income", "Housing", "Food", "Transportation", "Utilities", "Entertainment", "Health", "Other"])
+category_combobox = ttk.Combobox(
+    root,
+    values=[
+        "Income",
+        "Housing",
+        "Food",
+        "Transportation",
+        "Utilities",
+        "Entertainment",
+        "Health",
+        "Other",
+    ],
+)
 add_button = tk.Button(root, text="Add Transaction", command=add_transaction)
 transaction_listbox = tk.Listbox(root, width=50)
 balance_label = tk.Label(root, text="Current Balance: $0.00")

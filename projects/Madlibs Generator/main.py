@@ -42,11 +42,14 @@ root = tk.Tk()
 root.title("Mad Libs Game")
 
 #
-choice_label = tk.Label(root, text="""
+choice_label = tk.Label(
+    root,
+    text="""
 Choose a Mad Lib story : 
 1.In a mystical and distant land..  
 2.In the enchanting world of...  
-3.In the bustling city of...""")
+3.In the bustling city of...""",
+)
 
 choice_label.pack()
 choice_var = tk.StringVar()
@@ -77,7 +80,8 @@ adverb_entry.pack()
 
 # GENERATE MAD LIB BUTTON
 generate_button = tk.Button(
-    root, text="Generate Mad Lib", command=generate_madlib_button_click)
+    root, text="Generate Mad Lib", command=generate_madlib_button_click
+)
 generate_button.pack()
 
 # MAD LIB TEXT
