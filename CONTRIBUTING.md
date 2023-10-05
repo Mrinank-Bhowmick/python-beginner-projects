@@ -12,7 +12,7 @@ Forking a repository is like making your own copy of someone else's project on G
 ### Grab Your Copy! 📥
 
 ```bash
-git clone https://github.com/your-username/python-beginner-projects.git
+git clone https://github.com/<your-username>/python-beginner-projects.git
 cd python-beginner-projects
 ```
 ### Stay in Sync! 🔄
@@ -38,7 +38,7 @@ git commit -m "Brief and descriptive commit message"
 ```
 Push your changes to the remote repository. This makes your changes visible for creating a pull request.
 ```bash
-git push -u origin Branch_Name
+git push -u origin branch-Name
 ```
 ## Creating a Pull Request
 - Go to your repository in browser and click on compare and pull requests. Then add a title and description to your pull request that explains your contribution.🚀 
