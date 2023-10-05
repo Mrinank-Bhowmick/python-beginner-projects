@@ -5,7 +5,7 @@ import numpy as np
 
 # Import Data
 
-df = pd.read_csv('https://github.com/YBI-Foundation/Dataset/raw/main/Big%20Sales%20Data.csv')
+df = pd.read_csv('sales_data.csv')
 
 # Describe Data
 
