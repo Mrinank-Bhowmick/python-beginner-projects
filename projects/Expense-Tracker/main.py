@@ -114,20 +114,21 @@ def print_csv():
             0
         ]  # For total Expenses
         csvwriter.writerow(["", "", "Total Expenses:", total])  # Printing to CSV
-        
+
+
 def data_filter():
     print("Select Filter Option:")
     print("1. Filter by Date")
     print("2. Filter by Amount")
-    
+
     option = input("Enter your choice (1 or 2): ")
-    
+
     if option == "1":
         print("Select Date Range:")
         print("1. Today")
         print("2. Past Month")
         print("3. Past Year")
-        
+
         date_option = input("Enter your choice (1, 2, or 3): ")
         if date_option == "1":
             # Filter for today
@@ -146,7 +147,7 @@ def data_filter():
         print("1. 0 to 500")
         print("2. 500 to 2500")
         print("3. 2500 and above")
-        
+
         amount_option = input("Enter your choice (1, 2, or 3): ")
         if amount_option == "1":
             # Filter for 0 to 500
@@ -164,9 +165,11 @@ def data_filter():
         print("Invalid input.")
         return
     # Writing a single line of sql code which takes the filter condition and returns data accordingly.
-    select_expenses_sql = f"SELECT * FROM expenses WHERE {filter_condition} ORDER BY date;"
+    select_expenses_sql = (
+        f"SELECT * FROM expenses WHERE {filter_condition} ORDER BY date;"
+    )
     expenses = conn.execute(select_expenses_sql).fetchall()
-    
+
     if not expenses:
         print("No expenses recorded based on the selected filter.")
     else:
