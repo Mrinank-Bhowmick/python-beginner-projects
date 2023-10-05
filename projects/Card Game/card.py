@@ -74,9 +74,6 @@ class Player:
         self.name = name
 
 
-new_lines = "\n" * 10
-
-
 class Game:
     def __init__(self):
         while True:
@@ -87,12 +84,12 @@ class Game:
             if re.search(pattern, str) == None:
                 break
             else:
-                print(f"{new_lines}Please, don't use special characters")
+                print("Please, don't use special characters")
         self.deck = Deck()
         self.p1 = Player(name1)
         self.p2 = Player(name2)
 
-    def wins(self, winner):
+    def display_winner(self, winner):
         w = "{} wins this round"
         w = w.format(winner)
         print(w)
@@ -104,7 +101,7 @@ class Game:
 
     def play_game(self):
         cards = self.deck.cards
-        print(f"{new_lines}Beginning War!")
+        print("Beginning War!")
         while len(cards) >= 2:
             m = "q to quit. Any " + "key to play:"
             response = input(m)
@@ -117,13 +114,13 @@ class Game:
             self.draw(p1n, p1c, p2n, p2c)
             if p1c > p2c:
                 self.p1.wins += 1
-                self.wins(self.p1.name)
+                self.display_winner(self.p1.name)
             else:
                 self.p2.wins += 1
-                self.wins(self.p2.name)
+                self.display_winner(self.p2.name)
 
         win = self.winner(self.p1, self.p2)
-        print("War is over.{} wins".format(win))
+        print("War is over. {} wins".format(win))
 
     def winner(self, p1, p2):
         if p1.wins > p2.wins:
