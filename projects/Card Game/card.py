@@ -1,6 +1,7 @@
 from random import shuffle
 import re
 
+
 class Card:
     suits = ["spades", "hearts", "diamonds", "clubs"]
 
@@ -51,6 +52,7 @@ class Card:
         v = self.values[self.value] + " of " + self.suits[self.suit]
         return v
 
+
 class Deck:
     def __init__(self):
         self.cards = []
@@ -64,11 +66,13 @@ class Deck:
             return
         return self.cards.pop()
 
+
 class Player:
     def __init__(self, name):
         self.wins = 0
         self.card = None
         self.name = name
+
 
 class Game:
     def __init__(self):
@@ -124,6 +128,7 @@ class Game:
         if p1.wins < p2.wins:
             return p2.name
         return "It was a tie!"
+
 
 game = Game()
 game.play_game()

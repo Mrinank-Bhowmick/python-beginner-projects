@@ -1,6 +1,7 @@
 import tkinter as tk
 import random
-from tkinter import messagebox  #Import the messagebox module
+from tkinter import messagebox  # Import the messagebox module
+
 
 class TileMatchingGame:
     def __init__(self, root, rows, columns):
@@ -17,7 +18,16 @@ class TileMatchingGame:
         self.create_timer(60)
 
     def create_board(self):
-        all_colors = ["salmon","lightblue", "azure", "darkblue", "orange", "purple", "pink", "brown"]
+        all_colors = [
+            "salmon",
+            "lightblue",
+            "azure",
+            "darkblue",
+            "orange",
+            "purple",
+            "pink",
+            "brown",
+        ]
         colors = random.sample(all_colors, self.rows * self.columns // 2)
         colors *= 2  # Duplicate colors to have pairs
         random.shuffle(colors)
@@ -68,7 +78,9 @@ class TileMatchingGame:
         tile = event.widget
         row, col = self.get_tile_position(tile)
         if (row, col) not in self.selected_tiles and len(self.selected_tiles) < 2:
-            tile.config(text="X", bg=self.tile_colors[row * self.columns + col])  # Reveal the color when clicked
+            tile.config(
+                text="X", bg=self.tile_colors[row * self.columns + col]
+            )  # Reveal the color when clicked
             self.selected_tiles.append((row, col))
 
             if len(self.selected_tiles) == 2:
@@ -81,7 +93,10 @@ class TileMatchingGame:
         if len(self.selected_tiles) == 2:
             tile1 = self.selected_tiles[0]
             tile2 = self.selected_tiles[1]
-            if self.tile_colors[tile1[0] * self.columns + tile1[1]] == self.tile_colors[tile2[0] * self.columns + tile2[1]]:
+            if (
+                self.tile_colors[tile1[0] * self.columns + tile1[1]]
+                == self.tile_colors[tile2[0] * self.columns + tile2[1]]
+            ):
                 self.score += 1
                 self.score_label.config(text=f"Score: {self.score}")
                 if self.score == self.rows * self.columns // 2:
@@ -103,19 +118,21 @@ class TileMatchingGame:
                 col = row_tiles.index(tile)
                 return row, col
 
+
 def main():
     root = tk.Tk()
     root.title("Tile Matching Game")
-    
+
     rows, columns = 4, 4
-    
+
     game = TileMatchingGame(root, rows, columns)
 
     # Exit Button
     exit_button = tk.Button(root, text="Exit", command=root.destroy)
     exit_button.grid(row=rows + 3, columnspan=columns)
-    
+
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()
