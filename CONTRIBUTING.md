@@ -38,7 +38,7 @@ git commit -m "Brief and descriptive commit message"
 ```
 Push your changes to the remote repository. This makes your changes visible for creating a pull request.
 ```bash
-git push -u origin branch-Name
+git push -u origin branch-name
 ```
 ## Creating a Pull Request
 - Go to your repository in browser and click on compare and pull requests. Then add a title and description to your pull request that explains your contribution.🚀 
