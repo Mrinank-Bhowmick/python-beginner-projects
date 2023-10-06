@@ -6,6 +6,8 @@ Snake water gun
 
 Snake Water Gun Game in Python
 The snake drinks the water, the gun shoots the snake, and gun has no effect on water.
+
+NOTE: Install rich before playing this game by the command "pip install rich".
 """
 
 
