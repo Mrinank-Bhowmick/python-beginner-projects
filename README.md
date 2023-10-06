@@ -940,6 +940,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/PythonicBoat">
+            <img src="https://avatars.githubusercontent.com/u/68675629?v=4" width="100;" alt="PythonicBoat"/>
+            <br />
+            <sub><b>Yashvardhan Singh</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/ZackeryRSmith">
             <img src="https://avatars.githubusercontent.com/u/72983221?v=4" width="100;" alt="ZackeryRSmith"/>
             <br />
@@ -952,15 +959,15 @@
             <br />
             <sub><b>Sneha Farkya</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/ayan-joshi">
             <img src="https://avatars.githubusercontent.com/u/96243602?v=4" width="100;" alt="ayan-joshi"/>
             <br />
             <sub><b>Ayan Joshi</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Harry830">
             <img src="https://avatars.githubusercontent.com/u/114953309?v=4" width="100;" alt="Harry830"/>
@@ -995,15 +1002,15 @@
             <br />
             <sub><b>Sowham Bhuin</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Yashparwal1">
             <img src="https://avatars.githubusercontent.com/u/54176283?v=4" width="100;" alt="Yashparwal1"/>
             <br />
             <sub><b>Yash Parwal</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Zedeldi">
             <img src="https://avatars.githubusercontent.com/u/66186954?v=4" width="100;" alt="Zedeldi"/>
@@ -1030,13 +1037,6 @@
             <img src="https://avatars.githubusercontent.com/u/70049779?v=4" width="100;" alt="SubramanyaKS"/>
             <br />
             <sub><b>Subramanya K S</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/PythonicBoat">
-            <img src="https://avatars.githubusercontent.com/u/68675629?v=4" width="100;" alt="PythonicBoat"/>
-            <br />
-            <sub><b>Yashvardhan Singh</b></sub>
         </a>
     </td>
     <td align="center">
