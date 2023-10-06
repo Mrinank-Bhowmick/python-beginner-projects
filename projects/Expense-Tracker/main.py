@@ -10,6 +10,11 @@ insert_expense_sql = "INSERT INTO expenses (date, description, amount) VALUES (?
 select_expenses_sql = "SELECT * FROM expenses ORDER BY date;"
 delete_expense_by_id_sql = "DELETE FROM expenses WHERE id=?"
 update_expense_by_id_sql = "UPDATE expenses SET description=? WHERE id=?"
+maximum_amount_spent_sql = "SELECT MAX(amount) FROM expenses"
+minimum_amount_spent_sql = "SELECT MIN(amount) FROM expenses"
+average_amount_spent_sql = "SELECT AVG(amount) FROM expenses"
+total_amount_spent_sql = "SELECT SUM(amount) FROM expenses"
+total_number_of_expenses_sql = "SELECT COUNT(amount) FROM expenses"
 
 # Check if the database exists, create it if not
 if not conn.execute(
@@ -93,7 +98,7 @@ def view_expenses():
 def total_expenses():
     # Calculate and display total expenses
     total = conn.execute("SELECT SUM(amount) FROM expenses;").fetchone()[0]
-    print(f"Total expenses: {total}$")
+    print(f"Total expenses: Rs: {total}")
 
 
 # defining function for exporting to csv
@@ -247,10 +252,34 @@ def data_filter():
 # defined this funtion to check is database is empty or not
 def is_empty():
     if conn.execute(select_expenses_sql).fetchall() == []:
-        return True
+        print("The Database is empty")
     else:
-        return False
+        print("The Database is not empty")
 
+# expense analysis function
+def analyse_expense():
+    """
+    This function analyses the expense and gives the:
+    1. Maximum amount spent
+    2. Minimum amount spent
+    3. Average amount spent
+    4. Total amount spent
+    5. Total number of expenses
+    """
+    print("\n***EXPENSE ANALYSIS***\n")
+
+    maximum_amount_spent = conn.execute(maximum_amount_spent_sql).fetchall()
+    print(f"a. Maximum amount spent = { maximum_amount_spent[0][0] }")
+    minimum_amount_spent = conn.execute(minimum_amount_spent_sql).fetchall()
+    print(f"b. Minimum amount spent = { minimum_amount_spent[0][0] }")
+    average_amount_spent = conn.execute(average_amount_spent_sql).fetchall()
+    print("c. Average amount spent = %.2f" % average_amount_spent[0][0])
+    total_amount_spent = conn.execute(total_amount_spent_sql).fetchall()
+    print(f"d. Total amount spent = { total_amount_spent[0][0] }")
+    total_number_of_expenses = conn.execute(total_number_of_expenses_sql).fetchall()
+    print(f"e. Total number of expenses = { total_number_of_expenses[0][0] }")
+
+    print("\n***END OF EXPENSE ANALYSIS***")
 
 def main_menu():
     # conn=db_init()
@@ -263,7 +292,9 @@ def main_menu():
         print("5. Update Expense Description")
         print("6. Export Expense")
         print("7. Data Filter")
-        print("8. Quit")
+        print("8. Check if the database is Empty")
+        print("9. Analyze Expense")
+        print("10. Quit")
 
         choice = input("Enter your choice (1-8): ")
 
@@ -283,6 +314,10 @@ def main_menu():
             data_filter()
         elif choice == "8":
             is_empty()
+        elif choice == "9":
+            analyse_expense()
+        elif choice=="10":
+            exit(0)
         else:
             print("Invalid choice. Please try again.")
 
