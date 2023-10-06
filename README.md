@@ -769,6 +769,13 @@
             <sub><b>what-for-dinner</b></sub>
         </a>
      </td>
+    <tr>
+
+<td align="center">
+        <a href="https://github.com/xlo-u/python-beginner-projects/tree/main/projects/Calculate%20Age">
+            <sub><b>Calculate Age</b></sub>
+        </a>
+</td>
   </tr>
 </table>
 
@@ -1920,6 +1927,13 @@
             <br />
             <sub><b>Nishant Pacharne</b></sub>
         </a>
-    </td></tr>
+    </td>
+<td align="center">
+        <a href="https://github.com/xlo-u">
+            <img src="https://avatars.githubusercontent.com/u/67045160?s=400&u=6fb98ed17ee296bb0d0046cc1149fe317f75e4ae&v=4" width="100;" alt="Yash Upadhyay"/>
+            <br />
+            <sub><b>Yash Upadhyay</b></sub>
+        </a>
+    </td></td>
 </table>
 <!-- readme: contributors -end -->
