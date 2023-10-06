@@ -29,4 +29,4 @@ $ python calculate.py
 
 ## *Author Name*
 
-[Yash Upadhyay](https://github.com/xloyash)
+[Yash Upadhyay](https://github.com/xlo-u)
