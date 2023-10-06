@@ -1499,6 +1499,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/dikshant182004">
+            <img src="https://avatars.githubusercontent.com/u/122460149?v=4" width="100;" alt="dikshant182004"/>
+            <br />
+            <sub><b>Dikshant Jha</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/Dishant10">
             <img src="https://avatars.githubusercontent.com/u/84343829?v=4" width="100;" alt="Dishant10"/>
             <br />
@@ -1511,15 +1518,15 @@
             <br />
             <sub><b>Ebrahim G</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/GargiMittal">
             <img src="https://avatars.githubusercontent.com/u/98906186?v=4" width="100;" alt="GargiMittal"/>
             <br />
             <sub><b>Gargi</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/harshhes">
             <img src="https://avatars.githubusercontent.com/u/93470145?v=4" width="100;" alt="harshhes"/>
@@ -1554,15 +1561,15 @@
             <br />
             <sub><b>Kom Senapati </b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Krishna13515">
             <img src="https://avatars.githubusercontent.com/u/103298281?v=4" width="100;" alt="Krishna13515"/>
             <br />
             <sub><b>Krishna13515</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/iamkunalpitale">
             <img src="https://avatars.githubusercontent.com/u/26413565?v=4" width="100;" alt="iamkunalpitale"/>
@@ -1597,15 +1604,15 @@
             <br />
             <sub><b>Nischay Goyal</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/NooBIE-Nilay">
             <img src="https://avatars.githubusercontent.com/u/66667272?v=4" width="100;" alt="NooBIE-Nilay"/>
             <br />
             <sub><b>Nilay Banerjee </b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/KushalPareek">
             <img src="https://avatars.githubusercontent.com/u/105929422?v=4" width="100;" alt="KushalPareek"/>
@@ -1625,13 +1632,6 @@
             <img src="https://avatars.githubusercontent.com/u/126776410?v=4" width="100;" alt="Pratham-H-S"/>
             <br />
             <sub><b>Pratham-H-S</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/farisfaikar">
-            <img src="https://avatars.githubusercontent.com/u/87220004?v=4" width="100;" alt="farisfaikar"/>
-            <br />
-            <sub><b>Faris Faikar</b></sub>
         </a>
     </td>
     <td align="center">
