@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+</head>
+<body>
+    {% for key in title %}
+    <p>{{key}}</p>
+    {% endfor %}
+
+    {% for key in poster %}
+    <img src="{{key}}" alt="">
+    {% endfor %}
+
+    {% for key in actor_name %}
+    <p>{{key}}</p>
+    {% endfor %}
+
+    <a href="{%url 'predict'%}">Prediction</a>
+</body>
+</html>

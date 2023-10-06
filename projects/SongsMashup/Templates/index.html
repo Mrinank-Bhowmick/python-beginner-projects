@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Adjust the vertical spacing */
+    min-height: 100vh;
+  }
+
+  .site-title {
+    font-size: 24px;
+    font-family:'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    margin-top: 20px; /* Adjust the spacing from the top */
+    color: rgba(239, 42, 42, 0.8); /* Change the text color to contrast with the background */
+  }
+
+  .made-by {
+    font-size: 18px;
+    margin-bottom: 20px; /* Adjust the spacing from the bottom */
+    color: rgb(255, 164, 27,0.9); /* Change the text color to contrast with the background */
+  }
+
+  .form-container {
+    background-color: rgba(123, 215, 238, 0.6); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+  }
+
+  label {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+<title>Songs Mashup</title>
+</head>
+<body>
+<div class="site-title">
+  Songs Mashup
+</div>
+<div class="form-container">
+  <form method="post">
+    <label for="singer">Singer Name:</label>
+    <input type="text" id="singer" name="singer">
+    <br><br>
+    <label for="Number_vid">Number of Videos:</label>
+    <input type="number" id="Number_vid" name="Number_vid">
+    <br><br>
+    <label for="duration">Duration of songs:</label>
+    <input type="number" id="duration" name="duration">
+    <br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+<div class="made-by">
+  Made By Abhijot Singh
+</div>
+</body>
+</html>
