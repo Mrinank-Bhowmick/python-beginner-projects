@@ -28,6 +28,6 @@ Step 10 - Copy your app password and click "Done"
 
 Your password is succesfully generated!!! Now you can use it to send emails.
 
-For Further queries contact : lichijuice.protonmail.com/rishav15045@gmail.com
+For Further queries contact : lichijuice@protonmail.com/rishav15045@gmail.com
 
 -----------------------------------------This Documentation is Subjected to change with further updates----------------------------------
