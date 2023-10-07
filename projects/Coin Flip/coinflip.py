@@ -2,39 +2,35 @@ import random
 import os
 
 
-
 while True:
-  global answer_y
+    global answer_y
 
-  #Clears the shell/terminal (where all the text is)
-  os.system('clear')
+    # Clears the shell/terminal (where all the text is)
+    os.system("clear")
 
-  answer = input("Pick a side for the coin toss: ")
+    answer = input("Pick a side for the coin toss: ")
 
-  list1 = ["heads", "tails"]
+    list1 = ["heads", "tails"]
 
-  # Picks randonly from the list
-  random_s = random.choice(list1)
-  
-  print("You got... "+ random_s)
+    # Picks randonly from the list
+    random_s = random.choice(list1)
 
-  if answer.lower() == random_s:
-    # Tells the user if they won
-    print("Nice you won the coin toss!!")
+    print("You got... " + random_s)
 
-    # Asks the user if they want to play again
-    answer_y = input("Wanna play agian? ")
-    if answer_y.lower() == "no":
-       break 
+    if answer.lower() == random_s:
+        # Tells the user if they won
+        print("Nice you won the coin toss!!")
 
-  if answer.lower() != random_s:
-    # Tells the user if they lost
-    print("OOF.")
+        # Asks the user if they want to play again
+        answer_y = input("Wanna play agian? ")
+        if answer_y.lower() == "no":
+            break
 
-    # Asks the user if they want to play again
-    answer_y = input("Wanna play agian? ")
-    if answer_y.lower() == "no":
-       break
-   
+    if answer.lower() != random_s:
+        # Tells the user if they lost
+        print("OOF.")
 
-    
+        # Asks the user if they want to play again
+        answer_y = input("Wanna play agian? ")
+        if answer_y.lower() == "no":
+            break

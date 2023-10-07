@@ -256,6 +256,7 @@ def is_empty():
     else:
         print("The Database is not empty")
 
+
 # expense analysis function
 def analyse_expense():
     """
@@ -280,6 +281,7 @@ def analyse_expense():
     print(f"e. Total number of expenses = { total_number_of_expenses[0][0] }")
 
     print("\n***END OF EXPENSE ANALYSIS***")
+
 
 def main_menu():
     # conn=db_init()
@@ -316,7 +318,7 @@ def main_menu():
             is_empty()
         elif choice == "9":
             analyse_expense()
-        elif choice=="10":
+        elif choice == "10":
             exit(0)
         else:
             print("Invalid choice. Please try again.")

@@ -21,6 +21,7 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+
 try:
     text = input("Paste article URL: ")
 
@@ -32,18 +33,22 @@ try:
         article = p.getText().strip()
         articles.append(article)
     txt = " ".join(articles)
-    
 
     ## loading text from URL for summarizing..
     loader = WebBaseLoader(text)
     docs = loader.load()
-    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-16k",openai_api_key=openai.openai_api_key)
+    llm = ChatOpenAI(
+        temperature=0,
+        model_name="gpt-3.5-turbo-16k",
+        openai_api_key=openai.openai_api_key,
+    )
     chain = load_summarize_chain(llm, chain_type="stuff")
     print(chain.run(docs))
 
-
-    user_choice=int(input("Enter 1 for summary of article or Enter 2 for whole article: "))
-    if(user_choice==1):
+    user_choice = int(
+        input("Enter 1 for summary of article or Enter 2 for whole article: ")
+    )
+    if user_choice == 1:
         speak(chain.run(docs))
     else:
         speak(txt)
