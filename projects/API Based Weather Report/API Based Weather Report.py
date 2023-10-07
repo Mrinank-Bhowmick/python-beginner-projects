@@ -2,7 +2,7 @@ import requests
 import os
 from datetime import datetime
 
-api_key = "Enter your api key here"
+api_key = "<Your API key>"            #Enter your api key here
 location = input("\nEnter the city name   : ")
 
 complete_api_link = (
