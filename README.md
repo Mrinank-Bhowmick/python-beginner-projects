@@ -769,6 +769,13 @@
             <sub><b>what-for-dinner</b></sub>
         </a>
      </td>
+    <td align="center">
+        <a href="https://github.com/Shivam250702">
+            <img src="https://avatars.githubusercontent.com/u/103785990?v=4" width="100;" alt="Shivam Singh"/>
+            <br />
+            <sub><b>Shivam Singh</b></sub>
+        </a>
+    </td>
   </tr>
 </table>
 
@@ -1963,6 +1970,14 @@
             <br />
             <sub><b>Nishant Pacharne</b></sub>
         </a>
-    </td></tr>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Shivam250702">
+            <img src="https://avatars.githubusercontent.com/u/103785990?v=4" width="100;" alt="Shivam Singh"/>
+            <br />
+            <sub><b>Shivam Singh</b></sub>
+        </a>
+    </td>
+</tr>
 </table>
 <!-- readme: contributors -end -->
