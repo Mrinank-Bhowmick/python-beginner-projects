@@ -14,6 +14,16 @@ def add_book(title, auth_name, pagecount):
 
     Returns:
         None
+
+    >>> add_book("Book Title", "Author Name", 200)
+    >>> len(data)
+    1
+    >>> data[0]['Title']
+    'Book Title'
+    >>> data[0]['Author']
+    'Author Name'
+    >>> data[0]['Page Count']
+    200
     """
     book = {"Title": title, "Author": auth_name, "Page Count": pagecount}
     data.append(book)
@@ -27,6 +37,14 @@ def delete_book(book_name):
 
     Returns:
         None
+
+    >>> add_book("Book Title", "Author Name", 200)
+    >>> delete_book("Book Title")
+    Book 'Book Title' has been deleted.
+    >>> len(data)
+    0
+    >>> delete_book("Nonexistent Book")
+    Book 'Nonexistent Book' not found in the collection.
     """
     for book in data:
         if book["Title"] == book_name:
@@ -54,6 +72,21 @@ def search_by_author(author_name):
 
     Returns:
         None
+
+    >>> add_book("Book Title 1", "Author Name", 200)
+    >>> add_book("Book Title 2", "Author Name", 300)
+    >>> add_book("Another Book", "Different Author", 250)
+    >>> import sys; sys.stdout = open('output.txt', 'w')  # Redirect stdout for testing
+    >>> search_by_author("author name")
+    Books by 'author name':
+    Title: Book Title 1, Page Count: 200
+    Title: Book Title 2, Page Count: 300
+    >>> search_by_author("different author")
+    Books by 'different author':
+    Title: Another Book, Page Count: 250
+    >>> search_by_author("unknown author")
+    No books found by 'unknown author'.
+    >>> import os; os.remove('output.txt')  # Clean up generated file
     """
     found_books = [book for book in data if author_name.lower() in book['Author'].lower()]
     if found_books:
@@ -72,6 +105,19 @@ def save_data(filename):
 
     Returns:
         None
+
+    >>> add_book("Book Title", "Author Name", 200)
+    >>> save_data("test_save_data.json")
+    Data saved successfully.
+    >>> with open("test_save_data.json", "r") as file:
+    ...     saved_data = json.load(file)
+    >>> saved_data[0]['Title']
+    'Book Title'
+    >>> saved_data[0]['Author']
+    'Author Name'
+    >>> saved_data[0]['Page Count']
+    200
+    >>> import os; os.remove("test_save_data.json")  # Clean up generated file
     """
     with open(filename, 'w') as file:
         json.dump(data, file)
@@ -86,6 +132,20 @@ def load_data(filename):
 
     Returns:
         None
+
+    >>> with open("test_load_data.json", "w") as file:
+    ...     json.dump([{"Title": "Test Book", "Author": "Test Author", "Page Count": 100}], file)
+    >>> load_data("test_load_data.json")
+    Data loaded successfully.
+    >>> len(data)
+    1
+    >>> data[0]['Title']
+    'Test Book'
+    >>> data[0]['Author']
+    'Test Author'
+    >>> data[0]['Page Count']
+    100
+    >>> import os; os.remove("test_load_data.json")  # Clean up generated file
     """
     global data
     try:
