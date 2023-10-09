@@ -58,26 +58,30 @@ pen.write(
 # Functions to move the left paddle
 def leftpaddleup():
     y = leftpaddle.ycor()
-    y += 20  # Adjusted the paddle movement
+    if y<=250:
+        y += 20  # Adjusted the paddle movement
     leftpaddle.sety(y)
 
 
 def leftpaddledown():
     y = leftpaddle.ycor()
-    y -= 20  # Adjusted the paddle movement
+    if y>=-250:
+        y -= 20  # Adjusted the paddle movement
     leftpaddle.sety(y)
 
 
 # Functions to move the right paddle
 def rightpaddleup():
     y = rightpaddle.ycor()
-    y += 20  # Adjusted the paddle movement
+    if y<=250:
+        y += 20  # Adjusted the paddle movement
     rightpaddle.sety(y)
 
 
 def rightpaddledown():
     y = rightpaddle.ycor()
-    y -= 20  # Adjusted the paddle movement
+    if y>=-250:
+        y -= 20  # Adjusted the paddle movement
     rightpaddle.sety(y)
 
 
