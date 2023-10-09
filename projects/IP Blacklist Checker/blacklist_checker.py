@@ -10,13 +10,13 @@ from typing import Any
 
 import requests
 
-api_key = "key_CAMF5HI5t4ZzkmgGkioI1tius"
+api_key = "key_CAMF5HI5t4ZzkmgGkioI1tius" #API key for requests to work. Free 50 IP checks per month on blacklistchecker.com
 
 
 def test_ip(ip: str) -> Any:
     link = f"https://api.blacklistchecker.com/check/{ip}"
-    result = requests.get(link, auth=(api_key, ""))
-    result_dec = json.loads(result.content)
+    result = requests.get(link, auth=(api_key, "")) #writing response from service into a var
+    result_dec = json.loads(result.content) #decoding json result
     print(result_dec)
     detects: list[str] = []
     if result_dec.get("statusCode") == 401:
@@ -28,14 +28,14 @@ def test_ip(ip: str) -> Any:
         for n in blsts:
             if n.get("detected") is True:
                 detects.append(n.get("name"))
-        return (res, detects)
+        return (res, detects) #function returns IP and list of blacklists (haha), if any are detected. 
 
 
 def isip(ip: str) -> bool:
-    match = re.match(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}", ip)
+    match = re.match(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}", ip) #this regex is checking if provided string contains 4 numeric blocks 1 to 3 symbols divided by a dot.
     if not bool(match):
         return False
-    return all(0 <= int(octet) <= 255 for octet in ip.split("."))
+    return all(0 <= int(octet) <= 255 for octet in ip.split(".")) #this line checks if blocks from regex are numbers between 0 and 255
 
 
 res_txt = "IP blacklists check returned next results:\n"
