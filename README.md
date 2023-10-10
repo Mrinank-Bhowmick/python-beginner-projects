@@ -769,6 +769,10 @@
             <sub><b>what-for-dinner</b></sub>
         </a>
      </td>
+     <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/yt_sum">
+            <sub><b>Yt_sum</b></sub>
+        </a>
   </tr>
 </table>
 
@@ -1963,6 +1967,11 @@
             <br />
             <sub><b>Nishant Pacharne</b></sub>
         </a>
-    </td></tr>
+    </td> <td align="center">
+        <a href="https://github.com/ayushnangia">
+            <img src="https://avatars.githubusercontent.com/u/55181294?v=4" width="100;" alt="ayushnangia"/>
+            <br />
+            <sub><b>Ayush Nangia</b></sub>
+        </a></tr>
 </table>
 <!-- readme: contributors -end -->
