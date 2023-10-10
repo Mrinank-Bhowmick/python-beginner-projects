@@ -769,10 +769,12 @@
             <sub><b>what-for-dinner</b></sub>
         </a>
      </td>
+     <tr>
      <td align="center">
         <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/yt_sum">
             <sub><b>Yt_sum</b></sub>
         </a>
+        </tr>
   </tr>
 </table>
 
