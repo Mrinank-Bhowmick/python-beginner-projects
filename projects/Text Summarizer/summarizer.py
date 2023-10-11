@@ -1,23 +1,23 @@
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
-sw = list(STOP_WORDS)
+stop_words = list(STOP_WORDS)
 nlp = spacy.load('en_core_web_md')
 
 
-def sum1(text):
+def summarize(text):
     punctuation = ''
-    doc = nlp(text)
-    len(doc)
-    tokens = [token.text for token in doc]
+    document = nlp(text)
+    len(document)
+    tokens = [token.text for token in document]
     print(tokens)
 
     punctuation = punctuation+'\n'
     print(punctuation)
 
     wordfreq = {}
-    for word in doc:
-        if word.text.lower() not in sw:
+    for word in document:
+        if word.text.lower() not in stop_words:
             if word.text.lower() not in punctuation:
                 if word.text not in wordfreq.keys():
                     wordfreq[word.text] = 1
@@ -25,26 +25,26 @@ def sum1(text):
                     wordfreq[word.text] += 1
     print(wordfreq)
 
-    s = max(wordfreq.values())
+    word_freq = max(wordfreq.values())
     for word in wordfreq.keys():
-        wordfreq[word] = wordfreq[word]/s
-    st = [sent for sent in doc.sents]
-    print(st)
+        wordfreq[word] = wordfreq[word]/word_freq
+    sentence = [sent for sent in document.sents]
+    print(sentence)
 
-    ss = {}
-    for sent in st:
+    sentence_score = {}
+    for sent in sentence:
         for word in sent:
             if word.text.lower() in wordfreq.keys():
-                if sent not in ss.keys():
-                    ss[sent] = wordfreq[word.text.lower()]
+                if sent not in sentence_score.keys():
+                    sentence_score[sent] = wordfreq[word.text.lower()]
                 else:
-                    ss[sent] += wordfreq[word.text.lower()]
+                    sentence_score[sent] += wordfreq[word.text.lower()]
 
     from heapq import nlargest
-    sl = int(len(st)*0.3)
-    print(ss)
+    summary_length = int(len(sentence)*0.3)
+    print(sentence_score)
 
-    summary = nlargest(sl, ss, key=ss.get)
+    summary = nlargest(summary_length, sentence_score, key=sentence_score.get)
     final_summary = [word.text for word in summary]
     summary = ' '.join(final_summary)
 
@@ -52,4 +52,4 @@ def sum1(text):
 
 
 text = input('Enter the text: ')
-sum1(text)
+summarize(text)
