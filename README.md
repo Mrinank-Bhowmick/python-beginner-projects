@@ -797,6 +797,13 @@
         </a>
     </td>
     <td align="center">
+      <a href="https://github.com/pythonicboat">
+        <img src="https://avatars.githubusercontent.com/u/68675629?v=4" width="100;" alt="yashvardhan singh"/>
+        <br />
+        <sub><b>Yashvardhan Singh</b></sub>
+      </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/lint-action">
             <img src="https://avatars.githubusercontent.com/u/59283862?v=4" width="100;" alt="lint-action"/>
             <br />
@@ -818,20 +825,12 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/omkarxpatel">
-            <img src="https://avatars.githubusercontent.com/u/106450097?v=4" width="100;" alt="omkarxpatel"/>
-            <br />
-            <sub><b>Omkar Patel</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/Tark-pea">
             <img src="https://avatars.githubusercontent.com/u/119817620?v=4" width="100;" alt="Tark-pea"/>
             <br />
             <sub><b>Tark-pea</b></sub>
         </a>
     </td></tr>
-<tr>
     <td align="center">
         <a href="https://github.com/sudipg4112001">
             <img src="https://avatars.githubusercontent.com/u/60208804?v=4" width="100;" alt="sudipg4112001"/>
@@ -890,10 +889,10 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/PythonicBoat">
-            <img src="https://avatars.githubusercontent.com/u/68675629?v=4" width="100;" alt="PythonicBoat"/>
+        <a href="https://github.com/omkarxpatel">
+            <img src="https://avatars.githubusercontent.com/u/106450097?v=4" width="100;" alt="omkarxpatel"/>
             <br />
-            <sub><b>Yashvardhan Singh</b></sub>
+            <sub><b>Omkar Patel</b></sub>
         </a>
     </td>
     <td align="center">
