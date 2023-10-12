@@ -1,0 +1,65 @@
+import pygame
+import random
+import time
+
+# Initialize pygame
+pygame.init()
+
+# Constants
+WIDTH, HEIGHT = 800, 600
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+
+# Initialize the screen
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Reaction Time Game")
+
+# Fonts
+font = pygame.font.Font(None, 36)
+
+def draw_text(text, color, x, y):
+    text_surface = font.render(text, True, color)
+    screen.blit(text_surface, (x, y))
+
+def main():
+    running = True
+    start_time = None
+    reaction_time = None
+    clicked = False
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+            if event.type == pygame.MOUSEBUTTONDOWN and not clicked:
+                if start_time is None:
+                    # Start the timer when the first click occurs
+                    start_time = time.time()
+                else:
+                    # Calculate reaction time
+                    end_time = time.time()
+                    reaction_time = end_time - start_time
+                    clicked = True
+
+        screen.fill(WHITE)
+
+        if not clicked:
+            # Display "Click when ready"
+            draw_text("Click when ready", RED, 300, 250)
+        else:
+            if reaction_time is not None:
+                draw_text(f"Your reaction time: {reaction_time:.3f} seconds", RED, 220, 250)
+
+        pygame.display.flip()
+
+        # Randomly show a red square after a delay
+        if start_time is not None and time.time() - start_time > 1.0 and not clicked:
+            pygame.draw.rect(screen, RED, (WIDTH // 2 - 25, HEIGHT // 2 - 25, 50, 50))
+
+        pygame.display.flip()
+
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()
