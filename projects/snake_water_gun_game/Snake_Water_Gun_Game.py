@@ -35,7 +35,7 @@ for i in range(10):
          
         
 
-
+#Uses ternary operators for this line two reduce the codebase
 print('User Won with the score',user_score) if (user_score>comp_score) else print('computer won with the score',comp_score)
     
 
