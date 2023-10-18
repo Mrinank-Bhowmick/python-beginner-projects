@@ -1,3 +1,4 @@
+#Merge multiple image files to pdf and save in current working location
 import img2pdf
 import os
 
