@@ -1,4 +1,4 @@
-
+#Convert multiple image files in a directory to PDF
 import img2pdf
 import os
 
