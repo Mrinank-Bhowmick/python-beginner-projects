@@ -1,4 +1,4 @@
-#Merge multiple image files to pdf
+#Merge multiple image files from a directory to PDF
 import img2pdf
 import os
 
