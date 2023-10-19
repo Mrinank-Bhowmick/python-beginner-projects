@@ -2,7 +2,7 @@ import requests
 import random
 
 
-key = '6952b317b6d943cda536f5b8133699e2'
+key = 'Your Key'
 
 def rand_news(country , category):
     params = {
