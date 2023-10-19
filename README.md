@@ -1223,7 +1223,7 @@
         <a href="https://github.com/u749929">
             <img src="https://avatars.githubusercontent.com/u/141889486?v=4" width="100;" alt="u749929"/>
             <br />
-            <sub><b>u749929</b></sub>
+            <sub><b>U749929</b></sub>
         </a>
     </td>
     <td align="center">
