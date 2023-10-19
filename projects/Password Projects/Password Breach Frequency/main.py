@@ -14,16 +14,20 @@ url = "https://api.pwnedpasswords.com/range/" + hash_val[0:5]
 r = requests.get(url)
 
 # Split the string into a list, with each element of the list representing a single line
-list = r.text.split('\n')
+list = r.text.split("\n")
 output = {}
 
 # Convert each line in the list into a dictionary, with the hash as the key and the frequency as the value
 for line in list:
-    suffix, count = line.split(':')
+    suffix, count = line.split(":")
     output[hash_val[0:5] + suffix.lower()] = int(count)
 
 # If the hash value of the entered password is a key in the dictionary, print its frequency
-if (hash_val in output.keys()):
-    print("Your password hash has appeared", "{:,}".format(output[hash_val]), "times in known data breaches.")
+if hash_val in output.keys():
+    print(
+        "Your password hash has appeared",
+        "{:,}".format(output[hash_val]),
+        "times in known data breaches.",
+    )
 else:
     print("your password hash has not appeared in a known data breach.")

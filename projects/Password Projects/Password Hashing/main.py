@@ -1,7 +1,7 @@
 import argparse
 import hashlib
 
-# Outline the arguments that the user must input when they call the program 
+# Outline the arguments that the user must input when they call the program
 parser = argparse.ArgumentParser(description="hashing given password")
 parser.add_argument("password", help="input password you want to hash")
 parser.add_argument(
