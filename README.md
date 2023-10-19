@@ -11,16 +11,15 @@
 <a><img alt="Awesome" src="https://awesome.re/badge-flat2.svg"></a>
 </p>
 
-
 # 💭 **Why these awesome projects ??**
-💠 _This repository offers a variety of fascinating mini-projects written in Python._ 
+
+💠 _This repository offers a variety of fascinating mini-projects written in Python._
 
 💠 _Working on Python projects will undoubtedly improve your skills and raise your profile in preparation for the globalised marketplace outside._
 
 💠 _Projects are a potential method to begin your career in this area._
 
 💠 _This language deserves a lot of attention in today's world, and why not since it can address so many real-world problems?_
-
 
 <h2> 📈<I> Tweet this repository </I> </h2>
 
@@ -776,20 +775,21 @@
             <sub><b>Calculate Age</b></sub>
         </a>
 </td>
+<td align="center">
+        <a href="https://github.com/xlo-u/python-beginner-projects/tree/main/projects/DnD%20Dice%20One%20Or%20More">
+            <sub><b>DnD Dice One Or More</b></sub>
+        </a>
+</td>
   </tr>
 </table>
-
 
 ## Run these projects online :
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Mrinank-Bhowmick/python-beginner-projects.git)
 
-
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/Mrinank-Bhowmick/python-beginner-projects.svg)](https://starchart.cc/Mrinank-Bhowmick/python-beginner-projects)
-
-
 
 <h1> Contributors </h1>
 
@@ -1977,6 +1977,14 @@
             <br />
             <sub><b>Nishant Pacharne</b></sub>
         </a>
-    </td></tr>
+    </td>
+        <td align="center">
+        <a href="https://github.com/EstherDB">
+            <img src="https://avatars.githubusercontent.com/u/125834097?v=4" width="100;" alt="EstherDB"/>
+            <br />
+            <sub><b>EstherDB</b></sub>
+        </a>
+    </td>
+    </tr>
 </table>
 <!-- readme: contributors -end -->
