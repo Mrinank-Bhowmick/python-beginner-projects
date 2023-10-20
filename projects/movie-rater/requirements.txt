@@ -14,4 +14,4 @@ sniffio==1.3.0
 SQLAlchemy==2.0.21
 starlette==0.27.0
 typing_extensions==4.8.0
-urllib3==2.0.6
+urllib3==2.0.7
