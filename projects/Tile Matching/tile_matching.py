@@ -106,16 +106,11 @@ class TileMatchingGame:
 def main():
     root = tk.Tk()
     root.title("Tile Matching Game")
-
     rows, columns = 4, 4
-
     game = TileMatchingGame(root, rows, columns)
-
     # Exit Button
     exit_button = tk.Button(root, text="Exit", command=root.destroy)
     exit_button.grid(row=rows + 3, columnspan=columns)
-
     root.mainloop()
-
 if __name__ == "__main__":
     main()
