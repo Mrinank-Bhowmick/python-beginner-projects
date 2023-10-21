@@ -1,88 +1,76 @@
-# snake water gun
-# 10 times play using while
+"""
+snake water gun
+10 times play using while
 
-# Snake water gun
-#
-# Snake Water Gun Game in Python
-# The snake drinks the water, the gun shoots the snake, and gun has no effect on water.
-#
+Snake water gun
+
+Snake Water Gun Game in Python
+The snake drinks the water, the gun shoots the snake, and gun has no effect on water.
+
+NOTE: Install rich before playing this game by the command "pip install rich".
+"""
 
 
 import random
+from rich import print as rprint
 
-lst = ["s", "w", "g"]
+if __name__ == "__main__":
+    CHOICES = ["s", "w", "g"]
 
-chance = 10
-no_of_chance = 0
-computer_point = 0
-human_point = 0
+    CHANCE = 10
+    NO_OF_CHANCE = 0
+    COMPUTER_POINT = 0
+    HUMAN_POINT = 0
 
-print(" \t \t \t \t Snake,Water,Gun Game\n \n")
-print("s for snake \nw for water \ng for gun \n")
+    print(" \t \t \t \t Snake,Water,Gun Game\n \n")
+    rprint("[yellow]s[/yellow] for snake, [blue]w[/blue] for water, [green]g[/green] for gun \n")
 
-# making the game in while
-while no_of_chance < chance:
-    _input = input("Snake,Water,Gun:")
-    _random = random.choice(lst)
+    # making the game in while
+    while NO_OF_CHANCE < CHANCE:
+        user_choice = input("Enter your choice >> ")
+        computer_choice = random.choice(CHOICES)
 
-    if _input == _random:
-        print("Tie Both 0 point to each \n ")
+        if user_choice.lower() not in CHOICES:
+            rprint("[red]Wrong input!![/red] \n")
+        elif user_choice == computer_choice:
+            rprint("Tie!! 0 point to each \n ")
+        else:
+            if user_choice.lower() == "s":
+                if computer_choice == "g":
+                    COMPUTER_POINT += 1
+                    WINNER = "Computer"
+                elif computer_choice == "w":
+                    HUMAN_POINT += 1
+                    WINNER = "Human"
+            elif user_choice.lower() == "w":
+                if computer_choice == "s":
+                    COMPUTER_POINT += 1
+                    WINNER = "Computer"
+                elif computer_choice == "g":
+                    HUMAN_POINT += 1
+                    WINNER = "Human"
+            elif user_choice.lower() == "g":
+                if computer_choice == "s":
+                    HUMAN_POINT += 1
+                    WINNER = "Human"
+                elif computer_choice == "w":
+                    COMPUTER_POINT += 1
+                    WINNER = "Computer"
+            rprint(f"You guessed [yellow]{user_choice.lower()}[/yellow] and Computer guessed [cyan]{computer_choice}.[/cyan]\n")
+            rprint(f"[{'green' if WINNER == 'Human' else 'red'}]{WINNER} wins 1 point[/{'green' if WINNER == 'Human' else 'red'}] \n")
 
-    # if user enter s
-    elif _input == "s" and _random == "g":
-        computer_point = computer_point + 1
-        print(f"your guess {_input} and computer guess is {_random} \n")
-        print("computer wins 1 point \n")
-        print(f"computer_point is {computer_point} and your point is {human_point} \n ")
+        NO_OF_CHANCE += 1
+        rprint(f"{CHANCE - NO_OF_CHANCE} chance(s) are left out of {CHANCE} chances.\n")
 
-    elif _input == "s" and _random == "w":
-        human_point = human_point + 1
-        print(f"your guess {_input} and computer guess is {_random} \n")
-        print("Human wins 1 point \n")
-        print(f"computer_point is {computer_point} and your point is {human_point} \n")
+    print("Game over!")
 
-    # if user enter w
-    elif _input == "w" and _random == "s":
-        computer_point = computer_point + 1
-        print(f"your guess {_input} and computer guess is {_random} \n")
-        print("computer wins 1 point \n")
-        print(f"computer_point is {computer_point} and your point is {human_point} \n ")
+    if COMPUTER_POINT == HUMAN_POINT:
+        rprint("[yellow]Tie![/yellow]")
 
-    elif _input == "w" and _random == "g":
-        human_point = human_point + 1
-        print(f"your guess {_input} and computer guess is {_random} \n")
-        print("Human wins 1 point \n")
-        print(f"computer_point is {computer_point} and your point is {human_point} \n")
-
-    # if user enter g
-
-    elif _input == "g" and _random == "s":
-        human_point = human_point + 1
-        print(f"your guess {_input} and computer guess is {_random} \n")
-        print("Human wins 1 point \n")
-        print(f"computer_point is {computer_point} and your point is {human_point} \n")
-
-    elif _input == "g" and _random == "w":
-        computer_point = computer_point + 1
-        print(f"your guess {_input} and computer guess is {_random} \n")
-        print("computer wins 1 point \n")
-        print(f"computer_point is {computer_point} and your point is {human_point} \n ")
+    elif COMPUTER_POINT > HUMAN_POINT:
+        rprint("[red]Computer won and you lost.[/red]")
 
     else:
-        print("you have input wrong \n")
+        rprint("[green]You won and Computer lost.[/green]")
 
-    no_of_chance = no_of_chance + 1
-    print(f"{chance - no_of_chance} is left out of {chance} \n")
-
-print("Game over")
-
-if computer_point == human_point:
-    print("Tie")
-
-elif computer_point > human_point:
-    print("Computer wins and you loose")
-
-else:
-    print("you win and computer loose")
-
-print(f"your point is {human_point} and computer point is {computer_point}")
+    rprint(f"[green]Your points: {HUMAN_POINT}\tComputer points: {COMPUTER_POINT}[/green]")
