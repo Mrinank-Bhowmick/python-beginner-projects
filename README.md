@@ -1502,7 +1502,7 @@
         <a href="https://github.com/dimonalik">
             <img src="https://avatars.githubusercontent.com/u/114773527?v=4" width="100;" alt="dimonalik"/>
             <br />
-            <sub><b>dimonalik</b></sub>
+            <sub><b>Dimonalik</b></sub>
         </a>
     </td>
     <td align="center">
