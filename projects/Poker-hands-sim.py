@@ -1,14 +1,15 @@
 import random
 
 # Define ranks and suits for a standard deck of cards
-ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
-suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
+suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
 
 # Create a standard deck of 52 cards
-deck = [{'rank': rank, 'suit': suit} for rank in ranks for suit in suits]
+deck = [{"rank": rank, "suit": suit} for rank in ranks for suit in suits]
 
 # Shuffle the deck
 random.shuffle(deck)
+
 
 # Function to evaluate the rank of a hand
 def evaluate_hand(hand):
@@ -16,6 +17,7 @@ def evaluate_hand(hand):
     # You can use libraries like itertools to check for combinations like pairs, flush, etc.
     # This is a placeholder, and you should replace it with actual hand evaluation logic
     return "High Card"
+
 
 # Deal hands to players
 num_players = 4

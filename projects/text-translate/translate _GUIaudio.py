@@ -1,4 +1,4 @@
-#import necessary libraries and packages
+# import necessary libraries and packages
 
 import tkinter as tk
 from tkinter import ttk
@@ -24,6 +24,7 @@ languages = {
 # Store the translation audio in a variable
 translation_audio = None
 
+
 # Function to handle translation
 def translate_text():
     global translation_audio
@@ -34,7 +35,9 @@ def translate_text():
         selected_lang_code = languages[selected_lang_name]
         translator = Translator(to_lang=selected_lang_code)
         translation = translator.translate(user_input)
-        result_label.config(text=translation, background="light blue")  # Set background color here
+        result_label.config(
+            text=translation, background="light blue"
+        )  # Set background color here
 
         # Use gTTS to convert translation to speech and save to an in-memory file
         tts = gTTS(text=translation, lang=selected_lang_code)
@@ -42,13 +45,17 @@ def translate_text():
         tts.write_to_fp(translation_audio)
         translation_audio.seek(0)
     else:
-        result_label.config(text="Please select a valid language", background="light blue")  # Set background color here
+        result_label.config(
+            text="Please select a valid language", background="light blue"
+        )  # Set background color here
+
 
 # Function to play the audio
 def play_audio():
     if translation_audio:
         pygame.mixer.music.load(translation_audio)
         pygame.mixer.music.play()
+
 
 # Create the main application window
 app = tk.Tk()
@@ -57,14 +64,22 @@ app.geometry("400x300")
 app.configure(background="light blue")  # Set background color for the main window
 
 # Create and configure widgets
-input_label = ttk.Label(app, text="Enter the text:", background="light blue")  # Set background color here
+input_label = ttk.Label(
+    app, text="Enter the text:", background="light blue"
+)  # Set background color here
 input_entry = ttk.Entry(app, width=30)
-language_label = ttk.Label(app, text="Select a language:", background="light blue")  # Set background color here
+language_label = ttk.Label(
+    app, text="Select a language:", background="light blue"
+)  # Set background color here
 language_var = tk.StringVar()
-language_dropdown = ttk.Combobox(app, textvariable=language_var, values=list(languages.keys()))
+language_dropdown = ttk.Combobox(
+    app, textvariable=language_var, values=list(languages.keys())
+)
 translate_button = ttk.Button(app, text="Translate", command=translate_text)
 play_button = ttk.Button(app, text="Play Audio", command=play_audio)
-result_label = ttk.Label(app, text="Translation will appear here", wraplength=280, background="light blue")  # Set background color here
+result_label = ttk.Label(
+    app, text="Translation will appear here", wraplength=280, background="light blue"
+)  # Set background color here
 
 # Arrange widgets in the grid
 input_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
