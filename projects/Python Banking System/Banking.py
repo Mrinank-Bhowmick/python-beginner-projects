@@ -1,5 +1,6 @@
 import random
 
+
 class Bank:
     def __init__(self):
         """
@@ -32,7 +33,7 @@ class Bank:
         Returns:
             str: The generated account number.
         """
-        return ''.join(random.choice('0123456789') for _ in range(8))
+        return "".join(random.choice("0123456789") for _ in range(8))
 
     def get_account(self, account_number):
         """
@@ -149,11 +150,15 @@ def main():
             account_holder = input("Enter your name: ")
             initial_balance = float(input("Enter initial balance: "))
             account = bank.create_account(account_holder, initial_balance)
-            print(f"Account created successfully. Account Number: {account.account_number}")
+            print(
+                f"Account created successfully. Account Number: {account.account_number}"
+            )
 
         elif choice == "2":
             account_number = input("Enter account number: ")
-            transaction_type = input("Enter transaction type (deposit/withdraw): ").lower()
+            transaction_type = input(
+                "Enter transaction type (deposit/withdraw): "
+            ).lower()
             amount = float(input("Enter transaction amount: "))
             result = bank.perform_transaction(account_number, transaction_type, amount)
             print(result)
