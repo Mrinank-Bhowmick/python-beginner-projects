@@ -95,9 +95,7 @@ floor_surface = pygame.image.load("assets/base.png")
 floor_x_pos = 0
 
 bird_downflap = pygame.image.load("assets/bluebird.png").convert_alpha()
-bird_midflap = pygame.image.load(
-    "assets/bluebird-midflap.png"
-).convert_alpha()
+bird_midflap = pygame.image.load("assets/bluebird-midflap.png").convert_alpha()
 bird_upflap = pygame.image.load("assets/bluebird-upflap.png").convert_alpha()
 bird_frames = [bird_downflap, bird_midflap, bird_upflap]
 bird_index = 0

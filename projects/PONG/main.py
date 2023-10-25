@@ -120,10 +120,8 @@ class Ball(Block):
         if current_time - self.score_time >= 2100:
             self.active = True
 
-        time_counter = game_font.render(
-            str(countdown_number), True, accent_color)
-        time_counter_rect = time_counter.get_rect(
-            center=(WIDTH / 2, HEIGHT / 2 + 50))
+        time_counter = game_font.render(str(countdown_number), True, accent_color)
+        time_counter_rect = time_counter.get_rect(center=(WIDTH / 2, HEIGHT / 2 + 50))
         pygame.draw.rect(WIN, bg_color, time_counter_rect)
         WIN.blit(time_counter, time_counter_rect)
 
@@ -155,13 +153,10 @@ class Game_Manager:
             self.ball_group.sprite.reset_ball()
 
     def draw_score(self):
-        player_score = game_font.render(
-            str(self.player_score), True, accent_color)
-        opponent_score = game_font.render(
-            str(self.opponent_score), True, accent_color)
+        player_score = game_font.render(str(self.player_score), True, accent_color)
+        opponent_score = game_font.render(str(self.opponent_score), True, accent_color)
 
-        player_score_rect = player_score.get_rect(
-            midleft=(WIDTH / 2 + 40, HEIGHT / 2))
+        player_score_rect = player_score.get_rect(midleft=(WIDTH / 2 + 40, HEIGHT / 2))
         opponent_score_rect = opponent_score.get_rect(
             midright=(WIDTH / 2 - 40, HEIGHT / 2)
         )
@@ -173,9 +168,7 @@ class Game_Manager:
 class Cursor(pygame.sprite.Sprite):
     def __init__(self) -> None:
         super().__init__()
-        self.cursor_image = pygame.image.load(
-            "assets/cursor.png"
-        )
+        self.cursor_image = pygame.image.load("assets/cursor.png")
         self.cursor = pygame.transform.scale(self.cursor_image, (27, 27))
         self.cursor_rect = self.cursor.get_rect()
 
@@ -306,13 +299,9 @@ started = 1
 bg_color = pygame.Color("#2f373f")
 accent_color = (27, 35, 43)
 game_font = pygame.font.Font("freesansbold.ttf", 32)
-menu_font = pygame.font.Font(
-    "assets/Arcade_N.ttf", 32
-)
+menu_font = pygame.font.Font("assets/Arcade_N.ttf", 32)
 hit_sound = pygame.mixer.Sound("assets/hit.wav")
-score_sound = pygame.mixer.Sound(
-    "assets/score.wav"
-)
+score_sound = pygame.mixer.Sound("assets/score.wav")
 middle_strip = pygame.Rect(WIDTH / 2 - 2, 0, 4, HEIGHT)
 start_game = False
 pygame.mouse.set_visible(False)
