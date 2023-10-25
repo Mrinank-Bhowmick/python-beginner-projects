@@ -79,6 +79,7 @@ pygame.mixer.pre_init()
 pygame.init()
 screen = pygame.display.set_mode((288, 512))
 Clock = pygame.time.Clock()
+# Load a font from a TTF file. 40 is the font size.
 game_font = pygame.font.Font("flappy-bird.ttf", 40)
 
 # game var
