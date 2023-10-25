@@ -1,4 +1,4 @@
-MONTHS = 12
+
 TOTAL_PERCENT = 100
 
 
@@ -23,7 +23,7 @@ def get_months():
     while True:
         try:
             months = int(input("Enter the loan term (in months): "))
-            if months < 0 or months > MONTHS:
+            if months < 0:
                 print("Enter a valid interest rate in percentage")
             else:
                 return months
