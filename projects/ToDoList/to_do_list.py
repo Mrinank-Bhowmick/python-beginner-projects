@@ -1,85 +1,79 @@
-from pickle import dump, load
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
 
+    def add_task(self, task):
+        self.tasks.append({"task": task, "status": "Not Started"})
+        print("Task added: ", task)
 
-def add_task(task):
-    todo_list.append(task)
-    print("Task added!")
+    def view_tasks(self):
+        if not self.tasks:
+            print("No tasks in the list.")
+        else:
+            print("Tasks:")
+            for i, task in enumerate(self.tasks, 1):
+                status = task["status"]
+                task_text = task["task"]
 
+                color_code = {
+                    "Not Started": "\033[37m",  # Light Gray
+                    "In Progress": "\033[34m",  # Blue
+                    "Done": "\033[32m",  # Green
+                }
+                color_reset = "\033[0m"
 
-def remove_task(task_num):
-    if 0 <= task_num < len(todo_list):
-        del todo_list[task_num]
-        print("Task removed!")
-    else:
-        print("Invalid task number!")
+                print(f"{i}. {color_code[status]}{task_text}{color_reset} - {status}")
 
+    def update_task_status(self, task_index, new_status):
+        if 1 <= task_index <= len(self.tasks):
+            self.tasks[task_index - 1]["status"] = new_status
+            print(f"Updated task status: {self.tasks[task_index - 1]['task']} is now {new_status}")
+        else:
+            print("Invalid task index")
 
-def display_tasks():
-    if not todo_list:  # If list is empty
-        print("No tasks to display.")
-    else:
-        for index, task in enumerate(todo_list, start=1):
-            print(f"{index}. {task}")
+    def remove_task(self, task_index):
+        if 1 <= task_index <= len(self.tasks):
+            removed_task = self.tasks.pop(task_index - 1)
+            print(f"Removed task: {removed_task['task']}")
+        else:
+            print("Invalid task index")
 
-
-def get_choice():
-    while True:
-        try:
-            choice = int(
-                input(
-                    "Type a number: 1. Adding a task, 2. Removing a task, 3. Displaying tasks, 4. Quit: "
-                )
-            )
-            if 1 <= choice <= 4:
-                return choice
-            else:
-                print("Invalid choice. Try again.")
-        except ValueError:
-            print("Please enter a number between 1 and 4.")
-
-
-if __name__ == "__main__":
-    # Loading the pickle file into python as a list
-    try:
-        with open("todo.pickle", "rb+") as file_in:
-            todo_list = load(file_in)
-    except FileNotFoundError:
-        todo_list = []
-
-    print("Welcome to ToDo List!")
+def main():
+    to_do_list = ToDoList()
 
     while True:
-        user_choice = get_choice()
+        print("\nTo-Do List Application")
+        print("1. Add Task")
+        print("2. View Tasks")
+        print("3. Mark Task as In Progress")
+        print("4. Mark Task as Done")
+        print("5. Remove Task")
+        print("6. Quit")
 
-        # Adding a task
-        if user_choice == 1:
-            new_task = input("Type a new task: ")
-            add_task(new_task)
+        choice = input("Enter your choice: ")
 
-        # Removing a task
-        elif user_choice == 2:
-            if not todo_list:  # If list is empty
-                print("No tasks to remove.")
-            else:
-                task_num = int(input("Enter the task number to delete: ")) - 1
-                remove_task(task_num)
-
-        # Displaying tasks
-        elif user_choice == 3:
-            display_tasks()
-
-        # Quit
-        elif user_choice == 4:
-            # Dumping the list into a pickle file
-            with open("todo.pickle", "wb") as file_out:
-                dump(todo_list, file_out)
+        if choice == "1":
+            task = input("Enter the task: ")
+            to_do_list.add_task(task)
+        elif choice == "2":
+            to_do_list.view_tasks()
+        elif choice == "3":
+            to_do_list.view_tasks()
+            index = int(input("Enter the task number to mark as In Progress: "))
+            to_do_list.update_task_status(index, "In Progress")
+        elif choice == "4":
+            to_do_list.view_tasks()
+            index = int(input("Enter the task number to mark as Done: "))
+            to_do_list.update_task_status(index, "Done")
+        elif choice == "5":
+            to_do_list.view_tasks()
+            index = int(input("Enter the task number to remove: "))
+            to_do_list.remove_task(index)
+        elif choice == "6":
             print("Goodbye!")
             break
+        else:
+            print("Invalid choice. Please choose again.")
 
-
-#####################################
-
-# CODE CONTRIBUTED BY: Ota Hina
-# Dynamic funcionality added by : komsenapati
-
-#####################################
+if __name__ == "__main__":
+    main()
