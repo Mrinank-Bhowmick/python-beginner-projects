@@ -3,11 +3,12 @@
 
 from translate import Translator
 
+
 def main():
     while True:
         user_input = input("Enter the text to translate (or 'exit' to quit): ")
-        
-        if user_input.lower() == 'exit':
+
+        if user_input.lower() == "exit":
             print("Exiting the translator.")
             break
 
@@ -65,9 +66,9 @@ def main():
             20: "he",
             # Add more language mappings here...
         }
-        
+
         target_language = languages[selected_lang]
-        
+
         try:
             translator = Translator(to_lang=target_language)
             translation = translator.translate(user_input)
@@ -75,6 +76,6 @@ def main():
         except Exception as e:
             print(f"Translation failed with error: {str(e)}")
 
+
 if __name__ == "__main__":
     main()
-

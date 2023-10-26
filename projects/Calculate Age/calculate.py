@@ -1,6 +1,7 @@
 import time
 from calendar import isleap
 
+
 # judge the leap year
 def judge_leap_year(year):
     if isleap(year):
@@ -34,7 +35,7 @@ end_year = begin_year + year
 
 # calculate the days
 for y in range(begin_year, end_year):
-    if (judge_leap_year(y)):
+    if judge_leap_year(y):
         day = day + 366
     else:
         day = day + 365

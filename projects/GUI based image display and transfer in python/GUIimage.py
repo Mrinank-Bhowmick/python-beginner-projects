@@ -3,6 +3,7 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import shutil
 
+
 # Function to open an image using file dialog
 def open_image():
     file_path = filedialog.askopenfilename()
@@ -14,12 +15,14 @@ def open_image():
         global current_image_path
         current_image_path = file_path
 
+
 # Function to save the current image to a new location
 def save_image():
     if current_image_path:
         destination_path = filedialog.asksaveasfilename(defaultextension=".png")
         if destination_path:
             shutil.copy(current_image_path, destination_path)
+
 
 # Create the main window
 root = tk.Tk()
