@@ -1,10 +1,14 @@
 # ToDo List in Python 📒
 
-This is a simple command-line ToDo List application written in Python.
+This is a command-line to-do list application written in Python. It allows you to manage your tasks by adding, viewing, marking as in progress, marking as done, and removing tasks. Tasks can have different statuses such as "Not Started," "In Progress," and "Done," each represented by a different text color.
 
 ## Features
 
 - **Add Tasks:** You can add tasks to your ToDo list. Just type in your task when prompted.
+
+- **Mark tasks as in progress:** You can mark your task in progress and your task now displays on blue color.
+
+- **Mark task as done:** You can mark your task done and your task now displays on green color.
 
 - **Remove Tasks:** You can remove tasks from your ToDo list. You will need to provide the task number (the number displayed next to each task when displaying tasks).
 
