@@ -1,28 +1,32 @@
-import sys
+import argparse
 import os
 import shutil # For moving files
 
 def main():
     try:
-        check_arguments()
-        organize_directory(sys.argv[1])
+        args = parse_arguments()
+        check_directory(args.directory_path)
+        organize_directory(args.directory_path, args.verbose)
     except ValueError as e:
         print(e)
-        sys.exit(1)
 
-def check_arguments():
-    # One argument needs to be provided, that is the path of the directory to be organized
-    if len(sys.argv) - 1 != 1:
-        raise ValueError(f"Usage: python3 {sys.argv[0]} <directory_path>")
-    directory_path = sys.argv[1]
-        
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Organize files in a directory based on their extensions.")
+    parser.add_argument("directory_path", type=str, help="Path of the directory to be organized")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
+    return parser.parse_args()
+
+def check_directory(directory_path):
     if not os.path.isdir(directory_path):
         raise ValueError(f"'{directory_path}' is not a valid directory.")
     
     if not os.listdir(directory_path):
         raise ValueError(f"'{directory_path}' is an empty directory!")
+    
+    if not os.access(directory_path, os.W_OK):
+        raise ValueError(f"'{directory_path}' is not writable.")
 
-def organize_directory(directory_path):
+def organize_directory(directory_path, verbose=False):
     categories = {
         "Music": (".mp3", ".wav", ".flac", ".m4a", ".aac", ".ogg", ".oga" ".wma", ".mid"),
         "Videos": (".mp4", ".avi", ".mkv", ".mpeg", ".wmv", ".vob", ".flv", ".mov", ".3gp", ".webm"),
@@ -35,20 +39,28 @@ def organize_directory(directory_path):
     }
 
     for category, extensions in categories.items():
-        # Create folders for each category, if they don't already exist
-        category_folder = os.path.join(directory_path, category)
-        os.makedirs(category_folder, exist_ok=True)
+        # Check if there are files with matching extensions for this category
+        files_with_extension = [file for file in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, file))
+                               and os.path.splitext(file)[1].lower() in extensions]
 
-        for file in os.listdir(directory_path):
-            # Process only files, not directories
-            if os.path.isfile(os.path.join(directory_path, file)):
-                # extract the file extension of the current file
-                file_extension = os.path.splitext(file)[1]
-                if file_extension.lower() in extensions:
-                    source_path = os.path.join(directory_path, file)
-                    dest_path = os.path.join(category_folder, file)
-                    shutil.move(source_path, dest_path)
+        if files_with_extension:
+            # Create a folder for this category if it doesn't exist
+            category_folder = os.path.join(directory_path, category)
+            if not os.path.exists(category_folder):
+                os.makedirs(category_folder)
+                if verbose:
+                    print(f"Creating '{category}' folder.")
+            elif verbose:
+                print(f"'{category}' folder already exists, reusing.")
+
+            for file in files_with_extension:
+                source_path = os.path.join(directory_path, file)
+                dest_path = os.path.join(category_folder, file)
+                shutil.move(source_path, dest_path)
+                if verbose:
                     print(f"Moved '{file}' to '{category}' folder.")
+
+    print("Organizing files complete!")
 
 if __name__ == "__main__":
     main()
