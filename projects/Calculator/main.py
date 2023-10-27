@@ -48,7 +48,7 @@ def division():
 
 
 def average():
-    """This function takes space seperated number series and then convert it to a list. 
+    """This function takes space seperated number series and then convert it to a list.
     Then calculates the average of that list of numbers."""
 
     nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
