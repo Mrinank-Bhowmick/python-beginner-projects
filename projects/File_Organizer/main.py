@@ -1,12 +1,19 @@
 import argparse
 import os
+import logging
 import shutil # For moving files
 
 def main():
     try:
         args = parse_arguments()
         check_directory(args.directory_path)
-        organize_directory(args.directory_path, args.verbose)
+
+        # log if verbose is enabled
+        log_format = "%(message)s"  # This will only log the message content, without any prefix
+        logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING, format=log_format)
+
+        organize_directory(args.directory_path)
+    # Catch any exceptions that may occur
     except ValueError as e:
         print(e)
 
@@ -26,7 +33,7 @@ def check_directory(directory_path):
     if not os.access(directory_path, os.W_OK):
         raise ValueError(f"'{directory_path}' is not writable.")
 
-def organize_directory(directory_path, verbose=False):
+def organize_directory(directory_path):
     categories = {
         "Music": (".mp3", ".wav", ".flac", ".m4a", ".aac", ".ogg", ".oga" ".wma", ".mid"),
         "Videos": (".mp4", ".avi", ".mkv", ".mpeg", ".wmv", ".vob", ".flv", ".mov", ".3gp", ".webm"),
@@ -48,17 +55,15 @@ def organize_directory(directory_path, verbose=False):
             category_folder = os.path.join(directory_path, category)
             if not os.path.exists(category_folder):
                 os.makedirs(category_folder)
-                if verbose:
-                    print(f"Creating '{category}' folder.")
-            elif verbose:
-                print(f"'{category}' folder already exists, reusing.")
+                logging.info(f"Creating '{category}' folder.")
+            else:
+                logging.info(f"'{category}' folder already exists, reusing.")
 
             for file in files_with_extension:
                 source_path = os.path.join(directory_path, file)
                 dest_path = os.path.join(category_folder, file)
                 shutil.move(source_path, dest_path)
-                if verbose:
-                    print(f"Moved '{file}' to '{category}' folder.")
+                logging.info(f"Moved '{file}' to '{category}' folder.")
 
     print("Organizing files complete!")
 
