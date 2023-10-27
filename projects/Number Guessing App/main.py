@@ -7,7 +7,9 @@ def guess():
     This function generates a random number between 1 and 20 (inclusive)
     and allows the user to guess the number. It continues to prompt
     the user for input until the correct number is guessed.
-    """
+
+    Returns:
+    None
     '''
     # Generate a random number between 1 and 20 (inclusive)
     n = random.randrange(1, 20)
@@ -33,17 +35,31 @@ def guess():
 
 # Function for the computer to guess the number chosen by the user
 def computer_guess():
-    global CompGuess
+    '''
+    Play the guessing game where the computer tries to guess the user's number.
 
-    # Request user input to get the number to be guessed by the computer
-    x = int(input("Enter your number: "))
+    This function prompts the user to enter a number, and then the computer will make guesses
+    and adjust the guessing range based on the user's feedback until it correctly guesses the number.
+
+    Returns:
+    None
+    '''
+    global CompGuess
+    # Variable to store the user's feedback on the computer's guesses
+    CompAns = ""
+
+    # Get the number to be guessed by the computer, validating the input
+    while True:
+        try:
+            # Request user input to get the number to be guessed by the computer
+            x = int(input("Enter your number: "))
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
 
     # Initialize the lower and upper bounds for the computer's guessing range
     low = 1
     high = x
-
-    # Variable to store the user's feedback on the computer's guesses
-    CompAns = ""
 
     # Continue the loop until the computer guesses the correct number
     while CompAns != "c":
@@ -59,6 +75,13 @@ def computer_guess():
         CompAns = input(
             f"Is {CompGuess} too high (h), too low (l), or correct (c)? \n=>"
         ).lower()
+        # Ask the user if the computer's guess is too high, too low, or correct
+        while CompAns not in ["h", "l", "c"]:
+            CompAns = input(
+                f"Is {CompGuess} too high (h), too low (l), or correct (c)? \n=>"
+            ).lower()
+            if CompAns not in ["h", "l", "c"]:
+                print("Invalid input. Please enter 'h', 'l', or 'c'.")
 
         # Adjust the guessing range based on the user's feedback
         if CompAns == "h":  # If the computer's guess is too high
@@ -69,16 +92,30 @@ def computer_guess():
     # Display a message when the computer guesses the correct number
     print(f"Yay! The computer guessed your number, {CompGuess}, correctly!")
 
+def main():
+    """
+        Main function to initiate the number guessing game.
+
+        This function allows the user to select the gaming mode and start either the number guessing
+        game or the computer guessing game based on the user's choice.
+
+        Returns:
+        None
+        """
+    while True:
+        # Display options to select the gaming mode
+        Gmode = int(input("Select gaming mode\nPress 1 to guess the number\nPress 2 to choose the number\n"))
+
+        if Gmode == 1:
+            guess()
+            break
+        elif Gmode == 2:
+            computer_guess()
+            break
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
+
+
 
 if __name__ == "__main__":
-    # Display options to select the gaming mode
-    print(
-        "Select gaming mode\n Press 1 to guess the number\nPress 2 to choose the number"
-    )
-    Gmode = int(input())
-
-    # Call the appropriate function based on the selected gaming mode
-    if Gmode == 1:
-        guess()
-    if Gmode == 2:
-        computer_guess()
+            main()
