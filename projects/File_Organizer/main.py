@@ -8,19 +8,18 @@ def main():
         args = parse_arguments()
         check_directory(args.directory_path)
 
-        # log if verbose is enabled
-        log_format = "%(message)s"  # This will only log the message content, without any prefix
-        logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING, format=log_format)
+        setup_logging(args.verbose)
 
         organize_directory(args.directory_path)
     # Catch any exceptions that may occur
-    except ValueError as e:
+    except Exception as e:
         print(e)
 
 def parse_arguments():
+    # Parse the arguments from cli, order is irrelevant
     parser = argparse.ArgumentParser(description="Organize files in a directory based on their extensions.")
-    parser.add_argument("directory_path", type=str, help="Path of the directory to be organized")
-    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
+    parser.add_argument("directory_path", type=str, help="Path of the directory to be organized") # Required argument
+    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output") # Optional argument
     return parser.parse_args()
 
 def check_directory(directory_path):
@@ -33,15 +32,20 @@ def check_directory(directory_path):
     if not os.access(directory_path, os.W_OK):
         raise ValueError(f"'{directory_path}' is not writable.")
 
+def setup_logging(verbose):
+    log_level = logging.INFO if verbose else logging.WARNING
+    log_format = "%(message)s"
+    logging.basicConfig(level=log_level, format=log_format)
+
 def organize_directory(directory_path):
     categories = {
-        "Music": (".mp3", ".wav", ".flac", ".m4a", ".aac", ".ogg", ".oga" ".wma", ".mid"),
-        "Videos": (".mp4", ".avi", ".mkv", ".mpeg", ".wmv", ".vob", ".flv", ".mov", ".3gp", ".webm"),
-        "Source Files": (".py", ".c", ".cpp", ".java", ".js", ".cs", ".html", ".css", ".php", ".json", ".xml", ".sql", ".db"),
-        "Executables": (".exe", ".msi", ".sh", ".bat", ".apk", ".jar", ".deb", ".run", ".bin", ".dmg", ".iso"),
-        "Pictures": (".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".webp", ".psd", ".ai", ".ico"),
-        "Documents": (".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".txt", ".md", ".odt", ".ods", ".odp", ".csv", ".rtf"),
-        "Compressed": (".zip", ".rar", ".tar", ".gz", ".7z", ".bz2", ".xz", ".z", ".lz"),
+        "Music": (".mp3", ".wav", ".flac", ".m4a", ".aac", ".ogg", ".oga", ".wma", ".mid",),
+        "Videos": (".mp4", ".avi", ".mkv", ".mpeg", ".wmv", ".vob", ".flv", ".mov", ".3gp", ".webm",),
+        "Source Files": (".py", ".c", ".cpp", ".java", ".js", ".cs", ".html", ".css", ".php", ".json", ".xml", ".sql", ".db",),
+        "Executables": (".exe", ".msi", ".sh", ".bat", ".apk", ".jar", ".deb", ".run", ".bin", ".dmg", ".iso",),
+        "Pictures": (".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".webp", ".psd", ".ai", ".ico",),
+        "Documents": (".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".txt", ".md", ".odt", ".ods", ".odp", ".csv", ".rtf",),
+        "Compressed": (".zip", ".rar", ".tar", ".gz", ".7z", ".bz2", ".xz", ".z", ".lz",),
         "Torrents": (".torrent",),
     }
 
