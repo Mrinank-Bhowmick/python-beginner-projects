@@ -1,19 +1,22 @@
 # Restraunt_API
-consists of add to menu, view menu , search menu based on string ,create order and display previous orders of the user
-both add to menu and view menu are implemented using a single endpoint with POST and GET methods respectively.
+The Restaurant API consists of: adding items to the menu, viewing the menu, searching for menu items based on a string, creating orders, and displaying previous orders for a user.
 
-the end point for Add to menu is
-http://127.0.0.1:8000/menu/  with POST method
+Add to Menu:
+- Endpoint: POST http://127.0.0.1:8000/menu/
+  
+View Menu:
+- Endpoint: GET http://127.0.0.1:8000/menu/
 
-the end point for View menu is
-http://127.0.0.1:8000/menu/ with GET method
+Both the "Add to Menu" and "View Menu" functions are implemented using a single endpoint with POST and GET methods, respectively.
 
-the end point for seraching menu based on string is
-http://127.0.0.1:8000/menu_item/<item_name_to_be_searched>/
+Search Menu Based on String:
+- Endpoint: GET http://127.0.0.1:8000/menu_item/<item_name_to_be_searched>/
+This endpoint allows you to search for menu items based on a provided string.
 
-the end point for creating order is 
-http://127.0.0.1:8000/order/  with POST method
+Create Order:
+- Endpoint: POST http://127.0.0.1:8000/order/
+This endpoint is used to create orders.
 
-the end point for viewing past orders is
-http://127.0.0.1:8000/orders/<email-id_of_user_whose_orders_are_to_be_seen>/
-
+View Past Orders:
+- Endpoint: GET http://127.0.0.1:8000/orders/<email-id_of_user_whose_orders_are_to_be_seen>/
+You can use this endpoint to view the previous orders of a user by providing their email address.

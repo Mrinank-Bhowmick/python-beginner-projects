@@ -79,7 +79,7 @@ pygame.mixer.pre_init()
 pygame.init()
 screen = pygame.display.set_mode((288, 512))
 Clock = pygame.time.Clock()
-game_font = pygame.font.Font("Downloads/flappy-bird.ttf", 40)
+game_font = pygame.font.Font("assets/FlappyBirdy.ttf", 40)
 
 # game var
 gravity = 0.25
@@ -88,17 +88,15 @@ game_active = True
 score = 0
 high_score = 0
 
-bg_surface = pygame.image.load("Documents/assets/background-night.png")
+bg_surface = pygame.image.load("assets/background-night.png")
 
 
-floor_surface = pygame.image.load("Documents/assets/base.png")
+floor_surface = pygame.image.load("assets/base.png")
 floor_x_pos = 0
 
-bird_downflap = pygame.image.load("Documents/assets/bluebird.png").convert_alpha()
-bird_midflap = pygame.image.load(
-    "Documents/assets/bluebird-midflap.png"
-).convert_alpha()
-bird_upflap = pygame.image.load("Documents/assets/bluebird-upflap.png").convert_alpha()
+bird_downflap = pygame.image.load("assets/bluebird.png").convert_alpha()
+bird_midflap = pygame.image.load("assets/bluebird-midflap.png").convert_alpha()
+bird_upflap = pygame.image.load("assets/bluebird-upflap.png").convert_alpha()
 bird_frames = [bird_downflap, bird_midflap, bird_upflap]
 bird_index = 0
 bird_surface = bird_frames[bird_index]
@@ -107,21 +105,21 @@ bird_rect = bird_surface.get_rect(center=(50, 512 / 2))
 BIRDFLAP = pygame.USEREVENT + 1
 pygame.time.set_timer(BIRDFLAP, 200)
 
-# bird_surface = pygame.image.load('Documents/assets/bluebird-midflap.png').convert_alpha()
+# bird_surface = pygame.image.load('bluebird-midflap.png').convert_alpha()
 # bird_rect = bird_surface.get_rect(center = (50,512/2))
 
-pipe_surface = pygame.image.load("Documents/assets/pipe-green.png")
+pipe_surface = pygame.image.load("assets/pipe-green.png")
 pipe_list = []
 SPAWNPIPE = pygame.USEREVENT
 pygame.time.set_timer(SPAWNPIPE, 1000)
 pipe_height = [200, 250, 300, 350, 400]
 
-game_over_surface = pygame.image.load("Documents/assets/message.png")
+game_over_surface = pygame.image.load("assets/message.png")
 game_over_rect = game_over_surface.get_rect(center=(288 / 2, 512 / 2))
 
-flap_sound = pygame.mixer.Sound("Documents/Everything/sfx_wing.wav")
-death_sound = pygame.mixer.Sound("Documents/Everything/sfx_hit.wav")
-score_sound = pygame.mixer.Sound("Documents/Everything/sfx_point.wav")
+flap_sound = pygame.mixer.Sound("assets/wing.ogg")
+death_sound = pygame.mixer.Sound("assets/hit.ogg")
+score_sound = pygame.mixer.Sound("assets/point.ogg")
 score_sound_countdown = 100
 while True:
     for event in pygame.event.get():
