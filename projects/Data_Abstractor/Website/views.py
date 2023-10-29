@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash
 import duckdb
 
 views = Blueprint('views', __name__)
-
+# Read data using DuckDB
 db = duckdb.connect()
 db.execute("CREATE TEMPORARY TABLE attributes AS SELECT * FROM read_csv_auto('user_attributes.csv')")
 db.execute("CREATE TEMPORARY TABLE events AS SELECT * FROM read_csv_auto('user_events.csv')")
@@ -13,6 +13,7 @@ def home():
 
 @views.route('/query_output', methods=['GET', 'POST'])
 def index():
+    #Create a SQL query as a string to execute in DuckDB
     if request.method == 'POST':
         print(request.form)
         attr = request.form
@@ -30,7 +31,7 @@ def index():
     query_select = ["SELECT a.*,e.* EXCLUDE user_ID FROM attributes a INNER JOIN events e ON a.user_ID = e.user_ID WHERE"]
     parameters = []
     query_orderer = []
-    
+    # Check for the attributes which are selected and add them to the SQL query
     if attr.get('age')=='on':
         selected_queries.append(age_from)
         selected_queries.append(age_to)
@@ -104,7 +105,7 @@ def index():
         query_orderer.append(query_order)
 
     query_selection = query_selection + " ".join(query_orderer)
-    print(query_selection, parameters)
+    print(query_selection, parameters) # Logs out the SQL query before running (For Debugging purposes)
 
     data = db.execute(query_selection, parameters).fetchall()
     return render_template("table.html", data = data, header = column_name)
