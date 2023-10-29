@@ -4,6 +4,7 @@ from get_geolocation.geolocation import GeolocationModel
 from weather_forecast.forecast import WeatherForecast
 import matplotlib.pyplot as plt
 
+
 class SkyCast:
     def __init__(self):
         self.geolocation_model = GeolocationModel()
@@ -15,8 +16,8 @@ class SkyCast:
         st.markdown(
             '<div style="border: 1px solid #ccc; padding: 20px; border-radius: 10px;">'
             '<h1 style="text-align: center; color: #0080FF;">SkyCast 🌤️</h1>'
-            '</div>',
-            unsafe_allow_html=True
+            "</div>",
+            unsafe_allow_html=True,
         )
 
     def input(self):
@@ -24,7 +25,7 @@ class SkyCast:
         self.weather_option = st.sidebar.radio(
             "Choose Weather Option",
             options=["Today's Weather", "Forecast Weather"],
-            key="weather_option"
+            key="weather_option",
         )
 
         if self.weather_option == "Today's Weather":
@@ -33,7 +34,6 @@ class SkyCast:
             self.display_forecast_weather()
 
     def display_today_weather(self):
-
         latitude, longitude = None, None
         # Manually enter the city name
         city_name = st.sidebar.text_input("Enter City Name", key="city_name")
@@ -43,8 +43,10 @@ class SkyCast:
             # If the submit button is not clicked, do not proceed further
             return
 
-
-        st.markdown(f"<h2 style='text-align: center;'>Today's Weather</h2>", unsafe_allow_html=True)
+        st.markdown(
+            f"<h2 style='text-align: center;'>Today's Weather</h2>",
+            unsafe_allow_html=True,
+        )
 
         if latitude is not None and longitude is not None:
             # Make API request
@@ -58,7 +60,7 @@ class SkyCast:
                 # Date and time
                 st.markdown(
                     f'<h3 style="text-align: center;">{weather_data["city_name"]}, {weather_data["country_code"]}: {datetime_value}</h3>',
-                    unsafe_allow_html=True
+                    unsafe_allow_html=True,
                 )
 
                 # Additional weather information
@@ -71,7 +73,9 @@ class SkyCast:
                     st.markdown(f'Visibility: {weather_data["vis"]} km')
 
                 with col2:
-                    st.markdown(f'Weather Description: {weather_data["weather"]["description"]}')
+                    st.markdown(
+                        f'Weather Description: {weather_data["weather"]["description"]}'
+                    )
                     st.markdown(f'Wind Direction: {weather_data["wind_cdir_full"]}')
                     st.markdown(f'UV Index: {weather_data["uv"]}')
                     st.markdown(f'Dew Point: {weather_data["dewpt"]}°C')
@@ -80,29 +84,41 @@ class SkyCast:
                 st.write("Location not found.")
 
     def display_forecast_weather(self):
-        
         latitude, longitude = None, None
         # Manually enter the city name
         city_name = st.sidebar.text_input("Enter City Name", key="city_name")
-        days = st.sidebar.number_input("How Many days do you want to Forecast", key="days", value=1, min_value=1, step=1, format="%d")
+        days = st.sidebar.number_input(
+            "How Many days do you want to Forecast",
+            key="days",
+            value=1,
+            min_value=1,
+            step=1,
+            format="%d",
+        )
 
         if st.sidebar.button("Submit"):
             latitude, longitude = self.geolocation_model.get_location_by_name(city_name)
         else:
             # If the submit button is not clicked, do not proceed further
             return
-        st.markdown(f"<h2 style='text-align: center;'>Forecast Weather</h2>", unsafe_allow_html=True)
+        st.markdown(
+            f"<h2 style='text-align: center;'>Forecast Weather</h2>",
+            unsafe_allow_html=True,
+        )
 
         if latitude is not None and longitude is not None:
             # Create an instance of the WeatherForecast class
-            weather = WeatherForecast(latitude, longitude, self.api_key,days)
+            weather = WeatherForecast(latitude, longitude, self.api_key, days)
 
             # Retrieve the weather forecast data
             forecast_df = weather.get_weather_forecast()
 
             # Show forecast data
             for i in range(len(forecast_df)):
-                st.markdown(f'<h3 style="text-align: center;">{forecast_df["date"][i]}</h3>', unsafe_allow_html=True)
+                st.markdown(
+                    f'<h3 style="text-align: center;">{forecast_df["date"][i]}</h3>',
+                    unsafe_allow_html=True,
+                )
 
                 col1, col2 = st.columns(2)
 
@@ -113,7 +129,9 @@ class SkyCast:
                     st.markdown(f'Visibility: {forecast_df["visibility"][i]} km')
 
                 with col2:
-                    st.markdown(f'Weather Description: {forecast_df["weather_description"][i]}')
+                    st.markdown(
+                        f'Weather Description: {forecast_df["weather_description"][i]}'
+                    )
                     st.markdown(f'Wind Direction: {forecast_df["wind_direction"][i]}')
                     st.markdown(f'UV Index: {forecast_df["uv_index"][i]}')
                     st.markdown(f'Dew Point: {forecast_df["dew_point"][i]}°C')
@@ -123,22 +141,38 @@ class SkyCast:
             max_temp = forecast_df["max_temp"]
             date = forecast_df["date"]
 
-            st.set_option('deprecation.showPyplotGlobalUse', False)
+            st.set_option("deprecation.showPyplotGlobalUse", False)
             plt.figure(figsize=(10, 6))  # Set the figure size
 
             # Plot the temperature line
-            plt.plot(date, temp, label='Temperature', marker='o', linestyle='-', color='blue')
+            plt.plot(
+                date, temp, label="Temperature", marker="o", linestyle="-", color="blue"
+            )
 
             # Plot the minimum temperature line
-            plt.plot(date, min_temp, label='Min Temperature', marker='o', linestyle='-', color='green')
+            plt.plot(
+                date,
+                min_temp,
+                label="Min Temperature",
+                marker="o",
+                linestyle="-",
+                color="green",
+            )
 
             # Plot the maximum temperature line
-            plt.plot(date, max_temp, label='Max Temperature', marker='o', linestyle='-', color='red')
+            plt.plot(
+                date,
+                max_temp,
+                label="Max Temperature",
+                marker="o",
+                linestyle="-",
+                color="red",
+            )
 
             # Set the labels and title
-            plt.xlabel('Date')
-            plt.ylabel('Temperature (°C)')
-            plt.title('Temperature Forecast')
+            plt.xlabel("Date")
+            plt.ylabel("Temperature (°C)")
+            plt.title("Temperature Forecast")
 
             # Add a legend
             plt.legend()
@@ -154,7 +188,7 @@ class SkyCast:
             "lat": latitude,
             "lon": longitude,
             "key": self.api_key,
-            "include": "minutely"
+            "include": "minutely",
         }
         try:
             response = requests.get(self.base_url, params=params)

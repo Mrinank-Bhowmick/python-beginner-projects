@@ -1,6 +1,6 @@
-#pip install geopy
-#pip install requests
-#Enter your API KEY from AIR VISUAL API
+# pip install geopy
+# pip install requests
+# Enter your API KEY from AIR VISUAL API
 
 import tkinter as tk
 import requests
@@ -30,7 +30,9 @@ country_label.configure(bg="#F0F0F0")  # Set the background color of the label
 country_entry = tk.Entry(app)
 country_entry.pack()
 
-get_aqi_button = tk.Button(app, text="Get AQI", bg="#3498db")  # Set the background color of the button
+get_aqi_button = tk.Button(
+    app, text="Get AQI", bg="#3498db"
+)  # Set the background color of the button
 get_aqi_button.place(x=180, y=200)
 
 # Add some space between the entry fields and the button
@@ -51,15 +53,16 @@ aqi_label.configure(bg="#F0F0F0")  # Set the background color of the label
 AIRVISUAL_API_KEY = "YOUR API KEY"
 AIRVISUAL_API_URL = "https://api.airvisual.com/v2/city"
 
+
 def get_aqi():
     city = city_entry.get().strip()  # Remove leading/trailing whitespaces
     state = state_entry.get().strip()
     country = country_entry.get()
-    
+
     if city.lower() == "mumbai":
         city = "Mumbai"
         state = "Maharashtra"
-    
+
     params = {
         "city": city,
         "state": state,
