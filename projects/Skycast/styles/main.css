@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.weather-details {
+  margin-top: 20px;
+}
+
+.weather-details p {
+  margin: 5px 0;
+}
+
+.weather-details .location {
+  font-weight: bold;
+}
+
+.weather-details .temperature {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.weather-details .description {
+  margin-top: 10px;
+}
+
+.weather-details .additional-info {
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
