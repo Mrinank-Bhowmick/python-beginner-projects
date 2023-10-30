@@ -36,7 +36,11 @@ def character_segment(image, line_start, line_finish, threshold_factor = 20):
         start_temp = []
         finish_temp = []
         count_char = 0
-        threshold = np.max(proj) // threshold_factor
+        
+        threshold = np.max(proj) 
+        if (0 < threshold_factor < 100):
+            threshold = threshold // threshold_factor
+
         for i in proj:
             if i > threshold and proj[count_char-1] <= threshold:
                 start_temp.append(count_char)
