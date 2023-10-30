@@ -1,7 +1,4 @@
-import cv2
-import numpy as np
-
-def preprocess_img(img, kernel_size=9, skip_dilatation=False):
+def preprocess_img(image, kernel_size=9, skip_dilatation=False):
     """
     Preprocess an image for better results in OCR by applying Gaussian blur, adaptive thresholding, and dilation.
 
@@ -13,8 +10,11 @@ def preprocess_img(img, kernel_size=9, skip_dilatation=False):
     Returns:
     - ndarray: The preprocessed image.
     """
+    if len(image.shape) != 2:
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
     # Apply Gaussian blur to reduce noise
-    noise_reduced_img = cv2.GaussianBlur(img.copy(), (kernel_size, kernel_size), 0)
+    noise_reduced_img = cv2.GaussianBlur(image, (kernel_size, kernel_size), 0)
 
     # Apply adaptive thresholding to binarize the image
     binarized_img = cv2.adaptiveThreshold(noise_reduced_img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)

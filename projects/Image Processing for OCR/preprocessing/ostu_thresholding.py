@@ -1,6 +1,3 @@
-import numpy as np
-import cv2
-
 def otsu_thresh(image):
     """
     Apply Otsu's thresholding to an input image.
@@ -38,6 +35,9 @@ def otsu_thresh(image):
     
     # Slightly adjust the threshold for practical use
     threshold = int(1.1 * threshold)
+
+    if len(image.shape) != 2:
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
     # Apply Otsu's thresholding to the image
     image_result = cv2.threshold(image, threshold, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]

@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
 
-# preprocessed, inverted, deskwed image as input
 def line_segment(image, width = 500):
     """
     Perform line segmentation on a preprocessed, inverted, and deskewed image.
@@ -37,12 +36,12 @@ def line_segment(image, width = 500):
         count = count + 1
     count = 0
 
-    # view_result(image, histogram_result, line_start, line_finish)
+    view_result(image.copy(), line_start, line_finish)
 
     return line_start, line_finish
 
 
-def view_result(image, histogram_result, line_start, line_finish):
+def view_result(image, line_start, line_finish):
     """
     Visualize the line segmentation result.
 
@@ -55,11 +54,8 @@ def view_result(image, histogram_result, line_start, line_finish):
     col = image.shape[1]
 
     for count in range(len(line_start)):
-        cv2.line(image, (0, line_start[count]), (col - 1, line_start[count]), (0, 0, 255), 1)
-        cv2.line(image, (0, line_finish[count]), (col - 1, line_finish[count]), (0, 0, 255), 1)
+        cv2.line(image, (0, line_start[count]), (col - 1, line_start[count]), (255, 255, 255), 1)
+        cv2.line(image, (0, line_finish[count]), (col - 1, line_finish[count]), (255, 255, 255), 1)
 
-    histogram_result = cv2.resize(histogram_result, (500, 500))
     image = cv2.resize(image, (500, 500))
-    image_array = ([image, histogram_result])
-    img_stacked = image_stack(image_array, 0.5)
-    cv2.imshow(img_stacked)
+    cv2.imshow(image)

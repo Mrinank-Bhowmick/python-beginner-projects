@@ -20,3 +20,5 @@ Python packages required for this project-
 -   numpy
 -   cv2
 -   imutils
+
+NOTE: I used the notebook in [Google colab](colab.google.com) I have not checked the notebook running locally, So there might be some error for that reason.
