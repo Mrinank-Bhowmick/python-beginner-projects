@@ -2,10 +2,11 @@ from sys import exit
 import pygame
 
 pygame.init()
-
+#установка размеров окна
 surface = pygame.display.set_mode((640, 640))
-pygame.display.set_caption("Chess")
-
+#установка заголовка окна
+pygame.display.set_caption("Шахматы")
+#основное игровое поле
 grid = [
     ["r", "n", "b", "q", "k", "b", "n", "r"],
     ["p", "p", "p", "p", "p", "p", "p", "p"],
@@ -16,13 +17,13 @@ grid = [
     ["P", "P", "P", "P", "P", "P", "P", "P"],
     ["R", "N", "B", "Q", "K", "B", "N", "R"],
 ]
-
+#начальные значения выборов, ходов
 selected = False
 selectX, selectY, moveX, moveY = None, None, None, None
 validMoves = None
 turn = 1
 
-
+#логика каждой фигуры игры
 class ValidMoveGenerator(object):
     def __init__(self):
         self.vMoves = []
@@ -278,49 +279,49 @@ class ValidMoveGenerator(object):
         else:
             return grid[x][y].islower()
 
-
+#реализация логики фигур
 validMoveGen = ValidMoveGenerator()
 
-
+#установка изображений и цветов
 class Board(object):
     def __init__(self):
         self.sqs = [[], [], [], [], [], [], [], []]
         self.IMAGES = [
             pygame.transform.scale(
-                pygame.image.load("Assets\\WhiteKing.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\WhiteKing.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\WhiteQueen.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\WhiteQueen.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\WhiteRook.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\WhiteRook.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\WhiteBishop.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\WhiteBishop.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\WhiteKnight.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\WhiteKnight.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\WhitePawn.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\WhitePawn.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\BlackKing.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\BlackKing.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\BlackQueen.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\BlackQueen.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\BlackRook.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\BlackRook.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\BlackBishop.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\BlackBishop.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\BlackKnight.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\BlackKnight.png"), (64, 85)
             ),
             pygame.transform.scale(
-                pygame.image.load("Assets\\BlackPawn.png"), (64, 85)
+                pygame.image.load("projects\\Chess\\Assets\\BlackPawn.png"), (64, 85)
             ),
         ]
         self.colors = [[], [], [], [], [], [], [], []]
@@ -510,10 +511,10 @@ class Board(object):
                 else:
                     self.colors[i][j] = (30, 30, 30)
 
-
+#инициализация доски
 board = Board()
 
-
+#проверка результатов хода
 def notResultsInCheck(x1, y1, x2, y2):
     global grid, validMovegen
     grid2 = []
@@ -558,7 +559,7 @@ def notResultsInCheck(x1, y1, x2, y2):
                 return False
     return True
 
-
+#игровой процесс - событие
 class Event(object):
     def __init__(self):
         self.selected = False
@@ -632,9 +633,9 @@ class Event(object):
         board.placePieces()
         board.resetColor()
 
-
+#инициализация события
 eventHandler = Event()
-
+#основной код программы
 while True:
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
