@@ -1,0 +1,39 @@
+diff --git a/projects/Flappybird_game/flappy-bird.ttf b/projects/Flappybird_game/flappy-bird.ttf
+new file mode 100644
+index 0000000..f5c7a4f
+Binary files /dev/null and b/projects/Flappybird_game/flappy-bird.ttf differ
+diff --git a/projects/Flappybird_game/main.py b/projects/Flappybird_game/main.py
+index 0194cb2..b1bb3c3 100644
+--- a/projects/Flappybird_game/main.py
++++ b/projects/Flappybird_game/main.py
+@@ -79,7 +79,8 @@ pygame.mixer.pre_init()
+ pygame.init()
+ screen = pygame.display.set_mode((288, 512))
+ Clock = pygame.time.Clock()
+-game_font = pygame.font.Font("Downloads/flappy-bird.ttf", 40)
++# Load a font from a TTF file. 40 is the font size.
++game_font = pygame.font.Font("flappy-bird.ttf", 40)
+ 
+ # game var
+ gravity = 0.25
+diff --git a/projects/Flappybird_game/test.py b/projects/Flappybird_game/test.py
+new file mode 100644
+index 0000000..e0c1b2f
+--- /dev/null
++++ b/projects/Flappybird_game/test.py
+@@ -0,0 +1,15 @@
++import unittest
++import pygame
++
++class TestGameFont(unittest.TestCase):
++    def test_font_creation(self):
++        pygame.init()
++
++        #Create a font object using the 'pygame.font.Font' function
++        game_font = pygame.font.Font("flappy-bird.ttf", 40)
++
++        #To varify whether a game_font object is an instance of pygame.font.Font
++        self.assertIsInstance(game_font, pygame.font.Font)
++
++if __name__ == '__main__':
++    unittest.main()
