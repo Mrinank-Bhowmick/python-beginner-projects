@@ -1,11 +1,17 @@
-import pygame, sys, random
+import pygame
+import sys
+import random
 
-
+'''
+Render the game's floor on to the screen
+'''
 def draw_floor():
     screen.blit(floor_surface, (floor_x_pos, 512 - 75))
     screen.blit(floor_surface, (floor_x_pos + 200, 512 - 75))
 
-
+'''
+Create two pipe rectangles(top and bottom) for the game
+'''
 def create_pipe():
     random_pipe_pos = random.choice(pipe_height)
     bottom_pipe = pipe_surface.get_rect(midtop=(500, random_pipe_pos))
@@ -14,11 +20,23 @@ def create_pipe():
 
 
 def move_pipe(pipes):
+    '''
+    Update the position of pipe rectangles as they move from right to left on the screen
+
+    Parameters:
+        pipes (list): A list containing the rectangles representing the pipes.
+
+    Returns:
+        list: An updated list of pipe rectangles with their positions adjusted.
+    '''
     for pipe in pipes:
         pipe.centerx -= 5
     return pipes
 
 
+'''
+Render the pipe rectangles on the screen
+'''
 def draw_pipes(pipes):
     for pipe in pipes:
         if pipe.bottom >= 512:
@@ -29,6 +47,14 @@ def draw_pipes(pipes):
 
 
 def check_collision(pipes):
+    '''
+    Check for collisions between bird and pipe rectangles to decide if the game should continue or end.
+    Parameters:
+        pipes (list): A list of pipe rectangles representing obstacles in the game.
+
+    Returns:
+        bool: True if the game is still active, False if the game should end.
+    '''
     for pipe in pipes:
         if bird_rect.colliderect(pipe):
             death_sound.play()
@@ -39,18 +65,24 @@ def check_collision(pipes):
 
     return True
 
-
+'''
+Rotate the bird image based on its movement
+'''
 def rotate_bird(bird):
     new_bird = pygame.transform.rotozoom(bird, -bird_movement * 5, 1)
     return new_bird
 
-
+'''
+Manage the animation of the bird by cycling through different bird frames
+'''
 def bird_animation():
     new_bird = bird_frames[bird_index]
     new_bird_rect = new_bird.get_rect(center=(50, bird_rect.centery))
     return new_bird, new_bird_rect
 
-
+'''
+Display the score of game 
+'''
 def score_display(game_state):
     if game_state == " main_game":
         score_surface = game_font.render(str(int(score)), True, (255, 255, 255))
@@ -68,7 +100,9 @@ def score_display(game_state):
         high_score_rect = high_score_surface.get_rect(center=(288 / 2, 410))
         screen.blit(high_score_surface, high_score_rect)
 
-
+'''
+Update the high score if the current score is higher.
+'''
 def update_score(score, high_score):
     if score > high_score:
         high_score = score
@@ -76,6 +110,8 @@ def update_score(score, high_score):
 
 
 pygame.mixer.pre_init()
+
+#Initialize the game with the size of 288x512 pixels
 pygame.init()
 screen = pygame.display.set_mode((288, 512))
 Clock = pygame.time.Clock()
@@ -96,9 +132,7 @@ floor_surface = pygame.image.load("Documents/assets/base.png")
 floor_x_pos = 0
 
 bird_downflap = pygame.image.load("Documents/assets/bluebird.png").convert_alpha()
-bird_midflap = pygame.image.load(
-    "Documents/assets/bluebird-midflap.png"
-).convert_alpha()
+bird_midflap = pygame.image.load("Documents/assets/bluebird-midflap.png").convert_alpha()
 bird_upflap = pygame.image.load("Documents/assets/bluebird-upflap.png").convert_alpha()
 bird_frames = [bird_downflap, bird_midflap, bird_upflap]
 bird_index = 0
