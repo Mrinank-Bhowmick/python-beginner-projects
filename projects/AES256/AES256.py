@@ -19,7 +19,9 @@ def encrypt(plain_text, password):
         raise ValueError("Password cannot be empty.")
 
     salt = get_random_bytes(AES.block_size)
-    private_key = hashlib.scrypt(password.encode(), salt=salt, n=2**14, r=8, p=1, dklen=32)
+    private_key = hashlib.scrypt(
+        password.encode(), salt=salt, n=2**14, r=8, p=1, dklen=32
+    )
     cipher_config = AES.new(private_key, AES.MODE_GCM)
     cipher_text, tag = cipher_config.encrypt_and_digest(bytes(plain_text, "utf-8"))
     return {
@@ -40,7 +42,9 @@ def decrypt(enc_dict, password):
         cipher_text = b64decode(enc_dict["cipher_text"])
         nonce = b64decode(enc_dict["nonce"])
         tag = b64decode(enc_dict["tag"])
-        private_key = hashlib.scrypt(password.encode(), salt=salt, n=2**14, r=8, p=1, dklen=32)
+        private_key = hashlib.scrypt(
+            password.encode(), salt=salt, n=2**14, r=8, p=1, dklen=32
+        )
         cipher = AES.new(private_key, AES.MODE_GCM, nonce=nonce)
         decrypted = cipher.decrypt_and_verify(cipher_text, tag)
         return decrypted.decode("utf-8")
@@ -52,7 +56,7 @@ def main():
     print("\t\tAES 256 Encryption and Decryption Algorithm")
     print("\t\t-------------------------------------------\n\n")
     x = input("Enter 1 to encrypt and 2 to decrypt: ")
-    if x == '1':
+    if x == "1":
         password = input("Enter the Password: ")
         secret_mssg = input("\nEnter the Secret Message: ")
 
@@ -63,7 +67,7 @@ def main():
         for k, v in encrypted.items():
             print(f"{k}: {v}")
 
-    elif x == '2':
+    elif x == "2":
         try:
             encrypted = {}
             encrypted["cipher_text"] = input("Enter the cipher text: ")
