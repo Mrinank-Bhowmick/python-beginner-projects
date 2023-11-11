@@ -20,7 +20,7 @@ class TestBudgetFunctionality(unittest.TestCase):
         budget.add_transaction(transaction_to_delete)
         budget.delete_transaction(transaction_to_delete)
 
-        # Assert (Incorrect Assertion to Intentionally Fail)
+        # Assert ()
         self.assertIn(transaction_to_delete, budget.transactions)
 
 if __name__ == '__main__':
