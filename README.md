@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects">
-    <img src="banner.png" height="405" width="720">
+    <img src="https://raw.githubusercontent.com/Mrinank-Bhowmick/python-beginner-projects/main/Banner.png" height="405" width="720">
   </a>
 </h1>
 
