@@ -39,12 +39,25 @@ def add_transaction():
         messagebox.showwarning("Warning", "Please fill in all fields.")
 
 
-# Function to clear input fields
+def delete_transaction():
+    selected_index = transaction_listbox.curselection()
+    if selected_index:
+        transaction_id = transaction_listbox.get(selected_index)[0]
+        c.execute("DELETE FROM transactions WHERE id=?", (transaction_id,))
+        conn.commit()
+        update_transaction_list()
+        update_balance()
+        messagebox.showinfo("Success", "Transaction deleted successfully!")
+    else:
+        messagebox.showwarning("Warning", "Please select a transaction to delete")
+
+#Function to clear input fields
 def clear_entries():
     date_entry.delete(0, tk.END)
     description_entry.delete(0, tk.END)
     amount_entry.delete(0, tk.END)
     category_combobox.set("")
+    category_combobox.config(state="readonly")
 
 
 # Function to update the transaction list
@@ -73,8 +86,12 @@ def update_balance():
 # Create the main window
 root = tk.Tk()
 root.title("Personal Budget Manager")
+root.columnconfigure(1, weight=1)
+root.columnconfigure(3, weight=1)
+root.columnconfigure(5, weight=1)
 
 # Create and configure widgets
+delete_button = tk.Button(root, text="Delete Transaction", command=delete_transaction)
 date_label = tk.Label(root, text="Date:")
 date_entry = tk.Entry(root, width=15)
 description_label = tk.Label(root, text="Description:")
@@ -100,6 +117,7 @@ transaction_listbox = tk.Listbox(root, width=50)
 balance_label = tk.Label(root, text="Current Balance: $0.00")
 
 # Place widgets in the window
+delete_button.grid(row=0, column=9, padx=10, pady=10)
 date_label.grid(row=0, column=0, padx=10, pady=10)
 date_entry.grid(row=0, column=1, padx=10, pady=10)
 description_label.grid(row=0, column=2, padx=10, pady=10)
