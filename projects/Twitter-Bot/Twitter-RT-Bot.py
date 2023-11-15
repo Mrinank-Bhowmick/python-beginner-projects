@@ -15,6 +15,7 @@ auth.set_access_token(access_token, access_token_secret)
 # Initialize the Twitter API
 api = tweepy.API(auth)
 
+
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         # Check if the tweet is not a retweet and not a reply
@@ -31,6 +32,7 @@ class MyStreamListener(tweepy.StreamListener):
             print("Error 420: Enhance Your Calm - Rate Limited")
             return False
 
+
 # Create a stream listener
 myStreamListener = MyStreamListener()
 myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
@@ -38,4 +40,3 @@ myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
 # Specify the keywords and filter criteria
 keywords = ["#Python", "#python", "#programming", "#coding"]
 myStream.filter(track=keywords, languages=["en"])
-

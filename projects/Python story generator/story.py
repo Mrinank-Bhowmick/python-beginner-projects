@@ -6,9 +6,16 @@ from tkinter import ttk
 from tkinter import scrolledtext
 from ttkthemes import ThemedStyle
 
+
 # Function to generate a random story
 def generate_story():
-    when = ["A few years ago", "Yesterday", "Last night", "A long time ago", "On 20th Jan"]
+    when = [
+        "A few years ago",
+        "Yesterday",
+        "Last night",
+        "A long time ago",
+        "On 20th Jan",
+    ]
     who = ["a rabbit", "an elephant", "a mouse", "a turtle", "a cat"]
     name = ["Ali", "Miriam", "Daniel", "Hoouk", "Starwalker"]
     residence = ["Barcelona", "India", "Germany", "Venice", "England"]
@@ -43,14 +50,15 @@ def generate_story():
             + random.choice(went)
             + "."
         )
-        
+
         story.append(sentence)
         total_words += len(sentence.split())
 
     result_text.config(state=tk.NORMAL)
     result_text.delete("1.0", tk.END)
-    result_text.insert(tk.END, '\n'.join(story))
+    result_text.insert(tk.END, "\n".join(story))
     result_text.config(state=tk.DISABLED)
+
 
 # Create the main window
 root = tk.Tk()
@@ -62,20 +70,25 @@ style.set_theme("arc")  # You can choose from various themes provided by ttkthem
 
 # Create a custom style with a blue gradient background for the button
 custom_style = ttk.Style()
-custom_style.configure("BlueGradient.TButton",
-                       background="#007acc",  # Start color of the gradient
-                       foreground="Black",    # Text color
-                       borderwidth=0,          # Remove the default border
-                       focuscolor="#007acc")  # Color when the button is clicked
+custom_style.configure(
+    "BlueGradient.TButton",
+    background="#007acc",  # Start color of the gradient
+    foreground="Black",  # Text color
+    borderwidth=0,  # Remove the default border
+    focuscolor="#007acc",
+)  # Color when the button is clicked
 
 # Create a button with the custom style
-generate_button = ttk.Button(root, text="Generate Story", style="BlueGradient.TButton", command=generate_story)
+generate_button = ttk.Button(
+    root, text="Generate Story", style="BlueGradient.TButton", command=generate_story
+)
 generate_button.pack(pady=10, ipadx=10, ipady=5)
 
 # Create a scrolled text widget with rounded corners to display the generated story
-result_text = scrolledtext.ScrolledText(root, wrap=tk.WORD, height=10, width=40, state=tk.DISABLED)
+result_text = scrolledtext.ScrolledText(
+    root, wrap=tk.WORD, height=10, width=40, state=tk.DISABLED
+)
 result_text.pack(padx=20, pady=10)
 
 # Start the GUI main loop
 root.mainloop()
-

@@ -23,7 +23,9 @@ if __name__ == "__main__":
     HUMAN_POINT = 0
 
     print(" \t \t \t \t Snake,Water,Gun Game\n \n")
-    rprint("[yellow]s[/yellow] for snake, [blue]w[/blue] for water, [green]g[/green] for gun \n")
+    rprint(
+        "[yellow]s[/yellow] for snake, [blue]w[/blue] for water, [green]g[/green] for gun \n"
+    )
 
     # making the game in while
     while NO_OF_CHANCE < CHANCE:
@@ -56,8 +58,12 @@ if __name__ == "__main__":
                 elif computer_choice == "w":
                     COMPUTER_POINT += 1
                     WINNER = "Computer"
-            rprint(f"You guessed [yellow]{user_choice.lower()}[/yellow] and Computer guessed [cyan]{computer_choice}.[/cyan]\n")
-            rprint(f"[{'green' if WINNER == 'Human' else 'red'}]{WINNER} wins 1 point[/{'green' if WINNER == 'Human' else 'red'}] \n")
+            rprint(
+                f"You guessed [yellow]{user_choice.lower()}[/yellow] and Computer guessed [cyan]{computer_choice}.[/cyan]\n"
+            )
+            rprint(
+                f"[{'green' if WINNER == 'Human' else 'red'}]{WINNER} wins 1 point[/{'green' if WINNER == 'Human' else 'red'}] \n"
+            )
 
         NO_OF_CHANCE += 1
         rprint(f"{CHANCE - NO_OF_CHANCE} chance(s) are left out of {CHANCE} chances.\n")
@@ -73,4 +79,6 @@ if __name__ == "__main__":
     else:
         rprint("[green]You won and Computer lost.[/green]")
 
-    rprint(f"[green]Your points: {HUMAN_POINT}\tComputer points: {COMPUTER_POINT}[/green]")
+    rprint(
+        f"[green]Your points: {HUMAN_POINT}\tComputer points: {COMPUTER_POINT}[/green]"
+    )
