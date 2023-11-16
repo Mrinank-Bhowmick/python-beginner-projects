@@ -20,6 +20,9 @@ conn.commit()
 
 # Function to add a transaction to the database
 def add_transaction():
+    """
+    Adds a transaction to the database based on user input.
+    """
     date = date_entry.get()
     description = description_entry.get()
     amount = amount_entry.get()
@@ -40,6 +43,9 @@ def add_transaction():
 
 
 def delete_transaction():
+    """
+    Deletes a selected transaction from the database.
+    """
     selected_index = transaction_listbox.curselection()
     if selected_index:
         transaction_id = transaction_listbox.get(selected_index)[0]
@@ -53,6 +59,9 @@ def delete_transaction():
 
 #Function to clear input fields
 def clear_entries():
+    """
+    Clears all input fields.
+    """
     date_entry.delete(0, tk.END)
     description_entry.delete(0, tk.END)
     amount_entry.delete(0, tk.END)
@@ -62,6 +71,9 @@ def clear_entries():
 
 # Function to update the transaction list
 def update_transaction_list():
+    """
+    Updates the displayed transaction list based on the database entries.
+    """
     transaction_listbox.delete(0, tk.END)
     c.execute("SELECT * FROM transactions")
     transactions = c.fetchall()
@@ -71,6 +83,9 @@ def update_transaction_list():
 
 # Function to calculate and display the current balance
 def update_balance():
+    """
+    Calculates and displays the current balance based on income and expenses.
+    """
     c.execute("SELECT SUM(amount) FROM transactions")
     total_income = c.fetchone()[0]
     if total_income is None:
