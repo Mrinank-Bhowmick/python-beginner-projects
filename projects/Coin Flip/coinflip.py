@@ -1,9 +1,11 @@
 import random
 import os
 
+
 def toss_coin():
     list1 = ["heads", "tails"]
     return random.choice(list1)
+
 
 def main():
     while True:
@@ -30,6 +32,7 @@ def main():
         answer_y = input("Wanna play again? (yes/no): ")
         if answer_y.lower() != "yes":
             break
+
 
 if __name__ == "__main__":
     main()
