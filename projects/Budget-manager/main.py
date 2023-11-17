@@ -60,6 +60,7 @@ def delete_transaction():
 
 # Function to clear input fields.
 
+
 def clear_entries():
     """
     Clears all input fields.
