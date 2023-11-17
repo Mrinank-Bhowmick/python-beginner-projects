@@ -1,5 +1,6 @@
 import random
 
+
 def get_user_choice():
     while True:
         try:
@@ -10,6 +11,7 @@ def get_user_choice():
                 print("Please choose a number from 1 to 6.")
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 6.")
+
 
 def play_innings(player, overs, max_wickets):
     runs = 0
@@ -35,7 +37,9 @@ def play_innings(player, overs, max_wickets):
             if balls % 6 == 0:
                 over_number = balls // 6
                 print(f"End of Over {over_number}")
-                print(f"Over {over_number} Summary: {player} scored {runs} runs with {wickets} wickets.")
+                print(
+                    f"Over {over_number} Summary: {player} scored {runs} runs with {wickets} wickets."
+                )
 
             print(f"Total Score: {runs}/{wickets}")
             print(f"Balls remaining: {overs * 6 - balls}")
@@ -52,16 +56,23 @@ def play_innings(player, overs, max_wickets):
 
     return runs, wickets
 
+
 print("~ Welcome to the Game of Cricket ~")
 
 print("\nInstructions:")
 print("1. You have to select any number from 1 to 6.")
 print("2. The computer will also select a number.")
-print("3. While batting, if your number and computer's number are different, you'll add to your runs.")
+print(
+    "3. While batting, if your number and computer's number are different, you'll add to your runs."
+)
 print("   If they are the same, you'll lose a wicket.")
-print("4. While bowling, if your number and computer's number are different, the computer adds to its runs.")
+print(
+    "4. While bowling, if your number and computer's number are different, the computer adds to its runs."
+)
 print("   If they are the same, the computer loses a wicket.")
-print("5. Each player will get 2 wickets and 2 overs (12 balls) for batting and bowling.")
+print(
+    "5. Each player will get 2 wickets and 2 overs (12 balls) for batting and bowling."
+)
 print("6. The innings will end after either three wickets fall or the overs end.")
 print("7. The player with the maximum runs wins.")
 
@@ -81,7 +92,9 @@ else:
     computer_choice = random.choice(["bat", "bowl"])
     user_choice = "bowl" if computer_choice == "bat" else "bat"
 
-print(f"{toss_winner} chose to {user_choice} and the computer chose to {computer_choice}")
+print(
+    f"{toss_winner} chose to {user_choice} and the computer chose to {computer_choice}"
+)
 
 user_runs, user_wickets = play_innings("You", 2, 2)
 computer_runs, computer_wickets = play_innings("Computer", 2, 2)
@@ -93,6 +106,8 @@ print(f"Computer's total runs: {computer_runs}")
 if user_runs > computer_runs:
     print(f"Congratulations! You won the Match by {user_runs - computer_runs} runs.")
 elif user_runs < computer_runs:
-    print(f"Better luck next time! The Computer won the Match by {computer_runs - user_runs} runs.")
+    print(
+        f"Better luck next time! The Computer won the Match by {computer_runs - user_runs} runs."
+    )
 else:
     print("The Match is a Tie. No one Wins.")

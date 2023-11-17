@@ -2,16 +2,18 @@ import requests
 from time import sleep
 import html
 
-def fetch_quiz_data(amount=4, quiz_type='boolean'):
+
+def fetch_quiz_data(amount=4, quiz_type="boolean"):
     url = f"https://opentdb.com/api.php?amount={amount}&type={quiz_type}"
     response = requests.get(url)
     data_json = response.json()
     return data_json["results"]
 
+
 def check_answer(question, answer, score):
-    correct_answer = html.unescape(question['correct_answer']).lower()
+    correct_answer = html.unescape(question["correct_answer"]).lower()
     answer = answer.lower()
-    
+
     if answer == correct_answer:
         print("Correct Answer! \nYour score is", score + 1)
         return True
@@ -19,6 +21,7 @@ def check_answer(question, answer, score):
         print("Wrong Answer! \nYour score is", score - 1)
         print(f"The correct answer is {html.unescape(question['correct_answer'])}")
         return False
+
 
 def display_question(question, question_number, score):
     print("\n" * 10)
@@ -29,8 +32,9 @@ def display_question(question, question_number, score):
     print(f"\tCategory: {question['category']}")
     print("=" * 50)
     print()
-    print("Question: ", html.unescape(question['question']))
+    print("Question: ", html.unescape(question["question"]))
     print()
+
 
 def main():
     quiz_data = fetch_quiz_data()
@@ -61,6 +65,7 @@ def main():
     print("\n" * 10)
     print("Your final score is", score, "!")
     print("Thanks for playing! 💜")
+
 
 if __name__ == "__main__":
     main()
