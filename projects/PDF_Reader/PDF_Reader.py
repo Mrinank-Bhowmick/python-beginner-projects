@@ -57,8 +57,7 @@ def QA(query):
     result = result.split("content='")[1]
     return result
 
-#Приветики
-
+###Ghbdtnbrb
 
 print("INSTRUCTIONS:")
 print('Enter the question you want to ask from pdf text OR press "-1" to STOP')
