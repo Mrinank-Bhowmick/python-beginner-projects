@@ -1,21 +1,27 @@
-# ToDo List in Python 📒
+# To-Do List Application
 
-This is a simple command-line ToDo List application written in Python.
+This is a simple to-do list application with a graphical user interface (GUI) created in Python using the tkinter library. It allows users to add, remove, and view tasks using a user-friendly interface.
 
 ## Features
 
-- **Add Tasks:** You can add tasks to your ToDo list. Just type in your task when prompted.
-
-- **Remove Tasks:** You can remove tasks from your ToDo list. You will need to provide the task number (the number displayed next to each task when displaying tasks).
-
-- **Display Tasks:** You can display all tasks in your ToDo list in the order they were added.
-
-- **Quit:** You can quit the application at any time.
+- Add tasks to the to-do list.
+- Remove tasks from the to-do list by selecting and deleting them.
+- View all tasks in the to-do list.
+- User-friendly graphical interface.
+- Prioritize tasks with different colors (High priority in red, Medium in orange, Low in green).
+- Set due dates for tasks and select them from a calendar view.
+- Quit the application.
 
 ## Usage
 
-To run the program, you will need Python installed on your computer. Once you have Python, you can run the program from the command line by navigating to the directory containing the Python file and running the following command:
+1. Before running the application, make sure to install the `tkcalendar` library. You can do this by running the following command:
 
-```bash
-python to_do_list.py
-python3 to_do_list.py
+   ```bash
+   pip install tkcalendar
+   ```
+
+2. Run the application by executing the Python script `todo.py`.
+
+   ```bash
+   python to_do_list.py
+   ```
