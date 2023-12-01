@@ -3,11 +3,22 @@ import time
 
 
 def addition():
-    nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+    """
+    Sums up the two numbers entered by the user.
+    Returns:
+        int: Sum of entered numbers
+    """
+
+    nums = list(map(int, input("Enter all numbers separated by space: ").split()))
     return sum(nums)
 
 
 def subtraction():
+    """
+        Subtracts the two numbers entered by the user.
+        Returns:
+            int: Difference between two numbers
+        """
     n1 = float(input("Enter first number: "))
     n2 = float(input("Enter second number: "))
 
@@ -15,6 +26,11 @@ def subtraction():
 
 
 def multiplication():
+    """
+        Multiplies two numbers entered by the user.
+        Returns:
+            int: Product of entered numbers
+        """
     nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
     res = 1
     for num in nums:
@@ -23,6 +39,11 @@ def multiplication():
 
 
 def division():
+    """
+        Divides the two numbers entered by the user.
+        Returns:
+            int: Quotient of entered numbers
+        """
     n1 = float(input("Enter first number: "))
     n2 = float(input("Enter second number: "))
     if n2 == 0:
@@ -34,18 +55,47 @@ def division():
 
 
 def average():
+    """
+    Calculates the average of numbers entered.
+
+    Returns:
+        float:The average of the numbers entered.
+    """
+
     nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
     return sum(nums) / len(nums)
 
 
 def factorial(num):
+    """
+    Gives the factorial of a non-negative number.
+
+    Factorial is the product of all the integers up to the number entered.
+
+    Parameters:
+        num (int): A non-negative integer.
+
+    Returns:
+        int: The factorial of the input number.
+    """
     answer = 1
     for i in range(num):
         answer *= i + 1
     return answer
 
 
+7
+
+
 def complexarithmetic():
+    """
+    Performs complex arithmetic operations.
+
+    Asks the user to choose from complex operations and performs the selected operation.
+
+    Returns:
+        str: String representation of the complex arithmetic operation.
+    """
     print("Enter '1' for complex addition")
     print("Enter '2' for complex substraction")
     print("Enter '3' for complex multiplication")
@@ -101,6 +151,15 @@ def complexarithmetic():
 
 
 def binomail(num):
+    """
+    Calculates the binomial coefficient using the factorial function.
+
+    Parameters:
+        num (list): List containing two integers where the first number entered should be greater than the second number.
+
+    Returns:
+        int: Binomial coefficient.
+    """
     result = factorial(num[0]) / (factorial(num[1]) * factorial(num[0] - num[1]))
     return result
 
