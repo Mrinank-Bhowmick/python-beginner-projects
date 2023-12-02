@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53c9d6d8-10ca-41cd-9ed6-8c3589cfb285" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/projects/Calculator/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/Calculator/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/BMI_calculator/test_BMI_calculator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/BMI_calculator/BMI calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/BMI_calculator/BMI_calculator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -51,7 +61,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projects/BMI_calculator/BMI calculator.py</url>
+          <url>file://$PROJECT_DIR$/projects/BMI_calculator/BMI_calculator.py</url>
           <line>11</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
