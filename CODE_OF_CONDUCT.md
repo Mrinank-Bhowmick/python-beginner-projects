@@ -1,3 +1,6 @@
+# **CODE_OF_CONDUCT translated into other languages**
+💠 <a href="./CODE_OF_CONDUCT-ES.md">Español</a> es-ES
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge

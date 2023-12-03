@@ -11,26 +11,24 @@
 <a><img alt="Awesome" src="https://awesome.re/badge-flat2.svg"></a>
 </p>
 
-# 💭 **README translated into other languages**
-💠 <a href="./README-ES.md">Español</a> es-ES
 
-# 💭 **Why these awesome projects ??**
-💠 _This repository offers a variety of fascinating mini-projects written in Python._ 
+# 💭 **Por qué estos increibles proyectos ??**
+💠 _Este repositorio ofrece una variedad de fascinantes mini projectos escritos en Python._ 
 
-💠 _Working on Python projects will undoubtedly improve your skills and raise your profile in preparation for the globalised marketplace outside._
+💠 _Trabajar en proyectos de Python mejorará indudablemente tus habilidades y tu perfil en preparación para el mercado global._
 
-💠 _Projects are a potential method to begin your career in this area._
+💠 _Los proyectos son un metodo potencial para comenzar tu carrera en este area._
 
-💠 _This language deserves a lot of attention in today's world, and why not since it can address so many real-world problems?_
+💠 _Este lenguage merece mucha atención en el mundo actual y, por qué no? Ya que puede usarse en muchos problemas en el mundo real._
 
 
-<h2> 📈<I> Tweet this repository </I> </h2>
+<h2> 📈<I> "Tweetea" este repositorio </I> </h2>
 
 <a href="https://twitter.com/intent/tweet?text=Some%20awesome%20python%20beginner%20projects%20to%20kick%20start%20your%20learning%20journey&url=https://github.com/MrinankBhowmick/python-beginner-projects&via=_mrinank_&hashtags=python,programming,100DaysOfCode,opensource,DataScience"> <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="InfiniteGraph Logo" width="120"> </a>
 
-## 📁 All Projects are under [projects](https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects) folder.
+## 📁 Todos los projectos estan bajo la carpeta [projects](https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects).
 
-<h1> 🖥️ Projects So Far ... </h1>
+<h1> 🖥️ Proyectos hasta ahora... </h1>
 
 <table>
     <tr>
@@ -768,18 +766,15 @@
     </tr>
 </table>
 
-## Run these projects online :
+## Ejecuta estos proyectos en línea:
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Mrinank-Bhowmick/python-beginner-projects.git)
 
-
-## Stargazers over time
+## Stargazers a lo largo del tiempo:
 
 [![Stargazers over time](https://starchart.cc/Mrinank-Bhowmick/python-beginner-projects.svg)](https://starchart.cc/Mrinank-Bhowmick/python-beginner-projects)
 
-
-
-<h1> Contributors </h1>
+<h1> Contribuidores </h1>
 
 <!-- readme: contributors -start -->
 
