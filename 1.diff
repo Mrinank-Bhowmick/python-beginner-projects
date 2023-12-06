@@ -1,0 +1,377 @@
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+index 0000000..26d3352
+--- /dev/null
++++ b/.idea/.gitignore
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+index 0000000..06855d4
+--- /dev/null
++++ b/.idea/encodings.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/projects/Flappybird_game/flappy-bird.ttf" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+index 0000000..0ef2217
+--- /dev/null
++++ b/.idea/inspectionProfiles/Project_Default.xml
+@@ -0,0 +1,12 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="PyPackageRequirementsInspection" enabled="false" level="WARNING" enabled_by_default="false">
++      <option name="ignoredPackages">
++        <value>
++          <list size="0" />
++        </value>
++      </option>
++    </inspection_tool>
++  </profile>
++</component>
+\ No newline at end of file
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+index 0000000..105ce2d
+--- /dev/null
++++ b/.idea/inspectionProfiles/profiles_settings.xml
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+index 0000000..20d51fe
+--- /dev/null
++++ b/.idea/misc.xml
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (python-beginner-projects)" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+index 0000000..50699c7
+--- /dev/null
++++ b/.idea/modules.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/python-beginner-projects.iml" filepath="$PROJECT_DIR$/.idea/python-beginner-projects.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/python-beginner-projects.iml b/.idea/python-beginner-projects.iml
+new file mode 100644
+index 0000000..8e5446a
+--- /dev/null
++++ b/.idea/python-beginner-projects.iml
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++  <component name="PyDocumentationSettings">
++    <option name="format" value="PLAIN" />
++    <option name="myDocStringFormat" value="Plain" />
++  </component>
++</module>
+\ No newline at end of file
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+index 0000000..35eb1dd
+--- /dev/null
++++ b/.idea/vcs.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/projects/Flappybird_game/background-night.png b/projects/Flappybird_game/assets/background-night.png
+similarity index 100%
+rename from projects/Flappybird_game/background-night.png
+rename to projects/Flappybird_game/assets/background-night.png
+diff --git a/projects/Flappybird_game/base.png b/projects/Flappybird_game/assets/base.png
+similarity index 100%
+rename from projects/Flappybird_game/base.png
+rename to projects/Flappybird_game/assets/base.png
+diff --git a/projects/Flappybird_game/bluebird-midflap.png b/projects/Flappybird_game/assets/bluebird-midflap.png
+similarity index 100%
+rename from projects/Flappybird_game/bluebird-midflap.png
+rename to projects/Flappybird_game/assets/bluebird-midflap.png
+diff --git a/projects/Flappybird_game/bluebird-upflap.png b/projects/Flappybird_game/assets/bluebird-upflap.png
+similarity index 100%
+rename from projects/Flappybird_game/bluebird-upflap.png
+rename to projects/Flappybird_game/assets/bluebird-upflap.png
+diff --git a/projects/Flappybird_game/bluebird.png b/projects/Flappybird_game/assets/bluebird.png
+similarity index 100%
+rename from projects/Flappybird_game/bluebird.png
+rename to projects/Flappybird_game/assets/bluebird.png
+diff --git a/projects/Flappybird_game/assets/message.png b/projects/Flappybird_game/assets/message.png
+new file mode 100644
+index 0000000..2530aab
+Binary files /dev/null and b/projects/Flappybird_game/assets/message.png differ
+diff --git a/projects/Flappybird_game/assets/pipe-green.png b/projects/Flappybird_game/assets/pipe-green.png
+new file mode 100644
+index 0000000..7af734c
+Binary files /dev/null and b/projects/Flappybird_game/assets/pipe-green.png differ
+diff --git a/projects/Flappybird_game/fixissue.diff b/projects/Flappybird_game/fixissue.diff
+new file mode 100644
+index 0000000..0794637
+--- /dev/null
++++ b/projects/Flappybird_game/fixissue.diff
+@@ -0,0 +1,39 @@
++diff --git a/projects/Flappybird_game/flappy-bird.ttf b/projects/Flappybird_game/flappy-bird.ttf
++new file mode 100644
++index 0000000..f5c7a4f
++Binary files /dev/null and b/projects/Flappybird_game/flappy-bird.ttf differ
++diff --git a/projects/Flappybird_game/main.py b/projects/Flappybird_game/main.py
++index 0194cb2..b1bb3c3 100644
++--- a/projects/Flappybird_game/main.py
+++++ b/projects/Flappybird_game/main.py
++@@ -79,7 +79,8 @@ pygame.mixer.pre_init()
++ pygame.init()
++ screen = pygame.display.set_mode((288, 512))
++ Clock = pygame.time.Clock()
++-game_font = pygame.font.Font("Downloads/flappy-bird.ttf", 40)
+++# Load a font from a TTF file. 40 is the font size.
+++game_font = pygame.font.Font("flappy-bird.ttf", 40)
++ 
++ # game var
++ gravity = 0.25
++diff --git a/projects/Flappybird_game/test.py b/projects/Flappybird_game/test.py
++new file mode 100644
++index 0000000..e0c1b2f
++--- /dev/null
+++++ b/projects/Flappybird_game/test.py
++@@ -0,0 +1,15 @@
+++import unittest
+++import pygame
+++
+++class TestGameFont(unittest.TestCase):
+++    def test_font_creation(self):
+++        pygame.init()
+++
+++        #Create a font object using the 'pygame.font.Font' function
+++        game_font = pygame.font.Font("flappy-bird.ttf", 40)
+++
+++        #To varify whether a game_font object is an instance of pygame.font.Font
+++        self.assertIsInstance(game_font, pygame.font.Font)
+++
+++if __name__ == '__main__':
+++    unittest.main()
+diff --git a/projects/Flappybird_game/flappy-bird.ttf b/projects/Flappybird_game/flappy-bird.ttf
+new file mode 100644
+index 0000000..f5c7a4f
+Binary files /dev/null and b/projects/Flappybird_game/flappy-bird.ttf differ
+diff --git a/projects/Flappybird_game/main.py b/projects/Flappybird_game/main.py
+index 0194cb2..bc5b4be 100644
+--- a/projects/Flappybird_game/main.py
++++ b/projects/Flappybird_game/main.py
+@@ -1,11 +1,22 @@
+-import pygame, sys, random
+-
+-
++import pygame
++import sys
++import random
++
++'''
++Render the game's floor on to the screen
++512 = The height of the game window
++75 =The height of the floor image 
++512 - 75 = The top-left corner of the floor image
++blid: block transfer.  
++'''
+ def draw_floor():
+-    screen.blit(floor_surface, (floor_x_pos, 512 - 75))
+-    screen.blit(floor_surface, (floor_x_pos + 200, 512 - 75))
+-
++    screen.blit(floor_surface, (floor_x_pos, 512 - 75))  #(horizontal, vertical)
++    screen.blit(floor_surface, (floor_x_pos + 200, 512 - 75)) #the right of the first position
+ 
++'''
++Create two pipe rectangles(top and bottom) for the game
++get_rect method(pygame function):return a rect object based on pipe_surface 
++'''
+ def create_pipe():
+     random_pipe_pos = random.choice(pipe_height)
+     bottom_pipe = pipe_surface.get_rect(midtop=(500, random_pipe_pos))
+@@ -14,11 +25,23 @@ def create_pipe():
+ 
+ 
+ def move_pipe(pipes):
++    '''
++    Update the position of pipe rectangles as they move from right to left on the screen
++
++    Parameters:
++        pipes (list): A list containing the rectangles representing the pipes.
++
++    Returns:
++        list: An updated list of pipe rectangles with their positions adjusted.
++    '''
+     for pipe in pipes:
+         pipe.centerx -= 5
+     return pipes
+ 
+ 
++'''
++Render the pipe rectangles on the screen
++'''
+ def draw_pipes(pipes):
+     for pipe in pipes:
+         if pipe.bottom >= 512:
+@@ -29,6 +52,14 @@ def draw_pipes(pipes):
+ 
+ 
+ def check_collision(pipes):
++    '''
++    Check for collisions between bird and pipe rectangles to decide if the game should continue or end.
++    Parameters:
++        pipes (list): A list of pipe rectangles representing obstacles in the game.
++
++    Returns:
++        bool: True if the game is still active, False if the game should end.
++    '''
+     for pipe in pipes:
+         if bird_rect.colliderect(pipe):
+             death_sound.play()
+@@ -39,18 +70,24 @@ def check_collision(pipes):
+ 
+     return True
+ 
+-
++'''
++Rotate the bird image based on its movement
++'''
+ def rotate_bird(bird):
+     new_bird = pygame.transform.rotozoom(bird, -bird_movement * 5, 1)
+     return new_bird
+ 
+-
++'''
++Manage the animation of the bird by cycling through different bird frames
++'''
+ def bird_animation():
+     new_bird = bird_frames[bird_index]
+     new_bird_rect = new_bird.get_rect(center=(50, bird_rect.centery))
+     return new_bird, new_bird_rect
+ 
+-
++'''
++Display the score of game 
++'''
+ def score_display(game_state):
+     if game_state == " main_game":
+         score_surface = game_font.render(str(int(score)), True, (255, 255, 255))
+@@ -68,7 +105,9 @@ def score_display(game_state):
+         high_score_rect = high_score_surface.get_rect(center=(288 / 2, 410))
+         screen.blit(high_score_surface, high_score_rect)
+ 
+-
++'''
++Update the high score if the current score is higher.
++'''
+ def update_score(score, high_score):
+     if score > high_score:
+         high_score = score
+@@ -76,10 +115,13 @@ def update_score(score, high_score):
+ 
+ 
+ pygame.mixer.pre_init()
++
++#Initialize the game with the size of 288x512 pixels
+ pygame.init()
+ screen = pygame.display.set_mode((288, 512))
+ Clock = pygame.time.Clock()
+-game_font = pygame.font.Font("Downloads/flappy-bird.ttf", 40)
++# Load a font from a TTF file. 40 is the font size.
++game_font = pygame.font.Font("flappy-bird.ttf", 40)
+ 
+ # game var
+ gravity = 0.25
+@@ -88,17 +130,15 @@ game_active = True
+ score = 0
+ high_score = 0
+ 
+-bg_surface = pygame.image.load("Documents/assets/background-night.png")
++bg_surface = pygame.image.load("assets/background-night.png")
+ 
+ 
+-floor_surface = pygame.image.load("Documents/assets/base.png")
++floor_surface = pygame.image.load("assets/base.png")
+ floor_x_pos = 0
+ 
+-bird_downflap = pygame.image.load("Documents/assets/bluebird.png").convert_alpha()
+-bird_midflap = pygame.image.load(
+-    "Documents/assets/bluebird-midflap.png"
+-).convert_alpha()
+-bird_upflap = pygame.image.load("Documents/assets/bluebird-upflap.png").convert_alpha()
++bird_downflap = pygame.image.load("assets/bluebird.png").convert_alpha()
++bird_midflap = pygame.image.load("assets/bluebird-midflap.png").convert_alpha()
++bird_upflap = pygame.image.load("assets/bluebird-upflap.png").convert_alpha()
+ bird_frames = [bird_downflap, bird_midflap, bird_upflap]
+ bird_index = 0
+ bird_surface = bird_frames[bird_index]
+@@ -110,13 +150,13 @@ pygame.time.set_timer(BIRDFLAP, 200)
+ # bird_surface = pygame.image.load('Documents/assets/bluebird-midflap.png').convert_alpha()
+ # bird_rect = bird_surface.get_rect(center = (50,512/2))
+ 
+-pipe_surface = pygame.image.load("Documents/assets/pipe-green.png")
++pipe_surface = pygame.image.load("assets/pipe-green.png")
+ pipe_list = []
+ SPAWNPIPE = pygame.USEREVENT
+ pygame.time.set_timer(SPAWNPIPE, 1000)
+ pipe_height = [200, 250, 300, 350, 400]
+ 
+-game_over_surface = pygame.image.load("Documents/assets/message.png")
++game_over_surface = pygame.image.load("assets/message.png")
+ game_over_rect = game_over_surface.get_rect(center=(288 / 2, 512 / 2))
+ 
+ flap_sound = pygame.mixer.Sound("Documents/Everything/sfx_wing.wav")
+diff --git a/projects/Flappybird_game/test.py b/projects/Flappybird_game/test.py
+new file mode 100644
+index 0000000..e0c1b2f
+--- /dev/null
++++ b/projects/Flappybird_game/test.py
+@@ -0,0 +1,15 @@
++import unittest
++import pygame
++
++class TestGameFont(unittest.TestCase):
++    def test_font_creation(self):
++        pygame.init()
++
++        #Create a font object using the 'pygame.font.Font' function
++        game_font = pygame.font.Font("flappy-bird.ttf", 40)
++
++        #To varify whether a game_font object is an instance of pygame.font.Font
++        self.assertIsInstance(game_font, pygame.font.Font)
++
++if __name__ == '__main__':
++    unittest.main()
