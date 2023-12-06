@@ -4,13 +4,18 @@ import random
 
 '''
 Render the game's floor on to the screen
+512 = The height of the game window
+75 =The height of the floor image 
+512 - 75 = The top-left corner of the floor image
+blid: block transfer.  
 '''
 def draw_floor():
-    screen.blit(floor_surface, (floor_x_pos, 512 - 75))
-    screen.blit(floor_surface, (floor_x_pos + 200, 512 - 75))
+    screen.blit(floor_surface, (floor_x_pos, 512 - 75))  #(horizontal, vertical)
+    screen.blit(floor_surface, (floor_x_pos + 200, 512 - 75)) #the right of the first position
 
 '''
 Create two pipe rectangles(top and bottom) for the game
+get_rect method(pygame function):return a rect object based on pipe_surface 
 '''
 def create_pipe():
     random_pipe_pos = random.choice(pipe_height)
