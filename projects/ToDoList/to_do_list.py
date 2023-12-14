@@ -1,85 +1,72 @@
-from pickle import dump, load
+import telebot
+from telebot import types
+
+bot = telebot.TeleBot('6540560961:AAEuobp6IGekPHPwSDxbxEEgI9LbPvYRgEc')
 
 
-def add_task(task):
-    todo_list.append(task)
-    print("Task added!")
+@bot.message_handler(commands=['start'])
+def start(message):
+    keyboard = types.ReplyKeyboardMarkup()
+    note = types.KeyboardButton('Добавить заметку')
+    deletenote = types.KeyboardButton('Удалить заметку')
+    editnote = types.KeyboardButton('Изменить заметку')
+    event = types.KeyboardButton('Добавить событие')
+    deletevent = types.KeyboardButton('Удалить событие')
+    editevent = types.KeyboardButton('Изменить событие')
+    check = types.KeyboardButton('Открыть текущие заметки/события')
+    keyboard.add(note, deletenote, editnote, event, deletevent, editevent, check)
+    bot.send_message(message.chat.id, f'<b>{message.from_user.first_name}, я так рад, что вы снова сдесь!</b> \U0001F601 \nВыберите, что бы вы хотели сделать:', parse_mode='html', reply_markup=keyboard)
 
-
-def remove_task(task_num):
-    if 0 <= task_num < len(todo_list):
-        del todo_list[task_num]
-        print("Task removed!")
+@bot.message_handler(func=lambda message: True)
+def handle_button_click(message):
+    if (message.text.lower() == 'добавить заметку') or (message.text.lower() == '/addn'):
+        addn(message)
+    elif (message.text.lower() == 'добавить событие') or (message.text.lower() == '/adde'):
+        adde(message)
+    elif (message.text.lower() == 'удалить заметку') or (message.text.lower() == '/deleten'):
+        deleten(message)
+    elif (message.text.lower() == 'удалить событие') or (message.text.lower() == '/deletev'):
+        deletev(message)
+    elif (message.text.lower() == 'изменить заметку') or (message.text.lower() == '/editn'):
+        editn(message)
+    elif (message.text.lower() == 'изменить событие') or (message.text.lower() == '/edite'):
+        edite(message)
+    elif (message.text.lower() == 'открыть текущие заметки/события') or (message.text.lower() == '/check'):
+        check(message)
+    elif message.text == '/help':
+        bot.send_message(message.chat.id, '<b>С моей помощью вы легко сможете:</b>\n\n'
+                                          '<b>1)</b> Добавить для себя любую заметку коммандой - | /addn |\n\n'
+                                          '<b>2)</b> Создать событие с напоминанием коммандой - | /adde |\n\n'
+                                          '<b>3)</b> Удалить любую заметку коммандой - | /deleten |\n\n'
+                                          '<b>4)</b> Удалить любое событие коммандой - | /deletev |\n\n'
+                                          '<b>5)</b> Изменить любую заметку коммандой - | /editn |\n\n'
+                                          '<b>6)</b> Изменить любое событие коммандой - | /edite |\n\n'
+                                          '<b>7)</b> Просматривать все свои заметки коммандой - | /check |\n\n',
+                         parse_mode='html')
+    elif message.text.isalpha():
+        bot.send_message(message.chat.id,
+                         'Извини, но я не воспринимаю текст \U0001F972, тебе следует попробовать комманды!\n'
+                         'Чтобы узнать, что я умею, введи комманду - | /help |')
+    elif message.text.isdigit():
+        bot.send_message(message.chat.id,
+                         'Извини, но я не воспринимаю цифры/числа \U0001F972, тебе следует попробовать комманды!\n'
+                         'Чтобы узнать, что я умею, введи комманду - | /help |')
     else:
-        print("Invalid task number!")
+        bot.send_message(message.chat.id, 'Извини, но я воспринимаю только комманды \U0001F972\n'
+                                          'Чтобы узнать, что я умею, введи комманду - | /help |')
+def addn(message):
+    bot.send_message(message.chat.id, 'Вы создали заметку')
+def adde(message):
+    bot.send_message(message.chat.id, 'Вы создали событие')
+def deleten(message):
+    bot.send_message(message.chat.id, 'Вы хотите удалить заметку')
+def deletev(message):
+    bot.send_message(message.chat.id, 'Вы удалили событие')
+def editn(message):
+    bot.send_message(message.chat.id, 'Вы хотите изменить заметку')
+def edite(message):
+    bot.send_message(message.chat.id, 'Вы хотите изменить событие')
+def check(message):
+    bot.send_message(message.chat.id, 'Вы хотите посмотреть список заметок/событий')
 
-
-def display_tasks():
-    if not todo_list:  # If list is empty
-        print("No tasks to display.")
-    else:
-        for index, task in enumerate(todo_list, start=1):
-            print(f"{index}. {task}")
-
-
-def get_choice():
-    while True:
-        try:
-            choice = int(
-                input(
-                    "Type a number: 1. Adding a task, 2. Removing a task, 3. Displaying tasks, 4. Quit: "
-                )
-            )
-            if 1 <= choice <= 4:
-                return choice
-            else:
-                print("Invalid choice. Try again.")
-        except ValueError:
-            print("Please enter a number between 1 and 4.")
-
-
-if __name__ == "__main__":
-    # Loading the pickle file into python as a list
-    try:
-        with open("todo.pickle", "rb+") as file_in:
-            todo_list = load(file_in)
-    except FileNotFoundError:
-        todo_list = []
-
-    print("Welcome to ToDo List!")
-
-    while True:
-        user_choice = get_choice()
-
-        # Adding a task
-        if user_choice == 1:
-            new_task = input("Type a new task: ")
-            add_task(new_task)
-
-        # Removing a task
-        elif user_choice == 2:
-            if not todo_list:  # If list is empty
-                print("No tasks to remove.")
-            else:
-                task_num = int(input("Enter the task number to delete: ")) - 1
-                remove_task(task_num)
-
-        # Displaying tasks
-        elif user_choice == 3:
-            display_tasks()
-
-        # Quit
-        elif user_choice == 4:
-            # Dumping the list into a pickle file
-            with open("todo.pickle", "wb") as file_out:
-                dump(todo_list, file_out)
-            print("Goodbye!")
-            break
-
-
-#####################################
-
-# CODE CONTRIBUTED BY: Ota Hina
-# Dynamic funcionality added by : komsenapati
-
-#####################################
+bot.polling(none_stop=True)
