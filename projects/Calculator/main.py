@@ -1,7 +1,7 @@
 """imports the os and time modules from the Python Standard Library.
-The os module provides a way of using operating system dependent functionality, 
+The os module provides a way of using operating system dependent functionality,
 like reading or writing to the file system.
-The time module provides various time-related functions, like getting the current 
+The time module provides various time-related functions, like getting the current
 time or pausing the execution of the script."""
 
 import os
@@ -48,7 +48,7 @@ def division():
 
 
 def average():
-    """This function takes space seperated number series and then convert it to a list. 
+    """This function takes space seperated number series and then convert it to a list.
     Then calculates the average of that list of numbers."""
 
     nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
@@ -135,81 +135,39 @@ while c != "-1":
     print("Enter '-1' to exit.\n")
 
     c = input("Your choice is: ")
-
     if c == "1":
         res = addition()
-        os.system("cls")
-        print(f"The answer is {res}")
-        time.sleep(2)
-        os.system("cls")
-
     elif c == "2":
         res = subtraction()
-        os.system("cls")
-        print(f"The answer is {res}")
-        time.sleep(2)
-        os.system("cls")
-
     elif c == "3":
         res = multiplication()
-        os.system("cls")
-        print(f"The answer is {res}")
-        time.sleep(2)
-        os.system("cls")
-
     elif c == "4":
         res = division()
-        os.system("cls")
         if res == "Invalid entry":
             continue
-        print(f"The answer is {res}")
-        time.sleep(2)
-        os.system("cls")
-
     elif c == "5":
         res = average()
-        os.system("cls")
-        print(f"The answer is {res}")
-        time.sleep(2)
-        os.system("cls")
-
     elif c == "6":
         num = int(input("enter the number: "))
         if num < 0:
             print("Invalid entry")
             continue
         res = factorial(num)
-        os.system("cls")
-        print(f"The answer is {res}")
-        time.sleep(2)
-        os.system("cls")
-
     elif c == "7":
-        os.system("cls")
-        print(complexarithmetic())
-        time.sleep(2)
-        os.system("cls")
-
+        os.system("cls||clear")
+        res = complexarithmetic()
     elif c == "8":
-        os.system("cls")
         num = list(map(int, input("Enter the number seperated by space").split()))
         if num[0] < num[1]:
             print("Invalid entry")
             continue
         res = binomail(num)
-        os.system("cls")
-        print(f"The answer is {res}")
-        time.sleep(2)
-        os.system("cls")
-
     elif c == "-1":
-        os.system("cls")
         print("Thank you for using the calculator!")
-        time.sleep(2)
         break
-
     else:
-        os.system("cls")
         print("Sorry, invalid option!")
-        time.sleep(2)
-        os.system("cls")
+    os.system("cls||clear")
+    print(f"The answer is {res}")
+    time.sleep(2)
+    os.system("cls||clear")
