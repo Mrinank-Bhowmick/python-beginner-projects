@@ -1,0 +1,19 @@
+# We are just simulating an easy head or a tail which is commonly used in many places
+import random
+def Head_or_Tail(n):
+    return random.randint(0,1)
+x=input("Enter any guess to get a head or a tail. Let's see your luck today=")
+ans= Head_or_Tail(x)
+if ans==1 and x.upper()=="HEAD":
+    print("Head")
+    print("Yep.You are right. It's head")
+elif ans==0 and x.upper()=="TAIL":
+    print("Tail")
+    print("Yep.You are right. It's Tail")
+elif x.lower()== "head" or x.lower()=="tail":
+    if ans==1:
+        print("Oops. It's Head")
+    else:
+        print("Oops.It's Tail")
+else:
+    print("Enter a valid guess")
