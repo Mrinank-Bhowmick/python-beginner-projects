@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='table.css')}}">
+    <title>Returned Query</title>
+</head>
+<body>
+    <!-- Displays the searched query in the form of a table -->
+    <h1>Query Results</h1><br>
+    <table class="container">
+    <tr id="header">
+        {% for header in header%}
+        <td>
+            {{header}}
+        </td>    
+        {%endfor%}
+    </tr>
+    {%for data in data %}
+    <tr>
+        {%for cell in data %}
+            <td>{{cell}}</td>
+        {% endfor %}
+    </tr>
+    {%endfor%}
+    </table>
+</body>
+</html>
