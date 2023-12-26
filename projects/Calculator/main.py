@@ -1,28 +1,42 @@
+"""imports the os and time modules from the Python Standard Library.
+The os module provides a way of using operating system dependent functionality, 
+like reading or writing to the file system.
+The time module provides various time-related functions, like getting the current 
+time or pausing the execution of the script."""
+
 import os
 import time
 
 
 def addition():
+    """This function asks the user to enter a series of numbers separated by spaces.
+    It then adds all the numbers together and returns the result."""
     nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
     return sum(nums)
 
 
 def subtraction():
-    n1 = float(input("Enter first number: "))
-    n2 = float(input("Enter second number: "))
+    """This function asks the user to enter two numbers.
+    It then subtracts the second number from the first and returns the result."""
+    n_1 = float(input("Enter first number: "))
+    n_2 = float(input("Enter second number: "))
 
-    return n1 - n2
+    return n_1 - n_2
 
 
 def multiplication():
+    """Function asks user to enter a series of numbers separated by spaces.
+    Then multiply all the numbers together and returns the result."""
+
     nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
-    res = 1
+    result = 1
     for num in nums:
-        res *= num
-    return res
+        result *= num
+    return result
 
 
 def division():
+    """Function divide two numbers"""
     n1 = float(input("Enter first number: "))
     n2 = float(input("Enter second number: "))
     if n2 == 0:
@@ -34,6 +48,9 @@ def division():
 
 
 def average():
+    """This function takes space seperated number series and then convert it to a list.
+    Then calculates the average of that list of numbers."""
+
     nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
     return sum(nums) / len(nums)
 
