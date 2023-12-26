@@ -138,7 +138,7 @@ while game_on:
             if bet > chips:
                 print("You dont have enough chips.")
                 print("Enter a valid amount. \n")
-            elif bet <= 0:           #To prevent betting a negative value
+            elif bet <= 0:  # To prevent betting a negative value
                 print("Invalid Bet")
             else:
                 chips -= bet
@@ -284,10 +284,8 @@ while game_on:
             break
 
         else:
-
-
             cont = input("Do you want to continue? (y/n) :")
-            check= cont.upper()###So a capital or lowercase value can be entered
+            check = cont.upper()  ###So a capital or lowercase value can be entered
 
             if check == "Y":
                 print("\n" * 100)
@@ -308,8 +306,6 @@ while game_on:
                 print(f"\nTotal amount of chips left with the player = {chips}")
                 print(input("Press Enter to exit the terminal..."))
                 break
-
-
 
     except Exception as error:
         print(f"Following error occurred : {error} \nPlease try again.")
