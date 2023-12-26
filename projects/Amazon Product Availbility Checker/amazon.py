@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 def check_amazon_availability(product_url):
     headers = {
         "User-Agent": "Your User Agent Here"  # Replace with a valid user agent string
@@ -26,6 +27,7 @@ def check_amazon_availability(product_url):
         print(f"HTTP error occurred: {http_err}")
     except requests.exceptions.RequestException as req_err:
         print(f"Request error occurred: {req_err}")
+
 
 if __name__ == "__main__":
     product_url = "YOUR_PRODUCT_URL_HERE"
