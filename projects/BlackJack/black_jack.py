@@ -114,7 +114,7 @@ Ace can either hold a value of 1 or 11 depending on the situation.
 
 BlackJack means 21. Whoever gets a total value of 21 with their cards immediately wins!
 (winning through blackjack results in 3x the money)
-If the value of cards goes over 21, its called a BUST, which results in immediate loss...
+If the value of cards goes over 21, it's called a BUST, which results in an immediate loss...
 If both the players get the same value of cards , it's a TIE and the bet money is returned.
 
 If none of the above cases are met ,the person with closer value to 21 wins.
@@ -138,6 +138,8 @@ while game_on:
             if bet > chips:
                 print("You dont have enough chips.")
                 print("Enter a valid amount. \n")
+            elif bet <= 0:  # To prevent betting a negative value
+                print("Invalid Bet")
             else:
                 chips -= bet
                 break
@@ -283,8 +285,9 @@ while game_on:
 
         else:
             cont = input("Do you want to continue? (y/n) :")
+            check = cont.upper()  ###So a capital or lowercase value can be entered
 
-            if cont == "y":
+            if check == "Y":
                 print("\n" * 100)
 
                 print(
