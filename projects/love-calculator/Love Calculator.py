@@ -4,6 +4,7 @@ import time
 CONSONANTS = "bcdfghjklmnprstvwxyz"
 VOWELS = "aeiou"
 
+
 def count_vowels(name):
     """
     Count the number of vowels in the given name.
@@ -21,10 +22,10 @@ def count_vowels(name):
     for letter in name.lower():
         # Check if the letter is a vowel
         if letter in VOWELS:
-            vowels_count += 1 # add the count for each vowel
+            vowels_count += 1  # add the count for each vowel
 
+    return vowels_count  # return the total count of vowels
 
-    return vowels_count # return the total count of vowels
 
 def count_consonants(name):
     """
@@ -43,9 +44,10 @@ def count_consonants(name):
     for letter in name:
         # Check if the letter is a consonant
         if len(letter.lower()) == 1 and letter.lower() in CONSONANTS:
-            consonants_list.append(letter) # add the consonant to the list
+            consonants_list.append(letter)  # add the consonant to the list
 
-    return len(consonants_list) # return the count of consonants
+    return len(consonants_list)  # return the count of consonants
+
 
 def calculate_love_score(name1, name2):
     """
@@ -67,27 +69,32 @@ def calculate_love_score(name1, name2):
     total_vowel2 = count_vowels(name2)
 
     if total_vowel1 == total_vowel2:
-        love += random.randint(10, 30) # add a random score if total vowels are equal
+        love += random.randint(10, 30)  # add a random score if total vowels are equal
 
     # Compare total consonants in both names
     consonants1 = count_consonants(name1)
     consonants2 = count_consonants(name2)
 
     if consonants1 == consonants2:
-        love += random.randint(20, 40) # add a random score if total consonants are equal
+        love += random.randint(
+            20, 40
+        )  # add a random score if total consonants are equal
 
     # Compare first letters of both names
     if name1.split()[0][0] == name2.split()[0][0]:
-        love += random.randint(10, 30) # add a random score if the first letters are equal
+        love += random.randint(
+            10, 30
+        )  # add a random score if the first letters are equal
 
     # Compare the lengths of both names
     if len(name1) == len(name2):
-        love += random.randint(1, 10) # add a random score if lengths are equal
+        love += random.randint(1, 10)  # add a random score if lengths are equal
 
     # Add a random score to love score
     love += random.randint(10, 50)
 
-    return min(love, 100) # make sure final score does not exceed 100
+    return min(love, 100)  # make sure final score does not exceed 100
+
 
 def display_relationship(name1, name2, love):
     """
@@ -108,11 +115,16 @@ def display_relationship(name1, name2, love):
     if love >= 90:
         print("They have an unbreakable relationship that will last forever.")
     elif 70 <= love < 90:
-        print("They have a strong relationship that will most likely lead to a marriage.")
+        print(
+            "They have a strong relationship that will most likely lead to a marriage."
+        )
     elif 50 <= love < 70:
         print("They have a good relationship that can lead to a honeymoon to Paris.")
     else:
-        print("They have a weak relationship that could have been a 'match made in heaven'.")
+        print(
+            "They have a weak relationship that could have been a 'match made in heaven'."
+        )
+
 
 if __name__ == "__main__":
     name1 = input("Please type Name 1.\n")
