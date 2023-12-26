@@ -1,0 +1,92 @@
+import tkinter as tk
+from tkinter import ttk
+import math
+
+# Constants
+GREEN = '#90A17D'
+FONT_NAME = 'Courier'
+WORK_MIN = 25
+SHORT_BREAK_MIN = 5
+LONG_BREAK_MIN = 15
+BG_COLOR = '#FFFDE7'
+
+# Global Variables
+reps = 0
+timer = None
+
+# Function to reset the timer
+def reset_timer():
+    global reps, timer
+
+    root.after_cancel(timer)
+    canvas.itemconfig(timer_text, text='00:00', fill=BG_COLOR)  # Set text color to the background color
+    title_label.config(text='Timer', background=BG_COLOR, foreground='white', font=(FONT_NAME, 40, 'bold'))
+    reps = 0
+    start_btn['state'] = tk.NORMAL
+
+# Function to start the timer
+def start_timer():
+    global reps, timer
+    start_btn['state'] = tk.DISABLED
+
+    reps += 1
+
+    if reps % 2 == 0:
+        if reps == 8:
+            long_break_sec = LONG_BREAK_MIN * 60
+            title_label.config(text='Long Break', background=BG_COLOR, foreground='white', font=(FONT_NAME, 40, 'bold'))
+            count_down(long_break_sec)
+            reps = 0
+        else:
+            short_break_sec = SHORT_BREAK_MIN * 60
+            title_label.config(text='Short Break', background=BG_COLOR, foreground='white', font=(FONT_NAME, 40, 'bold'))
+            count_down(short_break_sec)
+    else:
+        title_label.config(text='Work!', background=BG_COLOR, foreground=GREEN, font=(FONT_NAME, 40, 'bold'))  # Set foreground color to green for "Work"
+        work_sec = WORK_MIN * 60
+        count_down(work_sec)
+
+# Function for countdown
+def count_down(count):
+    global timer
+    count_min = math.floor(count/60)
+    count_sec = count % 60
+
+    if count_sec < 10:
+        count_sec = f'0{count_sec}'
+
+    canvas.itemconfig(timer_text, text=f'{count_min}:{count_sec}', fill=BG_COLOR)  # Set text color to the background color
+    if count > 0:
+        timer = root.after(1000, count_down, count-1)
+    else:
+        start_timer()
+
+# UI Setup
+root = tk.Tk()
+root.title('POMODORO APP')
+root.geometry('780x700')
+root.resizable(False, False)
+root.config(background=BG_COLOR, padx=45, pady=50)
+
+# Icon and Canvas Background
+image_icon = tk.PhotoImage(file='tomato.png')
+root.iconphoto(False, image_icon)
+
+# Labels
+title_label = ttk.Label(text='Timer', background=BG_COLOR, foreground='white', font=(FONT_NAME, 40, 'bold'))
+title_label.grid(column=1, row=0)
+
+# Canvas setup
+canvas = tk.Canvas(width=512, height=512, bg=BG_COLOR, highlightthickness=0)
+canvas.create_image(256, 256, image=image_icon)  # Use the same image for canvas background
+timer_text = canvas.create_text(256, 310, text='00:00', fill=BG_COLOR, font=(FONT_NAME, 50, 'bold'))  # Set text color to the background color
+canvas.grid(column=1, row=1)
+
+# Buttons
+start_btn = ttk.Button(text='Start', command=start_timer)
+start_btn.grid(column=0, row=2)
+
+reset_btn = ttk.Button(text='Reset', command=reset_timer)
+reset_btn.grid(column=2, row=2)
+
+root.mainloop()
