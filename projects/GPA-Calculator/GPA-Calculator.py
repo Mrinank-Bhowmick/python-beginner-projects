@@ -1,5 +1,6 @@
 import math
 
+
 def calculate_gpa(num_courses, marks):
     """
     Calculate GPA for semester based on given number of courses and entering marks.
@@ -26,7 +27,9 @@ def calculate_gpa(num_courses, marks):
             course_marks = int(input(f"Enter Total Marks Acquired for {course_name}: "))
         else:
             mid_sem_marks = int(input(f"Enter Your Mid Sem Marks for {course_name}: "))
-            internal_marks = int(input(f"Enter Your Internal Marks for {course_name}: "))
+            internal_marks = int(
+                input(f"Enter Your Internal Marks for {course_name}: ")
+            )
             end_sem_marks = int(input(f"Enter Your End Sem Marks for {course_name}: "))
             course_marks = mid_sem_marks + internal_marks + end_sem_marks
 
@@ -39,18 +42,19 @@ def calculate_gpa(num_courses, marks):
             total_credits = 1
             break
         elif course_marks < 100:
-            course_marks += 1 # Increment course marks to avoid zero
+            course_marks += 1  # Increment course marks to avoid zero
 
         # Calculate course points based on ceiling of marks divided by 10
         course_point = math.ceil(course_marks / 10)
 
         # Update credits and total credits
-        credits += (course_point * course_credits)
+        credits += course_point * course_credits
         total_credits += course_credits
 
     # Calculate GPA using credits and total credits
     gpa = credits / total_credits
     return gpa
+
 
 if __name__ == "__main__":
     print("\n------------------------------------------")
@@ -59,7 +63,11 @@ if __name__ == "__main__":
 
     # Input number of courses and choice for entering marks
     num_courses = int(input("Enter Number Of Courses: "))
-    marks = int(input("Enter 1 to individually enter Mid Sem, Internals & End Sem Marks\nElse Enter 0 to enter Total Marks: "))
+    marks = int(
+        input(
+            "Enter 1 to individually enter Mid Sem, Internals & End Sem Marks\nElse Enter 0 to enter Total Marks: "
+        )
+    )
 
     # Calculate and display GPA for the semester
     gpa = calculate_gpa(num_courses, marks)

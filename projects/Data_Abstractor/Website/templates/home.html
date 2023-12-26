@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='home.css')}}">
+    <script src="{{url_for('static',filename='script.js')}}"></script>
+    <title>Query Selector</title>
+</head>
+<body>
+    <!-- Home Page - Asks for conditions to satisfy for the query -->
+    <h1>Select Queries</h1>
+    <p>Click on the checkbox before the parameters to include them in the query. Please type full name for Location, Subscription Plan and Device Type.</p>
+    <form action="/query_output" method="POST">
+        <div class="query">
+            <input type="checkbox" name="age" id="age"> Age: 
+            <span>
+            Between: <input type="number" name="age_from" min="18" max="80" id="age_from"> &nbsp; - &nbsp;
+            <input type="number" name="age_to" min="18" max="80" id="age_to">
+            </span>
+        </div>
+        <div class="query"> 
+            <input name="gender" type="checkbox" id="gender"> Gender:
+            <span> 
+            <input name="male" type="checkbox" value="male" id="male"> Male &nbsp; &nbsp;
+            <input name="female" type="checkbox" value="female" id="female"> Female
+            </span>
+        </div>
+        <div class="query">
+            <input type="checkbox" name="location" id="location"> Location: 
+            <span><input name="input_location" type="text" placeholder="Location"></span>
+        </div>
+        <div class="query">
+            <input type="checkbox" name="signup_date" id="signup_date"> Sign-Up Date: 
+            <span><input name="input_date" type="date"></span>
+        </div>
+        <div class="query">
+            <input type="checkbox" name="sub_plan" id="sub_plan"> Subscription Plan: 
+            <span><input name="input_sub_plan" type="text" size="50" placeholder="Select One: Silver, Gold, Platinum, VIP"></span>
+        </div>
+        <div class="query">
+            <input type="checkbox" name="device" id="device"> Device Type: 
+            <span><input name="input_device" type="text" size="50" placeholder="Select One: Smartphone, Laptop, Desktop, Tablet"></span>
+        </div>
+        <div class="query"> 
+            <input type="checkbox" name="orderer">Order By<span>
+            <input type="radio" name="order_by" id="event_1">Login &nbsp; &nbsp;
+            <input type="radio" name="order_by" id="event_2">Added To Cart &nbsp; &nbsp;
+            <input type="radio" name="order_by" id="event_3">Purchased Items &nbsp; &nbsp;
+            <input type="radio" name="order_by" id="time_stamp">Time Stamps of events &nbsp; &nbsp;
+            </span>>
+        </div>
+        <div>
+            <input type="submit" value="Search Query">
+        </div>
+        
+    </form>
+
+
+
+
+</body>
+</html>
