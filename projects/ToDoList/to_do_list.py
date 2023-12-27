@@ -1,45 +1,85 @@
 from pickle import dump, load
 
 
-def add_task(task):
-    todo_list.append(task)
-    print("Task added!")
-
-
-def remove_task(task_num):
-    if 0 <= task_num < len(todo_list):
-        del todo_list[task_num]
-        print("Task removed!")
+def add_task(tasks):
+    if tasks is not None:
+        new_tasks = [task.strip() for task in tasks.split(',')]
+        todo_list.extend(new_tasks)
+        print("Task(s) added!")
     else:
-        print("Invalid task number!")
+        print("No task specified to add.")
+
+
+def remove_task(task_nums):
+    global todo_list
+    updated_list = [task for index, task in enumerate(todo_list) if index not in task_nums]
+    todo_list = updated_list
+    print("Task(s) removed!")
+    return updated_list
+
+
+def remove_task_by_value(value):
+    global todo_list
+    updated_list = [task for task in todo_list if task not in value]
+    todo_list = updated_list  # Update the global variable
+    print("Task(s) removed!")
+    return updated_list
 
 
 def display_tasks():
-    if not todo_list:  # If list is empty
+    if not todo_list:
         print("No tasks to display.")
     else:
         for index, task in enumerate(todo_list, start=1):
             print(f"{index}. {task}")
 
 
-def get_choice():
-    while True:
-        try:
-            choice = int(
-                input(
-                    "Type a number: 1. Adding a task, 2. Removing a task, 3. Displaying tasks, 4. Quit: "
-                )
-            )
-            if 1 <= choice <= 4:
-                return choice
+def get_user_input():
+    user_input = input("Type a number and tasks (comma-separated):"
+                       " 1. Add tasks, 2. Remove tasks, 3. Display tasks, 4. Quit: ")
+    parts = user_input.split(',', 1)
+    choice = parts[0].strip()
+    if len(parts) > 1:
+        tasks = parts[1].strip()
+        print(tasks)
+    else:
+        tasks = None
+    return choice, tasks
+
+
+def process_user_input(choice, tasks):
+    global todo_list
+    # Convert choice to integer
+    choice = int(choice)
+
+    if choice == 1:
+        add_task(tasks)
+    elif choice == 2:
+        if not todo_list:
+            print("No tasks to remove.")
+        elif tasks is not None:
+            if tasks and all(num.strip().isdigit() for num in tasks.split(',')):
+                task_nums = [int(num.strip()) - 1 for num in tasks.split(',')]
+                print(task_nums)
+                todo_list = remove_task(task_nums)
             else:
-                print("Invalid choice. Try again.")
-        except ValueError:
-            print("Please enter a number between 1 and 4.")
+                tasks_list = [task.strip() for task in tasks.split(',')]
+                print(tasks_list)
+                todo_list = remove_task_by_value(tasks_list)
+        else:
+            print("No task specified to remove.")
+    elif choice == 3:
+        display_tasks()
+    elif choice == 4:
+        with open("todo.pickle", "wb") as file_out:
+            dump(todo_list, file_out)
+        print("Goodbye!")
+        exit()
+    else:
+        print("Invalid choice. Try again.")
 
 
 if __name__ == "__main__":
-    # Loading the pickle file into python as a list
     try:
         with open("todo.pickle", "rb+") as file_in:
             todo_list = load(file_in)
@@ -49,37 +89,5 @@ if __name__ == "__main__":
     print("Welcome to ToDo List!")
 
     while True:
-        user_choice = get_choice()
-
-        # Adding a task
-        if user_choice == 1:
-            new_task = input("Type a new task: ")
-            add_task(new_task)
-
-        # Removing a task
-        elif user_choice == 2:
-            if not todo_list:  # If list is empty
-                print("No tasks to remove.")
-            else:
-                task_num = int(input("Enter the task number to delete: ")) - 1
-                remove_task(task_num)
-
-        # Displaying tasks
-        elif user_choice == 3:
-            display_tasks()
-
-        # Quit
-        elif user_choice == 4:
-            # Dumping the list into a pickle file
-            with open("todo.pickle", "wb") as file_out:
-                dump(todo_list, file_out)
-            print("Goodbye!")
-            break
-
-
-#####################################
-
-# CODE CONTRIBUTED BY: Ota Hina
-# Dynamic funcionality added by : komsenapati
-
-#####################################
+        user_choice, user_tasks = get_user_input()
+        process_user_input(user_choice, user_tasks)
