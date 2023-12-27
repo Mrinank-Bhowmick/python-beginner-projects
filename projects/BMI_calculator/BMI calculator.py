@@ -47,10 +47,15 @@ def main():
     try:
         height = float(input("Enter your height in meters: "))
         weight = float(input("Enter your weight in kilograms: "))
+        if 0<height>=3:
+            print ("Enter a valid height")
+        if 0<weight>=570:
+            print ("Enter a valid weight")
 
-        bmi = calculate_bmi(height, weight)
-        result = interpret_bmi(bmi)
-        print(result)
+        if 0<height <=3 and 0<weight<=570:
+            bmi = calculate_bmi(height, weight)
+            result = interpret_bmi(bmi)
+            print(result)
 
     except ValueError:
         print("Invalid input. Please enter numerical values for height and weight.")
