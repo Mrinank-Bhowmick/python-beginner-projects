@@ -1953,7 +1953,7 @@
         <a href="https://github.com/sdthinlay">
             <img src="https://avatars.githubusercontent.com/u/129248162?v=4" width="100;" alt="sdthinlay"/>
             <br />
-            <sub><b>sdthinlay</b></sub>
+            <sub><b>Sdthinlay</b></sub>
         </a>
     </td></tr>
 <tr>
@@ -2154,7 +2154,7 @@
         <a href="https://github.com/mmakrin">
             <img src="https://avatars.githubusercontent.com/u/115393688?v=4" width="100;" alt="mmakrin"/>
             <br />
-            <sub><b>mmakrin</b></sub>
+            <sub><b>Mmakrin</b></sub>
         </a>
     </td>
     <td align="center">
@@ -2226,7 +2226,7 @@
         <a href="https://github.com/shayaanyar">
             <img src="https://avatars.githubusercontent.com/u/119527644?v=4" width="100;" alt="shayaanyar"/>
             <br />
-            <sub><b>shayaanyar</b></sub>
+            <sub><b>Shayaanyar</b></sub>
         </a>
     </td>
     <td align="center">
