@@ -1,0 +1,2 @@
+mysqlconnector.connect
+tkinter
