@@ -20,7 +20,9 @@ def main():
 
     # Get user input
     principal = floatValidation("Enter the loan amount: $")
-    annual_interest_rate = floatValidation("Enter the annual interest rate (as a percentage): ")
+    annual_interest_rate = floatValidation(
+        "Enter the annual interest rate (as a percentage): "
+    )
     months = intValidtaion("Enter the loan term (in months): ")
 
     # Calculate monthly payment
@@ -36,8 +38,9 @@ def floatValidation(question):
             value = float(input(question))
             return value
         except ValueError:
-            print('Input should be a valid number')
+            print("Input should be a valid number")
             continue
+
 
 def intValidtaion(question):
     while True:
@@ -45,7 +48,8 @@ def intValidtaion(question):
             value = int(input(question))
             return value
         except ValueError:
-            print('Input should be a valid number')
+            print("Input should be a valid number")
+
 
 if __name__ == "__main__":
     main()
