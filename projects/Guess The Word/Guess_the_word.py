@@ -1,11 +1,33 @@
 import random
 
 # List of words for the game
-word_list = ["python", "java", "javascript", "ruby", "php", "html", "css", "csharp", "angular", "golang", "c", "dotnet", "perl", "rust", "scala", "dart", "fortran", "cobol", "haskell"]
+word_list = [
+    "python",
+    "java",
+    "javascript",
+    "ruby",
+    "php",
+    "html",
+    "css",
+    "csharp",
+    "angular",
+    "golang",
+    "c",
+    "dotnet",
+    "perl",
+    "rust",
+    "scala",
+    "dart",
+    "fortran",
+    "cobol",
+    "haskell",
+]
+
 
 # Function to choose a random word from the list
 def choose_random_word(word_list):
     return random.choice(word_list)
+
 
 # Function to play the word guessing game
 def word_guessing_game():
@@ -32,7 +54,9 @@ def word_guessing_game():
 
         if guess in word_to_guess:
             print("Correct guess!")
-            remaining_letters = [letter if letter in guessed_letters else '_' for letter in word_to_guess]
+            remaining_letters = [
+                letter if letter in guessed_letters else "_" for letter in word_to_guess
+            ]
             print(" ".join(remaining_letters))
             if "_" not in remaining_letters:
                 print("Congratulations! You've guessed the word:", word_to_guess)
@@ -45,6 +69,7 @@ def word_guessing_game():
 
     if attempts == 0:
         print("You've run out of attempts. The word was:", word_to_guess)
+
 
 # Start the game
 word_guessing_game()
