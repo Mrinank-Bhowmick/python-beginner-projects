@@ -1,4 +1,4 @@
-#You're going to see teh easiest way to download a video
+#You're going to see the easiest way to download a video
 # This is a simple python file which can download videos easy,fast and hassle free
 from y2mate_api import Handler
 api=Handler('Alan Walker- Faded') # You can  write the Title of the song or a video 
