@@ -154,3 +154,6 @@ cython_debug/
 
 *.db
 .idea/
+
+#.DS_Store
+.DS_Store.DS_Store

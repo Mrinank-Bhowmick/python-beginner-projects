@@ -42,8 +42,6 @@ def encrypt(text, shift):
                 if chosen_letter == letter:
                     new_shift = i + shift
                     new_shift = new_shift % 26
-                    if new_shift > 25:
-                        new_shift = new_shift - 24
                     position = alphabet[new_shift]
                     new_word.append(position)
                 i = i + 1
@@ -66,8 +64,6 @@ def decrypt(text, shift):
                 if chosen_letter == letter:
                     new_shift = i + shift
                     new_shift = new_shift % 26
-                    if new_shift > 25:
-                        new_shift = new_shift - 24
                     position = alphabet[new_shift]
                     new_word.append(position)
                 i = i + 1
