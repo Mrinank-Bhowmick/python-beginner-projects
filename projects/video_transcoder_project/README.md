@@ -6,8 +6,7 @@
 - **templates/:** Folder containing HTML templates for the frontend.
 
 ### Video Processing (`video_processing/`)
-- **`__init__.py`:** An empty file, indicates that the folder is a Python package.
-- **`video_transcoder.py`:** Contains classes and methods for video transcoding using FFmpeg.
+- **`video_editor.py`:** Contains classes and methods for video transcoding using FFmpeg.
 
 ## How to Use
 
