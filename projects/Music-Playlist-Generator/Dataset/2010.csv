@@ -1,0 +1,101 @@
+﻿Number,title,artist,top genre,year,bpm,nrgy,dnce,dB,live,val,dur,acous,spch,pop
+1,bad guy,Billie Eilish,electropop,2019,135,43,70,-11,10,56,194,33,38,94
+2,7 rings,Ariana Grande,dance pop,2019,140,32,78,-11,9,33,179,59,33,90
+3,Old Town Road - Remix,Lil Nas X,country rap,2019,136,62,88,-6,11,64,157,5,10,89
+4,SeÃ±orita,Shawn Mendes,canadian pop,2019,117,55,76,-6,8,75,191,4,3,88
+5,rockstar (feat. 21 Savage),Post Malone,dfw rap,2018,160,52,59,-6,13,13,218,12,7,88
+6,SAD!,XXXTENTACION,emo rap,2018,75,61,74,-5,12,47,167,26,14,87
+7,Sunflower - Spider-Man: Into the Spider-Verse,Post Malone,dfw rap,2019,90,52,76,-4,7,93,158,53,6,86
+8,God's Plan,Drake,canadian hip hop,2018,77,45,75,-9,55,36,199,3,11,85
+9,One Kiss (with Dua Lipa),Calvin Harris,dance pop,2018,124,86,79,-3,8,59,215,4,11,85
+10,Thunder,Imagine Dragons,modern rock,2017,168,82,61,-5,15,29,187,1,4,85
+11,I Fall Apart,Post Malone,dfw rap,2016,144,54,56,-5,20,29,223,7,4,84
+12,HUMBLE.,Kendrick Lamar,conscious hip hop,2017,150,62,91,-7,10,42,177,0,10,84
+13,Starboy,The Weeknd,canadian contemporary r&b,2016,186,59,68,-7,14,49,230,14,28,84
+14,FRIENDS,Marshmello,brostep,2018,95,88,63,-2,13,53,203,21,5,83
+15,Psycho (feat. Ty Dolla $ign),Post Malone,dfw rap,2018,140,56,75,-8,11,46,221,55,11,83
+16,Congratulations,Post Malone,dfw rap,2016,123,80,63,-4,25,49,220,22,4,83
+17,In My Feelings,Drake,canadian hip hop,2018,91,63,84,-6,40,35,218,6,13,83
+18,The Hills,The Weeknd,canadian contemporary r&b,2015,113,56,58,-7,14,14,242,7,5,83
+19,no tears left to cry,Ariana Grande,dance pop,2018,122,71,70,-6,29,35,206,4,6,83
+20,Dancing On My Own,Calum Scott,pop,2018,113,17,68,-9,10,24,260,84,3,83
+21,New Rules,Dua Lipa,dance pop,2017,116,70,76,-6,15,61,209,0,7,83
+22,Treat You Better,Shawn Mendes,canadian pop,2017,83,82,44,-4,11,75,188,11,34,83
+23,Something Just Like This,The Chainsmokers,electropop,2017,103,64,62,-7,16,45,247,5,3,83
+24,Happier,Ed Sheeran,pop,2017,90,39,52,-7,14,24,208,54,3,82
+25,Attention,Charlie Puth,dance pop,2018,100,61,78,-5,13,80,209,11,5,82
+26,IDGAF,Dua Lipa,dance pop,2017,97,54,84,-6,8,51,218,4,9,82
+27,There's Nothing Holdin' Me Back,Shawn Mendes,canadian pop,2017,122,81,87,-4,8,97,199,38,6,82
+28,Scared to Be Lonely,Martin Garrix,big room,2017,138,54,58,-8,26,20,221,9,6,81
+29,Whatever It Takes,Imagine Dragons,modern rock,2017,135,66,67,-5,12,56,201,4,3,81
+30,Let Me Love You,DJ Snake,electronic trap,2016,100,72,65,-5,14,16,206,9,3,81
+31,i hate u i love u (feat. olivia o'brien),gnash,pop,2016,93,28,49,-13,10,18,251,69,30,81
+32,Silence,Marshmello,brostep,2017,142,76,52,-3,17,29,181,26,9,80
+33,The Nights,Avicii,big room,2014,126,84,53,-5,25,65,177,2,4,80
+34,Without You (feat. Sandro Cavazza),Avicii,big room,2017,134,86,66,-5,5,30,182,0,4,80
+35,In the Name of Love,Martin Garrix,big room,2016,134,52,50,-6,45,17,196,11,4,80
+36,Faded,Alan Walker,electro house,2018,180,63,47,-5,11,16,212,3,5,80
+37,Story of My Life,One Direction,boy band,2013,121,66,60,-6,12,29,245,23,5,80
+38,Solo (feat. Demi Lovato),Clean Bandit,dance pop,2018,105,64,74,-5,35,56,223,4,4,79
+39,Love Lies (with Normani),Khalid,alternative r&b,2018,144,65,71,-6,13,34,202,10,4,79
+40,Little Do You Know,Alex & Sierra,neo mellow,2014,146,29,50,-9,19,37,185,75,3,79
+41,Mercy,Shawn Mendes,canadian pop,2017,148,66,56,-5,11,36,209,13,8,79
+42,Exchange,Bryson Tiller,pop,2015,160,43,53,-11,14,27,195,11,19,79
+43,One Last Time,Ariana Grande,dance pop,2014,125,59,63,-5,10,10,197,9,3,79
+44,DJ Got Us Fallin' In Love (feat. Pitbull),Usher,atl hip hop,2010,120,86,66,-3,8,65,221,3,11,78
+45,Give Me Everything,Pitbull,dance pop,2011,129,94,67,-3,30,53,252,19,16,78
+46,Waiting For Love,Avicii,big room,2015,128,74,58,-4,20,61,231,31,5,78
+47,Stay,Zedd,complextro,2017,102,62,69,-5,12,54,210,25,6,78
+48,It Ain't Me (with Selena Gomez),Kygo,edm,2017,100,53,64,-7,9,52,221,12,7,78
+49,Hall of Fame,The Script,celtic rock,2012,85,87,42,-4,12,63,203,7,6,78
+50,Payphone,Maroon 5,pop,2012,110,75,74,-5,29,55,231,2,4,78
+51,PILLOWTALK,ZAYN,dance pop,2016,125,70,58,-4,9,44,203,12,5,78
+52,All I Want,Kodaline,irish pop,2013,86,41,21,-10,8,16,306,17,4,78
+53,Youngblood,5 Seconds of Summer,boy band,2018,120,85,60,-5,12,15,203,2,46,77
+54,Symphony (feat. Zara Larsson),Clean Bandit,dance pop,2017,123,63,71,-5,14,46,212,26,6,77
+55,Unsteady,X Ambassadors,indie poptimism,2015,117,67,39,-6,12,20,194,18,6,77
+56,Classic,MKTO,dance pop,2012,102,79,72,-5,16,76,175,4,12,77
+57,Time of Our Lives,Pitbull,dance pop,2014,124,80,72,-6,69,72,229,9,6,77
+58,Please Don't Go,Joel Adams,australian pop,2015,84,77,51,-5,29,24,211,1,6,76
+59,When You Love Someone,James TW,neo mellow,2019,126,45,68,-6,5,35,217,26,3,76
+60,I Dont Wanna Live Forever (Fifty Shades Darker),ZAYN,dance pop,2016,118,45,74,-8,33,9,245,6,6,76
+61,Perfect Strangers,Jonas Blue,dance pop,2018,118,86,73,-4,21,70,197,39,5,76
+62,Friends (with BloodPopÂ®),Justin Bieber,canadian pop,2017,105,73,74,-5,30,62,189,0,4,75
+63,September Song,JP Cooper,dance pop,2017,96,62,61,-7,9,37,220,5,4,75
+64,Never Forget You,Zara Larsson,dance pop,2017,146,73,58,-6,27,28,213,0,5,75
+65,Say You Won't Let Go,James Arthur,pop,2016,99,56,40,-7,9,48,211,69,5,75
+66,Airplanes (feat. Hayley Williams),B.o.B,atl hip hop,2010,93,87,66,-4,4,38,180,11,12,75
+67,Whistle,Flo Rida,dance pop,2012,104,94,75,-6,29,74,225,2,5,75
+68,Do It Again,Pia Mia,dance pop,2015,96,56,71,-7,9,41,208,3,5,74
+69,Paris,The Chainsmokers,electropop,2017,100,64,65,-7,9,25,222,2,3,74
+70,All My Friends (feat. Tinashe & Chance the Rapper),Snakehips,dance pop,2015,95,52,69,-6,11,18,230,12,13,74
+71,Slide (feat. Frank Ocean & Migos),Calvin Harris,dance pop,2017,104,80,74,-3,25,51,231,50,5,74
+72,No Promises (feat. Demi Lovato),Cheat Codes,dance pop,2017,113,67,74,-5,11,60,224,6,13,73
+73,The Ocean (feat. Shy Martin),Mike Perry,big room,2016,90,57,63,-6,10,19,183,2,3,73
+74,Capsize,FRENSHIP,electropop,2016,93,71,68,-6,69,36,238,4,3,72
+75,As Long As You Love Me,Justin Bieber,canadian pop,2012,140,87,57,-3,36,61,229,8,10,72
+76,Pretty Girl - Cheat Codes X CADE Remix,Maggie Lindemann,dance pop,2017,121,87,70,-5,10,73,194,15,3,71
+77,2U (feat. Justin Bieber),David Guetta,dance pop,2017,145,65,55,-6,23,56,195,22,6,71
+78,Strip That Down (feat. Quavo),Liam Payne,dance pop,2019,106,50,87,-5,8,55,202,20,5,71
+79,Wildest Dreams,Taylor Swift,dance pop,2014,140,66,55,-7,11,47,220,7,7,71
+80,Sun Is Shining,Axwell /\ Ingrosso,big room,2017,132,76,47,-3,7,38,255,9,5,71
+81,Solo Dance,Martin Jensen,big room,2016,115,85,75,-2,20,40,175,5,5,70
+82,Alone,Alan Walker,electro house,2016,97,93,68,-3,12,16,161,19,5,70
+83,You Don't Know Me (feat. RAYE),Jax Jones,dance pop,2019,124,67,88,-6,32,67,213,16,14,70
+84,Can't Hold Us (feat. Ray Dalton),Macklemore & Ryan Lewis,dance pop,2012,146,93,63,-4,10,88,258,3,8,70
+85,Hurts So Good,Astrid S,dance pop,2016,120,63,67,-5,9,42,209,8,5,69
+86,Five More Hours - Deorro x Chris Brown,Deorro,big room,2017,128,88,70,-3,82,50,212,3,22,69
+87,She Looks So Perfect,5 Seconds of Summer,boy band,2014,160,95,49,-4,33,44,202,0,13,69
+88,Where Them Girls At (feat. Nicki Minaj & Flo Rida),David Guetta,dance pop,2012,130,88,67,-3,26,55,195,6,4,69
+89,Mama,Jonas Blue,dance pop,2017,104,79,74,-4,5,54,184,10,4,68
+90,Don't Leave,Snakehips,dance pop,2017,122,70,66,-3,26,34,215,22,8,68
+91,Drag Me Down,One Direction,boy band,2015,138,71,72,-6,5,61,192,10,4,68
+92,The One That Got Away,Katy Perry,dance pop,2010,134,80,69,-4,16,88,227,0,4,66
+93,Shed a Light,Robin Schulz,dance pop,2016,122,79,48,-5,26,58,191,11,10,65
+94,Sex,Cheat Codes,dance pop,2016,105,69,60,-6,13,19,228,0,16,60
+95,Call on Me - Ryan Riback Remix,Starley,aussietronica,2016,105,84,67,-4,16,72,222,6,4,58
+96,Stereo Hearts (feat. Adam Levine),Gym Class Heroes,dance pop,2011,90,80,65,-3,27,80,211,3,10,56
+97,Dynamite,Taio Cruz,dance pop,2011,120,79,76,-4,3,87,203,0,8,56
+98,Break Your Heart,Taio Cruz,dance pop,2011,122,89,67,-5,24,68,185,0,3,54
+99,Summer Air,ItaloBrothers,dance pop,2017,102,75,76,-4,8,49,184,6,7,43
+100,All I Wanna Do,Martin Jensen,big room,2016,112,79,73,-4,7,56,194,16,7,32
