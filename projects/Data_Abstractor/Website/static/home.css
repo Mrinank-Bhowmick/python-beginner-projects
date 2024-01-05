@@ -1,0 +1,76 @@
+*{
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body{
+    margin: 0;
+}
+h1{
+    display: block;
+    margin: 0;
+    padding: 1rem 2rem;
+    background-color: #21262d;
+    color: white;
+}
+
+p{
+    margin: 10px 20px;
+
+}
+
+.query{
+    margin: 10px auto;
+    padding: 10px 20px;
+    width: 80%;
+    border: 1px solid rgba(128, 128, 128, 0.521);
+    border-radius: 5px;
+}
+
+.query input[type="checkbox"]{
+    margin-right: 1rem;
+    margin-left: 1rem;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.query input[name="gender"]{
+    margin: 0 1rem;
+}
+
+.query input[name="male"] {
+    margin-left: 0; 
+}
+
+span{
+    position: absolute;
+    left: 30%
+}
+
+input[type="submit"] {
+    margin: 1rem;
+    padding: 0.8rem;
+    color: white;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    background-color: #24a0ed;
+}
+
+input[type="submit"]:hover {
+    border-color: rgb(131, 131, 131);
+    cursor: pointer;
+}
+
+input[type="radio"]{
+    margin: 0 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#event_1{
+    margin-left: 0;
+}
