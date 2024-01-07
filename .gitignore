@@ -157,4 +157,8 @@ cython_debug/
 
 #.DS_Store
 .DS_Store
+<<<<<<< HEAD
 
+=======
+.DS_Store
+>>>>>>> 205aaec (removed ds_store)
