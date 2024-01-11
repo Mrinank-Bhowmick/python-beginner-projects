@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 def check_amazon_availability(product_url):
     headers = {
-        "User-Agent": "Your User Agent Here"  # You can set a user agent string here
+        "User-Agent": "Your User Agent Here"  # Replace with a valid user agent string
     }
 
     try:
@@ -23,8 +23,10 @@ def check_amazon_availability(product_url):
         else:
             print(f"{title} is available on Amazon.")
 
-    except requests.exceptions.RequestException as e:
-        print("Error:", e)
+    except requests.exceptions.HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        print(f"Request error occurred: {req_err}")
 
 
 if __name__ == "__main__":
