@@ -2170,6 +2170,14 @@
             <br />
             <sub><b>Nishant Pacharne</b></sub>
         </a>
-    </td></tr>
+    </td>
+  <td align="center">
+        <a href="https://github.com/RishavRaj20">
+            <img src="https://avatars.githubusercontent.com/u/81917305?v=4" width="100;" alt="RishavRaj"/>
+            <br />
+            <sub><b>Nishant Pacharne</b></sub>
+        </a>
+    </td>
+</tr>
 </table>
 <!-- readme: contributors -end -->
