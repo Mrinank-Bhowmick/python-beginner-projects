@@ -13,7 +13,7 @@ def convert_xls_to_xlsx(file_path: str, file_format: int = 51):
     """
     excel_app = Dispatch("Excel.Application")
     excel_app.Visible = False
-    output_path = str(file_path) + 'x'
+    output_path = str(file_path) + "x"
     workbook = excel_app.Workbooks.Open(file_path)
     workbook.SaveAs(output_path, FileFormat=file_format)
     workbook.Close()
@@ -36,15 +36,16 @@ def main():
     file_name = os.path.basename(file_path)
     print(f"Successfully converts {file_name}")
 
-    is_delete = str(input(
-        f"Do you want to delete the old {file_name} file (y/n)? ")).lower()
+    is_delete = str(
+        input(f"Do you want to delete the old {file_name} file (y/n)? ")
+    ).lower()
 
-    if is_delete == 'y':
+    if is_delete == "y":
         remove_old_file(file_path=file_path)
         print(f"Successfully removes {file_name}")
     else:
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

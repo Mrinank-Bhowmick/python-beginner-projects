@@ -2,9 +2,12 @@ import os
 
 from PIL import Image, ImageDraw, ImageFont
 
+
 def create_instagram_post(template, text, output_path):
     # Load the template image
-    template_path = os.path.join(os.path.dirname(__file__), "templates", "basic_template.jpg")
+    template_path = os.path.join(
+        os.path.dirname(__file__), "templates", "basic_template.jpg"
+    )
     img = Image.open(template_path)
 
     # Initialize the drawing context
