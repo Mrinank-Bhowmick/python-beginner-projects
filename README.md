@@ -861,17 +861,10 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/Gabriela20103967">
-            <img src="https://avatars.githubusercontent.com/u/129247240?v=4" width="100;" alt="Gabriela20103967"/>
+        <a href="https://github.com/anish2105">
+            <img src="https://avatars.githubusercontent.com/u/71202304?v=4" width="100;" alt="anish2105"/>
             <br />
-            <sub><b>Gabriela20103967</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/Tyler-Pear">
-            <img src="https://avatars.githubusercontent.com/u/128009824?v=4" width="100;" alt="Tyler-Pear"/>
-            <br />
-            <sub><b>Tyler-Pear</b></sub>
+            <sub><b>Anish Vantagodi</b></sub>
         </a>
     </td>
     <td align="center">
@@ -880,27 +873,20 @@
             <br />
             <sub><b>Sudip Ghosh</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Tyler-Pear">
+            <img src="https://avatars.githubusercontent.com/u/128009824?v=4" width="100;" alt="Tyler-Pear"/>
+            <br />
+            <sub><b>Tyler-Pear</b></sub>
+        </a>
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/anish2105">
-            <img src="https://avatars.githubusercontent.com/u/71202304?v=4" width="100;" alt="anish2105"/>
+        <a href="https://github.com/Gabriela20103967">
+            <img src="https://avatars.githubusercontent.com/u/129247240?v=4" width="100;" alt="Gabriela20103967"/>
             <br />
-            <sub><b>Anish Vantagodi</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/bim22614">
-            <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
-            <br />
-            <sub><b>Bim22614</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/jrbublitz">
-            <img src="https://avatars.githubusercontent.com/u/67718795?v=4" width="100;" alt="jrbublitz"/>
-            <br />
-            <sub><b>Jefferson Bublitz</b></sub>
+            <sub><b>Gabriela20103967</b></sub>
         </a>
     </td>
     <td align="center">
@@ -911,10 +897,24 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/xlo-u">
-            <img src="https://avatars.githubusercontent.com/u/67045160?v=4" width="100;" alt="xlo-u"/>
+        <a href="https://github.com/jrbublitz">
+            <img src="https://avatars.githubusercontent.com/u/67718795?v=4" width="100;" alt="jrbublitz"/>
             <br />
-            <sub><b>Yash Upadhyay</b></sub>
+            <sub><b>Jefferson Bublitz</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/bim22614">
+            <img src="https://avatars.githubusercontent.com/u/64481896?v=4" width="100;" alt="bim22614"/>
+            <br />
+            <sub><b>Bim22614</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/payallenka">
+            <img src="https://avatars.githubusercontent.com/u/83643171?v=4" width="100;" alt="payallenka"/>
+            <br />
+            <sub><b>Payallenka</b></sub>
         </a>
     </td>
     <td align="center">
@@ -926,10 +926,10 @@
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/payallenka">
-            <img src="https://avatars.githubusercontent.com/u/83643171?v=4" width="100;" alt="payallenka"/>
+        <a href="https://github.com/xlo-u">
+            <img src="https://avatars.githubusercontent.com/u/67045160?v=4" width="100;" alt="xlo-u"/>
             <br />
-            <sub><b>Payallenka</b></sub>
+            <sub><b>Yash Upadhyay</b></sub>
         </a>
     </td>
     <td align="center">
