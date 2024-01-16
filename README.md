@@ -840,10 +840,10 @@
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/UffaModey">
-            <img src="https://avatars.githubusercontent.com/u/83600229?v=4" width="100;" alt="UffaModey"/>
+        <a href="https://github.com/Tark-pea">
+            <img src="https://avatars.githubusercontent.com/u/119817620?v=4" width="100;" alt="Tark-pea"/>
             <br />
-            <sub><b>Fafa Modey</b></sub>
+            <sub><b>Tark-pea</b></sub>
         </a>
     </td>
     <td align="center">
@@ -854,10 +854,10 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/Tark-pea">
-            <img src="https://avatars.githubusercontent.com/u/119817620?v=4" width="100;" alt="Tark-pea"/>
+        <a href="https://github.com/UffaModey">
+            <img src="https://avatars.githubusercontent.com/u/83600229?v=4" width="100;" alt="UffaModey"/>
             <br />
-            <sub><b>Tark-pea</b></sub>
+            <sub><b>Fafa Modey</b></sub>
         </a>
     </td>
     <td align="center">
