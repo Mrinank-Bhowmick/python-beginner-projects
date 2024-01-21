@@ -34,6 +34,12 @@
 <tr>
 
 <td align="center">
+        <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/CustomEncryptionDecryption">
+            <sub><b>Custom + Advanced Encryption Decryption Technique</b></sub>
+        </a>
+</td>
+
+<td align="center">
         <a href="https://github.com/Mrinank-Bhowmick/python-beginner-projects/tree/main/projects/Audiobook">
             <sub><b>Audiobook</b></sub>
         </a>
@@ -796,6 +802,13 @@
 <!-- readme: contributors -start -->
 <table>
 <tr>
+    <td align="center">
+        <a href="https://github.com/AmitM0287">
+            <img src="https://avatars.githubusercontent.com/u/72763082?v=4" width="100;" alt="Amit-Manna"/>
+            <br />
+            <sub><b>Amit Manna</b></sub>
+        </a>
+    </td>
     <td align="center">
         <a href="https://github.com/Mrinank-Bhowmick">
             <img src="https://avatars.githubusercontent.com/u/77621953?v=4" width="100;" alt="Mrinank-Bhowmick"/>
