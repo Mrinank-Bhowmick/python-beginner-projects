@@ -993,7 +993,7 @@
         <a href="https://github.com/ibra-kdbra">
             <img src="https://avatars.githubusercontent.com/u/135609275?v=4" width="100;" alt="ibra-kdbra"/>
             <br />
-            <sub><b>ibra-kdbra</b></sub>
+            <sub><b>Ibra-kdbra</b></sub>
         </a>
     </td>
     <td align="center">
