@@ -1,31 +1,32 @@
-import requests # Import the 'requests' library for making HTTP requests.
+import requests  # Import the 'requests' library for making HTTP requests.
+
 
 def main():
-    menu_detail = dict(requests.get(
-        "http://themealdb.com/api/json/v1/1/random.php"
-    ).json())["meals"][
+    menu_detail = dict(
+        requests.get("http://themealdb.com/api/json/v1/1/random.php").json()
+    )["meals"][
         0
-    ] # Extract the details of the first meal from the API response.
+    ]  # Extract the details of the first meal from the API response.
 
     # TODO: Get information from the menu
     menu_name = menu_detail[
         "strMeal"
-    ] # Extract the name of the meal from the meal detail.
+    ]  # Extract the name of the meal from the meal detail.
     menu_category = menu_detail[
         "strCategory"
-    ] # Extract the category of the meal from the meal detail.
+    ]  # Extract the category of the meal from the meal detail.
     menu_tags = menu_detail[
         "strTags"
-    ] # Extract the tags (if available) of the meal from the meal detail.
+    ]  # Extract the tags (if available) of the meal from the meal detail.
     menu_country = menu_detail[
         "strArea"
-    ] # Extract the country of the meal from the meal detail.
+    ]  # Extract the country of the meal from the meal detail.
     menu_instruction = menu_detail[
         "strInstructions"
-    ] # Extract the cooking instructions of the meal.
+    ]  # Extract the cooking instructions of the meal.
     menu_video = menu_detail[
         "strYoutube"
-    ] # Extract the YouTube video link for the meal (if available).
+    ]  # Extract the YouTube video link for the meal (if available).
 
     # TODO: Define color codes for printing colored output.
     class bcolors:
@@ -50,4 +51,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() # Call the main function when the script is executed as the main program.
+    main()  # Call the main function when the script is executed as the main program.
