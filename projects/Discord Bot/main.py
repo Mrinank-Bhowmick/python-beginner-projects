@@ -55,7 +55,7 @@ async def on_message(message: discord.Message):
 
 
 # adding a "@bot.command" decorator which creates a command for the discord bot which can be then invoked by the user
-# "aliases" parameter inside the "@bot.command" decorator makes it so that the user can use multiple names to call
+# "aliases" parameter inside the "@bot.command" decorator makes it so that the user can use different names to call
 # that particular command
 
 @bot.command(aliases = ["ASK", "Ask"])
