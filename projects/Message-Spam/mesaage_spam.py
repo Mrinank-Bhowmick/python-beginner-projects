@@ -14,16 +14,16 @@ wb.open(web_url)
 time.sleep(10)
 
 # List of messages to send
-messages = ('Hello', 'Hey', 'Good Morning')
+messages = ("Hello", "Hey", "Good Morning")
 
 # Send 10 random messages
 for _ in range(10):
     # Choose a random message from the list
     message = random.choice(messages)
-    
+
     # Type and send the message using PyAutoGUI
     pg.write(message)
-    pg.press('enter')
-    
+    pg.press("enter")
+
     # Pause for a random duration between 1 to 3 seconds
     time.sleep(random.uniform(1, 3))
