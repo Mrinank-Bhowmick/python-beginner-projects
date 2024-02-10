@@ -16,7 +16,7 @@ def main():
 
         # Input validation
         if answer.lower() not in ["heads", "tails"]:
-            print("Invalid input. Please enter 'heads' or 'tails'.")
+            # removed the print statement here because its not required since it while loop clears the statement anyways
             continue
 
         result = toss_coin()
