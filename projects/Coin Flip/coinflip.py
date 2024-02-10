@@ -9,7 +9,7 @@ def toss_coin():
 
 def main():
     while True:
-        flag = False # Declaring a variable which will be used afterwards to break out of 2 nested while loops
+        flag = False  # Declaring a variable which will be used afterwards to break out of 2 nested while loops
         # at the same time
         # Clears the shell/terminal (where all the text is)
         os.system("cls")
@@ -38,11 +38,11 @@ def main():
                 flag = True
                 break
             elif answer_y.lower() == "yes":
-                break # if answer_y is "yes" then break out of only the innermost while loop and start the game again
+                break  # if answer_y is "yes" then break out of only the innermost while loop and start the game again
             else:
                 continue
-                
-        if flag: # Checking if the flag variable is True
+
+        if flag:  # Checking if the flag variable is True
             break
 
 
