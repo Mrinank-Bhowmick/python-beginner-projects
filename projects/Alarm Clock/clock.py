@@ -6,6 +6,7 @@ top = tkinter.Tk()
 top.title("Dynamic Clock")  # Updated title
 top.resizable(0, 0)  # Making the window non-resizable
 
+
 # Function to determine the time of day
 def get_time_of_day(hour):
     if 5 <= hour < 12:
@@ -14,6 +15,7 @@ def get_time_of_day(hour):
         return "Afternoon"
     else:
         return "Evening"
+
 
 # Function to update the time display
 def update_time():
@@ -25,11 +27,16 @@ def update_time():
     clock_time.config(text=current_time + f"\nGood {time_of_day}!")
 
     # Dynamically change the background color based on time of day
-    color = "lightblue" if time_of_day == "Morning" else "lightyellow" if time_of_day == "Afternoon" else "lightcoral"
+    color = (
+        "lightblue"
+        if time_of_day == "Morning"
+        else "lightyellow" if time_of_day == "Afternoon" else "lightcoral"
+    )
     top.configure(background=color)
 
     # Schedule the update_time function to be called again after 1000 milliseconds (1 second)
     clock_time.after(1000, update_time)
+
 
 # Creating a Label widget to display the time
 clock_time = tkinter.Label(

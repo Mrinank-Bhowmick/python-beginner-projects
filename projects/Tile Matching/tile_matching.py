@@ -2,6 +2,7 @@ import tkinter as tk
 import random
 from tkinter import messagebox
 
+
 class TileMatchingGame:
     def __init__(self, root, rows, columns):
         self.root = root
@@ -125,6 +126,7 @@ class TileMatchingGame:
         self.root.destroy()
         main()
 
+
 def main():
     root = tk.Tk()
     root.title("Tile Matching Game")
@@ -142,6 +144,7 @@ def main():
     exit_button.grid(row=rows + 4, columnspan=columns)
 
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()
