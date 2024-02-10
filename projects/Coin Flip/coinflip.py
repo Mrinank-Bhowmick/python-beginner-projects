@@ -9,6 +9,8 @@ def toss_coin():
 
 def main():
     while True:
+        flag = False # Declaring a variable which will be used afterwards to break out of 2 nested while loops
+        # at the same time
         # Clears the shell/terminal (where all the text is)
         os.system("cls")
 
@@ -16,7 +18,8 @@ def main():
 
         # Input validation
         if answer.lower() not in ["heads", "tails"]:
-            print("Invalid input. Please enter 'heads' or 'tails'.")
+            # removed the print statement here because its not required since the while loop clears
+            # the statement anyways
             continue
 
         result = toss_coin()
@@ -29,8 +32,17 @@ def main():
             print("OOF. Better luck next time.")
 
         # Ask the user if they want to play again
-        answer_y = input("Wanna play again? (yes/no): ")
-        if answer_y.lower() != "yes":
+        while True:
+            answer_y = input("Wanna play again? (yes/no): ")
+            if answer_y.lower() == "no":
+                flag = True
+                break
+            elif answer_y.lower() == "yes":
+                break # if answer_y is "yes" then break out of only the innermost while loop and start the game again
+            else:
+                continue
+                
+        if flag: # Checking if the flag variable is True
             break
 
 
