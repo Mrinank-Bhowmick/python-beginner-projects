@@ -1,6 +1,6 @@
 import tkinter as tk
 import random
-from tkinter import messagebox  # Import the messagebox module
+from tkinter import messagebox
 
 
 class TileMatchingGame:
@@ -19,14 +19,14 @@ class TileMatchingGame:
 
     def create_board(self):
         all_colors = [
-            "salmon",
-            "lightblue",
-            "azure",
-            "darkblue",
-            "orange",
-            "purple",
-            "pink",
-            "brown",
+            "lightcoral",
+            "lightseagreen",
+            "lightsteelblue",
+            "lightgoldenrodyellow",
+            "lightsalmon",
+            "lightgreen",
+            "lightpink",
+            "lightcyan",
         ]
         colors = random.sample(all_colors, self.rows * self.columns // 2)
         colors *= 2  # Duplicate colors to have pairs
@@ -103,9 +103,13 @@ class TileMatchingGame:
                     self.end_game()
 
             else:
-                self.tiles[tile1[0]][tile1[1]].config(text="", bg="gray")
-                self.tiles[tile2[0]][tile2[1]].config(text="", bg="gray")
-            self.selected_tiles = []
+                self.root.update_idletasks()
+                self.root.after(500, self.hide_unmatched_tiles, tile1, tile2)
+
+    def hide_unmatched_tiles(self, tile1, tile2):
+        self.tiles[tile1[0]][tile1[1]].config(text="", bg="gray")
+        self.tiles[tile2[0]][tile2[1]].config(text="", bg="gray")
+        self.selected_tiles = []
 
     def end_game(self):
         self.timer_label.config(text="Game Over!")
@@ -118,6 +122,10 @@ class TileMatchingGame:
                 col = row_tiles.index(tile)
                 return row, col
 
+    def reset_game(self):
+        self.root.destroy()
+        main()
+
 
 def main():
     root = tk.Tk()
@@ -127,9 +135,13 @@ def main():
 
     game = TileMatchingGame(root, rows, columns)
 
+    # Reset Button
+    reset_button = tk.Button(root, text="Reset Game", command=game.reset_game)
+    reset_button.grid(row=rows + 3, columnspan=columns)
+
     # Exit Button
     exit_button = tk.Button(root, text="Exit", command=root.destroy)
-    exit_button.grid(row=rows + 3, columnspan=columns)
+    exit_button.grid(row=rows + 4, columnspan=columns)
 
     root.mainloop()
 

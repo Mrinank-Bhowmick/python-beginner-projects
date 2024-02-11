@@ -171,13 +171,13 @@ X_std = sc.fit_transform(X_std)
 
 X_std
 
-X[
-    ["Item_Weight", "Item_Visibility", "Item_MRP", "Outlet_Establishment_Year"]
-] = pd.DataFrame(
-    X_std,
-    columns=[
-        ["Item_Weight", "Item_Visibility", "Item_MRP", "Outlet_Establishment_Year"]
-    ],
+X[["Item_Weight", "Item_Visibility", "Item_MRP", "Outlet_Establishment_Year"]] = (
+    pd.DataFrame(
+        X_std,
+        columns=[
+            ["Item_Weight", "Item_Visibility", "Item_MRP", "Outlet_Establishment_Year"]
+        ],
+    )
 )
 
 X
