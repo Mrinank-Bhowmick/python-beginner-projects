@@ -11,7 +11,7 @@ import time
 def addition():
     """This function asks the user to enter a series of numbers separated by spaces.
     It then adds all the numbers together and returns the result."""
-    nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+    nums = list(map(int, input("Enter all numbers separated by space: ").split()))
     return sum(nums)
 
 
@@ -28,7 +28,7 @@ def multiplication():
     """Function asks user to enter a series of numbers separated by spaces.
     Then multiply all the numbers together and returns the result."""
 
-    nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+    nums = list(map(int, input("Enter all numbers separated by space: ").split()))
     result = 1
     for num in nums:
         result *= num
@@ -48,10 +48,10 @@ def division():
 
 
 def average():
-    """This function takes space seperated number series and then convert it to a list.
+    """This function takes space separated number series and then convert it to a list.
     Then calculates the average of that list of numbers."""
 
-    nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+    nums = list(map(int, input("Enter all numbers separated by space: ").split()))
     return sum(nums) / len(nums)
 
 
@@ -62,14 +62,14 @@ def factorial(num):
     return answer
 
 
-def complexarithmetic():
+def complex_arithmetic():
     print("Enter '1' for complex addition")
-    print("Enter '2' for complex substraction")
+    print("Enter '2' for complex subtraction")
     print("Enter '3' for complex multiplication")
     print("Enter '4' for complex division")
     choice = input("enter your choice")
     if choice == "1":
-        nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+        nums = list(map(int, input("Enter all numbers separated by space: ").split()))
         real_sum = 0
         imag_sum = 0
         for i in range(0, len(nums) - 1, 2):
@@ -80,7 +80,7 @@ def complexarithmetic():
         return f"{real_sum}+ i{imag_sum}"
 
     elif choice == "2":
-        nums = list(map(int, input("Enter all numbers seperated by space: ").split()))
+        nums = list(map(int, input("Enter all numbers separated by space: ").split()))
         real_sub = nums[0]
         imag_sub = nums[1]
         for i in range(2, len(nums) - 1, 2):
@@ -95,7 +95,7 @@ def complexarithmetic():
             map(
                 int,
                 input(
-                    "Enter all numbers seperated by space maximum 4 elements: "
+                    "Enter all numbers separated by space maximum 4 elements: "
                 ).split(),
             )
         )
@@ -108,7 +108,7 @@ def complexarithmetic():
             map(
                 int,
                 input(
-                    "Enter all numbers seperated by space maximum 4 elements: "
+                    "Enter all numbers separated by space maximum 4 elements: "
                 ).split(),
             )
         )
@@ -117,7 +117,7 @@ def complexarithmetic():
         return f"{real}+ i{imag}"
 
 
-def binomail(num):
+def binomial(num):
     result = factorial(num[0]) / (factorial(num[1]) * factorial(num[0] - num[1]))
     return result
 
@@ -155,13 +155,13 @@ while c != "-1":
         res = factorial(num)
     elif c == "7":
         os.system("cls||clear")
-        res = complexarithmetic()
+        res = complex_arithmetic()
     elif c == "8":
-        num = list(map(int, input("Enter the number seperated by space").split()))
+        num = list(map(int, input("Enter the number separated by space").split()))
         if num[0] < num[1]:
             print("Invalid entry")
             continue
-        res = binomail(num)
+        res = binomial(num)
     elif c == "-1":
         print("Thank you for using the calculator!")
         break
