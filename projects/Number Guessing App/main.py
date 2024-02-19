@@ -8,16 +8,16 @@ def guess():
     n = random.randrange(1, 20)
 
     # Request user input to guess the number
-    varGuess = int(input("Enter any number: "))
+    var_guess = int(input("Enter any number: "))
 
     # Continue the loop until the user guesses the correct number
-    while n != varGuess:
-        if varGuess < n:  # If the user's guess is too low
+    while n != var_guess:
+        if var_guess < n:  # If the user's guess is too low
             print("OOPS! Too low")
-            varGuess = int(input("Guess again: "))  # Ask for another guess
-        elif varGuess > n:  # If the user's guess is too high
+            var_guess = int(input("Guess again: "))  # Ask for another guess
+        elif var_guess > n:  # If the user's guess is too high
             print("OOPS! Too high!")
-            varGuess = int(input("Guess again: "))  # Ask for another guess
+            var_guess = int(input("Guess again: "))  # Ask for another guess
         else:
             break  # Exit the loop when the correct number is guessed
 
@@ -27,7 +27,7 @@ def guess():
 
 # Function for the computer to guess the number chosen by the user
 def computer_guess():
-    global CompGuess
+    global comp_guess
 
     # Request user input to get the number to be guessed by the computer
     x = int(input("Enter your number: "))
@@ -37,31 +37,31 @@ def computer_guess():
     high = x
 
     # Variable to store the user's feedback on the computer's guesses
-    CompAns = ""
+    comp_ans = ""
 
     # Continue the loop until the computer guesses the correct number
-    while CompAns != "c":
+    while comp_ans != "c":
         if low != high:
             # Generate a random guess within the current range
-            CompGuess = random.randint(low, high)
+            comp_guess = random.randint(low, high)
         else:
-            CompGuess = (
+            comp_guess = (
                 low  # If the range is reduced to a single value, guess that number
             )
 
         # Ask the user if the computer's guess is too high, too low, or correct
-        CompAns = input(
-            f"Is {CompGuess} too high (h), too low (l), or correct (c)? \n=>"
+        comp_ans = input(
+            f"Is {comp_guess} too high (h), too low (l), or correct (c)? \n=>"
         ).lower()
 
         # Adjust the guessing range based on the user's feedback
-        if CompAns == "h":  # If the computer's guess is too high
-            high = CompGuess - 1
-        elif CompAns == "l":  # If the computer's guess is too low
-            low = CompGuess + 1
+        if comp_ans == "h":  # If the computer's guess is too high
+            high = comp_guess - 1
+        elif comp_ans == "l":  # If the computer's guess is too low
+            low = comp_guess + 1
 
     # Display a message when the computer guesses the correct number
-    print(f"Yay! The computer guessed your number, {CompGuess}, correctly!")
+    print(f"Yay! The computer guessed your number, {comp_guess}, correctly!")
 
 
 if __name__ == "__main__":
@@ -69,10 +69,11 @@ if __name__ == "__main__":
     print(
         "Select gaming mode\n Press 1 to guess the number\nPress 2 to choose the number"
     )
-    Gmode = int(input())
+    g_mode = int(input())
 
     # Call the appropriate function based on the selected gaming mode
-    if Gmode == 1:
+    if g_mode == 1:
         guess()
-    if Gmode == 2:
+    if g_mode == 2:
         computer_guess()
+
