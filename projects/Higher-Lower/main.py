@@ -1,4 +1,5 @@
 from random import randint
+
 print("Welcome to the Higher-Lower Game!")
 rnum = randint(0, 100)
 noguesses = 0
@@ -16,11 +17,7 @@ while True:
             elif integer_number < rnum:
                 print("Higher")
             else:
-                (print("You win! the number is " +guess+"!"), quit())
+                (print("You win! the number is " + guess + "!"), quit())
             noguesses += 1
         else:
             print("Invalid input. Please enter an integer number.")
-
-
-
-

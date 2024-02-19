@@ -1,5 +1,6 @@
 import os
 
+
 def findUnneeded(folderPath, rejectSize):
     """walks through a folder tree and searches for exceptionally large files or folders
     Args:
@@ -20,14 +21,15 @@ def findUnneeded(folderPath, rejectSize):
             size = os.path.getsize(docPath)
 
         if size > rejectSize:
-            print(f'{docPath}: {size}')
+            print(f"{docPath}: {size}")
+
 
 def getDirSize(start_path):
     """Finds the total size of a folder and it's contents
-        Args:
-            start_path (str): path to folder
-        Returns:
-            size (int): folder size in bytes
+    Args:
+        start_path (str): path to folder
+    Returns:
+        size (int): folder size in bytes
     """
     size = 0
 
@@ -36,9 +38,8 @@ def getDirSize(start_path):
             filePath = os.path.join(folderName, file)
             size += os.path.getsize(filePath)
 
-
     return size
 
 
-if __name__ == '__main__':
-    findUnneeded('..', 1000)
+if __name__ == "__main__":
+    findUnneeded("..", 1000)

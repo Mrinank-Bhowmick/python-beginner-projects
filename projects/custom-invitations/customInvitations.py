@@ -14,9 +14,9 @@ def createInvitations(txtFile, docName):
     """
     doc = docx.Document()
 
-    intro = 'It would be a pleasure to have the company of'
-    address = 'at 11101 Memory lane on the evening of'
-    date = 'April 31st'
+    intro = "It would be a pleasure to have the company of"
+    address = "at 11101 Memory lane on the evening of"
+    date = "April 31st"
     time = "at 24 O'Clock"
 
     with open(txtFile) as guestList:
@@ -55,10 +55,9 @@ def createInvitations(txtFile, docName):
             f5.font.size = Pt(12)
 
             doc.add_page_break()
-    
+
     doc.save(docName)
 
 
-
 if __name__ == "__main__":
-    createInvitations('guests.txt', 'invitations.docx')
+    createInvitations("guests.txt", "invitations.docx")

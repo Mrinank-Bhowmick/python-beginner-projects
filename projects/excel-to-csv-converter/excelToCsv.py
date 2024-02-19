@@ -14,7 +14,7 @@ def excelToCsv(folder):
     """
     for excelFile in os.listdir(folder):
         # Skip non-xlsx files, load the workbook object.
-        if not excelFile.endswith('xlsx'):
+        if not excelFile.endswith("xlsx"):
             continue
         wb = openpyxl.load_workbook(excelFile)
 
@@ -23,15 +23,15 @@ def excelToCsv(folder):
             sheet = wb.get_sheet_by_name(sheetName)
 
             # Create the CSV filename from the Excel filename and sheet title.
-            csvFilename = excelFile.split('.')[0]+'_'+sheet.title+'.csv'
-            csvFileObj = open(csvFilename, 'w', newline='')
+            csvFilename = excelFile.split(".")[0] + "_" + sheet.title + ".csv"
+            csvFileObj = open(csvFilename, "w", newline="")
 
             # Create the csv.writer object for this CSV file.
             csvWriter = csv.writer(csvFileObj)
 
             # Loop through every row in the sheet.
             for rowObj in sheet.rows:
-                rowData = []    # append each cell to this list
+                rowData = []  # append each cell to this list
                 # Loop through each cell in the row.
                 for cellObj in rowObj:
                     # Append each cell's data to rowData.
@@ -41,5 +41,6 @@ def excelToCsv(folder):
 
             csvFileObj.close()
 
+
 if __name__ == "__main__":
-    excelToCsv('.')
+    excelToCsv(".")

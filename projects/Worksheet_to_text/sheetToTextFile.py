@@ -14,8 +14,8 @@ def toTextFiles(filename):
     count = 1
 
     for colObj in sheet.columns:
-        
-        with open('text-'+str(count)+'.txt', 'w') as file:
+
+        with open("text-" + str(count) + ".txt", "w") as file:
             for cellObj in colObj:
                 file.write(cellObj.value)
 
@@ -23,4 +23,4 @@ def toTextFiles(filename):
 
 
 if __name__ == "__main__":
-    toTextFiles('worksheet.xlsx')
+    toTextFiles("worksheet.xlsx")

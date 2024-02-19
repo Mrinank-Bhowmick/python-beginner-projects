@@ -11,14 +11,14 @@ def textToSheet(directory, filename):
         None
     """
     wb = openpyxl.Workbook()
-    wb.create_sheet(index=0, title='result')
+    wb.create_sheet(index=0, title="result")
     sheet = wb.active
 
     colIndex = 1
 
     # write text files as columns in worksheet
     for file in os.listdir():
-        if file.endswith('.txt'):
+        if file.endswith(".txt"):
             rowIndex = 1
             with open(file) as f:
                 for line in f:
@@ -28,5 +28,6 @@ def textToSheet(directory, filename):
 
     wb.save(filename)
 
+
 if __name__ == "__main__":
-    textToSheet('.', 'text-to-cols.xlsx')
+    textToSheet(".", "text-to-cols.xlsx")

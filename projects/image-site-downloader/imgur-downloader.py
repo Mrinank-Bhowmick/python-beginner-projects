@@ -2,6 +2,7 @@ import os
 import requests
 import bs4
 
+
 def downloader(query, max_save, output_path):
     """
     Args:
@@ -12,8 +13,8 @@ def downloader(query, max_save, output_path):
     """
 
     # create imgur search url
-    searchUrl = 'https://imgur.com/search'
-    queryUrl = searchUrl+'?q='+query
+    searchUrl = "https://imgur.com/search"
+    queryUrl = searchUrl + "?q=" + query
 
     # set up output_path
     abs_output_path = os.path.abspath(output_path)
@@ -26,12 +27,12 @@ def downloader(query, max_save, output_path):
         res1.raise_for_status()
 
         # parse res.text with bs4 to images
-        imugurSoup = bs4.BeautifulSoup(res1.text, 'html.parser')
-        images = imugurSoup.select('.image-list-link img')
+        imugurSoup = bs4.BeautifulSoup(res1.text, "html.parser")
+        images = imugurSoup.select(".image-list-link img")
 
         # extract number image urls
         num_to_save = min(max_save, len(images))
-        download_links = ['https:'+img.get('src') for img in images[:num_to_save]]
+        download_links = ["https:" + img.get("src") for img in images[:num_to_save]]
 
         # make requests for extracted url
         for link in download_links:
@@ -41,21 +42,21 @@ def downloader(query, max_save, output_path):
 
             try:
                 res2.raise_for_status()
-                
+
                 # save to file with url base name in folder results
-                imgFile = open(os.path.join(abs_output_path, os.path.basename(link)), 'wb')
+                imgFile = open(
+                    os.path.join(abs_output_path, os.path.basename(link)), "wb"
+                )
                 for chunk in res2.iter_content(100000):
                     imgFile.write(chunk)
                 imgFile.close()
 
             except Exception as exc:
-                print('There was a problem: %s' % (exc))
-
-        
+                print("There was a problem: %s" % (exc))
 
     except Exception as exc:
-        print('There was a problem: %s' % (exc))
-    
+        print("There was a problem: %s" % (exc))
 
-if __name__ == '__main__':
-    downloader('messi', 10, 'results')
+
+if __name__ == "__main__":
+    downloader("messi", 10, "results")
