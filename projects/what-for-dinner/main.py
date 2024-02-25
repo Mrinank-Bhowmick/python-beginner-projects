@@ -2,30 +2,29 @@ import requests  # Import the 'requests' library for making HTTP requests.
 
 
 def main():
-    r = requests.get(
-        "http://themealdb.com/api/json/v1/1/random.php"
-    )  # Fetch a random meal data from the API.
-    meal_detail = dict(r.json())["meals"][
+    menu_detail = dict(
+        requests.get("http://themealdb.com/api/json/v1/1/random.php").json()
+    )["meals"][
         0
     ]  # Extract the details of the first meal from the API response.
 
     # TODO: Get information from the menu
-    menu_name = meal_detail[
+    menu_name = menu_detail[
         "strMeal"
     ]  # Extract the name of the meal from the meal detail.
-    menu_category = meal_detail[
+    menu_category = menu_detail[
         "strCategory"
     ]  # Extract the category of the meal from the meal detail.
-    menu_tags = meal_detail[
+    menu_tags = menu_detail[
         "strTags"
     ]  # Extract the tags (if available) of the meal from the meal detail.
-    menu_country = meal_detail[
+    menu_country = menu_detail[
         "strArea"
     ]  # Extract the country of the meal from the meal detail.
-    menu_instruction = meal_detail[
+    menu_instruction = menu_detail[
         "strInstructions"
     ]  # Extract the cooking instructions of the meal.
-    menu_video = meal_detail[
+    menu_video = menu_detail[
         "strYoutube"
     ]  # Extract the YouTube video link for the meal (if available).
 

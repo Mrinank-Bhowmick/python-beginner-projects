@@ -3,54 +3,48 @@
 **This is a internet speed tester made in python**
 
 ## Getting Started
+
 - Clone this repo
-- Run the following commands - 
-```
+- Run the following commands -
+
+```bash
 pip install requirements.txt
 ```
+
 OR
-```
+
+```bash
 pip3 install requirements.txt
 ```
 
 - Then
-```
+
+```bash
 python main.py
 ```
+
 OR
-```
+
+```bash
 python3 main.py
 ```
 
 ## Libraries
+
 speedtest-cli
-```
+
+```bash
 pip install speedtest-cli
 ```
+
 OR
-```
+
+```bash
 pip3 install speedtest-cli
 ```
 
-## Troubleshooting
-if you have an error of "AttributeError: module 'speedtest' has no attribute 'Speedtest'" when running
-following https://stackoverflow.com/questions/66249874/python-speedtest-has-no-attribute-speedtest
-
-try:
-
-First
-```
-pip uninstall speedtest
-```
-Followed by
-```
-pip install speedtest-cli
-```
-and then run again
-
-
-
 ## Author
+
 ![Shreejan-35](https://github.com/Shreejan-35)
 
 That's all.
