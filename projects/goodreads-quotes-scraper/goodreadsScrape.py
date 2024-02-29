@@ -131,6 +131,36 @@ def getQuotesByPageNumber(url):
         print("Tag not found.")
 
 
+#Not implemented!!
+def getTopQuotesByAuthor(url):
+
+    #Realised lately that its not possible..There is a random number(u_id) associated with each author.
+    #we will have to create a map of each u_id associated with author and then use a list to retrive data from author.
+    '''
+    print("There are too many authors..")
+    print("Visit 'https://www.goodreads.com/author/on_goodreads' to get list all author details..")
+    print("Select author and proceed below..")
+    author = str(input("Author please.."))
+    '''
+    '''
+    complete_url = url +"/tag/"+
+    data = getResponse(complete_url)
+    soup = BeautifulSoup(data, 'html.parser')
+    quotes_list = [quote.text.strip().split("\n")[0]
+                   for quote in soup.find_all('div', {'class': 'quoteText'})]
+    author_list = [quote.text.strip().split("\n")[2]
+                   for quote in soup.find_all('div', {'class': 'quoteText'})]
+    combine_list = []
+    temp = ""
+    for q, a in zip(quotes_list, author_list):
+        temp = "" + q.strip(' ') + " -- " + a.strip(' ')
+        combine_list.append(temp)
+    for ele in combine_list:
+        print(ele)
+    '''
+
+
+
 def main():
     base_url = "https://www.goodreads.com/quotes"
     
