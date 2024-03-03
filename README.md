@@ -1946,7 +1946,7 @@
         <a href="https://github.com/ocryptocode">
             <img src="https://avatars.githubusercontent.com/u/156216265?v=4" width="100;" alt="ocryptocode"/>
             <br />
-            <sub><b>ocryptocode</b></sub>
+            <sub><b>Ocryptocode</b></sub>
         </a>
     </td>
     <td align="center">
