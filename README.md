@@ -2072,20 +2072,27 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/JenilGajjar20">
+            <img src="https://avatars.githubusercontent.com/u/68738624?v=4" width="100;" alt="JenilGajjar20"/>
+            <br />
+            <sub><b>Jenil Gajjar</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/HimanshuSinghNegi">
             <img src="https://avatars.githubusercontent.com/u/72004239?v=4" width="100;" alt="HimanshuSinghNegi"/>
             <br />
             <sub><b>Himanshu Singh  Negi</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/harshhes">
             <img src="https://avatars.githubusercontent.com/u/93470145?v=4" width="100;" alt="harshhes"/>
             <br />
             <sub><b>HarsH</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/GargiMittal">
             <img src="https://avatars.githubusercontent.com/u/98906186?v=4" width="100;" alt="GargiMittal"/>
@@ -2120,15 +2127,15 @@
             <br />
             <sub><b>Dhandeep</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/David-hosting">
             <img src="https://avatars.githubusercontent.com/u/67858186?v=4" width="100;" alt="David-hosting"/>
             <br />
             <sub><b>David Ioffe</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Crack-er-jack">
             <img src="https://avatars.githubusercontent.com/u/82202860?v=4" width="100;" alt="Crack-er-jack"/>
@@ -2163,15 +2170,15 @@
             <br />
             <sub><b>AtharvaDeshmukh0909</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Astrasv">
             <img src="https://avatars.githubusercontent.com/u/116169969?v=4" width="100;" alt="Astrasv"/>
             <br />
             <sub><b>Sudharsan Vanamali</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/hiarijit">
             <img src="https://avatars.githubusercontent.com/u/68233664?v=4" width="100;" alt="hiarijit"/>
@@ -2206,15 +2213,15 @@
             <br />
             <sub><b>Aleena </b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/AdityaSahai123">
             <img src="https://avatars.githubusercontent.com/u/72221032?v=4" width="100;" alt="AdityaSahai123"/>
             <br />
             <sub><b>Aditya Sahai</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/adixoo">
             <img src="https://avatars.githubusercontent.com/u/124980341?v=4" width="100;" alt="adixoo"/>
@@ -2249,15 +2256,15 @@
             <br />
             <sub><b>Sai Uttej R</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Surya-29">
             <img src="https://avatars.githubusercontent.com/u/75674235?v=4" width="100;" alt="Surya-29"/>
             <br />
             <sub><b>Surya Narayan</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/RishiPastor05">
             <img src="https://avatars.githubusercontent.com/u/87607061?v=4" width="100;" alt="RishiPastor05"/>
@@ -2292,15 +2299,15 @@
             <br />
             <sub><b>Faris Faikar</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Praveensv11">
             <img src="https://avatars.githubusercontent.com/u/112382643?v=4" width="100;" alt="Praveensv11"/>
             <br />
             <sub><b>Praveen SV</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Pratham-H-S">
             <img src="https://avatars.githubusercontent.com/u/126776410?v=4" width="100;" alt="Pratham-H-S"/>
@@ -2335,15 +2342,15 @@
             <br />
             <sub><b>Nilay Banerjee </b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/NischayGoyal1">
             <img src="https://avatars.githubusercontent.com/u/81116984?v=4" width="100;" alt="NischayGoyal1"/>
             <br />
             <sub><b>Nischay Goyal</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/nik-6174">
             <img src="https://avatars.githubusercontent.com/u/78644716?v=4" width="100;" alt="nik-6174"/>
@@ -2378,15 +2385,15 @@
             <br />
             <sub><b>MANISH KUMAR CHINTHA</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/LightxAman">
             <img src="https://avatars.githubusercontent.com/u/118755943?v=4" width="100;" alt="LightxAman"/>
             <br />
             <sub><b>Aman Sharma</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/iamkunalpitale">
             <img src="https://avatars.githubusercontent.com/u/26413565?v=4" width="100;" alt="iamkunalpitale"/>
