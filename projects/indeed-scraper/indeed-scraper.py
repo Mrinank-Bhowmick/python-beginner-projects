@@ -1,16 +1,14 @@
-''' Written By : Parvez Alam '''
-
 import requests
 import bs4
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
 
-max_results_per_city = 20
+max_results_per_city = 20 #change to get more results
 
 city_set = ['mumbai','bangalore','hyderabad','pune']
 
-job_title_set = ['full+stack+developer','front+end+developer']
+job_title_set = ['full+stack+developer','front+end+developer','back+end+developer','software+engineer','data+scientist','machine+learning+engineer','android+developer','ios+developer']
 
 columns = ["job_title","company_name","summary","city","location","salary","date"]
 
