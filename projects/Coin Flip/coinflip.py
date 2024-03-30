@@ -34,10 +34,10 @@ def main():
         # Ask the user if they want to play again
         while True:
             answer_y = input("Wanna play again? (yes/no): ")
-            if answer_y.lower() == "no":
+            if answer_y.lower() == "no" or answer_y.lower() == "n":
                 flag = True
                 break
-            elif answer_y.lower() == "yes":
+            elif answer_y.lower() == "yes" or answer_y.lower() == "y":
                 break  # if answer_y is "yes" then break out of only the innermost while loop and start the game again
             else:
                 continue
