@@ -8,10 +8,10 @@ import random
 token = "Your Token Here"
 
 bot = commands.Bot(
-    command_prefix = "?",  # the command prefix for the bot, self explanatory
-    intents = discord.Intents.all(),  # intents required for the functioning of the bot
-    strip_after_prefix = True,  # setting this to true will make it so that the command won't be affected by whitespaces within the command text
-    case_insensitive = True  # whether the commands should be case sensitive or not
+    command_prefix="?",  # the command prefix for the bot, self explanatory
+    intents=discord.Intents.all(),  # intents required for the functioning of the bot
+    strip_after_prefix=True,  # setting this to true will make it so that the command won't be affected by whitespaces within the command text
+    case_insensitive=True,  # whether the commands should be case sensitive or not
 )
 
 # The list below is a list that contains all the responses the bot can randomly choose from for the "ask" command

@@ -47,4 +47,3 @@ year = get_valid_year()
 month = get_valid_month()
 
 display_calendar(year, month)
-
