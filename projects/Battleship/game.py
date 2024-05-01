@@ -291,5 +291,3 @@ class CLIGame(Game, PrintMixin, PromptMixin):
         """Randomly place ships for both players."""
         self.player_1.generate_random_ship_arrangements()
         self.player_2.generate_random_ship_arrangements()
-        self.player_1.generate_random_ship_arrangements()
-        self.player_2.generate_random_ship_arrangements()

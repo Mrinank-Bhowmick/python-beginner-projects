@@ -222,6 +222,12 @@ class Board:
 
     def enemy_move(self, row: int, col: int) -> None:
         """Performs an enemy's move."""
+
+        # Check if the coordinate is already a hit or missed.
+        board = self.get_board_for_enemy()
+        if board[row][col] in [self._enemy_pov_labels.hit, self._enemy_pov_labels.missed]:
+            raise BoardException(f"The given coordinate ({row}, {col}) already has {board[row][col]}.")
+
         ship: None | Ship = self.which_ship(row, col)
 
         if isinstance(ship, Ship):

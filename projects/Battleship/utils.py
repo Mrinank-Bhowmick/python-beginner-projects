@@ -2,7 +2,6 @@ from typing import List, Generator, Tuple
 import random
 
 from ship import Ship
-from player import Player
 from board import Board
 
 
@@ -239,7 +238,7 @@ class PromptMixin:
 
 class PrintMixin:
     @staticmethod
-    def print_player_board(player: Player, other_player: Player) -> None:
+    def print_player_board(player, other_player) -> None:
         """
         Print the current battlefield situation and targets for the specified player.
 
