@@ -2,6 +2,8 @@ from typing import List, Generator, Tuple
 import random
 
 from ship import Ship
+from player import Player
+from board import Board
 
 
 def generate_row_ship_cells(board_size: int) -> Generator[List[Tuple[int, int]], None, None]:
@@ -233,6 +235,32 @@ class PromptMixin:
             except ValueError:
                 print(error_message)
                 continue
+
+
+class PrintMixin:
+    @staticmethod
+    def print_player_board(player: Player, other_player: Player) -> None:
+        """
+        Print the current battlefield situation and targets for the specified player.
+
+        Args:
+            player (Player): The player whose perspective is being printed.
+            other_player (Player): The opposing player.
+        """
+
+        player_board = other_player.enemy_board
+        other_player_board = player.enemy_board
+
+        player_board_state = player_board.get_board_for_player()
+        player_hit_or_miss_state = other_player_board.get_board_for_enemy()
+
+        print(f"{player.name} Battlefield Situation")
+        Board.print_board(player_board_state)
+        print()
+        print(f"{player.name} Targets")
+        Board.print_board(player_hit_or_miss_state)
+
+        print("\n")
 
 
 class CollectionUtilsMixin:
