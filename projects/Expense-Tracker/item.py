@@ -122,3 +122,8 @@ class ItemsDB:
 
     def get_all_items(self) -> List[Item]:
         return [Item.from_json_str(json.dumps(doc)) for doc in self._db.all()]
+
+    def get_items_by_date_range(self, start: str, end: str):
+        start_date = datetime.strptime(start, "%Y-%m-%d")
+        end_date = datetime.strptime(end, "%Y-%m-%d")
+        return [item for item in self.get_all_items() if start_date <= item.date <= end_date]
