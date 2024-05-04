@@ -45,17 +45,14 @@ class Item:
     def create_expense_item(cls, name: str, amount: float, description: str, date_str: str,
                             category: Optional[Category] = None):
         if amount >= 0:
-            raise ValueError('Expense Item cannot be positive.')
+            return cls.create(name, -abs(amount), description, date_str, category=category)
 
         return cls.create(name, amount, description, date_str, category=category)
 
     @classmethod
     def create_income_item(cls, name: str, amount: float, description: str, date_str: str,
                            category: Optional[Category] = None):
-        if amount <= 0:
-            raise ValueError('Income Item cannot be negative.')
-
-        return cls.create(name, amount, description, date_str, category=category)
+        return cls.create(name, abs(amount), description, date_str, category=category)
 
     @classmethod
     def from_json_str(cls, json_str):
