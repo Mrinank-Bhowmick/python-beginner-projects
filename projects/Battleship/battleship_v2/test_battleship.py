@@ -93,7 +93,7 @@ class TestBoard(unittest.TestCase):
 
     def setUp(self):
         """Set up with a predefined board and ship positions."""
-        
+
         self.board = Board(5)
 
         # Player's POV Board
