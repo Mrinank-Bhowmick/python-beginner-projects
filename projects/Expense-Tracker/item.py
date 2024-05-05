@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Set
 from dataclasses import dataclass, asdict, is_dataclass
 from datetime import datetime
 from copy import deepcopy
@@ -21,6 +21,18 @@ class Category:
     name: str
     subcategory: Optional[str] = None
 
+    def __str__(self):
+        if self.subcategory is None:
+            return f'{self.name}-NoSubcategory'
+        else:
+            return f'{self.name}-{self.subcategory}'
+
+    def __eq__(self, other):
+        return self.name == other.name and self.subcategory == other.subcategory
+
+    def is_same_category_name(self, other):
+        return self.name == other.name
+
 
 @dataclass
 class Item:
@@ -33,6 +45,9 @@ class Item:
 
     def __str__(self):
         return self.to_json_str(indent=4)
+
+    def get_category_str(self) -> str:
+        return "Uncategorized" if self.category is None else str(self.category)
 
     @classmethod
     def create(cls, name: str, amount: float, description: str, date_str: str, category: Optional[Category] = None):
@@ -120,7 +135,38 @@ class ItemsDB:
     def get_all_items(self) -> List[Item]:
         return [Item.from_json_str(json.dumps(doc)) for doc in self._db.all()]
 
-    def get_items_by_date_range(self, start: str, end: str):
+    def get_items_by_date_range(self, start: str, end: str) -> List[Item]:
         start_date = datetime.strptime(start, "%Y-%m-%d")
         end_date = datetime.strptime(end, "%Y-%m-%d")
         return [item for item in self.get_all_items() if start_date <= item.date <= end_date]
+
+    def get_items_by_category(self, category_name: str) -> List[Item]:
+        return [item for item in self.get_all_items() if item.category.name == category_name]
+
+    def get_items_by_category_and_subcategory(self, category_name: str, subcategory_name: str) -> List[Item]:
+        return [item for item in self.get_all_items() if
+                item.category.name == category_name and item.category.subcategory == subcategory_name]
+
+    def get_items_uncategorized(self) -> List[Item]:
+        return [item for item in self.get_all_items() if item.category is None]
+
+    def get_items_without_subcategory(self, category_name: str) -> List[Item]:
+        # This excludes uncategorized items (i.e. item.category is None)
+        return [item for item in self.get_all_items() if
+                item.category is not None and item.category.name == category_name and item.category.subcategory is None]
+
+    def get_items_with_subcategory(self, category_name: str) -> List[Item]:
+        # This excludes uncategorized items (i.e. item.category is None)
+        return [item for item in self.get_all_items() if
+                item.category is not None and item.category.name == category_name and item.category.subcategory is not
+                None]
+
+    def get_category_names(self) -> Set[str]:
+        # This excludes the Items with No Category (i.e. item.category is None)
+        return {item.category.name for item in self.get_all_items() if item.category is not None}
+
+    def get_subcategory_name(self, category_name: str) -> Set[str]:
+        # This excludes items without subcategories
+        return {item.category.subcategory for item in self.get_all_items() if
+                item.category is not None and item.category.name == category_name and item.category.subcategory is not
+                None}
