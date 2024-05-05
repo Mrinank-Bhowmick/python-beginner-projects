@@ -100,10 +100,10 @@ class Item:
 class ItemsDB:
     def __init__(self, db_path: str):
         self.db_path = db_path
-        self._db = TinyDB(self.db_path)
 
     def __len__(self):
-        return len(self._db)
+        with TinyDB(self.db_path) as db:
+            return len(db)
 
     def print_db(self):
         for item in self.get_all_items():
@@ -111,29 +111,36 @@ class ItemsDB:
 
     def insert_item(self, item: Item) -> None:
         data_dict = dict(json.loads(item.to_json_str()))
-        self._db.insert(data_dict)
+        with TinyDB(self.db_path) as db:
+            db.insert(data_dict)
 
     def insert_items(self, items: List[Item]) -> None:
-        self._db.insert_multiple([dict(json.loads(item.to_json_str())) for item in items])
+        with TinyDB(self.db_path) as db:
+            db.insert_multiple([dict(json.loads(item.to_json_str())) for item in items])
 
     def update_items(self, update_dict: dict, query: Query) -> None:
-        self._db.update(update_dict, query)
+        with TinyDB(self.db_path) as db:
+            db.update(update_dict, query)
 
     def upsert_item(self, item: Item) -> None:
         dct = item.to_serializable_dict()
-        self._db.upsert(dct, Query().item_id == str(dct['item_id']))
+        with TinyDB(self.db_path) as db:
+            db.upsert(dct, Query().item_id == str(dct['item_id']))
 
     def delete_items(self, cond: Query) -> None:
-        self._db.remove(cond)
+        with TinyDB(self.db_path) as db:
+            db.remove(cond)
 
     def delete_item(self, item: Item) -> None:
         self.delete_items(Query().item_id == item.item_id)
 
     def delete_all_items(self):
-        self._db.truncate()
+        with TinyDB(self.db_path) as db:
+            db.truncate()
 
     def get_all_items(self) -> List[Item]:
-        return [Item.from_json_str(json.dumps(doc)) for doc in self._db.all()]
+        with TinyDB(self.db_path) as db:
+            return [Item.from_json_str(json.dumps(doc)) for doc in db.all()]
 
     def get_items_by_date_range(self, start: str, end: str) -> List[Item]:
         start_date = datetime.strptime(start, "%Y-%m-%d")
@@ -141,7 +148,8 @@ class ItemsDB:
         return [item for item in self.get_all_items() if start_date <= item.date <= end_date]
 
     def get_items_by_category(self, category_name: str) -> List[Item]:
-        return [item for item in self.get_all_items() if item.category.name == category_name]
+        return [item for item in self.get_all_items() if
+                item.category is not None and item.category.name == category_name]
 
     def get_items_by_category_and_subcategory(self, category_name: str, subcategory_name: str) -> List[Item]:
         return [item for item in self.get_all_items() if
@@ -165,8 +173,14 @@ class ItemsDB:
         # This excludes the Items with No Category (i.e. item.category is None)
         return {item.category.name for item in self.get_all_items() if item.category is not None}
 
-    def get_subcategory_name(self, category_name: str) -> Set[str]:
+    def get_subcategory_names(self, category_name: str) -> Set[str]:
         # This excludes items without subcategories
         return {item.category.subcategory for item in self.get_all_items() if
                 item.category is not None and item.category.name == category_name and item.category.subcategory is not
                 None}
+
+    def get_expense_items(self):
+        return [item for item in self.get_all_items() if item.amount < 0]
+
+    def get_income_items(self):
+        return [item for item in self.get_all_items() if item.amount > 0]

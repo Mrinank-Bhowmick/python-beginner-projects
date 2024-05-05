@@ -9,24 +9,28 @@ class ExpenseIncomeStats:
         self.start = start
         self.end = end
 
-        if start is None and end is None:
-            # Get all Items
-            self._items = self._items_db.get_all_items()
-            pass
-        elif start is None and end is not None:
-            # Start from the Oldest Item(s) to the given end date string
-            oldest = min(item.date for item in self._items_db.get_all_items())
-            self._items = self._items_db.get_items_by_date_range(oldest.strftime("%Y-%m-%d"), end)
-        elif start is not None and end is None:
-            # Start from the given start date string to the latest date
-            latest = max(item.date for item in self._items_db.get_all_items())
-            self._items = self._items_db.get_items_by_date_range(start, latest.strftime("%Y-%m-%d"))
-        else:
-            # Get item from given date range
-            self._items = self._items_db.get_items_by_date_range(start, end)
+        # if start is None and end is None:
+        #     # Get all Items
+        #     self._items = self._items_db.get_all_items()
+        #     pass
+        # elif start is None and end is not None:
+        #     # Start from the Oldest Item(s) to the given end date string
+        #     oldest = min(item.date for item in self._items_db.get_all_items())
+        #     self._items = self._items_db.get_items_by_date_range(oldest.strftime("%Y-%m-%d"), end)
+        # elif start is not None and end is None:
+        #     # Start from the given start date string to the latest date
+        #     latest = max(item.date for item in self._items_db.get_all_items())
+        #     self._items = self._items_db.get_items_by_date_range(start, latest.strftime("%Y-%m-%d"))
+        # else:
+        #     # Get item from given date range
+        #     self._items = self._items_db.get_items_by_date_range(start, end)
+
+    @property
+    def items(self):
+        return self._items_db.get_all_items()
 
     @staticmethod
-    def _get_stats(items) -> dict:
+    def get_stats_expense_and_income(items) -> dict:
         expense_items = [item.amount for item in items if item.amount < 0]
         if len(expense_items) > 0:
             expense_stats = {
@@ -49,20 +53,26 @@ class ExpenseIncomeStats:
 
         return expense_stats | income_stats
 
-    def get_stats(self):
-        return self._get_stats(self._items)
+    @staticmethod
+    def get_stats(items) -> dict:
+        if len(items) < 1:
+            raise ValueError('The list of items must contain at least one item')
+
+        return {
+            "average": statistics.mean(items),
+            "max": max(items),
+            "min": min(items),
+        }
+
+    def get_stats_all_items(self):
+        return self.get_stats_expense_and_income(self.items)
 
     def get_stats_by_category(self) -> dict:
-        # The 'root' of category (i.e. it aggregates the subcategories). We do not care about the subcategories.
-        # Set of Root Categories
-        # item.get_category_str() for an item without category would return 'Uncategorized'
-        category_names = {item.category.name if item.category is not None else item.get_category_str() for item in
-                          self._items}
-
+        category_names = self._items_db.get_category_names()
         out_dict = {}
         for category_name in category_names:
-            items = [item for item in self._items if item.category.name == category_name]
-            out_dict[category_name] = self._get_stats(items)
+            items = [item for item in self._items_db.get_items_by_category(category_name)]
+            out_dict[category_name] = self.get_stats_expense_and_income(items)
 
         return out_dict
 
@@ -71,12 +81,14 @@ class ExpenseIncomeStats:
         stats_dict = {}
         for category_name in category_names:
             # Case: With Category and Without Subcategory
-            stats_dict[f'{category_name}-NoSubcategory'] = self._get_stats(
+            stats_dict[f'{category_name}-NoSubcategory'] = self.get_stats_expense_and_income(
                 self._items_db.get_items_without_subcategory(category_name))
+
             # Case: With Category and With Subcategory
-            for subcategory in self._items_db.get_subcategory_name(category_name):
+            for subcategory in self._items_db.get_subcategory_names(category_name):
                 stats_dict[f'{category_name}-{subcategory}'] = \
-                    self._get_stats(self._items_db.get_items_by_category_and_subcategory(category_name, subcategory))
+                    self.get_stats_expense_and_income(
+                        self._items_db.get_items_by_category_and_subcategory(category_name, subcategory))
 
         return stats_dict
 
