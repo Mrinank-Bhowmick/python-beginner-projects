@@ -101,9 +101,9 @@ def pre_game1(clientSocket, clientAddress):
             game1_chooser(clientAddress, word)  # call subroutine for chooser
             break
         else:
-            attributes[
-                "mes"
-            ] = "Get ready to play hangman\nYou will be guessing the  word\n"
+            attributes["mes"] = (
+                "Get ready to play hangman\nYou will be guessing the  word\n"
+            )
             attributes["guesser"] = clientSocket
             attributes["guesser"].send(attributes["mes"].encode())
             game1_guesser(clientAddress)  # call subroutine for guesser

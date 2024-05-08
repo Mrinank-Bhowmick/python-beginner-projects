@@ -1,6 +1,6 @@
 colorama==0.4.5
 comtypes==1.1.11
-Pillow==10.0.1
+Pillow==10.3.0
 pypiwin32==223
 pyttsx3==2.90
 pywin32==304

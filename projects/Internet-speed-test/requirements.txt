@@ -1,2 +1,1 @@
-speedtest==0.0.1
-speedtest_cli==2.1.3
+speedtest_cli

@@ -1,0 +1,7 @@
+ranges,condition
+<18.5,underweight
+18.5 - 24.9,normal
+24.9 - 29.9,overweight
+29.9 - 34.9,obese (Class I)
+34.9 - 39.9,obese (Class II)
+39.9<,obese (Class III)

@@ -10,7 +10,6 @@ The snake drinks the water, the gun shoots the snake, and gun has no effect on w
 NOTE: Install rich before playing this game by the command "pip install rich".
 """
 
-
 import random
 from rich import print as rprint
 
