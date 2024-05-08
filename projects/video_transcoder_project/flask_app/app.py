@@ -1,3 +1,3 @@
-class main():
+class main:
     def __init__(self):
-        self.hello="hello"
+        self.hello = "hello"

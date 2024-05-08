@@ -31,7 +31,6 @@ def hangman(tries):
                            |     // \\
                            -
                         """,
-
         #  head, torso, both arms, and both legs
         """
                    --------
@@ -129,7 +128,9 @@ def choose_difficulty():
     global DIFFICULTY_LEVEL
     DIFFICULTY_LEVEL = input("Choose difficulty level (easy, medium, hard): ").lower()
     if DIFFICULTY_LEVEL == "easy":
-        return 8  # we can adjust the number of initial guesses for each difficulty level
+        return (
+            8  # we can adjust the number of initial guesses for each difficulty level
+        )
     elif DIFFICULTY_LEVEL == "medium":
         return 6
     elif DIFFICULTY_LEVEL == "hard":

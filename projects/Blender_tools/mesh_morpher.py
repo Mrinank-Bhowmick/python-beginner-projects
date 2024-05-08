@@ -21,7 +21,7 @@ def pack_normals(me):
     col = me.vertex_colors[0]
     col.name = "normals"
     key = me.shape_keys.key_blocks[1]
-    normals = list(zip(*[iter(key.normals_vertex_get())]*3))
+    normals = list(zip(*[iter(key.normals_vertex_get())] * 3))
     for loop in me.loops:
         r, g, b = normals[loop.vertex_index]
         col.data[loop.index].color = ((r + 1) * 0.5, (-g + 1) * 0.5, (b + 1) * 0.5, 1)
@@ -63,64 +63,60 @@ class MeshMorpherSettings(bpy.types.PropertyGroup):
     store_shape_key1_normals: bpy.props.BoolProperty(
         name="First Shape Key Normals",
         description="Store first shape key's vertex normals in vertex colors",
-        default=True
+        default=True,
     )
     two_shape_keys: bpy.props.BoolProperty(
         name="Two Shape Keys",
         description="Store vertex offsets for first and second shape keys",
-        default=False
+        default=False,
     )
 
 
 class OBJECT_OT_ProcessShapeKeys(bpy.types.Operator):
     """Store object's shape key offsets in it's UV layers"""
+
     bl_idname = "object.process_shape_keys"
     bl_label = "Process Shape Keys"
 
     store_shape_key1_normals: bpy.props.BoolProperty(
-        name="First Shape Key Normals",
-        default=True
+        name="First Shape Key Normals", default=True
     )
-    two_shape_keys: bpy.props.BoolProperty(
-        name="Two Shape Keys",
-        default=False
-    )
+    two_shape_keys: bpy.props.BoolProperty(name="Two Shape Keys", default=False)
 
     @classmethod
     def poll(cls, context):
         ob = context.active_object
-        return ob and ob.type == 'MESH' and ob.mode == 'OBJECT'
-
+        return ob and ob.type == "MESH" and ob.mode == "OBJECT"
 
     def execute(self, context):
         units = context.scene.unit_settings
         ob = context.object
         shape_keys = ob.data.shape_keys
-        if units.system != 'METRIC' or round(units.scale_length, 2) != 0.01:
+        if units.system != "METRIC" or round(units.scale_length, 2) != 0.01:
             self.report(
-                {'ERROR'},
-                "Scene Units must be Metric with a Unit Scale of 0.01!"
+                {"ERROR"}, "Scene Units must be Metric with a Unit Scale of 0.01!"
             )
-            return {'CANCELLED'}
+            return {"CANCELLED"}
         if not shape_keys:
-            self.report({'ERROR'}, "Object has no shape keys!")
-            return {'CANCELLED'}
+            self.report({"ERROR"}, "Object has no shape keys!")
+            return {"CANCELLED"}
         if len(shape_keys.key_blocks) < 2 + self.two_shape_keys:
-            self.report({'ERROR'}, "Object needs additional shape keys!")
-            return {'CANCELLED'}
+            self.report({"ERROR"}, "Object needs additional shape keys!")
+            return {"CANCELLED"}
         if self.store_shape_key1_normals:
             pack_normals(ob.data)
         offsets = get_shape_key_offsets(shape_keys, self.two_shape_keys)
         pack_offsets(ob, offsets)
-        return {'FINISHED'}
+        return {"FINISHED"}
 
 
 class VIEW3D_PT_MeshMorpher(bpy.types.Panel):
     """Creates a Panel in 3D Viewport"""
+
     bl_label = "Mesh Morpher"
     bl_idname = "VIEW3D_PT_mesh_morpher"
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'UI'
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
     bl_category = "Unreal Tools"
 
     def draw(self, context):

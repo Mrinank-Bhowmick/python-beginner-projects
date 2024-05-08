@@ -5,7 +5,9 @@ from ship import Ship
 from board import Board
 
 
-def generate_row_ship_cells(board_size: int) -> Generator[List[Tuple[int, int]], None, None]:
+def generate_row_ship_cells(
+    board_size: int,
+) -> Generator[List[Tuple[int, int]], None, None]:
     """
     Generator function to yield coordinates of ships aligned in rows.
 
@@ -50,7 +52,11 @@ def generate_random_row_ship(board_size: int, ship_length: int) -> Ship:
     Returns:
         Ship: A Ship object representing the randomly generated ship aligned in a row.
     """
-    row_ships = [Ship(cells) for cells in generate_row_ship_cells(board_size) if len(cells) == ship_length]
+    row_ships = [
+        Ship(cells)
+        for cells in generate_row_ship_cells(board_size)
+        if len(cells) == ship_length
+    ]
     return random.choice(row_ships)
 
 
@@ -65,7 +71,11 @@ def generate_random_column_ship(board_size: int, ship_length: int) -> Ship:
     Returns:
         Ship: A Ship object representing the randomly generated ship aligned in a column.
     """
-    column_ships = [Ship(cells) for cells in generate_column_ship_cells(board_size) if len(cells) == ship_length]
+    column_ships = [
+        Ship(cells)
+        for cells in generate_column_ship_cells(board_size)
+        if len(cells) == ship_length
+    ]
     return random.choice(column_ships)
 
 
@@ -83,8 +93,8 @@ def generate_random_ships_arrangements(board_size: int) -> List[Ship]:
 
     i = board_size
     while i > 0:
-        row_or_col = random.choice(['row', 'column'])
-        if row_or_col == 'row':
+        row_or_col = random.choice(["row", "column"])
+        if row_or_col == "row":
             ship = generate_random_row_ship(board_size, i)
         else:
             ship = generate_random_column_ship(board_size, i)
@@ -97,7 +107,8 @@ def generate_random_ships_arrangements(board_size: int) -> List[Ship]:
 
     n = len(ships)
     assert (n * (n + 1)) / 2 == len(
-        [tup for ship in ships for tup in ship.coordinates]), "Invalid Mathematical Assumption"
+        [tup for ship in ships for tup in ship.coordinates]
+    ), "Invalid Mathematical Assumption"
 
     return ships
 
@@ -106,11 +117,12 @@ class PromptMixin:
     """Mixin class providing static methods for prompting user input."""
 
     @staticmethod
-    def prompt_board_size(prompt_message: str,
-                          error_message: str,
-                          min_board_size: int = 5,
-                          max_board_size: int = 15
-                          ) -> int:
+    def prompt_board_size(
+        prompt_message: str,
+        error_message: str,
+        min_board_size: int = 5,
+        max_board_size: int = 15,
+    ) -> int:
         """
         Prompt the user to input the size of the game board within specified bounds.
 
@@ -139,7 +151,9 @@ class PromptMixin:
                 continue
 
     @staticmethod
-    def prompt_name(prompt_message: str, error_message: str = 'Invalid Input! Please try again.\n') -> str:
+    def prompt_name(
+        prompt_message: str, error_message: str = "Invalid Input! Please try again.\n"
+    ) -> str:
         """
         Prompt the user to input a name.
 
@@ -163,10 +177,12 @@ class PromptMixin:
             return input_name
 
     @staticmethod
-    def boolean_prompt(prompt_message: str,
-                       error_message: str = 'Invalid Input! Please try again.\n',
-                       true_str: str = 'yes',
-                       false_str: str = 'no') -> bool:
+    def boolean_prompt(
+        prompt_message: str,
+        error_message: str = "Invalid Input! Please try again.\n",
+        true_str: str = "yes",
+        false_str: str = "no",
+    ) -> bool:
         """
         Prompt the user to input a boolean value.
 
@@ -192,10 +208,11 @@ class PromptMixin:
             return bool_inp.lower() == true_str.lower()
 
     @staticmethod
-    def attack_prompt(board_size: int,
-                      prompt_message: str,
-                      error_message: str = 'Invalid Target! Pleas try again.',
-                      ) -> Tuple[int, ...]:
+    def attack_prompt(
+        board_size: int,
+        prompt_message: str,
+        error_message: str = "Invalid Target! Pleas try again.",
+    ) -> Tuple[int, ...]:
         """
         Prompt the user to input coordinates for an attack on the game board.
 
@@ -219,15 +236,18 @@ class PromptMixin:
             try:
                 attack_tuple = tuple(map(int, attack_input.split()))
 
-                invalid_conditions = \
-                    attack_tuple[0] < 0 or \
-                    attack_tuple[0] >= board_size or \
-                    attack_tuple[1] < 0 or \
-                    attack_tuple[1] >= board_size
+                invalid_conditions = (
+                    attack_tuple[0] < 0
+                    or attack_tuple[0] >= board_size
+                    or attack_tuple[1] < 0
+                    or attack_tuple[1] >= board_size
+                )
 
                 if invalid_conditions:
-                    print(f'Attack Coordinates must be in [0, {board_size})\n' +
-                          error_message)
+                    print(
+                        f"Attack Coordinates must be in [0, {board_size})\n"
+                        + error_message
+                    )
                     continue
 
                 return attack_tuple

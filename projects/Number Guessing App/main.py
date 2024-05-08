@@ -76,4 +76,3 @@ if __name__ == "__main__":
         guess()
     if g_mode == 2:
         computer_guess()
-

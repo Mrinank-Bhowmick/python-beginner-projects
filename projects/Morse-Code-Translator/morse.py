@@ -1,14 +1,50 @@
 # Dictionary for Morse code
 morse_code = {
-    "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.",
-    "G": "--.", "H": "....", "I": "..", "J": ".---", "K": "-.-", "L": ".-..",
-    "M": "--", "N": "-.", "O": "---", "P": ".--.", "Q": "--.-", "R": ".-.", "S": "...",
-    "T": "-", "U": "..-", "V": "...-", "W": ".--", "X": "-..-", "Y": "-.--",
-    "Z": "--..", "1": ".----", "2": "..---", "3": "...--", "4": "....-", "5": ".....",
-    "6": "-....", "7": "--...", "8": "---..", "9": "----.", "0": "-----",
-    ", ": "--..--", ".": ".-.-.-", "?": "..--..", "/": "-..-.", "-": "-....-",
-    "(": "-.--.", ")": "-.--.-",
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "V": "...-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--..",
+    "1": ".----",
+    "2": "..---",
+    "3": "...--",
+    "4": "....-",
+    "5": ".....",
+    "6": "-....",
+    "7": "--...",
+    "8": "---..",
+    "9": "----.",
+    "0": "-----",
+    ", ": "--..--",
+    ".": ".-.-.-",
+    "?": "..--..",
+    "/": "-..-.",
+    "-": "-....-",
+    "(": "-.--.",
+    ")": "-.--.-",
 }
+
 
 def encrypt(text):
     text = text.upper()  # Convert the input to uppercase
@@ -30,6 +66,7 @@ def encrypt(text):
             cipher += " "
 
     return cipher
+
 
 # Function to decrypt the string
 # from Morse to English
@@ -68,15 +105,20 @@ def decrypt(text):
 
     return decipher
 
-choice = input("Enter 'E' for encryption (text to Morse code) or 'D' for decryption (Morse code to text): ")
 
-if choice == 'E':
+choice = input(
+    "Enter 'E' for encryption (text to Morse code) or 'D' for decryption (Morse code to text): "
+)
+
+if choice == "E":
     user_input = input("Enter the text you want to encrypt: ")
     encrypted_text = encrypt(user_input)
     print("Encrypted Morse code:", encrypted_text)
 
-elif choice == 'D':
-    user_input = input("Enter the Morse code you want to decrypt (separate symbols with spaces): ")
+elif choice == "D":
+    user_input = input(
+        "Enter the Morse code you want to decrypt (separate symbols with spaces): "
+    )
     decrypted_text = decrypt(user_input)
     print("Decrypted text:", decrypted_text)
 

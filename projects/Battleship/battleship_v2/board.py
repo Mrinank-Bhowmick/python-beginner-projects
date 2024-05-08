@@ -8,6 +8,7 @@ from ship import Ship
 @dataclass
 class BoardStatesPlayerPOV:
     """Cell's State Labels from Player's Point-of-View."""
+
     missed: str = "M"
     hit: str = "H"
     ship: str = "S"
@@ -17,6 +18,7 @@ class BoardStatesPlayerPOV:
 @dataclass
 class BoardStatesEnemyPOV:
     """Cell's State Labels from Enemy's Point-of-View."""
+
     hit: str = "X"
     missed: str = "O"
     no_move: str = "-"
@@ -25,9 +27,7 @@ class BoardStatesEnemyPOV:
 class Board:
     """Represents the Battleship Board."""
 
-    def __init__(self,
-                 board_size: int,
-                 empty_label=" "):
+    def __init__(self, board_size: int, empty_label=" "):
         """
         Initializes the Board object.
 
@@ -40,12 +40,17 @@ class Board:
         """
 
         if board_size < 5 or board_size > 15:
-            raise BoardException("Invalid given board size. Board size must be 5 to 15.")
+            raise BoardException(
+                "Invalid given board size. Board size must be 5 to 15."
+            )
 
         self.board_size = board_size
         self._empty_label = empty_label
 
-        self._board = [[self._empty_label for _ in range(self.board_size)] for _ in range(self.board_size)]
+        self._board = [
+            [self._empty_label for _ in range(self.board_size)]
+            for _ in range(self.board_size)
+        ]
 
         # Instantiate Labels for Player and Enemy POVs
         self._player_pov_labels = BoardStatesPlayerPOV()
@@ -55,10 +60,7 @@ class Board:
 
         # Keep track of all enemy actions/moves for "Missed" and "No Move".
         # Hit can be obtained from `hit_cells` property.
-        self._enemy_moves = {
-            "hit": [],
-            "missed": []
-        }
+        self._enemy_moves = {"hit": [], "missed": []}
 
     @property
     def num_of_ships(self):
@@ -93,9 +95,14 @@ class Board:
     @property
     def valid_moves(self) -> List[Tuple[int, int]]:
         """Returns a list of available valid moves."""
-        all_cells_generator = ((i, j) for i in range(self.board_size) for j in range(self.board_size))
-        return [cell for cell in all_cells_generator if
-                cell not in self._enemy_moves["hit"] + self._enemy_moves["missed"]]
+        all_cells_generator = (
+            (i, j) for i in range(self.board_size) for j in range(self.board_size)
+        )
+        return [
+            cell
+            for cell in all_cells_generator
+            if cell not in self._enemy_moves["hit"] + self._enemy_moves["missed"]
+        ]
 
     def generate_valid_moves(self) -> Generator[Tuple[int, int], None, None]:
         """Yields all the available valid moves."""
@@ -117,11 +124,11 @@ class Board:
                 board[row][col] = self._player_pov_labels.ship
 
         # Fill with Hit
-        for (row, col) in self._enemy_moves["hit"]:
+        for row, col in self._enemy_moves["hit"]:
             board[row][col] = self._player_pov_labels.hit
 
         # Fill with Missed
-        for (row, col) in self._enemy_moves["missed"]:
+        for row, col in self._enemy_moves["missed"]:
             board[row][col] = self._player_pov_labels.missed
 
         # Fill with Unoccupied
@@ -155,7 +162,10 @@ class Board:
 
     def _create_empty_board(self) -> List[List[str]]:
         """Creates an empty board."""
-        return [[self._empty_label for _ in range(self.board_size)] for _ in range(self.board_size)]
+        return [
+            [self._empty_label for _ in range(self.board_size)]
+            for _ in range(self.board_size)
+        ]
 
     @staticmethod
     def print_board(board: List[List[str]]) -> None:
@@ -225,8 +235,13 @@ class Board:
 
         # Check if the coordinate is already a hit or missed.
         board = self.get_board_for_enemy()
-        if board[row][col] in [self._enemy_pov_labels.hit, self._enemy_pov_labels.missed]:
-            raise BoardException(f"The given coordinate ({row}, {col}) already has {board[row][col]}.")
+        if board[row][col] in [
+            self._enemy_pov_labels.hit,
+            self._enemy_pov_labels.missed,
+        ]:
+            raise BoardException(
+                f"The given coordinate ({row}, {col}) already has {board[row][col]}."
+            )
 
         ship: None | Ship = self.which_ship(row, col)
 

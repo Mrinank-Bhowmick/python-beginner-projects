@@ -26,21 +26,19 @@ class TestShip(unittest.TestCase):
     def test_invalid_ship_instantiation(self):
         """Test invalid ship instantiation with various arguments."""
 
-        ship_args = [[],
-                     [(-1, 2), (51, 2), (2, 2)],
-                     [(0, 2), (1, -12), (2, 2)],
-                     [(0, 2), (1, 1), (2, 0)],
-                     [(0, 2), (1, 2), (2, 2), (1, 2)]
-                     ]
+        ship_args = [
+            [],
+            [(-1, 2), (51, 2), (2, 2)],
+            [(0, 2), (1, -12), (2, 2)],
+            [(0, 2), (1, 1), (2, 0)],
+            [(0, 2), (1, 2), (2, 2), (1, 2)],
+        ]
 
         for ship_arg in ship_args:
             with self.assertRaises(InvalidShipCoordinateException):
                 Ship(ship_arg)
 
-        ship_args = [
-            [(0, 2), (1, 2), (4, 2)],
-            [(1, 0), (1, 2), (1, 3)]
-        ]
+        ship_args = [[(0, 2), (1, 2), (4, 2)], [(1, 0), (1, 2), (1, 3)]]
 
         for ship_arg in ship_args:
             with self.assertRaises(AssertionError):
@@ -115,7 +113,7 @@ class TestBoard(unittest.TestCase):
             [(1, 3), (2, 3), (3, 3), (4, 3)],
             [(1, 4), (2, 4), (3, 4)],
             [(1, 0), (1, 1)],
-            [(3, 0)]
+            [(3, 0)],
         ]
 
     def add_ships_to_board(self):
@@ -190,13 +188,7 @@ class TestBoard(unittest.TestCase):
         # print("Before")
         # self.print_boards()
 
-        attack_moves = [
-            (1, 4),
-            (2, 4),
-            (3, 4),
-            (1, 0),
-            (1, 1)
-        ]
+        attack_moves = [(1, 4), (2, 4), (3, 4), (1, 0), (1, 1)]
 
         for attack_move in attack_moves:
             self.board.enemy_move(*attack_move)
@@ -235,7 +227,7 @@ class ConcreteGame(Game):
             ValueError: If the given player does not belong to this ConcreteGame.
         """
         if player_name not in [self.player_1.name, self.player_2.name]:
-            raise ValueError('The given player does not belong to this ConcreteGame.')
+            raise ValueError("The given player does not belong to this ConcreteGame.")
 
         if player_name == self.player_1.name:
             for ship_coordinates in ships_coordinates:
@@ -267,8 +259,8 @@ class TestGame(unittest.TestCase):
         [(3, 0)]
         """
         board_size = 5
-        player_1_name = 'Player 1'
-        player_2_name = 'Player 2'
+        player_1_name = "Player 1"
+        player_2_name = "Player 2"
         self.concrete_game = ConcreteGame(board_size, player_1_name, player_2_name)
 
         # Initialize to set current_player to be player_1
@@ -289,7 +281,7 @@ class TestGame(unittest.TestCase):
             [(3, 1), (3, 2), (3, 3), (3, 4)],
             [(4, 2), (4, 3), (4, 4)],
             [(0, 2), (1, 2)],
-            [(3, 0)]
+            [(3, 0)],
         ]
         self.concrete_game.place_ships(self.concrete_game.player_1.name, ships)
 
@@ -299,7 +291,7 @@ class TestGame(unittest.TestCase):
             [(0, 1), (1, 1), (2, 1), (3, 1)],
             [(2, 3), (3, 3), (4, 3)],
             [(3, 4), (4, 4)],
-            [(3, 0)]
+            [(3, 0)],
         ]
         self.concrete_game.place_ships(self.concrete_game.player_2.name, ships)
 
@@ -309,47 +301,129 @@ class TestGame(unittest.TestCase):
         # Constants - Separate Moves
         # Assumption: Player 1 Moves First
         # Player 1 Wins
-        self.PLAYER_1_WINS_PLAYER_1_MOVES = [(3, 1), (0, 1), (0, 0), (4, 0), (1, 1), (0, 3), (3, 0), (1, 0), (1, 2),
-                                             (4, 3),
-                                             (3, 2),
-                                             (1, 4), (0, 4), (2, 4), (1, 3), (4, 2), (3, 3), (0, 2), (2, 2), (3, 4),
-                                             (2, 1),
-                                             (4, 4),
-                                             (2, 3), (4, 1), (2, 0)]
-        self.PLAYER_1_WINS_PLAYER_2_MOVES = [(0, 4), (0, 2), (3, 4), (1, 0), (4, 0), (1, 3), (2, 1), (1, 2), (2, 0),
-                                             (2, 3),
-                                             (3, 1),
-                                             (0, 3), (2, 4), (0, 0), (1, 4), (2, 2), (0, 1), (1, 1), (3, 3), (4, 3),
-                                             (3, 2),
-                                             (3, 0),
-                                             (4, 1), (4, 4), (4, 2)]
+        self.PLAYER_1_WINS_PLAYER_1_MOVES = [
+            (3, 1),
+            (0, 1),
+            (0, 0),
+            (4, 0),
+            (1, 1),
+            (0, 3),
+            (3, 0),
+            (1, 0),
+            (1, 2),
+            (4, 3),
+            (3, 2),
+            (1, 4),
+            (0, 4),
+            (2, 4),
+            (1, 3),
+            (4, 2),
+            (3, 3),
+            (0, 2),
+            (2, 2),
+            (3, 4),
+            (2, 1),
+            (4, 4),
+            (2, 3),
+            (4, 1),
+            (2, 0),
+        ]
+        self.PLAYER_1_WINS_PLAYER_2_MOVES = [
+            (0, 4),
+            (0, 2),
+            (3, 4),
+            (1, 0),
+            (4, 0),
+            (1, 3),
+            (2, 1),
+            (1, 2),
+            (2, 0),
+            (2, 3),
+            (3, 1),
+            (0, 3),
+            (2, 4),
+            (0, 0),
+            (1, 4),
+            (2, 2),
+            (0, 1),
+            (1, 1),
+            (3, 3),
+            (4, 3),
+            (3, 2),
+            (3, 0),
+            (4, 1),
+            (4, 4),
+            (4, 2),
+        ]
 
         # Player 2 Wins
-        self.PLAYER_2_WINS_PLAYER_1_MOVES = [(1, 3), (2, 1), (2, 2), (2, 3), (0, 4), (4, 3), (3, 0), (0, 3), (1, 0),
-                                             (0, 0),
-                                             (2, 0),
-                                             (0, 2), (4, 2), (3, 3), (1, 2), (1, 1), (4, 0), (4, 4), (2, 4), (0, 1),
-                                             (3, 2),
-                                             (4, 1),
-                                             (3, 1), (1, 4), (3, 4)]
-        self.PLAYER_2_WINS_PLAYER_2_MOVES = [(3, 1), (1, 3), (0, 4), (2, 0), (2, 3), (2, 2), (3, 2), (4, 3), (3, 3),
-                                             (0, 2),
-                                             (4, 2),
-                                             (1, 1), (4, 4), (4, 1), (0, 0), (3, 0), (0, 1), (0, 3), (1, 2), (2, 1),
-                                             (3, 4),
-                                             (2, 4),
-                                             (1, 0), (1, 4), (4, 0)]
+        self.PLAYER_2_WINS_PLAYER_1_MOVES = [
+            (1, 3),
+            (2, 1),
+            (2, 2),
+            (2, 3),
+            (0, 4),
+            (4, 3),
+            (3, 0),
+            (0, 3),
+            (1, 0),
+            (0, 0),
+            (2, 0),
+            (0, 2),
+            (4, 2),
+            (3, 3),
+            (1, 2),
+            (1, 1),
+            (4, 0),
+            (4, 4),
+            (2, 4),
+            (0, 1),
+            (3, 2),
+            (4, 1),
+            (3, 1),
+            (1, 4),
+            (3, 4),
+        ]
+        self.PLAYER_2_WINS_PLAYER_2_MOVES = [
+            (3, 1),
+            (1, 3),
+            (0, 4),
+            (2, 0),
+            (2, 3),
+            (2, 2),
+            (3, 2),
+            (4, 3),
+            (3, 3),
+            (0, 2),
+            (4, 2),
+            (1, 1),
+            (4, 4),
+            (4, 1),
+            (0, 0),
+            (3, 0),
+            (0, 1),
+            (0, 3),
+            (1, 2),
+            (2, 1),
+            (3, 4),
+            (2, 4),
+            (1, 0),
+            (1, 4),
+            (4, 0),
+        ]
 
     def test_game_initialization(self):
         """Test game initialization."""
 
         # UtilsMixin.alternate_tuples()
-        self.assertEqual(self.concrete_game.player_1.name, 'Player 1')
-        self.assertEqual(self.concrete_game.player_2.name, 'Player 2')
+        self.assertEqual(self.concrete_game.player_1.name, "Player 1")
+        self.assertEqual(self.concrete_game.player_2.name, "Player 2")
 
         self.assertEqual(self.concrete_game.board_size, 5)
         self.assertEqual(self.concrete_game.current_player, self.concrete_game.player_1)
-        self.assertNotEqual(self.concrete_game.current_player, self.concrete_game.player_2)
+        self.assertNotEqual(
+            self.concrete_game.current_player, self.concrete_game.player_2
+        )
         self.assertIsNone(self.concrete_game.get_winner())
 
         # Test Ship Arrangement is correct for Player 1
@@ -358,7 +432,7 @@ class TestGame(unittest.TestCase):
             [(3, 1), (3, 2), (3, 3), (3, 4)],
             [(4, 2), (4, 3), (4, 4)],
             [(0, 2), (1, 2)],
-            [(3, 0)]
+            [(3, 0)],
         ]
         player_1_occupied_cells = self.concrete_game.player_2.enemy_board.occupied_cells
         for cell in (tup for ship_coordinates in ships for tup in ship_coordinates):
@@ -370,7 +444,7 @@ class TestGame(unittest.TestCase):
             [(0, 1), (1, 1), (2, 1), (3, 1)],
             [(2, 3), (3, 3), (4, 3)],
             [(3, 4), (4, 4)],
-            [(3, 0)]
+            [(3, 0)],
         ]
         player_2_occupied_cells = self.concrete_game.player_1.enemy_board.occupied_cells
         for cell in (tup for ship_coordinates in ships for tup in ship_coordinates):
@@ -379,17 +453,23 @@ class TestGame(unittest.TestCase):
     def test_current_player_updating(self):
         """Test whether the current player is updated correctly after each move."""
 
-        self.assertEqual(self.concrete_game.previous_player, self.concrete_game.player_2)
+        self.assertEqual(
+            self.concrete_game.previous_player, self.concrete_game.player_2
+        )
         self.assertEqual(self.concrete_game.current_player, self.concrete_game.player_1)
 
         # Player 1's Move (State Transition from Player 1 to 2)
         self.concrete_game.make_current_player_attack(0, 0)
-        self.assertEqual(self.concrete_game.previous_player, self.concrete_game.player_1)
+        self.assertEqual(
+            self.concrete_game.previous_player, self.concrete_game.player_1
+        )
         self.assertEqual(self.concrete_game.current_player, self.concrete_game.player_2)
 
         # Player 2's Move (State Transition from Player 2 to 1)
         self.concrete_game.make_current_player_attack(0, 0)
-        self.assertEqual(self.concrete_game.previous_player, self.concrete_game.player_2)
+        self.assertEqual(
+            self.concrete_game.previous_player, self.concrete_game.player_2
+        )
         self.assertEqual(self.concrete_game.current_player, self.concrete_game.player_1)
 
     def test_current_player_hits_target(self):
@@ -401,8 +481,10 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(len(self.concrete_game.player_1.enemy_board.hit_cells), 1)
 
-        player_1_hit_or_missed_board = self.concrete_game.player_1.enemy_board.get_board_for_enemy()
-        self.assertEqual(player_1_hit_or_missed_board[0][2], 'X')
+        player_1_hit_or_missed_board = (
+            self.concrete_game.player_1.enemy_board.get_board_for_enemy()
+        )
+        self.assertEqual(player_1_hit_or_missed_board[0][2], "X")
 
     def test_current_player_missed_target(self):
         """Test whether the current player misses the target."""
@@ -413,8 +495,10 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(len(self.concrete_game.player_1.enemy_board.hit_cells), 0)
 
-        player_1_hit_or_missed_board = self.concrete_game.player_1.enemy_board.get_board_for_enemy()
-        self.assertEqual(player_1_hit_or_missed_board[0][3], 'O')
+        player_1_hit_or_missed_board = (
+            self.concrete_game.player_1.enemy_board.get_board_for_enemy()
+        )
+        self.assertEqual(player_1_hit_or_missed_board[0][3], "O")
 
     def test_current_player_wins_game(self):
         """Test whether the current player wins the game."""
@@ -428,21 +512,25 @@ class TestGame(unittest.TestCase):
                     move = self.PLAYER_1_WINS_PLAYER_1_MOVES.pop(0)
                     self.concrete_game.make_current_player_attack(*move)
                 except IndexError:
-                    print('There are no more moves for Player 1.')
+                    print("There are no more moves for Player 1.")
 
             elif self.concrete_game.current_player == self.concrete_game.player_2:
                 try:
                     move = self.PLAYER_1_WINS_PLAYER_2_MOVES.pop(0)
                     self.concrete_game.make_current_player_attack(*move)
                 except IndexError:
-                    print('There are no more moves for Player 2.')
+                    print("There are no more moves for Player 2.")
 
             winner_or_none = self.concrete_game.get_winner()
 
         self.assertIsInstance(winner_or_none, Player)
         self.assertEqual(winner_or_none, self.concrete_game.player_1)
-        self.assertTrue(self.concrete_game.player_1.enemy_board.is_player_lost)  # Player 2 Lost
-        self.assertFalse(self.concrete_game.player_2.enemy_board.is_player_lost)  # Player 1 Not Lost
+        self.assertTrue(
+            self.concrete_game.player_1.enemy_board.is_player_lost
+        )  # Player 2 Lost
+        self.assertFalse(
+            self.concrete_game.player_2.enemy_board.is_player_lost
+        )  # Player 1 Not Lost
 
     def test_current_player_loses_game(self):
         """Test whether the current player loses the game."""
@@ -456,21 +544,25 @@ class TestGame(unittest.TestCase):
                     move = self.PLAYER_2_WINS_PLAYER_1_MOVES.pop(0)
                     self.concrete_game.make_current_player_attack(*move)
                 except IndexError:
-                    print('There are no more moves for Player 1.')
+                    print("There are no more moves for Player 1.")
 
             elif self.concrete_game.current_player == self.concrete_game.player_2:
                 try:
                     move = self.PLAYER_2_WINS_PLAYER_2_MOVES.pop(0)
                     self.concrete_game.make_current_player_attack(*move)
                 except IndexError:
-                    print('There are no more moves for Player 2.')
+                    print("There are no more moves for Player 2.")
 
             winner_or_none = self.concrete_game.get_winner()
 
         self.assertIsInstance(winner_or_none, Player)
         self.assertEqual(winner_or_none, self.concrete_game.player_2)
-        self.assertTrue(self.concrete_game.player_2.enemy_board.is_player_lost)  # Player 1 Lost
-        self.assertFalse(self.concrete_game.player_1.enemy_board.is_player_lost)  # Player 2 Not Lost
+        self.assertTrue(
+            self.concrete_game.player_2.enemy_board.is_player_lost
+        )  # Player 1 Lost
+        self.assertFalse(
+            self.concrete_game.player_1.enemy_board.is_player_lost
+        )  # Player 2 Not Lost
 
 
 if __name__ == "__main__":

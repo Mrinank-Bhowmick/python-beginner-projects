@@ -14,7 +14,9 @@ class Ship:
         self.coordinates = coordinates
         self._check_ship_coordinates()
 
-        self._un_hit_coordinates: Set[Tuple[int, int]] = {tup for tup in self.coordinates}
+        self._un_hit_coordinates: Set[Tuple[int, int]] = {
+            tup for tup in self.coordinates
+        }
 
     @property
     def is_destroyed(self) -> bool:
@@ -70,7 +72,9 @@ class Ship:
         if self.is_destroyed:
             raise InvalidHitMoveException("The ship is already destroyed.")
         if (row, col) not in self._un_hit_coordinates:
-            raise InvalidHitMoveException(f"{(row, col)} is an invalid hit move coordinate.")
+            raise InvalidHitMoveException(
+                f"{(row, col)} is an invalid hit move coordinate."
+            )
 
         self._un_hit_coordinates.discard((row, col))
 
@@ -88,7 +92,9 @@ class Ship:
             ValueError: If the given ship is not of the same type as this ship.
         """
         if type(other) is not self.__class__:
-            raise ValueError(f"The given ship is not of type `{self.__class__.__name__}`")
+            raise ValueError(
+                f"The given ship is not of type `{self.__class__.__name__}`"
+            )
 
         return any([tup in other.coordinates for tup in self.coordinates])
 
@@ -104,33 +110,53 @@ class Ship:
 
         # Check if there are given coordinates for ship's position
         if len(self.coordinates) < 1:
-            raise InvalidShipCoordinateException("Cannot instantiate a ship without coordinates for it's position.")
+            raise InvalidShipCoordinateException(
+                "Cannot instantiate a ship without coordinates for it's position."
+            )
 
         # Check if any of rows or columns are less than 0
         if any(row < 0 for row in rows):
-            raise InvalidShipCoordinateException("One of the ship's coordinates have negative row value.")
+            raise InvalidShipCoordinateException(
+                "One of the ship's coordinates have negative row value."
+            )
         if any(col < 0 for col in columns):
-            raise InvalidShipCoordinateException("One of the ship's coordinates have negative column value.")
+            raise InvalidShipCoordinateException(
+                "One of the ship's coordinates have negative column value."
+            )
 
         if len(self.coordinates) > 1:
             # Check if neither the rows nor columns have constant value
-            is_row_constant = not any([rows[j] != rows[j + 1] for j in range(len(rows) - 1)])
-            is_col_constant = not any([columns[i] != columns[i + 1] for i in range(len(columns) - 1)])
+            is_row_constant = not any(
+                [rows[j] != rows[j + 1] for j in range(len(rows) - 1)]
+            )
+            is_col_constant = not any(
+                [columns[i] != columns[i + 1] for i in range(len(columns) - 1)]
+            )
 
             if any([rows[j] != rows[j + 1] for j in range(len(rows) - 1)]) and any(
-                    [columns[i] != columns[i + 1] for i in range(len(columns) - 1)]):
-                raise InvalidShipCoordinateException("Neither the rows or columns have constant value.")
+                [columns[i] != columns[i + 1] for i in range(len(columns) - 1)]
+            ):
+                raise InvalidShipCoordinateException(
+                    "Neither the rows or columns have constant value."
+                )
 
             # Check if there's a duplicate tuple in the coordinates
             if len(self.coordinates) != len(set(self.coordinates)):
-                raise InvalidShipCoordinateException("There is a duplicate in one of the ship's coordinates.")
+                raise InvalidShipCoordinateException(
+                    "There is a duplicate in one of the ship's coordinates."
+                )
 
             # Check if the non-constant row/column is in consecutive order
             if is_row_constant:
                 # The columns must be consecutive
-                assert all([columns[idx] + 1 == columns[idx + 1] for idx in
-                            range(len(columns) - 1)]), "The columns are not in consecutive order."
+                assert all(
+                    [
+                        columns[idx] + 1 == columns[idx + 1]
+                        for idx in range(len(columns) - 1)
+                    ]
+                ), "The columns are not in consecutive order."
             if is_col_constant:
                 # The rows must be consecutive
-                assert all([rows[idx] + 1 == rows[idx + 1] for idx in
-                            range(len(rows) - 1)]), "The rows are not in consecutive order."
+                assert all(
+                    [rows[idx] + 1 == rows[idx + 1] for idx in range(len(rows) - 1)]
+                ), "The rows are not in consecutive order."
