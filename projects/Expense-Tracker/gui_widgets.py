@@ -1,10 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
-import customtkinter as ctk
-import os
 from pathlib import Path
 
-from item import ItemsDB, Item, Category
+from item import ItemsDB
 from expense_income_stats import ExpenseIncomeStats
 
 
@@ -29,52 +27,7 @@ class ItemsTable(ttk.Treeview):
         self._parent = parent
         self._items_db = items_db
 
-        # For Testing
-        self._test_add_items_to_db()
         self.load_items()
-
-    def _test_add_items_to_db(self):
-        items = \
-            [Item.create_income_item('Bitcoin',
-                                     500,
-                                     "Income from Bitcoin",
-                                     '2023-06-25',
-                                     Category('Personal Finance', 'Investing')
-                                     ),
-             Item.create_income_item('Youtube Ads',
-                                     5,
-                                     "Income from Youtube Ads",
-                                     '2024-1-10',
-                                     Category('Youtube')
-                                     ),
-             Item.create_income_item('Gift',
-                                     30,
-                                     "Gift from Relatives",
-                                     '2024-03-04'
-                                     ),
-             Item.create_expense_item('Pizza',
-                                      50,
-                                      "Pizza from Pizza Hut",
-                                      '2023-04-20',
-                                      Category('Food', 'Junk')
-                                      ),
-             Item.create_expense_item('Bus',
-                                      20,
-                                      "Travel Expenses by Bus",
-                                      '2024-02-05',
-                                      Category('Transportation')
-                                      ),
-             Item.create_expense_item('Bitcoin',
-                                      -300,
-                                      "Loss on Bitcoin Gambling.",
-                                      '2024-04-20'
-                                      ),
-             ]
-        self._items_db.insert_items(items)
-
-    def clear_test(self):
-        if os.path.exists(self._items_db.db_path):
-            os.remove(self._items_db.db_path)
 
     def clear_items(self):
         # Clearing all the rows in Items Table (Not Deleting!)

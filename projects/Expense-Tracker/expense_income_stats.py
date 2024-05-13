@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from item import ItemsDB
 import pandas as pd
 import statistics
-from reportlab.pdfgen import canvas
 
 
 class ExpenseIncomeStats:

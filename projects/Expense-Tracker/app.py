@@ -1,5 +1,3 @@
-import tkinter as tk
-from tkinter import ttk
 from tkinter import messagebox
 import customtkinter as ctk
 
@@ -361,3 +359,9 @@ class App(ctk.CTk):
             category=values[4],
             subcategory=values[5]
         )
+
+
+if __name__ == '__main__':
+    DB_PATH = str(Path(__file__).resolve().parent / 'items.json')
+    app = App(DB_PATH)
+    app.mainloop()
