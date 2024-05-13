@@ -10,6 +10,13 @@ from expense_income_stats import ExcelReport, PdfReport
 
 
 class App(ctk.CTk):
+    """
+    Represents the main application for managing expenses.
+
+    This class provides a GUI application for adding, updating, and deleting expense items,
+    generating reports, and visualizing data.
+    """
+
     def __init__(self, db_path, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -170,19 +177,27 @@ class App(ctk.CTk):
         self.protocol("WM_DELETE_WINDOW", self.on_window_close)
 
     def update_pivot_tables(self):
+        """Updates the pivot tables."""
+
         self.pivot_table.update_pivot_table()
 
     def generate_excel_report(self):
+        """Generates an Excel report."""
+
         excel_path = str(Path(__file__).resolve().parent / 'report.xlsx')
         report = ExcelReport(excel_path, self._items_db)
         report.generate_report()
 
     def generate_pdf_report(self):
+        """Generates a PDF report."""
+
         pdf_path = str(Path(__file__).resolve().parent / 'report.pdf')
         report = PdfReport(pdf_path, self._items_db)
         report.generate_report()
 
     def on_window_close(self):
+        """Callback for window close event."""
+
         # Reference: https://stackoverflow.com/questions/111155/how-do-i-handle-the-window-close-event-in-tkinter
         print('Window Closing ...')
         self.destroy()
@@ -199,6 +214,8 @@ class App(ctk.CTk):
         }
 
     def clear_form(self):
+        """Clears the form."""
+
         self.entry_name.delete(0, last_index=len(self.entry_name.get()))
         self.entry_amount.delete(0, last_index=len(self.entry_amount.get()))
         self.entry_description.delete(0, last_index=len(self.entry_description.get()))
@@ -207,6 +224,8 @@ class App(ctk.CTk):
         self.entry_subcategory.delete(0, last_index=len(self.entry_subcategory.get()))
 
     def fill_form(self, name, amount, description, date, category='None', subcategory='None'):
+        """Fills the form with provided values."""
+
         self.clear_form()
         self.entry_name.insert(0, name)
         self.entry_amount.insert(0, amount)
@@ -216,6 +235,8 @@ class App(ctk.CTk):
         self.entry_subcategory.insert(0, subcategory)
 
     def on_btn_add_clicked(self):
+        """Callback for add button click event."""
+
         new_item = self._create_item_from_form()
 
         if new_item is not None:
@@ -226,6 +247,8 @@ class App(ctk.CTk):
         self.clear_form()
 
     def on_btn_update_clicked(self):
+        """Callback for update button click event."""
+
         # Get the (one) selected item
         selected_item = self.items_table.focus()
         item_dct = self.items_table.item(selected_item)
@@ -260,6 +283,8 @@ class App(ctk.CTk):
         self.clear_form()
 
     def on_btn_delete_clicked(self):
+        """Callback for delete button click event."""
+
         yes_or_no = messagebox.askyesno("Delete Item", "Do you want to continue?")
 
         if not yes_or_no:
@@ -279,7 +304,13 @@ class App(ctk.CTk):
         self.items_table.deletes_item(item_objs)
 
     def _create_item(self, inp_item):
-        # inp_item: List[str|int|float]
+        """
+        Creates an item from input.
+
+        Args:
+            inp_item (List[str|int|float]): List representing an item.
+        """
+
         try:
             item_id = inp_item[0]
             item_name = inp_item[1]
@@ -314,6 +345,8 @@ class App(ctk.CTk):
             return None
 
     def _create_item_from_form(self) -> Item | None:
+        """Creates an item from the form."""
+
         try:
             if self.entry_category.get().strip() in ['None', '']:
                 category = None
@@ -338,6 +371,8 @@ class App(ctk.CTk):
             return None
 
     def on_row_selected(self, e):
+        """Callback for row selection event."""
+
         # Reference: https://stackoverflow.com/questions/30614279/tkinter-treeview-get-selected-item-values
 
         # Reference: For Multiple Selected Rows

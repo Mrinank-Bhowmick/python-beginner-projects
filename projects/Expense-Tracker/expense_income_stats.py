@@ -5,17 +5,46 @@ import statistics
 
 
 class ExpenseIncomeStats:
+    """
+    Represents a class for calculating expense and income statistics based on items from a database.
+    """
+
     def __init__(self, db_path: str, start: str = None, end: str = None):
+        """
+        Initializes the ExpenseIncomeStats instance.
+
+        Args:
+            db_path (str): The path to the database file.
+            start (str, optional): The start date for filtering items. Defaults to None.
+            end (str, optional): The end date for filtering items. Defaults to None.
+        """
+
         self._items_db = ItemsDB(db_path)
         self.start = start
         self.end = end
 
     @property
     def items(self):
+        """
+        Retrieves all items from the database.
+
+        Returns:
+            List[Item]: A list of all items in the database.
+        """
         return self._items_db.get_all_items()
 
     @staticmethod
     def get_stats_expense_and_income(items) -> dict:
+        """
+        Calculates statistics for both expense and income items, separately.
+
+        Args:
+            items (List[Item]): The list of items to calculate statistics for.
+
+        Returns:
+            dict: A dictionary containing statistics for both expense and income items.
+        """
+
         expense_items = [item.amount for item in items if item.amount < 0]
         if len(expense_items) > 0:
             expense_stats = {
@@ -40,6 +69,15 @@ class ExpenseIncomeStats:
 
     @staticmethod
     def get_stats(items) -> dict:
+        """
+        Calculates general statistics for a list of items.
+
+        Args:
+            items (List[Item]): The list of items to calculate statistics for.
+
+        Returns:
+            dict: A dictionary containing general statistics for the list of items.
+        """
         if len(items) < 1:
             raise ValueError('The list of items must contain at least one item')
 
@@ -50,9 +88,21 @@ class ExpenseIncomeStats:
         }
 
     def get_stats_all_items(self):
+        """
+        Calculates statistics for all items in the database.
+
+        Returns:
+            dict: A dictionary containing statistics for all items in the database.
+        """
         return self.get_stats_expense_and_income(self.items)
 
     def get_stats_by_category(self) -> dict:
+        """
+        Calculates statistics for each category in the database.
+
+        Returns:
+            dict: A dictionary containing statistics for each category.
+        """
         category_names = self._items_db.get_category_names()
         out_dict = {}
         for category_name in category_names:
@@ -62,6 +112,12 @@ class ExpenseIncomeStats:
         return out_dict
 
     def get_stats_by_category_with_subcategories(self) -> dict:
+        """
+        Calculates statistics for each category and subcategory combination in the database.
+
+        Returns:
+            dict: A dictionary containing statistics for each category and subcategory combination.
+        """
         category_names = self._items_db.get_category_names()
         stats_dict = {}
         for category_name in category_names:
@@ -79,16 +135,45 @@ class ExpenseIncomeStats:
 
 
 class Report(ABC):
+    """
+    Abstract base class for generating reports based on items from a database.
+    """
+
     def __init__(self, file_path: str, items_db: ItemsDB):
+        """
+        Default Initialization for the Report instance.
+
+        Args:
+            file_path (str): The file path to save the report.
+            items_db (ItemsDB): An instance of the ItemsDB class representing the database.
+        """
+
         self.file_path = file_path
         self.items_db = items_db
 
     @abstractmethod
     def generate_report(self, *args, **kwargs):
+        """
+        Abstract method for generating a report.
+
+        Args:
+            *args: Additional positional arguments.
+            **kwargs: Additional keyword arguments.
+        """
         pass
 
     @staticmethod
     def to_dataframe(items) -> pd.DataFrame:
+        """
+        Converts a list of items to a pandas DataFrame.
+
+        Args:
+            items (List[Item]): The list of items to convert.
+
+        Returns:
+            pd.DataFrame: A DataFrame containing the item data.
+        """
+
         # items: List[Item]
 
         rows = []
@@ -107,7 +192,11 @@ class Report(ABC):
 
 
 class ExcelReport(Report):
+    """Generates an Excel report based on items from a database."""
+
     def generate_report(self):
+        """Generates an Excel report."""
+
         # TODO: Enhance - Include the Items without Category or Subcategory
         items = self.items_db.get_all_items()
         df = self.to_dataframe(items)
@@ -144,7 +233,11 @@ class ExcelReport(Report):
 
 
 class PdfReport(Report):
+    """Generates a PDF report based on items from a database."""
+
     def generate_report(self):
+        """Generates a PDF report."""
+
         items = self.items_db.get_all_items()
         df = self.to_dataframe(items)
 
