@@ -2,10 +2,13 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import customtkinter as ctk
-from datetime import datetime
 
-from gui_widgets import *
-from item import ItemsDB
+from datetime import datetime
+from pathlib import Path
+
+from gui_widgets import ItemsTable, SummaryByCategoryPivotTable
+from item import ItemsDB, Category, Item
+from expense_income_stats import ExcelReport, PdfReport
 
 
 class App(ctk.CTk):
@@ -44,38 +47,24 @@ class App(ctk.CTk):
                                )
         button.pack(pady=5)
 
-        # # Button for Clearing the Items in the Table (Not Deleting from Json)
-        # self.btn_clear_all_items = ctk.CTkButton(self.tab_view_settings.tab('Edit'),
-        #                                          text='Clear Items',
-        #                                          command=lambda: self.items_table.clear_items(),
-        #                                          )
-        # self.btn_clear_all_items.pack(pady=5)
-        #
-        # def lesson_option(choice):
-        #     lesson_number = int(choice) - 1
-        #     return lesson_number
-        #
-        # optionbox_var = ctk.StringVar(value="1")
-        # optionbox = ctk.CTkOptionMenu(self.tab_view_settings.tab('Edit'),
-        #                               values=['1', '2'],
-        #                               variable=optionbox_var,
-        #                               command=lesson_option)
-        # optionbox.pack()
+        button = ctk.CTkButton(self.tab_view_settings.tab('Edit'),
+                               text='Update Summaries',
+                               command=self.update_pivot_tables,
+                               )
+        button.pack(pady=5)
 
         # Report Tab
         self.tab_view_settings.add('Report')
 
-        # TODO: Create Event-handler for Generating Excel Report
         self.btn_generate_excel_report = ctk.CTkButton(self.tab_view_settings.tab('Report'),
                                                        text='Generate Excel Report',
-                                                       command=lambda: print('Generating Excel Report ...'),
+                                                       command=self.generate_excel_report,
                                                        )
         self.btn_generate_excel_report.pack(pady=5)
 
-        # TODO: Create Event-handler for Generating PDF Report
         self.btn_generate_pdf_report = ctk.CTkButton(self.tab_view_settings.tab('Report'),
                                                      text='Generate PDF Report',
-                                                     command=lambda: print('Generating PDF Report ...'),
+                                                     command=self.generate_pdf_report,
                                                      )
         self.btn_generate_pdf_report.pack(pady=5)
 
@@ -169,20 +158,31 @@ class App(ctk.CTk):
         # CTkTabview for Visualizations
         self.tab_view_visuals = ctk.CTkTabview(self)
         self.tab_view_visuals.grid(row=2, column=0, padx=5, pady=5, columnspan=3, sticky='nswe')
-        self.tab_view_visuals.add("Expense Summary")  # Expense Summary Tab
-        self.tab_view_visuals.add("Income Summary")  # add tab at the end
-        self.tab_view_visuals.set("Expense Summary")  # set currently visible tab
 
-        # TODO: Expense Summary Tab Contents
-        label = ctk.CTkLabel(master=self.tab_view_visuals.tab('Expense Summary'), text="Under Construction",
-                             fg_color="red")
-        label.pack()
+        expense_tab = self.tab_view_visuals.add(
+            "Summary By Category")  # Summary By Category Tab
 
-        # TODO: Income Summary Tab Contents
+        self.tab_view_visuals.set("Summary By Category")  # set currently visible tab
+
+        # Summary By Category Tab Contents
+        self.pivot_table = SummaryByCategoryPivotTable(self.tab_view_visuals.tab('Summary By Category'))
 
         # ==============================================================================================================
         # Other Widget-Event-Callbacks Bindings
         self.protocol("WM_DELETE_WINDOW", self.on_window_close)
+
+    def update_pivot_tables(self):
+        self.pivot_table.update_pivot_table()
+
+    def generate_excel_report(self):
+        excel_path = str(Path(__file__).resolve().parent / 'report.xlsx')
+        report = ExcelReport(excel_path, self._items_db)
+        report.generate_report()
+
+    def generate_pdf_report(self):
+        pdf_path = str(Path(__file__).resolve().parent / 'report.pdf')
+        report = PdfReport(pdf_path, self._items_db)
+        report.generate_report()
 
     def on_window_close(self):
         # Reference: https://stackoverflow.com/questions/111155/how-do-i-handle-the-window-close-event-in-tkinter
@@ -200,10 +200,6 @@ class App(ctk.CTk):
             'subcategory': self.entry_subcategory.get(),
         }
 
-    def _validate_form_values(self):
-        # TODO: Add Form Entry Validations
-        pass
-
     def clear_form(self):
         self.entry_name.delete(0, last_index=len(self.entry_name.get()))
         self.entry_amount.delete(0, last_index=len(self.entry_amount.get()))
@@ -220,13 +216,6 @@ class App(ctk.CTk):
         self.entry_description.insert(0, description)
         self.entry_category.insert(0, category)
         self.entry_subcategory.insert(0, subcategory)
-
-        # self.entry_name.configure(placeholder_text=name)
-        # self.entry_amount.configure(placeholder_text=amount)
-        # self.entry_date.configure(textvariable=date)
-        # self.entry_description.configure(placeholder_text=description)
-        # self.entry_category.configure(placeholder_text=category)
-        # self.entry_subcategory.configure(placeholder_text=subcategory)
 
     def on_btn_add_clicked(self):
         new_item = self._create_item_from_form()
@@ -259,10 +248,9 @@ class App(ctk.CTk):
             item_obj.amount = float(self.entry_amount.get().strip())
             item_obj.description = self.entry_description.get().strip()
             item_obj.date = datetime.strptime(self.entry_date.get().strip(), '%Y-%m-%d %H:%M:%S')
-            item_obj.category = \
-                None if self.entry_category.get() == 'None' else \
-                    Category(self.entry_category.get().strip()) if self.entry_subcategory.get().strip() == 'None' else \
-                        Category(self.entry_category.get().strip(), self.entry_subcategory.get().strip())
+            item_obj.category = None if self.entry_category.get() == 'None' else Category(
+                self.entry_category.get().strip()) if self.entry_subcategory.get().strip() == 'None' else Category(
+                self.entry_category.get().strip(), self.entry_subcategory.get().strip())
 
         except ValueError as value_error:
             messagebox.showerror('Error', str(value_error))
@@ -341,7 +329,7 @@ class App(ctk.CTk):
 
             temp_item = Item.create(
                 self.entry_name.get(),
-                self.entry_amount.get(),
+                float(self.entry_amount.get()),
                 self.entry_description.get(),
                 self.entry_date.get(),
                 category
@@ -354,6 +342,9 @@ class App(ctk.CTk):
     def on_row_selected(self, e):
         # Reference: https://stackoverflow.com/questions/30614279/tkinter-treeview-get-selected-item-values
 
+        # Reference: For Multiple Selected Rows
+        # https://stackoverflow.com/questions/48867800/tk-treeview-focus-how-do-i-get-multiple-selected-lines
+
         # Set the Selected Item for the TreeView
         selected_item = self.items_table.focus()
         item_dct = self.items_table.item(selected_item)
@@ -361,7 +352,6 @@ class App(ctk.CTk):
         values = item_dct['values']
         item_id = item_dct['text']
         row = [item_id] + list(values)
-        print(row)
 
         self.fill_form(
             values[0],
@@ -371,9 +361,3 @@ class App(ctk.CTk):
             category=values[4],
             subcategory=values[5]
         )
-
-    # def on_rows_selected(self, e):
-    #     # Reference: https://stackoverflow.com/questions/48867800/tk-treeview-focus-how-do-i-get-multiple-selected-lines
-    #     selected_items = self.items_table.selection()  # Gets the Selected Items from TreeView Table
-    #     # self.items_table.selection_set(selected_items)
-    #     selected_items = [self.items_table.item(selected_item) for selected_item in selected_items]

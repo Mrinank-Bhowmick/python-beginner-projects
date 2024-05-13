@@ -253,10 +253,6 @@ class TestItemsDB(unittest.TestCase):
         items = self.items_db.get_items_without_subcategory('Personal Finance')
         self.assertEqual(len(items), 0)
 
-    def test_get_items_with_subcategory(self):
-        # TODO
-        pass
-
 
 class TestExpenseIncomeStats(unittest.TestCase):
     def setUp(self):
@@ -321,9 +317,6 @@ class TestExpenseIncomeStats(unittest.TestCase):
 
         import json
         print(json.dumps(result, indent=4))
-
-
-# TODO: Add Unit Test for Report
 
 
 if __name__ == '__main__':

@@ -2,7 +2,10 @@ import tkinter as tk
 from tkinter import ttk
 import customtkinter as ctk
 import os
+from pathlib import Path
+
 from item import ItemsDB, Item, Category
+from expense_income_stats import ExpenseIncomeStats
 
 
 class ItemsTable(ttk.Treeview):
@@ -131,3 +134,52 @@ class ItemsTable(ttk.Treeview):
                         text=f'{item.item_id}',
                         values=values
                         )
+
+
+class SummaryByCategoryPivotTable:
+    def __init__(self, parent):
+        self.parent = parent
+
+        db_path = Path(__file__).resolve().parent
+        self.stats = ExpenseIncomeStats(str(db_path / 'items.json'))
+        self.tree = None
+
+    def update_pivot_table(self):
+        # Get statistic data from local json
+        data = self.stats.get_stats_by_category()
+
+        # Destroy the old child
+        if self.tree is not None:
+            self.tree.destroy()
+
+        # Transpose the data
+        transposed_data = {}
+        for category, values in data.items():
+            for key, value in values.items():
+                if key not in transposed_data:
+                    transposed_data[key] = {}
+                transposed_data[key][category] = value
+
+        # Create Treeview
+        self.tree = ttk.Treeview(self.parent)
+        self.tree["columns"] = ["Category"] + list(data.keys())
+        self.tree.column("#0", width=100, minwidth=100)
+        # self.tree.column("#0", width=0)
+
+        self.tree.heading("#0", text="")
+        for category in data.keys():
+            self.tree.heading(category, text=category)
+
+        self.tree['show'] = 'headings'
+
+        def clean_string(input_string):
+            cleaned_string = input_string.replace("_", " ").title()
+            return cleaned_string
+
+        for aggregate_type, values in transposed_data.items():
+            row_values = [clean_string(aggregate_type)]
+            for category in data.keys():
+                row_values.append(values.get(category, ""))
+            self.tree.insert("", "end", text=aggregate_type, values=tuple(row_values))
+
+        self.tree.pack(expand=True, fill="both")

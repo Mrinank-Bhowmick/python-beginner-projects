@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from item import ItemsDB
+import pandas as pd
 import statistics
+from reportlab.pdfgen import canvas
 
 
 class ExpenseIncomeStats:
@@ -8,22 +10,6 @@ class ExpenseIncomeStats:
         self._items_db = ItemsDB(db_path)
         self.start = start
         self.end = end
-
-        # if start is None and end is None:
-        #     # Get all Items
-        #     self._items = self._items_db.get_all_items()
-        #     pass
-        # elif start is None and end is not None:
-        #     # Start from the Oldest Item(s) to the given end date string
-        #     oldest = min(item.date for item in self._items_db.get_all_items())
-        #     self._items = self._items_db.get_items_by_date_range(oldest.strftime("%Y-%m-%d"), end)
-        # elif start is not None and end is None:
-        #     # Start from the given start date string to the latest date
-        #     latest = max(item.date for item in self._items_db.get_all_items())
-        #     self._items = self._items_db.get_items_by_date_range(start, latest.strftime("%Y-%m-%d"))
-        # else:
-        #     # Get item from given date range
-        #     self._items = self._items_db.get_items_by_date_range(start, end)
 
     @property
     def items(self):
@@ -92,26 +78,115 @@ class ExpenseIncomeStats:
 
         return stats_dict
 
-    @staticmethod
-    def currency_converter(base_currency: str, quote_currency: str) -> float:
-        # TODO: Implement currency_converter() method.
-        pass
-
 
 class Report(ABC):
+    def __init__(self, file_path: str, items_db: ItemsDB):
+        self.file_path = file_path
+        self.items_db = items_db
+
     @abstractmethod
     def generate_report(self, *args, **kwargs):
         pass
 
+    @staticmethod
+    def to_dataframe(items) -> pd.DataFrame:
+        # items: List[Item]
+
+        rows = []
+        for item in items:
+            category = item.category
+            row = {k: v for k, v in item.__dict__.items() if k != 'category'}
+
+            if category is not None:
+                row['category'] = category.name
+                if category.subcategory is not None:
+                    row['subcategory'] = category.subcategory
+
+            rows.append(row)
+
+        return pd.DataFrame(rows)
+
 
 class ExcelReport(Report):
-    def __init__(self, file_path: str):
-        self.file_path = file_path
-
     def generate_report(self):
-        pass
+        # TODO: Enhance - Include the Items without Category or Subcategory
+        items = self.items_db.get_all_items()
+        df = self.to_dataframe(items)
+
+        with pd.ExcelWriter(self.file_path, engine='xlsxwriter') as writer:
+            workbook = writer.book
+
+            # Raw Data Tab
+            df.to_excel(
+                writer,
+                'Data',  # worksheet name
+                index=False  # index does not contain relevant information
+            )
+            summary_sheet = writer.sheets['Data']  # Assigning a variable to the sheet allows formatting
+
+            # Pivot Table Tab
+            pivot_table = df.pivot_table(
+                values='amount',
+                index=['category', 'subcategory'],
+                aggfunc={
+                    'amount': ['mean', 'max', 'min'],
+                }
+            )
+
+            # Flatten the hierarchical column index
+            pivot_table.columns = [f'{agg}_amount' for agg in pivot_table.columns]
+
+            pivot_table.to_excel(
+                writer,
+                'Summary By Category',  # worksheet name
+                index=True  # index does not contain relevant information
+            )
+            summary_sheet = writer.sheets['Summary By Category']
 
 
 class PdfReport(Report):
     def generate_report(self):
-        pass
+        items = self.items_db.get_all_items()
+        df = self.to_dataframe(items)
+
+        from reportlab.lib import colors
+        from reportlab.lib.pagesizes import letter
+        from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+
+        # Pivot Table Tab
+        pivot_table = df.pivot_table(
+            values='amount',
+            index=['category', 'subcategory'],
+            aggfunc={
+                'amount': ['mean', 'max', 'min'],
+            }
+        )
+        pivot_table = pivot_table.reset_index()
+
+        # Convert DataFrame to a list of lists for the table
+        table_data = [list(pivot_table.columns)] + pivot_table.values.tolist()
+
+        # Create PDF
+        pdf_filename = self.file_path
+        doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
+        elements = []
+
+        # Create table
+        table = Table(table_data)
+
+        # Style the table
+        style = TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.gray),
+                            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                            ('GRID', (0, 0), (-1, -1), 1, colors.black)])
+
+        table.setStyle(style)
+
+        # Add table to elements
+        elements.append(table)
+
+        # Build PDF
+        doc.build(elements)
