@@ -4,6 +4,7 @@ import dearpygui.dearpygui as dpg
 
 
 def selection_cb(sender, app_data, user_data):
+    """Callback function for button selections in the message box."""
     if user_data[1]:
         print("User selected 'Ok'")
     else:
@@ -14,7 +15,12 @@ def selection_cb(sender, app_data, user_data):
 
 
 def show_info(title, message, selection_callback):
-    # Reference: https://github.com/hoffstadt/DearPyGui/discussions/1002
+    """
+    Display an information message box with title, message, and callback.
+    
+    References:
+        https://github.com/hoffstadt/DearPyGui/discussions/1002
+    """
 
     # guarantee these commands happen in the same frame
     with dpg.mutex():
@@ -36,6 +42,7 @@ def show_info(title, message, selection_callback):
 
 # Callbacks and Helpers
 def on_evaluate(sender, app_data, user_data):
+    """Callback function for the 'Evaluate' button."""
     # Get the Command
     cmd = dpg.get_value('radio-cmds')
     cmd_func = NEWTON_CMDS_DICT[cmd]
