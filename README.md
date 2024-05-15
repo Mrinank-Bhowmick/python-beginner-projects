@@ -1810,7 +1810,7 @@
         <a href="https://github.com/yest3a">
             <img src="https://avatars.githubusercontent.com/u/154103665?v=4" width="100;" alt="yest3a"/>
             <br />
-            <sub><b>yest3a</b></sub>
+            <sub><b>Yest3a</b></sub>
         </a>
     </td>
     <td align="center">
