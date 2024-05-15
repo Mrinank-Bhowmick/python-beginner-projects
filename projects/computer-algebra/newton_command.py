@@ -74,3 +74,21 @@ newton_arc_sin = NewtonCommand('arcsin').command
 newton_arc_tan = NewtonCommand('arctan').command
 newton_abs = NewtonCommand('abs').command
 newton_log = NewtonCommand('log').command
+
+NEWTON_CMDS_DICT = {
+    'simplify': newton_simplify,
+    'factor': newton_factor,
+    'derive': newton_derive,
+    'integrate': newton_integrate,
+    'zeroes': newton_zeroes,
+    'tangent': newton_tangent,
+    'area': newton_area,
+    'cos': newton_cos,
+    'sin': newton_sin,
+    'tan': newton_tan,
+    'arccos': newton_arc_cos,
+    'arcsin': newton_arc_sin,
+    'arctan': newton_arc_tan,
+    'abs': newton_abs,
+    'log': newton_log
+}
