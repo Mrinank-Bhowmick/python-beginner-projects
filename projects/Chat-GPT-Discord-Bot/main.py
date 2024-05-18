@@ -16,6 +16,9 @@ try:
 except(TypeError, ValueError):
     sys.exit("Error: One or more environment variables are not set or contain invalid values.") # Stops the bot from starting if the .env is formatted wrong
     
+discord_server_1 = discord.Object(id= discord_server_1)  # Discord Server ID 1 returns int
+discord_server_2 = discord.Object(id= discord_server_2)  # Discord Server ID 2 returns int (this one is optional)
+
 
 class MyClient(discord.Client):
     def __init__(self, *, intents: discord.Intents):
@@ -137,6 +140,5 @@ async def ping(interaction: discord.Interaction):
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
         await interaction.followup.send("An error occurred while processing the command.")
-
 
 client.run(token)
