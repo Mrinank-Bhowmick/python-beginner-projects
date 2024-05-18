@@ -7,13 +7,12 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-MY_GUILD = discord.Object(id=469406837608022027)  # replace with your guild id
-MY_GUILD_2 = discord.Object(id=1232564395964633150)  # replace with your guild id (this one is optional)
-
 try:
     token = os.getenv("BOT_TOKEN") # returns a str
     owner_uid = int(os.getenv("OWNER_ID")) # returns an int
     gpt_key = os.getenv("GPT_API_KEY") # returns a str
+    discord_server_1 = int(os.getenv("DISCORD_SERVER_1"))  # Discord Server ID 1 returns int
+    discord_server_2 = int(os.getenv("DISCORD_SERVER_2"))  # Discord Server ID 2 returns int (this one is optional)
 except(TypeError, ValueError):
     sys.exit("Error: One or more environment variables are not set or contain invalid values.")
     
@@ -36,10 +35,10 @@ class MyClient(discord.Client):
     # This allows for faster bot testing and development.
     async def setup_hook(self):
         # This copies the global commands over to your guild(s).
-        self.tree.copy_global_to(guild=MY_GUILD)
-        await self.tree.sync(guild=MY_GUILD)
-        self.tree.copy_global_to(guild=MY_GUILD_2)
-        await self.tree.sync(guild=MY_GUILD_2)
+        self.tree.copy_global_to(guild=discord_server_1)
+        await self.tree.sync(guild=discord_server_1)
+        self.tree.copy_global_to(guild=discord_server_2)
+        await self.tree.sync(guild=discord_server_2)
 
     async def on_message(self, message): # Whenever a user sends a message it is logged into the console
         try:
