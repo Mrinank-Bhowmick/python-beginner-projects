@@ -72,8 +72,7 @@ async def on_ready():
 @client.tree.command(name="test_bot", description="Replies with 'Hello!'")
 async def running_test(interaction: discord.Interaction):
     await interaction.response.send_message(f"Hello, {interaction.user.mention}", ephemeral=True) # ephemeral=True means the bots response is only visible
-                                                                                                  # to the user who used the command. Also acts like response.defer 
-                                                                                                  # and stops command timeout
+                                                                                                  # to the user who used the command.
 
 
 @client.tree.command(name="shutdown", description="Shuts down the bot") # Shuts down the bot if the user matches the owner_uid
@@ -83,18 +82,6 @@ async def shutdown_bot(interaction: discord.Interaction):
         await client.close()
     else:
         await interaction.response.send_message("You don't have permission to shut down the bot.", ephemeral=True)
-
-
-@client.tree.command(name="send_message", description="Sends the text into the current channel.")
-@app_commands.rename(text_to_send="text")
-@app_commands.describe(text_to_send="Text to send in the current channel")
-async def send(interaction: discord.Interaction, text_to_send: str):
-    if "@everyone" in text_to_send:
-        await interaction.response.send_message("Nice try 😉", ephemeral=True)
-    elif "@here" in text_to_send:
-        await interaction.response.send_message("Nice try 😉", ephemeral=True)
-    else:
-        await interaction.response.send_message(text_to_send)
 
 
 @client.tree.command(name="clear", description="Deletes defined number of messages from the current channel.")
@@ -112,19 +99,6 @@ async def send(interaction: discord.Interaction, to_delete: int):
         await interaction.followup.send("Deleting...")
         await interaction.channel.purge(limit=to_delete)
         await interaction.edit_original_response(content=f"Deleted {to_delete} messages.")
-
-
-@client.tree.command(name="add_numbers", description="Adds two numbers together")
-@app_commands.describe(first_value="The first value you want to add something to",
-                       second_value="The value you want to add to the first value")
-async def add(interaction: discord.Interaction, first_value: int, second_value: int):
-    try:
-        await interaction.response.defer(ephemeral=True, thinking=False)
-        await interaction.followup.send(f"{first_value} + {second_value} = {first_value + second_value}")
-    except Exception as e:
-        await asyncio.sleep(2)
-        print(f"An error occurred: {str(e)}")
-        await interaction.followup.send("An error occurred while processing the command.")
 
 
 @client.tree.command(name="ping", description="Get bot latency")
