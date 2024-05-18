@@ -1,7 +1,11 @@
 {
     "system_content": [
       {
-        "correct_grammar": "You will be provided with statements, and your task is to convert them to standard English."
+        "character_limit_prompt": " Keep your response less than or equal to 4096 characters long", 
+        "correct_grammar": "You will be provided with user text, and your task is to only grammar check the user text and to also provide information on what you changed.",
+        "single_page_website": "Only respond to questions about making a single paged website, Ignoring other unrelated questions. Out putted code should be encased by markdown syntax. Your response should include HTML code with embedded javascript and CSS.",
+        "text_to_emoji": "You will be provided with a message, and your task is to convert each word in that user text into the appropriate emojis. Do not respond in words, only respond in emojis.",
+        "text_to_block_letters":"You will be provided with a message, and your task is to add ':regional_indicator_' before and ':' after each letter in the message. examples; ':regional_indicator_a:', ':regional_indicator_a::regional_indicator_b:'"
       }
     ]
   }
