@@ -79,3 +79,5 @@ python main.py
 2. Scroll down and make sure that Developer Mode is **on**
 3. Exit settings and right click on the server(s) your bot is in
 and click ``Copy Server ID`` as shown below:
+
+<img src="https://github.com/Alby084/python-beginner-projects/assets/99786431/cd4e8349-b916-4f51-adc4-fd774465483f" alt="drawing" width="220"/> <br>
