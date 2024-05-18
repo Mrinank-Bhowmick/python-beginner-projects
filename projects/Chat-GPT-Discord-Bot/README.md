@@ -51,7 +51,7 @@ above ``load_dotenv(override=True)`` and update ``load_dotenv(override=True)`` t
 load_dotenv(dotenv_path, override=True)
 ```
 
-If you want to change your ``.env`` file name add this reference to the ``.env`` instead:
+If you want to change your ``.env`` file name as well add this reference to the ``.env``:
 ```python
 dotenv_path = os.path.join("path/to/env", "Env_Name_Here.env")
 ```
