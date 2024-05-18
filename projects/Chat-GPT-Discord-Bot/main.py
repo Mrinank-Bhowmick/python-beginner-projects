@@ -4,6 +4,7 @@ from discord import app_commands
 import sys
 import os
 from dotenv import load_dotenv
+from Chat_GPT_Function import correct_grammar
 
 load_dotenv(override=True)
 
@@ -136,6 +137,20 @@ async def ping(interaction: discord.Interaction):
 
         # Send as followup message
         await interaction.followup.send(f"Pong! Latency: {latency}ms")
+    except Exception as e:
+        # Handle exceptions
+        print(f"An error occurred: {str(e)}")
+        await interaction.followup.send("An error occurred while processing the command.")
+        
+@client.tree.command(name="gpt_correct_grammar", description="Corrects grammar of inputted text")
+@app_commands.rename(text_to_send="text_to_correct")
+@app_commands.describe(text_to_send="Text to grammar correct")
+async def send(interaction: discord.Interaction, text_to_send: str):
+    try:
+        await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
+
+        # Send as followup message
+        await interaction.followup.send(correct_grammar(text_to_send))
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
