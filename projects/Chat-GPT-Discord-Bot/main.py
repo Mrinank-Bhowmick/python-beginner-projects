@@ -42,16 +42,6 @@ class MyClient(discord.Client):
         await self.tree.sync(guild=discord_server_1)
         self.tree.copy_global_to(guild=discord_server_2)
         await self.tree.sync(guild=discord_server_2)
-
-    async def on_message(self, message): # Whenever a user sends a message it is logged into the console
-        try:
-            print(f'Message from {message.author}({message.author.id}) in {message.guild}({message.channel.name}): {message.content}')
-            if message.author.id == self.user.id:
-                return
-        except AttributeError:
-            print("Unable to print logged user message 'DMChannel' error (Cant log sent commands)") # This print() statement isnt needed. 
-                                                                                                    # you can remove it if you want. I like it for debug purposes
-            return
             
 
 
