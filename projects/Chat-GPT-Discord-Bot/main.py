@@ -14,7 +14,7 @@ try:
     discord_server_1 = int(os.getenv("DISCORD_SERVER_1"))  # Discord Server ID 1 returns int
     discord_server_2 = int(os.getenv("DISCORD_SERVER_2"))  # Discord Server ID 2 returns int (this one is optional)
 except(TypeError, ValueError):
-    sys.exit("Error: One or more environment variables are not set or contain invalid values.")
+    sys.exit("Error: One or more environment variables are not set or contain invalid values.") # Stops the bot from starting if the .env is formatted wrong
     
 
 class MyClient(discord.Client):
