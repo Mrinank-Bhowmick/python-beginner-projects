@@ -161,7 +161,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
         )
 
         # Send as followup message
@@ -197,7 +197,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
         )
 
         # Send as followup message
@@ -230,7 +230,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
         )
 
         # Send as followup message
@@ -267,7 +267,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
         )
 
         # Send as followup message
