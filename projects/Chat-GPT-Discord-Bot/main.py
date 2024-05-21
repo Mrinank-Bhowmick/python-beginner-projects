@@ -10,20 +10,30 @@ load_dotenv(override=True)
 
 with open("projects/Chat-GPT-Discord-Bot/GPT_Parameters.json") as f:
     data = json.load(f)
-    
+
 char_limit = data["system_content"][0]["character_limit_prompt"]
 
 try:
-    token = os.getenv("BOT_TOKEN") # returns a str
-    owner_uid = int(os.getenv("OWNER_ID")) # returns an int
-    gpt_key = os.getenv("GPT_API_KEY") # returns a str
-    discord_server_1 = int(os.getenv("DISCORD_SERVER_1"))  # Discord Server ID 1 returns int
-    discord_server_2 = int(os.getenv("DISCORD_SERVER_2"))  # Discord Server ID 2 returns int (this one is optional)
-except(TypeError, ValueError):
-    sys.exit("Error: One or more environment variables are not set or contain invalid values.") # Stops the bot from starting if the .env is formatted wrong
-    
-discord_server_1 = discord.Object(id= discord_server_1)  # Discord Server ID 1 returns int
-discord_server_2 = discord.Object(id= discord_server_2)  # Discord Server ID 2 returns int (this one is optional)
+    token = os.getenv("BOT_TOKEN")  # returns a str
+    owner_uid = int(os.getenv("OWNER_ID"))  # returns an int
+    gpt_key = os.getenv("GPT_API_KEY")  # returns a str
+    discord_server_1 = int(
+        os.getenv("DISCORD_SERVER_1")
+    )  # Discord Server ID 1 returns int
+    discord_server_2 = int(
+        os.getenv("DISCORD_SERVER_2")
+    )  # Discord Server ID 2 returns int (this one is optional)
+except (TypeError, ValueError):
+    sys.exit(
+        "Error: One or more environment variables are not set or contain invalid values."
+    )  # Stops the bot from starting if the .env is formatted wrong
+
+discord_server_1 = discord.Object(
+    id=discord_server_1
+)  # Discord Server ID 1 returns int
+discord_server_2 = discord.Object(
+    id=discord_server_2
+)  # Discord Server ID 2 returns int (this one is optional)
 
 
 class MyClient(discord.Client):
@@ -48,7 +58,6 @@ class MyClient(discord.Client):
         await self.tree.sync(guild=discord_server_1)
         self.tree.copy_global_to(guild=discord_server_2)
         await self.tree.sync(guild=discord_server_2)
-            
 
 
 intents = discord.Intents.default()
@@ -59,26 +68,39 @@ client = MyClient(intents=intents)
 async def on_ready():
     print(f"Logged in as {client.user} (ID: {client.user.id})")
     print("-------------------------------")
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='For Slash Commands')) # This changes the activity that is displayed
-                                                                                                                           # under the bots name in the members list.
+    await client.change_presence(
+        activity=discord.Activity(
+            type=discord.ActivityType.watching, name="For Slash Commands"
+        )
+    )  # This changes the activity that is displayed
+    # under the bots name in the members list.
 
 
 @client.tree.command(name="test_bot", description="Replies with 'Hello!'")
 async def running_test(interaction: discord.Interaction):
-    await interaction.response.send_message(f"Hello, {interaction.user.mention}", ephemeral=True) # ephemeral=True means the bots response is only visible
-                                                                                                  # to the user who used the command.
+    await interaction.response.send_message(
+        f"Hello, {interaction.user.mention}", ephemeral=True
+    )  # ephemeral=True means the bots response is only visible
+    # to the user who used the command.
 
 
-@client.tree.command(name="shutdown", description="Shuts down the bot") # Shuts down the bot if the user matches the owner_uid
+@client.tree.command(
+    name="shutdown", description="Shuts down the bot"
+)  # Shuts down the bot if the user matches the owner_uid
 async def shutdown_bot(interaction: discord.Interaction):
     if interaction.user.id == owner_uid:
         await interaction.response.send_message("Shutting down the bot...")
         await client.close()
     else:
-        await interaction.response.send_message("You don't have permission to shut down the bot.", ephemeral=True)
+        await interaction.response.send_message(
+            "You don't have permission to shut down the bot.", ephemeral=True
+        )
 
 
-@client.tree.command(name="clear", description="Deletes defined number of messages from the current channel.")
+@client.tree.command(
+    name="clear",
+    description="Deletes defined number of messages from the current channel.",
+)
 @app_commands.rename(to_delete="messages")
 @app_commands.describe(to_delete="Number of messages to delete")
 async def send(interaction: discord.Interaction, to_delete: int):
@@ -92,13 +114,17 @@ async def send(interaction: discord.Interaction, to_delete: int):
     else:
         await interaction.followup.send("Deleting...")
         await interaction.channel.purge(limit=to_delete)
-        await interaction.edit_original_response(content=f"Deleted {to_delete} messages.")
+        await interaction.edit_original_response(
+            content=f"Deleted {to_delete} messages."
+        )
 
 
 @client.tree.command(name="ping", description="Get bot latency")
 async def ping(interaction: discord.Interaction):
     try:
-        await interaction.response.defer(ephemeral=True)  # Defer the response to prevent command timeout
+        await interaction.response.defer(
+            ephemeral=True
+        )  # Defer the response to prevent command timeout
 
         # Get bot latency
         latency = round(client.latency * 1000)
@@ -108,78 +134,150 @@ async def ping(interaction: discord.Interaction):
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
-        await interaction.followup.send("An error occurred while processing the command.")
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+
 
 # -------------------------- CORRECT GRAMMAR ----------------------------------
-@client.tree.command(name="gpt_correct_grammar", description="Corrects grammar of inputted text")
+@client.tree.command(
+    name="gpt_correct_grammar", description="Corrects grammar of inputted text"
+)
 @app_commands.rename(text="text_to_correct")
 @app_commands.describe(text="Text to grammar correct")
-async def send(interaction: discord.Interaction, text: str):
+async def send(interaction: discord.Interaction, text: str):  # noqa: F811
     try:
-        await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
-        
-        embed=discord.Embed(title="Correct Grammar", description= gpt(text, data["system_content"][0]["correct_grammar"] + char_limit, 0.7) ,color=0x002aff)
-        embed.set_author(name="GPT Bot", url="https://www.alby08.com", icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png")
+        await interaction.response.defer(
+            ephemeral=False
+        )  # Defer the response to prevent command timeout
+
+        embed = discord.Embed(
+            title="Correct Grammar",
+            description=gpt(
+                text, data["system_content"][0]["correct_grammar"] + char_limit, 0.7
+            ),
+            color=0x002AFF,
+        )
+        embed.set_author(
+            name="GPT Bot",
+            url="https://www.alby08.com",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+        )
 
         # Send as followup message
         await interaction.followup.send(embed=embed)
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
-        await interaction.followup.send("An error occurred while processing the command.")
-    
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+
+
 # -------------------------- WEBSITE ----------------------------------
-@client.tree.command(name="gpt_single_page_website", description="Creates a single paged website with embedded Javascript and CSS")
+@client.tree.command(
+    name="gpt_single_page_website",
+    description="Creates a single paged website with embedded Javascript and CSS",
+)
 @app_commands.rename(text="website_prompt")
 @app_commands.describe(text="Website page specifications")
-async def send(interaction: discord.Interaction, text: str):
+async def send(interaction: discord.Interaction, text: str):  # noqa: F811
     try:
-        await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
-        
-        embed=discord.Embed(title="Single Page Website", description= gpt(text, data["system_content"][0]["single_page_website"] + char_limit, 0.7) ,color=0x002aff)
-        embed.set_author(name="GPT Bot", url="https://www.alby08.com", icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png")
+        await interaction.response.defer(
+            ephemeral=False
+        )  # Defer the response to prevent command timeout
+
+        embed = discord.Embed(
+            title="Single Page Website",
+            description=gpt(
+                text, data["system_content"][0]["single_page_website"] + char_limit, 0.7
+            ),
+            color=0x002AFF,
+        )
+        embed.set_author(
+            name="GPT Bot",
+            url="https://www.alby08.com",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+        )
 
         # Send as followup message
         await interaction.followup.send(embed=embed)
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
-        await interaction.followup.send("An error occurred while processing the command.")
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+
 
 # -------------------------- TEXT TO EMOJI ----------------------------------
 @client.tree.command(name="gpt_text_to_emoji", description="Converts text to emojis")
 @app_commands.rename(text="text")
 @app_commands.describe(text="Text to convert to emojis")
-async def send(interaction: discord.Interaction, text: str):
+async def send(interaction: discord.Interaction, text: str):  # noqa: F811
     try:
-        await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
-        
-        embed=discord.Embed(title="Text to Emoji", description= gpt(text, data["system_content"][0]["text_to_emoji"] + char_limit, 1.2) ,color=0x002aff)
-        embed.set_author(name="GPT Bot", url="https://www.alby08.com", icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png")
+        await interaction.response.defer(
+            ephemeral=False
+        )  # Defer the response to prevent command timeout
+
+        embed = discord.Embed(
+            title="Text to Emoji",
+            description=gpt(
+                text, data["system_content"][0]["text_to_emoji"] + char_limit, 1.2
+            ),
+            color=0x002AFF,
+        )
+        embed.set_author(
+            name="GPT Bot",
+            url="https://www.alby08.com",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+        )
 
         # Send as followup message
         await interaction.followup.send(embed=embed)
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
-        await interaction.followup.send("An error occurred while processing the command.")
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+
 
 # -------------------------- TEXT TO BLOCK LETTERS ----------------------------------
-@client.tree.command(name="gpt_text_to_block_letters", description="Converts text into block letters")
+@client.tree.command(
+    name="gpt_text_to_block_letters", description="Converts text into block letters"
+)
 @app_commands.rename(text="text")
 @app_commands.describe(text="Text to convert into block letters")
-async def send(interaction: discord.Interaction, text: str):
+async def send(interaction: discord.Interaction, text: str):  # noqa: F811
     try:
-        await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
-        
-        embed=discord.Embed(title="Text to block letter emojis", description= gpt(text, data["system_content"][0]["text_to_block_letters"] + char_limit, 0.7) ,color=0x002aff)
-        embed.set_author(name="GPT Bot", url="https://www.alby08.com", icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png")
+        await interaction.response.defer(
+            ephemeral=False
+        )  # Defer the response to prevent command timeout
+
+        embed = discord.Embed(
+            title="Text to block letter emojis",
+            description=gpt(
+                text,
+                data["system_content"][0]["text_to_block_letters"] + char_limit,
+                0.7,
+            ),
+            color=0x002AFF,
+        )
+        embed.set_author(
+            name="GPT Bot",
+            url="https://www.alby08.com",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+        )
 
         # Send as followup message
         await interaction.followup.send(embed=embed)
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
-        await interaction.followup.send("An error occurred while processing the command.")
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+
 
 client.run(token)
