@@ -154,14 +154,17 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed = discord.Embed(
             title="Correct Grammar",
             description=gpt(
-                "gpt-3.5-turbo-16k", text, data["system_content"][0]["correct_grammar"] + char_limit, 0
+                "gpt-3.5-turbo-16k",
+                text,
+                data["system_content"][0]["correct_grammar"] + char_limit,
+                0,
             ),
             color=0x002AFF,
         )
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
         )
 
         # Send as followup message
@@ -190,14 +193,17 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed = discord.Embed(
             title="Single Page Website",
             description=gpt(
-                "gpt-3.5-turbo-16k", text, data["system_content"][0]["single_page_website"] + char_limit, 0.7
+                "gpt-3.5-turbo-16k",
+                text,
+                data["system_content"][0]["single_page_website"] + char_limit,
+                0.7,
             ),
             color=0x002AFF,
         )
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
         )
 
         # Send as followup message
@@ -223,14 +229,17 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed = discord.Embed(
             title="Text to Emoji",
             description=gpt(
-                "gpt-3.5-turbo-16k", text, data["system_content"][0]["text_to_emoji"] + char_limit, 0.7
+                "gpt-3.5-turbo-16k",
+                text,
+                data["system_content"][0]["text_to_emoji"] + char_limit,
+                0.7,
             ),
             color=0x002AFF,
         )
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
         )
 
         # Send as followup message
@@ -268,7 +277,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
         )
 
         # Send as followup message
@@ -279,7 +288,8 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         await interaction.followup.send(
             "An error occurred while processing the command."
         )
-        
+
+
 # -------------------------- PYTHON DEBUG ----------------------------------
 @client.tree.command(
     name="gpt_debug_python_code", description="Debugs your python code"
@@ -305,7 +315,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
         )
 
         # Send as followup message
@@ -316,7 +326,8 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         await interaction.followup.send(
             "An error occurred while processing the command."
         )
-        
+
+
 # -------------------------- SHORT STORY ----------------------------------
 @client.tree.command(
     name="gpt_short_story", description="Writes a short story about a topic"
@@ -342,7 +353,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         embed.set_author(
             name="GPT Bot",
             url="https://www.alby08.com",
-            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png"
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
         )
 
         # Send as followup message
