@@ -3,9 +3,15 @@ from discord import app_commands
 import sys
 import os
 from dotenv import load_dotenv
-from Chat_GPT_Function import *
+from Chat_GPT_Function import gpt
+import json
 
 load_dotenv(override=True)
+
+with open("projects/Chat-GPT-Discord-Bot/GPT_Parameters.json") as f:
+    data = json.load(f)
+    
+char_limit = data["system_content"][0]["character_limit_prompt"]
 
 try:
     token = os.getenv("BOT_TOKEN") # returns a str
@@ -103,7 +109,8 @@ async def ping(interaction: discord.Interaction):
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
         await interaction.followup.send("An error occurred while processing the command.")
-        
+
+# -------------------------- CORRECT GRAMMAR ----------------------------------
 @client.tree.command(name="gpt_correct_grammar", description="Corrects grammar of inputted text")
 @app_commands.rename(text="text_to_correct")
 @app_commands.describe(text="Text to grammar correct")
@@ -111,7 +118,7 @@ async def send(interaction: discord.Interaction, text: str):
     try:
         await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
         
-        embed=discord.Embed(title="Correct Grammar", description= correct_grammar(text) ,color=0x002aff)
+        embed=discord.Embed(title="Correct Grammar", description= gpt(text, data["system_content"][0]["correct_grammar"] + char_limit, 0.7) ,color=0x002aff)
         embed.set_author(name="GPT Bot", url="https://www.alby08.com", icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png")
 
         # Send as followup message
@@ -120,7 +127,8 @@ async def send(interaction: discord.Interaction, text: str):
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
         await interaction.followup.send("An error occurred while processing the command.")
-        
+    
+# -------------------------- WEBSITE ----------------------------------
 @client.tree.command(name="gpt_single_page_website", description="Creates a single paged website with embedded Javascript and CSS")
 @app_commands.rename(text="website_prompt")
 @app_commands.describe(text="Website page specifications")
@@ -128,7 +136,7 @@ async def send(interaction: discord.Interaction, text: str):
     try:
         await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
         
-        embed=discord.Embed(title="Single Page Website", description= single_page_website(text) ,color=0x002aff)
+        embed=discord.Embed(title="Single Page Website", description= gpt(text, data["system_content"][0]["single_page_website"] + char_limit, 0.7) ,color=0x002aff)
         embed.set_author(name="GPT Bot", url="https://www.alby08.com", icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png")
 
         # Send as followup message
@@ -137,7 +145,8 @@ async def send(interaction: discord.Interaction, text: str):
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
         await interaction.followup.send("An error occurred while processing the command.")
-        
+
+# -------------------------- TEXT TO EMOJI ----------------------------------
 @client.tree.command(name="gpt_text_to_emoji", description="Converts text to emojis")
 @app_commands.rename(text="text")
 @app_commands.describe(text="Text to convert to emojis")
@@ -145,7 +154,7 @@ async def send(interaction: discord.Interaction, text: str):
     try:
         await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
         
-        embed=discord.Embed(title="Text to Emoji", description= text_to_emoji(text) ,color=0x002aff)
+        embed=discord.Embed(title="Text to Emoji", description= gpt(text, data["system_content"][0]["text_to_emoji"] + char_limit, 1.2) ,color=0x002aff)
         embed.set_author(name="GPT Bot", url="https://www.alby08.com", icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png")
 
         # Send as followup message
@@ -154,7 +163,8 @@ async def send(interaction: discord.Interaction, text: str):
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
         await interaction.followup.send("An error occurred while processing the command.")
-        
+
+# -------------------------- TEXT TO BLOCK LETTERS ----------------------------------
 @client.tree.command(name="gpt_text_to_block_letters", description="Converts text into block letters")
 @app_commands.rename(text="text")
 @app_commands.describe(text="Text to convert into block letters")
@@ -162,7 +172,7 @@ async def send(interaction: discord.Interaction, text: str):
     try:
         await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
         
-        embed=discord.Embed(title="Text to Emoji", description= text_to_block_letters(text) ,color=0x002aff)
+        embed=discord.Embed(title="Text to block letter emojis", description= gpt(text, data["system_content"][0]["text_to_block_letters"] + char_limit, 0.7) ,color=0x002aff)
         embed.set_author(name="GPT Bot", url="https://www.alby08.com", icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png")
 
         # Send as followup message
