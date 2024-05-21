@@ -6,10 +6,10 @@ load_dotenv(override=True)
 
 gpt_api_key = os.getenv("GPT_API_KEY")
 
-def gpt(prompt: str, sys_prompt: str, temp: float):
+def gpt(model: str, prompt: str, sys_prompt: str, temp: float):
     client = OpenAI(api_key= gpt_api_key)
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo-16k",
+        model = model,
         messages=[
             {
                 "role": "system",
@@ -20,7 +20,7 @@ def gpt(prompt: str, sys_prompt: str, temp: float):
                 "content": prompt
             }
         ],
-        temperature=temp,
+        temperature = temp,
         # max_tokens=64,
         top_p=1
     )
