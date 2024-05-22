@@ -54,3 +54,7 @@ System (CAS) that allows users to perform various mathematical computations. The
 ## Contact
 
 [GitHub Profile](https://github.com/ca20110820)
+
+## License
+
+[![License](https://img.shields.io/static/v1?label=Licence&message=GPL-3-0&color=blue)](https://opensource.org/license/GPL-3-0)
