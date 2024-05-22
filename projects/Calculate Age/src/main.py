@@ -2,6 +2,16 @@ from calculate_age import age_calculator
 
 
 def main():
+    """
+        the user to input name and age, validate input,
+        and calculates and displays the user age in years, months and days.
+
+        Args:
+            None.
+
+        Return:
+            None.
+        """
     input_name = input("input your name: ")
 
     while True:
