@@ -3,10 +3,10 @@ import nltk
 import re
 import json
 
-nltk.download('wordnet', quiet=True)
+nltk.download("wordnet", quiet=True)
 
 # Load irregular adjectives from a JSON file
-with open('irregular_adjectives.json', 'r') as f:
+with open("irregular_adjectives.json", "r") as f:
     IRREGULAR_ADJECTIVES = json.load(f)
 
 
@@ -17,8 +17,7 @@ def get_comp_sup(adjs):
         synsets = wordnet.synsets(adj, pos=wordnet.ADJ)
         if synsets:
             syn = synsets[0]
-            comp_forms = [lemma.name().replace('_', ' ')
-                          for lemma in syn.lemmas()]
+            comp_forms = [lemma.name().replace("_", " ") for lemma in syn.lemmas()]
             if len(comp_forms) >= 2:
                 comp_form = comp_forms[1]
             else:
@@ -53,7 +52,7 @@ def get_superlative_form(adj):
 
 
 def main():
-    adjs = input("Enter a list of adjectives (comma-separated): ").split(',')
+    adjs = input("Enter a list of adjectives (comma-separated): ").split(",")
     adjs = [adj.strip() for adj in adjs]
 
     comp_sup = get_comp_sup(adjs)

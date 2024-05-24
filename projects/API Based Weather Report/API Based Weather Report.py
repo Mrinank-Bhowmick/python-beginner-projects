@@ -38,19 +38,35 @@ def write_to_file(location, weather_data):
 
             # Writing temperature information to the file
             if "main" in weather_data and "temp" in weather_data["main"]:
-                f.write("\tCurrent temperature is : {:.2f} °C\n".format(weather_data["main"]["temp"] - 273.15))
+                f.write(
+                    "\tCurrent temperature is : {:.2f} °C\n".format(
+                        weather_data["main"]["temp"] - 273.15
+                    )
+                )
 
             # Writing weather description information to the file
             if "weather" in weather_data and weather_data["weather"]:
-                f.write("\tCurrent weather desc   : " + weather_data["weather"][0]["description"] + "\n")
+                f.write(
+                    "\tCurrent weather desc   : "
+                    + weather_data["weather"][0]["description"]
+                    + "\n"
+                )
 
             # Writing humidity information to the file
             if "main" in weather_data and "humidity" in weather_data["main"]:
-                f.write("\tCurrent Humidity       : {} %\n".format(weather_data["main"]["humidity"]))
+                f.write(
+                    "\tCurrent Humidity       : {} %\n".format(
+                        weather_data["main"]["humidity"]
+                    )
+                )
 
             # Writing wind speed information to the file
             if "wind" in weather_data and "speed" in weather_data["wind"]:
-                f.write("\tCurrent wind speed     : {} km/h \n".format(weather_data["wind"]["speed"]))
+                f.write(
+                    "\tCurrent wind speed     : {} km/h \n".format(
+                        weather_data["wind"]["speed"]
+                    )
+                )
 
         # Printing confirmation message after writing to file
         print("Weather information written to weatherinfo.txt")
@@ -65,7 +81,9 @@ def main():
     # Printing welcome messages and instructions
     print("Welcome to the Weather Information App!")
     print("You need an API key to access weather data from OpenWeatherMap.")
-    print("You can obtain your API key by signing up at https://home.openweathermap.org/users/sign_up")
+    print(
+        "You can obtain your API key by signing up at https://home.openweathermap.org/users/sign_up"
+    )
 
     # Prompting the user to input API key and city name
     api_key = input("Please enter your OpenWeatherMap API key: ")
@@ -80,7 +98,11 @@ def main():
         write_to_file(location, weather_data)
 
         # Printing weather information to console
-        print("Current temperature is: {:.2f} °C".format(weather_data["main"]["temp"] - 273.15))
+        print(
+            "Current temperature is: {:.2f} °C".format(
+                weather_data["main"]["temp"] - 273.15
+            )
+        )
         print("Current weather desc  : " + weather_data["weather"][0]["description"])
         print("Current Humidity      :", weather_data["main"]["humidity"], "%")
         print("Current wind speed    :", weather_data["wind"]["speed"], "kmph")

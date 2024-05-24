@@ -7,6 +7,7 @@ def rotate90(grid):
     """
     return list(zip(*grid[::-1]))
 
+
 def print2DGrid(grid):
     """Prints a 2D grid
     Args:
@@ -16,21 +17,24 @@ def print2DGrid(grid):
     """
     for row in range(len(grid)):
         for col in range(len(grid[row])):
-            print(grid[row][col], end='')
+            print(grid[row][col], end="")
 
         print()
 
+
 if __name__ == "__main__":
 
-    grid = [['.', '.', '.', '.', '.', '.'],
-        ['.', 'O', 'O', '.', '.', '.'],
-        ['O', 'O', 'O', 'O', '.', '.'],
-        ['O', 'O', 'O', 'O', 'O', '.'],
-        ['.', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', '.'],
-        ['O', 'O', 'O', 'O', '.', '.'],
-        ['.', 'O', 'O', '.', '.', '.'],
-        ['.', '.', '.', '.', '.', '.']]
+    grid = [
+        [".", ".", ".", ".", ".", "."],
+        [".", "O", "O", ".", ".", "."],
+        ["O", "O", "O", "O", ".", "."],
+        ["O", "O", "O", "O", "O", "."],
+        [".", "O", "O", "O", "O", "O"],
+        ["O", "O", "O", "O", "O", "."],
+        ["O", "O", "O", "O", ".", "."],
+        [".", "O", "O", ".", ".", "."],
+        [".", ".", ".", ".", ".", "."],
+    ]
 
     gridRotated = rotate90(grid)
     print2DGrid(gridRotated)
