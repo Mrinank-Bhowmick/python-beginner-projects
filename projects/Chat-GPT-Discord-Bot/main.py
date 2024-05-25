@@ -69,7 +69,7 @@ client = MyClient(intents=intents)
 @client.event
 async def on_ready():
     print(
-        f"--------------------------------------------- \nLogged in as {client.user} (ID: {client.user.id}) \n--------------------------------------------- \n"
+        f"--------------------------------------------- \nLogged in as {client.user} (ID: {client.user.id}) \n---------------------------------------------"
     )
     await client.change_presence(
         activity=discord.Activity(
