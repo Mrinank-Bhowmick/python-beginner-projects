@@ -75,7 +75,7 @@ async def on_ready():
     )  # This changes the activity that is displayed
     # under the bots name in the members list.
 
-
+# -------------------------- TEST COMMAND ----------------------------------
 @client.tree.command(name="test_bot", description="Replies with 'Hello!'")
 async def running_test(interaction: discord.Interaction):
     await interaction.response.send_message(
@@ -83,7 +83,7 @@ async def running_test(interaction: discord.Interaction):
     )  # ephemeral=True means the bots response is only visible
     # to the user who used the command.
 
-
+# -------------------------- SHUTDOWN ----------------------------------
 @client.tree.command(
     name="shutdown", description="Shuts down the bot"
 )  # Shuts down the bot if the user matches the owner_uid
@@ -96,7 +96,7 @@ async def shutdown_bot(interaction: discord.Interaction):
             "You don't have permission to shut down the bot.", ephemeral=True
         )
 
-
+# -------------------------- DELETE MESSAGES ----------------------------------
 @client.tree.command(
     name="clear",
     description="Deletes defined number of messages from the current channel.",
@@ -118,7 +118,7 @@ async def send(interaction: discord.Interaction, to_delete: int):
             content=f"Deleted {to_delete} messages."
         )
 
-
+# -------------------------- BOT LATENCY ----------------------------------
 @client.tree.command(name="ping", description="Get bot latency")
 async def ping(interaction: discord.Interaction):
     try:
