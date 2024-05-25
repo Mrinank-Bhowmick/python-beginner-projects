@@ -227,12 +227,18 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         await interaction.response.defer(
             ephemeral=False
         )  # Defer the response to prevent command timeout
+        
+        if len(text) > 230:
+            await interaction.followup.send("GPT prompt is too long please try again (max prompt length is 230 characters)")
+            return
+        else:
+            gpt_prompt = text
 
         embed = discord.Embed(
-            title="Text to Emoji",
+            title=f'Text to Emoji - "{text}"',
             description=gpt(
                 "gpt-3.5-turbo-16k",
-                text,
+                gpt_prompt,
                 data["system_content"][0]["text_to_emoji"] + char_limit,
                 0.7,
             ),
