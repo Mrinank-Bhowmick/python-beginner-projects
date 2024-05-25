@@ -68,20 +68,27 @@ client = MyClient(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f"--------------------------------------------- \nLogged in as {client.user} (ID: {client.user.id}) \n--------------------------------------------- \n")
+    print(
+        f"--------------------------------------------- \nLogged in as {client.user} (ID: {client.user.id}) \n--------------------------------------------- \n"
+    )
     await client.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching, name="For Slash Commands"
         )
     )  # This changes the activity that is displayed under the bots name in the members list.
-    dm_user = await client.fetch_user(owner_uid) # Remove this if you dont want the bot to dm you
-    await dm_user.send("Bot Online!") # Remove this if you dont want the bot to dm you
-    
+    dm_user = await client.fetch_user(
+        owner_uid
+    )  # Remove this if you dont want the bot to dm you
+    await dm_user.send("Bot Online!")  # Remove this if you dont want the bot to dm you
+
+
 # -------------------------- HELP COMMAND ----------------------------------
 @client.tree.command(name="help", description="Lists all commands")
 async def send(interaction: discord.Interaction):
     try:
-        await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
+        await interaction.response.defer(
+            ephemeral=False
+        )  # Defer the response to prevent command timeout
         embed = discord.Embed(
             title="Command List",
             description="List of all available commands",
@@ -95,7 +102,9 @@ async def send(interaction: discord.Interaction):
         for slash_command in client.tree.walk_commands():
             embed.add_field(
                 name=slash_command.name,
-                value=slash_command.description if slash_command.description else slash_command.name,
+                value=slash_command.description
+                if slash_command.description
+                else slash_command.name,
                 inline=False,
             )
         # Send as followup message
@@ -103,7 +112,10 @@ async def send(interaction: discord.Interaction):
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
-        await interaction.followup.send("An error occurred while processing the command.")
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+
 
 # -------------------------- TEST COMMAND ----------------------------------
 @client.tree.command(name="test_bot", description="Replies with 'Hello!'")
@@ -112,6 +124,7 @@ async def running_test(interaction: discord.Interaction):
         f"Hello, {interaction.user.mention}", ephemeral=True
     )  # ephemeral=True means the bots response is only visible
     # to the user who used the command.
+
 
 # -------------------------- SHUTDOWN ----------------------------------
 @client.tree.command(
@@ -126,6 +139,7 @@ async def shutdown_bot(interaction: discord.Interaction):
             "You don't have permission to shut down the bot.", ephemeral=True
         )
 
+
 # -------------------------- DELETE MESSAGES ----------------------------------
 @client.tree.command(
     name="clear",
@@ -133,7 +147,7 @@ async def shutdown_bot(interaction: discord.Interaction):
 )
 @app_commands.rename(to_delete="messages")
 @app_commands.describe(to_delete="Number of messages to delete")
-async def send(interaction: discord.Interaction, to_delete: int):
+async def send(interaction: discord.Interaction, to_delete: int):  # noqa: F811
     await interaction.response.defer(ephemeral=True)
     if not interaction.user.guild_permissions.manage_messages:
         await interaction.followup.send("Invalid permissions")
@@ -147,6 +161,7 @@ async def send(interaction: discord.Interaction, to_delete: int):
         await interaction.edit_original_response(
             content=f"Deleted {to_delete} messages."
         )
+
 
 # -------------------------- BOT LATENCY ----------------------------------
 @client.tree.command(name="ping", description="Get bot latency")
@@ -255,9 +270,11 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         await interaction.response.defer(
             ephemeral=False
         )  # Defer the response to prevent command timeout
-        
+
         if len(text) > 230:
-            await interaction.followup.send("GPT prompt is too long please try again (max prompt length is 230 characters)")
+            await interaction.followup.send(
+                "GPT prompt is too long please try again (max prompt length is 230 characters)"
+            )
             return
         else:
             gpt_prompt = text
@@ -327,9 +344,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
 
 
 # -------------------------- CODE DEBUG ----------------------------------
-@client.tree.command(
-    name="gpt_debug_code", description="Debugs your code"
-)
+@client.tree.command(name="gpt_debug_code", description="Debugs your code")
 @app_commands.rename(text="code")
 @app_commands.describe(text="Code to debug")
 async def send(interaction: discord.Interaction, text: str):  # noqa: F811
@@ -400,22 +415,22 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         await interaction.followup.send(
             "An error occurred while processing the command."
         )
-        
+
+
 # -------------------------- GENERAL QUESTION ----------------------------------
-@client.tree.command(
-    name="gpt_general_question", description="For all your questions"
-)
+@client.tree.command(name="gpt_general_question", description="For all your questions")
 @app_commands.rename(text="prompt")
 @app_commands.describe(text="What do you want to ask chatGPT?")
 async def send(interaction: discord.Interaction, text: str):  # noqa: F811
-    
     try:
         await interaction.response.defer(
             ephemeral=False
         )  # Defer the response to prevent command timeout
-        
+
         if len(text) > 230:
-            await interaction.followup.send("GPT prompt is too long please try again (max prompt length is 230 characters)")
+            await interaction.followup.send(
+                "GPT prompt is too long please try again (max prompt length is 230 characters)"
+            )
             return
         else:
             gpt_prompt = text
@@ -444,5 +459,6 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         await interaction.followup.send(
             "An error occurred while processing the command."
         )
+
 
 client.run(token)
