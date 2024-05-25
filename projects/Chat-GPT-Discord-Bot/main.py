@@ -91,7 +91,7 @@ async def send(interaction: discord.Interaction):
         )  # Defer the response to prevent command timeout
         embed = discord.Embed(
             title="Command List",
-            description="List of all available commands",
+            description="-----------------------------------------",
             color=0x002AFF,
         )
         embed.set_author(
@@ -102,7 +102,7 @@ async def send(interaction: discord.Interaction):
         for slash_command in client.tree.walk_commands():
             embed.add_field(
                 name=slash_command.name,
-                value=slash_command.description
+                value=f"- {slash_command.description}\n-----------------------------------------"
                 if slash_command.description
                 else slash_command.name,
                 inline=False,
@@ -128,7 +128,7 @@ async def running_test(interaction: discord.Interaction):
 
 # -------------------------- SHUTDOWN ----------------------------------
 @client.tree.command(
-    name="shutdown", description="Shuts down the bot"
+    name="shutdown", description="Shuts down the bot if you are the bot owner"
 )  # Shuts down the bot if the user matches the owner_uid
 async def shutdown_bot(interaction: discord.Interaction):
     if interaction.user.id == owner_uid:
