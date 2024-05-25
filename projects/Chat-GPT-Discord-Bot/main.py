@@ -290,9 +290,9 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         )
 
 
-# -------------------------- PYTHON DEBUG ----------------------------------
+# -------------------------- CODE DEBUG ----------------------------------
 @client.tree.command(
-    name="gpt_debug_python_code", description="Debugs your python code"
+    name="gpt_debug_code", description="Debugs your code"
 )
 @app_commands.rename(text="code")
 @app_commands.describe(text="Code to debug")
@@ -303,11 +303,11 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         )  # Defer the response to prevent command timeout
 
         embed = discord.Embed(
-            title="Python Debug",
+            title="Code Debug",
             description=gpt(
                 "gpt-4",
                 text,
-                data["system_content"][0]["python_debug"] + char_limit,
+                data["system_content"][0]["code_debug"] + char_limit,
                 0,
             ),
             color=0x002AFF,
@@ -346,7 +346,51 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
                 "gpt-4",
                 text,
                 data["system_content"][0]["short_story"],
-                0,
+                0.7,
+            ),
+            color=0x002AFF,
+        )
+        embed.set_author(
+            name="GPT Bot",
+            url="https://www.alby08.com",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+        )
+
+        # Send as followup message
+        await interaction.followup.send(embed=embed)
+    except Exception as e:
+        # Handle exceptions
+        print(f"An error occurred: {str(e)}")
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+        
+# -------------------------- GENERAL QUESTION ----------------------------------
+@client.tree.command(
+    name="gpt_general_question", description="For all your questions"
+)
+@app_commands.rename(text="prompt")
+@app_commands.describe(text="What do you want to ask chatGPT?")
+async def send(interaction: discord.Interaction, text: str):  # noqa: F811
+    
+    try:
+        await interaction.response.defer(
+            ephemeral=False
+        )  # Defer the response to prevent command timeout
+        
+        if len(text) > 230:
+            await interaction.followup.send("GPT prompt is too long please try again (max prompt length is 230 characters)")
+            return
+        else:
+            gpt_prompt = text
+
+        embed = discord.Embed(
+            title=f'General Question - "{text}"',
+            description=gpt(
+                "gpt-3.5-turbo-16k",
+                gpt_prompt,
+                data["system_content"][0]["general_questions"],
+                0.7,
             ),
             color=0x002AFF,
         )
