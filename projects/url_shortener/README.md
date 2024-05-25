@@ -27,3 +27,7 @@ I built code quality tools into project (linting, formatting, type annotation ch
 2. `ruff check --fix` - fix linting
 3. `ruff format` - formatting
 4. `mypy .` - type annotation checking
+
+
+Author: [justinjohnson-dev](https://github.com/justinjohnson-dev)
+Last Update: 05/25/2024
