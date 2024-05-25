@@ -66,14 +66,12 @@ client = MyClient(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user} (ID: {client.user.id})")
-    print("-------------------------------")
+    print(f"--------------------------------------------- \nLogged in as {client.user} (ID: {client.user.id}) \n--------------------------------------------- \n")
     await client.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching, name="For Slash Commands"
         )
-    )  # This changes the activity that is displayed
-    # under the bots name in the members list.
+    )  # This changes the activity that is displayed under the bots name in the members list.
 
 # -------------------------- TEST COMMAND ----------------------------------
 @client.tree.command(name="test_bot", description="Replies with 'Hello!'")
