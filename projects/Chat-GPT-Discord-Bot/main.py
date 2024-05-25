@@ -76,10 +76,12 @@ async def on_ready():
             type=discord.ActivityType.watching, name="For Slash Commands"
         )
     )  # This changes the activity that is displayed under the bots name in the members list.
-    dm_user = await client.fetch_user(
-        owner_uid
-    )  # Remove this if you dont want the bot to dm you
-    await dm_user.send("Bot Online!")  # Remove this if you dont want the bot to dm you
+    
+    # dm_user = await client.fetch_user(
+    #     owner_uid
+    # )
+    # await dm_user.send("Bot Online!")
+    # Uncomment this if you want the bot to dm you
 
 
 # -------------------------- HELP COMMAND ----------------------------------
