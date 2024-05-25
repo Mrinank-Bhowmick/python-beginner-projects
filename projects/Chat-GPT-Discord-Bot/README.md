@@ -1,6 +1,6 @@
 # Requirements
 
-This project requires discord.py version 2.3.2, OpenAI version 1.30.1 and python-dotenv version 1.0.1 which can be installed via `requirements.txt`:
+This project requires python version 3.12.3 discord.py version 2.3.2, OpenAI version 1.30.1 and python-dotenv version 1.0.1 which can be installed via `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
