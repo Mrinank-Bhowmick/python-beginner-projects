@@ -9,9 +9,9 @@ import json
 load_dotenv(override=True)
 
 with open("projects/Chat-GPT-Discord-Bot/GPT_Parameters.json") as f:
-    data = json.load(f)
+    data = json.load(f) # Loads the gpt system prompts
 
-char_limit = data["system_content"][0]["character_limit_prompt"]
+char_limit = data["system_content"][0]["character_limit_prompt"] # Makes sure that the gpt output wont exceed the discord embed character limit of 4096 characters
 
 try:
     token = os.getenv("BOT_TOKEN")  # returns a str
@@ -198,6 +198,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
             ephemeral=False
         )  # Defer the response to prevent command timeout
 
+        # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
             title="Correct Grammar",
             description=gpt(
@@ -237,6 +238,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
             ephemeral=False
         )  # Defer the response to prevent command timeout
 
+        # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
             title="Single Page Website",
             description=gpt(
@@ -281,6 +283,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         else:
             gpt_prompt = text
 
+        # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
             title=f'Text to Emoji - "{text}"',
             description=gpt(
@@ -319,6 +322,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
             ephemeral=False
         )  # Defer the response to prevent command timeout
 
+        # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
             title="Text to block letter emojis",
             description=gpt(
@@ -355,6 +359,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
             ephemeral=False
         )  # Defer the response to prevent command timeout
 
+        # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
             title="Code Debug",
             description=gpt(
@@ -393,6 +398,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
             ephemeral=False
         )  # Defer the response to prevent command timeout
 
+        # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
             title="Short Story",
             description=gpt(
@@ -437,6 +443,7 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         else:
             gpt_prompt = text
 
+        # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
             title=f'General Question - "{text}"',
             description=gpt(
