@@ -1,0 +1,16 @@
+annotated-types==0.7.0
+certifi==2024.2.2
+charset-normalizer==3.3.2
+idna==3.7
+mypy==1.10.0
+mypy-extensions==1.0.0
+pydantic==2.7.1
+pydantic_core==2.18.2
+pypiwin32==223
+pyshorteners==1.0.1
+pywin32==306
+requests==2.32.2
+ruff==0.4.5
+setuptools==70.0.0
+typing_extensions==4.12.0
+urllib3==2.2.1
