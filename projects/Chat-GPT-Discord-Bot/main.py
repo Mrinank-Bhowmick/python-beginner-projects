@@ -76,6 +76,34 @@ async def on_ready():
     )  # This changes the activity that is displayed under the bots name in the members list.
     dm_user = await client.fetch_user(owner_uid) # Remove this if you dont want the bot to dm you
     await dm_user.send("Bot Online!") # Remove this if you dont want the bot to dm you
+    
+# -------------------------- HELP COMMAND ----------------------------------
+@client.tree.command(name="help", description="Lists all commands")
+async def send(interaction: discord.Interaction):
+    try:
+        await interaction.response.defer(ephemeral=False)  # Defer the response to prevent command timeout
+        embed = discord.Embed(
+            title="Command List",
+            description="List of all available commands",
+            color=0x002AFF,
+        )
+        embed.set_author(
+            name="GPT Bot",
+            url="https://www.alby08.com",
+            icon_url="https://cdn.discordapp.com/app-icons/1232584775987105802/3036d40ad667cd4b851cf78b2119e5b3.png",
+        )
+        for slash_command in client.tree.walk_commands():
+            embed.add_field(
+                name=slash_command.name,
+                value=slash_command.description if slash_command.description else slash_command.name,
+                inline=False,
+            )
+        # Send as followup message
+        await interaction.followup.send(embed=embed)
+    except Exception as e:
+        # Handle exceptions
+        print(f"An error occurred: {str(e)}")
+        await interaction.followup.send("An error occurred while processing the command.")
 
 # -------------------------- TEST COMMAND ----------------------------------
 @client.tree.command(name="test_bot", description="Replies with 'Hello!'")
@@ -416,6 +444,5 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
         await interaction.followup.send(
             "An error occurred while processing the command."
         )
-
 
 client.run(token)
