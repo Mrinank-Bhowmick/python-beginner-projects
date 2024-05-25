@@ -72,6 +72,8 @@ async def on_ready():
             type=discord.ActivityType.watching, name="For Slash Commands"
         )
     )  # This changes the activity that is displayed under the bots name in the members list.
+    dm_user = await client.fetch_user(owner_uid)
+    await dm_user.send("Bot Online!")
 
 # -------------------------- TEST COMMAND ----------------------------------
 @client.tree.command(name="test_bot", description="Replies with 'Hello!'")
