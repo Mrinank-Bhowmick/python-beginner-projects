@@ -528,8 +528,8 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
         else:
             img_style = img_style.lower()
             
-        loop = asyncio.get_event_loop()
-        image_url = await loop.run_in_executor(None, dalle3, prompt, img_quality, img_dimensions, img_style)
+        loop = asyncio.get_event_loop()  # Prevents heartbeat block warning and bot disconnecting from discord error
+        image_url = await loop.run_in_executor(None, dalle3, prompt, img_quality, img_dimensions, img_style)  # Prevents heartbeat block warning and bot disconnecting from discord error
 
         # Send as followup message
         await interaction.followup.send(f"{image_url} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")
@@ -564,8 +564,8 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
         else:
             img_dimensions = img_dimensions.lower()
             
-        loop = asyncio.get_event_loop()
-        image_url = await loop.run_in_executor(None, dalle2, prompt, img_dimensions)
+        loop = asyncio.get_event_loop()  # Prevents heartbeat block warning and bot disconnecting from discord error
+        image_url = await loop.run_in_executor(None, dalle2, prompt, img_dimensions)  # Prevents heartbeat block warning and bot disconnecting from discord error
 
         # Send as followup message
         await interaction.followup.send(f"{image_url} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")  # Convert future_time to unix timestamp.
