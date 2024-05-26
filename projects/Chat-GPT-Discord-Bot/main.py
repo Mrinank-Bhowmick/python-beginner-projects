@@ -3,8 +3,10 @@ from discord import app_commands
 import sys
 import os
 from dotenv import load_dotenv
-from Chat_GPT_Function import gpt
+from Chat_GPT_Function import gpt, dalle3, dalle2
 import json
+from datetime import datetime, timedelta
+import time
 
 load_dotenv(override=True)
 
@@ -39,7 +41,7 @@ discord_server_2 = discord.Object(
 
 class MyClient(discord.Client):
     def __init__(self, *, intents: discord.Intents):
-        super().__init__(intents=intents)
+        super().__init__(heartbeat_timeout=90, intents=intents)  # heartbeat_timeout=90 prevents the bot disconnecting from discord when running the dalle commands
         # A CommandTree is a special type that holds all the application command
         # state required to make it work. This is a separate class because it
         # allows all the extra states to be opt-in.
@@ -463,6 +465,90 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
 
         # Send as followup message
         await interaction.followup.send(embed=embed)
+    except Exception as e:
+        # Handle exceptions
+        print(f"An error occurred: {str(e)}")
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+        
+# -------------------------- DALLE 3 ----------------------------------
+@client.tree.command(name="dalle_3", description="Generates an image with DALL·E 3")
+@app_commands.describe(prompt="Describe the image you want DALL·E 3 to create")
+@app_commands.describe(img_dimensions="Must be either 1024x1024, 1792x1024, or 1024x1792 for dall-e-3")
+@app_commands.describe(img_quality="Must be either hd or standard. HD = images with finer details and greater consistency across the image.")
+@app_commands.describe(img_style="Must be either vivid or natural. Vivid = hyper-real and dramatic images. Natural = more natural, less hyper-real looking images.")
+async def send(interaction: discord.Interaction, prompt: str, img_dimensions: str, img_quality: str, img_style: str):  # noqa: F811
+    try:
+        await interaction.response.defer(
+            ephemeral=False
+        )  # Defer the response to prevent command timeout
+        
+        # Get the current time
+        current_time = datetime.now()
+        
+        # Add 1 hour to the current time
+        future_time = current_time + timedelta(hours=1)
+        
+        if img_dimensions.lower() not in ("1024x1024", "1792x1024", "1024x1792"):
+            await interaction.followup.send(
+                "Invalid image dimension. Must be either 1024x1024, 1792x1024, or 1024x1792."
+            )
+            return
+        else:
+            img_dimensions = img_dimensions.lower()
+            
+        if img_quality.lower() not in ("hd", "standard"):
+            await interaction.followup.send(
+                "Invalid image quality. Must be either hd or standard."
+            )
+            return
+        else:
+            img_quality = img_quality.lower()
+            
+        if img_style.lower() not in ("vivid", "natural"):
+            await interaction.followup.send(
+                "Invalid image style. Must be either vivid or natural."
+            )
+            return
+        else:
+            img_style = img_style.lower()
+
+        # Send as followup message
+        await interaction.followup.send(f"{dalle3(prompt, img_quality, img_dimensions, img_style)} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")
+    except Exception as e:
+        # Handle exceptions
+        print(f"An error occurred: {str(e)}")
+        await interaction.followup.send(
+            "An error occurred while processing the command."
+        )
+        
+# -------------------------- DALLE 2 ----------------------------------
+@client.tree.command(name="dalle_2", description="Generates an image with DALL·E 2")
+@app_commands.describe(prompt="Describe the image you want DALL·E 2 to create")
+@app_commands.describe(img_dimensions="Must be either 256x256, 512x512, or 1024x1024 for dall-e-2")
+async def send(interaction: discord.Interaction, prompt: str, img_dimensions: str):  # noqa: F811
+    try:
+        await interaction.response.defer(
+            ephemeral=False
+        )  # Defer the response to prevent command timeout
+        
+        # Get the current time
+        current_time = datetime.now()
+        
+        # Add 1 hour to the current time
+        future_time = current_time + timedelta(hours=1)
+        
+        if img_dimensions.lower() not in ("256x256", "512x512", "1024x1024"):
+            await interaction.followup.send(
+                "Invalid image dimension. Must be either 256x256, 512x512, or 1024x1024."
+            )
+            return
+        else:
+            img_dimensions = img_dimensions.lower()
+
+        # Send as followup message
+        await interaction.followup.send(f"{dalle2(prompt, img_dimensions)} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")

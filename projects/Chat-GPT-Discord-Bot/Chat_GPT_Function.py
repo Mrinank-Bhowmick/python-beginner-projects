@@ -26,3 +26,27 @@ def gpt(model: str, prompt: str, sys_prompt: str, temp: float):
     )
     output = response.choices[0].message.content.strip()
     return output
+
+def dalle3(prompt: str, quality: str, size: str, style: str):
+    client = OpenAI(api_key= gpt_api_key)
+    response = client.images.generate(
+        model = "dall-e-3",
+        prompt = prompt,
+        size = size,
+        quality = quality,
+        style = style,
+        n=1,
+        )
+    image_url = response.data[0].url
+    return image_url
+
+def dalle2(prompt: str, size: str):
+    client = OpenAI(api_key= gpt_api_key)
+    response = client.images.generate(
+        model = "dall-e-2",
+        prompt = prompt,
+        size = size,
+        n=1,
+        )
+    image_url = response.data[0].url
+    return image_url
