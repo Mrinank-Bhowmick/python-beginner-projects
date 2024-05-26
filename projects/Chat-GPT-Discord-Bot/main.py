@@ -57,10 +57,10 @@ class MyClient(discord.Client):
     # This allows for faster bot testing and development.
     async def setup_hook(self):
         # This copies the global commands over to your guild(s).
-        self.tree.clear_commands(guild=discord_server_1)
+        self.tree.clear_commands(guild=discord_server_1)  # Prevents command duplication.
         await self.tree.sync(guild=discord_server_1)
         self.tree.clear_commands(guild=discord_server_2)
-        await self.tree.sync(guild=discord_server_2)
+        await self.tree.sync(guild=discord_server_2)  # Prevents command duplication.
         # You can replace these 4 lines with "await self.tree.sync()" if you want the bots commands to...
         # be added to all servers its in (won't take long if your bot isn't in many servers otherwise it could take up to an hour)
 
@@ -561,7 +561,7 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
             img_dimensions = img_dimensions.lower()
 
         # Send as followup message
-        await interaction.followup.send(f"{dalle2(prompt, img_dimensions)} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")
+        await interaction.followup.send(f"{dalle2(prompt, img_dimensions)} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")  # Convert future_time to unix timestamp.
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
