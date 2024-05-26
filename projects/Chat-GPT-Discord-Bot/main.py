@@ -9,9 +9,10 @@ import json
 load_dotenv(override=True)
 
 with open("projects/Chat-GPT-Discord-Bot/GPT_Parameters.json") as f:
-    data = json.load(f) # Loads the gpt system prompts
+    data = json.load(f)  # Loads the gpt system prompts
 
-char_limit = data["system_content"][0]["character_limit_prompt"] # Makes sure that the gpt output wont exceed the discord embed character limit of 4096 characters
+char_limit = data["system_content"][0][
+    "character_limit_prompt"]  # Makes sure that the gpt output won't exceed the discord embed character limit of 4096 characters
 
 try:
     token = os.getenv("BOT_TOKEN")  # returns a str
@@ -59,7 +60,7 @@ class MyClient(discord.Client):
         self.tree.copy_global_to(guild=discord_server_2)
         await self.tree.sync(guild=discord_server_2)
         # You can replace these 4 lines with "await self.tree.sync()" if you want the bots commands to...
-        # be added to all servers its in (wont take long if your bot isnt in many servers otherwise it could take up to an hour)
+        # be added to all servers its in (won't take long if your bot isn't in many servers otherwise it could take up to an hour)
 
 
 intents = discord.Intents.default()
@@ -76,7 +77,7 @@ async def on_ready():
             type=discord.ActivityType.watching, name="For Slash Commands"
         )
     )  # This changes the activity that is displayed under the bots name in the members list.
-    
+
     # dm_user = await client.fetch_user(
     #     owner_uid
     # )
