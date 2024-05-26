@@ -41,7 +41,7 @@ discord_server_2 = discord.Object(
 
 class MyClient(discord.Client):
     def __init__(self, *, intents: discord.Intents):
-        super().__init__(heartbeat_timeout=120, intents=intents)  # heartbeat_timeout prevents the bot disconnecting from discord when running the dalle commands
+        super().__init__(intents=intents)
         # A CommandTree is a special type that holds all the application command
         # state required to make it work. This is a separate class because it
         # allows all the extra states to be opt-in.
@@ -57,9 +57,9 @@ class MyClient(discord.Client):
     # This allows for faster bot testing and development.
     async def setup_hook(self):
         # This copies the global commands over to your guild(s).
-        self.tree.copy_global_to(guild=discord_server_1)
+        self.tree.clear_commands(guild=discord_server_1)
         await self.tree.sync(guild=discord_server_1)
-        self.tree.copy_global_to(guild=discord_server_2)
+        self.tree.clear_commands(guild=discord_server_2)
         await self.tree.sync(guild=discord_server_2)
         # You can replace these 4 lines with "await self.tree.sync()" if you want the bots commands to...
         # be added to all servers its in (won't take long if your bot isn't in many servers otherwise it could take up to an hour)
