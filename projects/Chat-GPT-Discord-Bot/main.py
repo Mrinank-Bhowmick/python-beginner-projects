@@ -85,7 +85,7 @@ async def on_ready():
     #     owner_uid
     # )
     # await dm_user.send("Bot Online!")
-    # Uncomment this if you want the bot to dm you
+    # Uncomment this if you want the bot to dm you when it turns on
 
 
 # -------------------------- HELP COMMAND ----------------------------------
