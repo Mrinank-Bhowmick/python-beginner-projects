@@ -7,6 +7,7 @@ from Chat_GPT_Function import gpt, dalle3, dalle2
 import json
 from datetime import datetime, timedelta
 import time
+import asyncio
 
 load_dotenv(override=True)
 
@@ -526,9 +527,12 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
             return
         else:
             img_style = img_style.lower()
+            
+        loop = asyncio.get_event_loop()
+        image_url = await loop.run_in_executor(None, dalle3, prompt, img_quality, img_dimensions, img_style)
 
         # Send as followup message
-        await interaction.followup.send(f"{dalle3(prompt, img_quality, img_dimensions, img_style)} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")
+        await interaction.followup.send(f"{image_url} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
@@ -559,9 +563,12 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
             return
         else:
             img_dimensions = img_dimensions.lower()
+            
+        loop = asyncio.get_event_loop()
+        image_url = await loop.run_in_executor(None, dalle2, prompt, img_dimensions)
 
         # Send as followup message
-        await interaction.followup.send(f"{dalle2(prompt, img_dimensions)} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")  # Convert future_time to unix timestamp.
+        await interaction.followup.send(f"{image_url} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")  # Convert future_time to unix timestamp.
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
