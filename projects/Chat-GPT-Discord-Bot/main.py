@@ -41,7 +41,7 @@ discord_server_2 = discord.Object(
 
 class MyClient(discord.Client):
     def __init__(self, *, intents: discord.Intents):
-        super().__init__(heartbeat_timeout=90, intents=intents)  # heartbeat_timeout=90 prevents the bot disconnecting from discord when running the dalle commands
+        super().__init__(heartbeat_timeout=120, intents=intents)  # heartbeat_timeout prevents the bot disconnecting from discord when running the dalle commands
         # A CommandTree is a special type that holds all the application command
         # state required to make it work. This is a separate class because it
         # allows all the extra states to be opt-in.
@@ -432,7 +432,8 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
 @client.tree.command(name="gpt_general_question", description="For all your questions")
 @app_commands.rename(text="prompt")
 @app_commands.describe(text="What do you want to ask chatGPT?")
-async def send(interaction: discord.Interaction, text: str):  # noqa: F811
+@app_commands.describe(gpt_model="Possible options = gpt-4 or gpt-3.5 (gpt-3.5-turbo-16k abbreviated)")
+async def send(interaction: discord.Interaction, text: str, gpt_model: str,):  # noqa: F811
     try:
         await interaction.response.defer(
             ephemeral=False
@@ -445,12 +446,24 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
             return
         else:
             gpt_prompt = text
+            
+        if gpt_model.lower() not in ("gpt-4", "gpt-3.5"):
+            await interaction.followup.send(
+                "Invalid GPT model. Must be either gpt-4 or gpt-3.5."
+            )
+            return
+        else:
+            if gpt_model.lower() == "gpt-3.5":
+                gpt_model = "gpt-3.5-turbo-16k"
+            else:
+                gpt_model = gpt_model.lower()
+            
 
         # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
             title=f'General Question - "{text}"',
             description=gpt(
-                "gpt-3.5-turbo-16k",
+                gpt_model,
                 gpt_prompt,
                 data["system_content"][0]["general_questions"],
                 0.7,
