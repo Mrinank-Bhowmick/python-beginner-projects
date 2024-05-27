@@ -14,13 +14,13 @@ class ItemsTable(ttk.Treeview):
     """
 
     _COLUMN_PAIRS = [
-        ('#0', 'ID'),
-        ('name', 'Name'),
-        ('amount', 'Amount'),
-        ('description', 'Description'),
-        ('date', 'Date'),
-        ('category', 'Category'),
-        ('subcategory', 'Subcategory'),
+        ("#0", "ID"),
+        ("name", "Name"),
+        ("amount", "Amount"),
+        ("description", "Description"),
+        ("date", "Date"),
+        ("category", "Category"),
+        ("subcategory", "Subcategory"),
     ]
 
     def __init__(self, parent, items_db: ItemsDB, *args, **kwargs):
@@ -34,7 +34,12 @@ class ItemsTable(ttk.Treeview):
             **kwargs: Additional keyword arguments for `ttk.Treeview`.
         """
 
-        super().__init__(parent, *args, columns=tuple(col for col, _ in self._COLUMN_PAIRS if '#' not in col), **kwargs)
+        super().__init__(
+            parent,
+            *args,
+            columns=tuple(col for col, _ in self._COLUMN_PAIRS if "#" not in col),
+            **kwargs,
+        )
 
         for i, j in self._COLUMN_PAIRS:
             self.heading(i, text=j)
@@ -124,11 +129,7 @@ class ItemsTable(ttk.Treeview):
             else:
                 values += (None, None)
 
-            self.insert('',
-                        idx,
-                        text=f'{item.item_id}',
-                        values=values
-                        )
+            self.insert("", idx, text=f"{item.item_id}", values=values)
 
 
 class SummaryByCategoryPivotTable:
@@ -145,7 +146,7 @@ class SummaryByCategoryPivotTable:
         self.parent = parent
 
         db_path = Path(__file__).resolve().parent
-        self.stats = ExpenseIncomeStats(str(db_path / 'items.json'))
+        self.stats = ExpenseIncomeStats(str(db_path / "items.json"))
         self.tree = None
 
     def update_pivot_table(self):
@@ -176,7 +177,7 @@ class SummaryByCategoryPivotTable:
         for category in data.keys():
             self.tree.heading(category, text=category)
 
-        self.tree['show'] = 'headings'
+        self.tree["show"] = "headings"
 
         def clean_string(input_string):
             cleaned_string = input_string.replace("_", " ").title()
