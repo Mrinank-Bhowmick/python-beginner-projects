@@ -79,7 +79,7 @@ class ExpenseIncomeStats:
             dict: A dictionary containing general statistics for the list of items.
         """
         if len(items) < 1:
-            raise ValueError('The list of items must contain at least one item')
+            raise ValueError("The list of items must contain at least one item")
 
         return {
             "average": statistics.mean(items),
@@ -106,7 +106,9 @@ class ExpenseIncomeStats:
         category_names = self._items_db.get_category_names()
         out_dict = {}
         for category_name in category_names:
-            items = [item for item in self._items_db.get_items_by_category(category_name)]
+            items = [
+                item for item in self._items_db.get_items_by_category(category_name)
+            ]
             out_dict[category_name] = self.get_stats_expense_and_income(items)
 
         return out_dict
@@ -122,14 +124,21 @@ class ExpenseIncomeStats:
         stats_dict = {}
         for category_name in category_names:
             # Case: With Category and Without Subcategory
-            stats_dict[f'{category_name}-NoSubcategory'] = self.get_stats_expense_and_income(
-                self._items_db.get_items_without_subcategory(category_name))
+            stats_dict[f"{category_name}-NoSubcategory"] = (
+                self.get_stats_expense_and_income(
+                    self._items_db.get_items_without_subcategory(category_name)
+                )
+            )
 
             # Case: With Category and With Subcategory
             for subcategory in self._items_db.get_subcategory_names(category_name):
-                stats_dict[f'{category_name}-{subcategory}'] = \
+                stats_dict[f"{category_name}-{subcategory}"] = (
                     self.get_stats_expense_and_income(
-                        self._items_db.get_items_by_category_and_subcategory(category_name, subcategory))
+                        self._items_db.get_items_by_category_and_subcategory(
+                            category_name, subcategory
+                        )
+                    )
+                )
 
         return stats_dict
 
@@ -179,12 +188,12 @@ class Report(ABC):
         rows = []
         for item in items:
             category = item.category
-            row = {k: v for k, v in item.__dict__.items() if k != 'category'}
+            row = {k: v for k, v in item.__dict__.items() if k != "category"}
 
             if category is not None:
-                row['category'] = category.name
+                row["category"] = category.name
                 if category.subcategory is not None:
-                    row['subcategory'] = category.subcategory
+                    row["subcategory"] = category.subcategory
 
             rows.append(row)
 
@@ -201,35 +210,37 @@ class ExcelReport(Report):
         items = self.items_db.get_all_items()
         df = self.to_dataframe(items)
 
-        with pd.ExcelWriter(self.file_path, engine='xlsxwriter') as writer:
+        with pd.ExcelWriter(self.file_path, engine="xlsxwriter") as writer:
             workbook = writer.book
 
             # Raw Data Tab
             df.to_excel(
                 writer,
-                'Data',  # worksheet name
-                index=False  # index does not contain relevant information
+                "Data",  # worksheet name
+                index=False,  # index does not contain relevant information
             )
-            summary_sheet = writer.sheets['Data']  # Assigning a variable to the sheet allows formatting
+            summary_sheet = writer.sheets[
+                "Data"
+            ]  # Assigning a variable to the sheet allows formatting
 
             # Pivot Table Tab
             pivot_table = df.pivot_table(
-                values='amount',
-                index=['category', 'subcategory'],
+                values="amount",
+                index=["category", "subcategory"],
                 aggfunc={
-                    'amount': ['mean', 'max', 'min'],
-                }
+                    "amount": ["mean", "max", "min"],
+                },
             )
 
             # Flatten the hierarchical column index
-            pivot_table.columns = [f'{agg}_amount' for agg in pivot_table.columns]
+            pivot_table.columns = [f"{agg}_amount" for agg in pivot_table.columns]
 
             pivot_table.to_excel(
                 writer,
-                'Summary By Category',  # worksheet name
-                index=True  # index does not contain relevant information
+                "Summary By Category",  # worksheet name
+                index=True,  # index does not contain relevant information
             )
-            summary_sheet = writer.sheets['Summary By Category']
+            summary_sheet = writer.sheets["Summary By Category"]
 
 
 class PdfReport(Report):
@@ -247,11 +258,11 @@ class PdfReport(Report):
 
         # Pivot Table Tab
         pivot_table = df.pivot_table(
-            values='amount',
-            index=['category', 'subcategory'],
+            values="amount",
+            index=["category", "subcategory"],
             aggfunc={
-                'amount': ['mean', 'max', 'min'],
-            }
+                "amount": ["mean", "max", "min"],
+            },
         )
         pivot_table = pivot_table.reset_index()
 
@@ -267,13 +278,17 @@ class PdfReport(Report):
         table = Table(table_data)
 
         # Style the table
-        style = TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.gray),
-                            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-                            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-                            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-                            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-                            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-                            ('GRID', (0, 0), (-1, -1), 1, colors.black)])
+        style = TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), colors.gray),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                ("BOTTOMPADDING", (0, 0), (-1, 0), 12),
+                ("BACKGROUND", (0, 1), (-1, -1), colors.beige),
+                ("GRID", (0, 0), (-1, -1), 1, colors.black),
+            ]
+        )
 
         table.setStyle(style)
 
