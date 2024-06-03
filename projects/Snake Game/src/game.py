@@ -18,7 +18,11 @@ class Game:
             self.play_step()
             game_over, score = self.play_step()
             if game_over:
-                break
+                self.display.render_game_over()
+                self.display.render_play_again()
+                if not self.play_again():
+                    break
+                self.restart_game()
         print("Final Score:", self.score)
         pygame.quit()
 
@@ -77,5 +81,18 @@ class Game:
         if self.food in self.snake.blocks:
             self.place_food()
 
-    def get_score(self):
-        return self.score
+    def play_again(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return False
+                if event.type == pygame.KEYDOWN:
+                    if event.key in [pygame.K_n, pygame.K_ESCAPE]:
+                        return False
+                    if event.key in [pygame.K_y, pygame.K_RETURN]:
+                        return True
+
+    def restart_game(self):
+        self.snake = Snake()
+        self.score = 0
+        self.place_food()

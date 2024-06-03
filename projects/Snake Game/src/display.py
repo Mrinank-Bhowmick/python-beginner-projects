@@ -14,7 +14,12 @@ class Display:
 
     def update_ui(self, snake, food, score):
         self.window.fill(RgbColors.BLACK)
-        # Draw snake
+        self.draw_snake(snake)
+        self.draw_food(food)
+        self.draw_score(score)
+        pygame.display.flip()
+
+    def draw_snake(self, snake):
         for block in snake.blocks:
             pygame.draw.rect(
                 self.window, RgbColors.BLUE1,
@@ -23,13 +28,32 @@ class Display:
             pygame.draw.rect(
                 self.window, RgbColors.BLUE2, pygame.Rect(block.x + 4, block.y + 4, 12, 12)
             )
-        # Draw food
+
+    def draw_food(self, food):
         pygame.draw.rect(
             self.window,
             RgbColors.RED,
             pygame.Rect(food.x, food.y, GameSettings.BLOCK_SIZE, GameSettings.BLOCK_SIZE),
         )
-        # Draw score
+
+    def draw_score(self, score):
         score_display = self.font.render(f"Score: {score}", True, RgbColors.WHITE)
-        self.window.blit(score_display, [0, 0])  # score in top left corner of window
+        self.window.blit(score_display, [0, 0])  # score in top left window corner
+
+    def render_game_over(self):
+        self.font = pygame.font.Font(None, 48)
+        game_over_display = self.font.render("GAME OVER", True, RgbColors.WHITE)
+        text_width = game_over_display.get_width()
+        text_height = game_over_display.get_height()
+        text_x = (self.width - text_width) // 2
+        text_y = (self.height // 4) - (text_height // 2)
+        self.window.blit(game_over_display,
+                         [text_x, text_y])
+        pygame.display.flip()
+
+    def render_play_again(self):
+        self.font = pygame.font.Font(None, 32)
+        play_again_display = self.font.render("Play again? (Y/N)", True, RgbColors.WHITE)
+        display_box = play_again_display.get_rect(center=(self.width // 2, self.height // 2))
+        self.window.blit(play_again_display, display_box)
         pygame.display.flip()
