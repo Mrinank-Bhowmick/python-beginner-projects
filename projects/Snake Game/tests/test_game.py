@@ -1,7 +1,9 @@
 import unittest
 from unittest.mock import patch, MagicMock
+import pygame
 from game import Game
 from constants import GameSettings, Point
+from snake import Snake
 
 
 class TestGame(unittest.TestCase):
@@ -47,6 +49,35 @@ class TestGame(unittest.TestCase):
     def test_place_food(self):
         self.game.place_food()
         self.assertNotIn(self.game.food, self.game.snake.blocks)
+
+    @patch('pygame.event.get')
+    def test_play_again_y(self, mock_event_get):
+        mock_event_get.return_value = [MagicMock(type=pygame.KEYDOWN, key=pygame.K_y)]
+        value = self.game.play_again()
+        self.assertTrue(value)
+
+    @patch('pygame.event.get')
+    def test_play_again_return(self, mock_event_get):
+        mock_event_get.return_value = [MagicMock(type=pygame.KEYDOWN, key=pygame.K_RETURN)]
+        value = self.game.play_again()
+        self.assertTrue(value)
+
+    @patch('pygame.event.get')
+    def test_play_again_n(self, mock_event_get):
+        mock_event_get.return_value = [MagicMock(type=pygame.KEYDOWN, key=pygame.K_n)]
+
+    @patch('pygame.event.get')
+    def test_play_again_esc(self, mock_event_get):
+        mock_event_get.return_value = [MagicMock(type=pygame.KEYDOWN, key=pygame.K_ESCAPE)]
+
+    def test_restart_game(self):
+        self.game.snake = Snake(init_length=10)
+        self.game.score = 10
+
+        self.game.restart_game()
+        self.assertEqual(len(self.game.snake.blocks), 3)
+        self.assertEqual(self.game.score, 0)
+        self.assertIsNotNone(self.game.food)
 
 
 if __name__ == '__main__':
