@@ -33,6 +33,3 @@ class Display:
         score_display = self.font.render(f"Score: {score}", True, RgbColors.WHITE)
         self.window.blit(score_display, [0, 0])  # score in top left corner of window
         pygame.display.flip()
-
-    def clock_tick(self, speed):
-        self.clock.tick(speed)

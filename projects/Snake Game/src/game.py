@@ -64,7 +64,7 @@ class Game:
             self.snake.blocks.pop()
         # Update UI and Clock
         self.display.update_ui(self.snake, self.food, self.score)
-        self.display.clock_tick(GameSettings.SPEED)
+        self.display.clock.tick(GameSettings.SPEED)
         game_over = self.is_collision()
         return game_over, self.score
 
