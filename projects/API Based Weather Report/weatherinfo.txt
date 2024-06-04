@@ -1,8 +1,8 @@
 -------------------------------------------------------------
-Weather Stats for - SALEM  || 04 Jun 2024 | 11:07:30 AM
+Weather Stats for - NEW%20YORK  || 04 Jun 2024 | 12:05:04 PM
 -------------------------------------------------------------
-	Current temperature is : 27.64 °C
-	Current weather desc   : overcast clouds
-	Current Humidity       : 80 %
-	Current wind speed     : 1.75 km/h 
-	Country Code    : IN 
+	Current temperature is : 22.35 °C
+	Current weather desc   : clear sky
+	Current Humidity       : 64 %
+	Current wind speed     : 3.09 km/h 
+	Country Code    : US 
