@@ -1,5 +1,6 @@
 import pygame
 import random
+import json
 from snake import Snake, Direction, Point
 from display import Display
 from constants import GameSettings
@@ -12,18 +13,23 @@ class Game:
         self.score = 0
         self.food = None
         self.place_food()
+        self.high_score = self.load_high_score()
 
     def game_loop(self):
         while True:
             self.play_step()
             game_over, score = self.play_step()
+            self.update_high_score(self.high_score)
             if game_over:
                 self.display.render_game_over()
+                if score > self.high_score:
+                    self.display.render_new_high_score(score)
+                    self.update_high_score(score)
+                    self.high_score = self.load_high_score()
                 self.display.render_play_again()
                 if not self.play_again():
                     break
                 self.restart_game()
-        print("Final Score:", self.score)
         pygame.quit()
 
     def is_collision(self):
@@ -67,7 +73,7 @@ class Game:
         else:
             self.snake.blocks.pop()
         # Update UI and Clock
-        self.display.update_ui(self.snake, self.food, self.score)
+        self.display.update_ui(self.snake, self.food, self.score, self.high_score)
         self.display.clock.tick(GameSettings.SPEED)
         game_over = self.is_collision()
         return game_over, self.score
@@ -96,3 +102,19 @@ class Game:
         self.snake = Snake()
         self.score = 0
         self.place_food()
+        self.high_score = self.load_high_score()
+
+    def load_high_score(self):
+        try:
+            with open('high_score.json', 'r') as file:
+                data = json.load(file)
+                return data.get('high_score')
+        except FileNotFoundError:
+            return 0
+
+    def update_high_score(self, new_score):
+        high_score = self.load_high_score()
+        if new_score > high_score:
+            data = {"high_score": new_score}
+            with open('high_score.json', 'w') as file:
+                json.dump(data, file)
