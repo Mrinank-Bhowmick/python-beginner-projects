@@ -1,8 +1,8 @@
 -------------------------------------------------------------
-Weather Stats for - KOLKATA  || 04 Jun 2024 | 06:22:06 PM
+Weather Stats for - PATNA  || 04 Jun 2024 | 06:58:14 PM
 -------------------------------------------------------------
-	Current temperature is : 34.97 °C
-	Current weather desc   : haze
-	Current Humidity       : 66 %
-	Current wind speed     : 4.12 km/h 
+	Current temperature is : 36.96 °C
+	Current weather desc   : scattered clouds
+	Current Humidity       : 59 %
+	Current wind speed     : 4.63 km/h 
 	Country Code    : IN 
