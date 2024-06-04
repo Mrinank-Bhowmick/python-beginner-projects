@@ -1,0 +1,8 @@
+-------------------------------------------------------------
+Weather Stats for - SALEM  || 04 Jun 2024 | 10:49:43 AM
+-------------------------------------------------------------
+	Current temperature is : 27.64 °C
+	Current weather desc   : overcast clouds
+	Current Humidity       : 80 %
+	Current wind speed     : 1.75 km/h 
+	Country Code    : IN 
