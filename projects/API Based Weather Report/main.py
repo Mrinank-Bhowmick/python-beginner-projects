@@ -8,7 +8,8 @@ def main():
     print("You can obtain your API key by signing up at https://home.openweathermap.org/users/sign_up")
     api_key = input("Please enter your OpenWeatherMap API key: ")
     location = input("Enter the city name: ")
-    status_code, weather_data = fetch_weather(api_key, location)
+    country = input("Enter Country (Optional): ")
+    status_code, weather_data = fetch_weather(api_key, location, country)
     if status_code == 200:
         write_to_file(location, weather_data)
         print("Current temperature is: {:.2f} °C".format(weather_data["main"]["temp"] - 273.15))

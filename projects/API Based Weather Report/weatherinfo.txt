@@ -1,8 +1,8 @@
 -------------------------------------------------------------
-Weather Stats for - NEW%20YORK  || 04 Jun 2024 | 12:05:04 PM
+Weather Stats for - KOLKATA  || 04 Jun 2024 | 06:22:06 PM
 -------------------------------------------------------------
-	Current temperature is : 22.35 °C
-	Current weather desc   : clear sky
-	Current Humidity       : 64 %
-	Current wind speed     : 3.09 km/h 
-	Country Code    : US 
+	Current temperature is : 34.97 °C
+	Current weather desc   : haze
+	Current Humidity       : 66 %
+	Current wind speed     : 4.12 km/h 
+	Country Code    : IN 
