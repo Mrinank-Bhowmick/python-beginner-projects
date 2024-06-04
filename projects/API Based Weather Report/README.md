@@ -17,7 +17,7 @@ Welcome to the Weather Information App! This application allows users to fetch c
 - Python 3.x 
 - Docstring documentation
 - Json data
-- Pyhton Unit Tests
+- Python Unit Tests
 - Git Hub
 
 ## Installation
@@ -30,6 +30,7 @@ Welcome to the Weather Information App! This application allows users to fetch c
     python weather_app.py
     ```
 ## Sequence Diagram
+ **Note:** The code has been broken into modules. Which constantly interacts with each other to provide various functionality.
 ![Weather API](weatherapi.png)
 
 ## Usage
