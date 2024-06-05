@@ -3,6 +3,7 @@ from constants import RgbColors, GameSettings
 
 
 class Display:
+    """Manages the display of the game."""
     def __init__(self):
         pygame.init()
         self.width = GameSettings.WIDTH
@@ -13,6 +14,14 @@ class Display:
         self.clock = pygame.time.Clock()
 
     def update_ui(self, snake, food, score, high_score):
+        """Updates the UI with the current game state.
+
+        Args:
+            snake (Snake): The snake object that contains the snake body (Snake.blocks).
+            food (Point): The food object to be displayed.
+            score (int): The current game score.
+            high_score: The highest score achieved so far.
+        """
         self.window.fill(RgbColors.BLACK)
         self.draw_snake(snake)
         self.draw_food(food)
@@ -40,7 +49,7 @@ class Display:
     def draw_score(self, score):
         self.font = pygame.font.Font(None, 25)
         score_display = self.font.render(f"Score: {score}", True, RgbColors.WHITE)
-        self.window.blit(score_display, [0, 0])  # score in top left window corner
+        self.window.blit(score_display, [0, 0])
 
     def render_game_over(self):
         self.font = pygame.font.Font(None, 48)

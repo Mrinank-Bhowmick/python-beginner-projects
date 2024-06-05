@@ -7,6 +7,7 @@ from constants import GameSettings
 
 
 class Game:
+    """Manages the gameplay logic and its user interactions."""
     def __init__(self):
         self.display = Display()
         self.snake = Snake()
@@ -33,6 +34,11 @@ class Game:
         pygame.quit()
 
     def is_collision(self):
+        """Checks if the snake has collided with the boundary or with itself.
+
+        Returns:
+            bool: True if a collision is detected, False otherwise.
+        """
         # Snake hits boundary
         if (
                 self.snake.head.x > self.display.width - self.snake.block_size
@@ -65,6 +71,7 @@ class Game:
                     self.snake.direction = Direction.DOWN
 
     def play_step(self):
+        """Executes one step through the game."""
         self.get_user_input()
         self.snake.move(self.snake.direction)
         if self.snake.head == self.food:
@@ -79,6 +86,7 @@ class Game:
         return game_over, self.score
 
     def place_food(self):
+        """Randomly places the food on the screen."""
         x = random.randint(0, (
                 self.display.width - GameSettings.BLOCK_SIZE) // GameSettings.BLOCK_SIZE) * GameSettings.BLOCK_SIZE
         y = random.randint(0, (
@@ -88,6 +96,7 @@ class Game:
             self.place_food()
 
     def play_again(self):
+        """Asks the user to play again or quit the game."""
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -99,12 +108,14 @@ class Game:
                         return True
 
     def restart_game(self):
+        """Resets the state of the game."""
         self.snake = Snake()
         self.score = 0
         self.place_food()
         self.high_score = self.load_high_score()
 
     def load_high_score(self):
+        """Loads the high score from a JSON file."""
         try:
             with open('high_score.json', 'r') as file:
                 data = json.load(file)
@@ -113,6 +124,7 @@ class Game:
             return 0
 
     def update_high_score(self, new_score):
+        """Updates the high score in the JSON file if the new score is greater than the current high score."""
         high_score = self.load_high_score()
         if new_score > high_score:
             data = {"high_score": new_score}
