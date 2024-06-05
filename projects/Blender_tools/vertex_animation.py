@@ -1,4 +1,3 @@
-
 bl_info = {
     "name": "Vertex Animation",
     "author": "ibra-kdbra",
@@ -46,7 +45,8 @@ def create_export_mesh_object(context, data, me):
     uv_layer.name = "vertex_anim"
     for loop in me.loops:
         uv_layer.data[loop.index].uv = (
-            (loop.vertex_index + 0.5)/len(me.vertices), 128/255
+            (loop.vertex_index + 0.5) / len(me.vertices),
+            128 / 255,
         )
     ob = data.objects.new("export_mesh", me)
     context.scene.collection.objects.link(ob)
@@ -79,17 +79,10 @@ def bake_vertex_data(data, offsets, normals, size):
     """Stores vertex offsets and normals in seperate image textures"""
     width, height = size
     offset_texture = data.images.new(
-        name="offsets",
-        width=width,
-        height=height,
-        alpha=True,
-        float_buffer=True
+        name="offsets", width=width, height=height, alpha=True, float_buffer=True
     )
     normal_texture = data.images.new(
-        name="normals",
-        width=width,
-        height=height,
-        alpha=True
+        name="normals", width=width, height=height, alpha=True
     )
     offset_texture.pixels = offsets
     normal_texture.pixels = normals
@@ -98,71 +91,82 @@ def bake_vertex_data(data, offsets, normals, size):
 class OBJECT_OT_ProcessAnimMeshes(bpy.types.Operator):
     """Store combined per frame vertex offsets and normals for all
     selected mesh objects into seperate image textures"""
+
     bl_idname = "object.process_anim_meshes"
     bl_label = "Process Anim Meshes"
 
     @property
     def allowed_modifiers(self):
         return [
-            'ARMATURE', 'CAST', 'CURVE', 'DISPLACE', 'HOOK',
-            'LAPLACIANDEFORM', 'LATTICE', 'MESH_DEFORM',
-            'SHRINKWRAP', 'SIMPLE_DEFORM', 'SMOOTH',
-            'CORRECTIVE_SMOOTH', 'LAPLACIANSMOOTH',
-            'SURFACE_DEFORM', 'WARP', 'WAVE',
+            "ARMATURE",
+            "CAST",
+            "CURVE",
+            "DISPLACE",
+            "HOOK",
+            "LAPLACIANDEFORM",
+            "LATTICE",
+            "MESH_DEFORM",
+            "SHRINKWRAP",
+            "SIMPLE_DEFORM",
+            "SMOOTH",
+            "CORRECTIVE_SMOOTH",
+            "LAPLACIANSMOOTH",
+            "SURFACE_DEFORM",
+            "WARP",
+            "WAVE",
         ]
 
     @classmethod
     def poll(cls, context):
         ob = context.active_object
-        return ob and ob.type == 'MESH' and ob.mode == 'OBJECT'
+        return ob and ob.type == "MESH" and ob.mode == "OBJECT"
 
     def execute(self, context):
         units = context.scene.unit_settings
         data = bpy.data
-        objects = [ob for ob in context.selected_objects if ob.type == 'MESH']
+        objects = [ob for ob in context.selected_objects if ob.type == "MESH"]
         vertex_count = sum([len(ob.data.vertices) for ob in objects])
         frame_count = len(frame_range(context.scene))
         for ob in objects:
             for mod in ob.modifiers:
                 if mod.type not in self.allowed_modifiers:
                     self.report(
-                        {'ERROR'},
-                        f"Objects with {mod.type.title()} modifiers are not allowed!"
+                        {"ERROR"},
+                        f"Objects with {mod.type.title()} modifiers are not allowed!",
                     )
-                    return {'CANCELLED'}
-        if units.system != 'METRIC' or round(units.scale_length, 2) != 0.01:
+                    return {"CANCELLED"}
+        if units.system != "METRIC" or round(units.scale_length, 2) != 0.01:
             self.report(
-                {'ERROR'},
-                "Scene Unit must be Metric with a Unit Scale of 0.01!"
+                {"ERROR"}, "Scene Unit must be Metric with a Unit Scale of 0.01!"
             )
-            return {'CANCELLED'}        
+            return {"CANCELLED"}
         if vertex_count > 8192:
             self.report(
-                {'ERROR'},
-                f"Vertex count of {vertex_count :,}, execedes limit of 8,192!"
+                {"ERROR"},
+                f"Vertex count of {vertex_count :,}, execedes limit of 8,192!",
             )
-            return {'CANCELLED'}
+            return {"CANCELLED"}
         if frame_count > 8192:
             self.report(
-                {'ERROR'},
-                f"Frame count of {frame_count :,}, execedes limit of 8,192!"
+                {"ERROR"}, f"Frame count of {frame_count :,}, execedes limit of 8,192!"
             )
-            return {'CANCELLED'}
+            return {"CANCELLED"}
         meshes = get_per_frame_mesh_data(context, data, objects)
         export_mesh_data = meshes[0].copy()
         create_export_mesh_object(context, data, export_mesh_data)
         offsets, normals = get_vertex_data(data, meshes)
         texture_size = vertex_count, frame_count
         bake_vertex_data(data, offsets, normals, texture_size)
-        return {'FINISHED'}
+        return {"FINISHED"}
 
 
 class VIEW3D_PT_VertexAnimation(bpy.types.Panel):
     """Creates a Panel in 3D Viewport"""
+
     bl_label = "Vertex Animation"
     bl_idname = "VIEW3D_PT_vertex_animation"
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'UI'
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
     bl_category = "Unreal Tools"
 
     def draw(self, context):

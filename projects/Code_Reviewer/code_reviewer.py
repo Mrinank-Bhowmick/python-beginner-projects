@@ -7,7 +7,7 @@ class CodeReviewer:
         self.feedback = []
 
     def analyze_python_file(self, file_path):
-        with open(file_path, 'r') as file:
+        with open(file_path, "r") as file:
             code = file.read()
         self.analyze_python_code(code)
 
@@ -34,11 +34,13 @@ class CodeReviewer:
             if isinstance(node, ast.FunctionDef):
                 if node.body and not isinstance(node.body[0], ast.Expr):
                     self.feedback.append(
-                        f"Function '{node.name}' should have a docstring or 'pass' statement.")
+                        f"Function '{node.name}' should have a docstring or 'pass' statement."
+                    )
             elif isinstance(node, (ast.For, ast.While, ast.If, ast.With)):
                 if not isinstance(node.body[0], ast.Expr):
                     self.feedback.append(
-                        f"Indentation Error: Missing 'pass' statement for '{ast.dump(node)}'.")
+                        f"Indentation Error: Missing 'pass' statement for '{ast.dump(node)}'."
+                    )
 
     def _check_undefined_vars(self, tree):
         undefined_vars = set()
@@ -55,17 +57,17 @@ class CodeReviewer:
         style_guide = pycodestyle.StyleGuide()
         result = style_guide.check_files(code)
         if result.total_errors:
-            self.feedback.append(
-                "Code style issues found. Please check and fix them.")
+            self.feedback.append("Code style issues found. Please check and fix them.")
 
     def _check_comments(self, code):
-        lines = code.split('\n')
+        lines = code.split("\n")
         for i, line in enumerate(lines):
-            if line.strip().startswith('#'):
+            if line.strip().startswith("#"):
                 # Check for empty comments or comments without space after '#'
-                if len(line.strip()) == 1 or line.strip()[1] != ' ':
+                if len(line.strip()) == 1 or line.strip()[1] != " ":
                     self.feedback.append(
-                        f"Improve comment style in line {i + 1}: '{line.strip()}'")
+                        f"Improve comment style in line {i + 1}: '{line.strip()}'"
+                    )
 
     def get_feedback(self):
         return self.feedback

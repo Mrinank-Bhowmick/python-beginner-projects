@@ -13,16 +13,16 @@ class Collatz:
         if self.n == 1:
             # Stop iteration when the number is 1
             raise StopIteration
-        
+
         if self.n % 2 == 0:
             self.n = self.n // 2
         else:
             self.n = 3 * self.n + 1
         return self.n
-    
+
 
 # Main function to test the class
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("To generate a Collatz Sequence,")
     try:
         input_number = int(input("Please enter a positive integer number: "))
