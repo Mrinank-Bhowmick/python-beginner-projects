@@ -7,7 +7,7 @@ from os import listdir
 from fpdf import FPDF
 
 # Set the path to the directory containing the images to be converted
-path = 'convert/'
+path = "convert/"
 
 # Get a list of all the images in the directory
 img_list = listdir(path)
@@ -16,7 +16,7 @@ img_list = listdir(path)
 img_list.sort()
 
 # Create a new FPDF object
-pdf = FPDF('P', 'mm', 'A4')
+pdf = FPDF("P", "mm", "A4")
 
 # Set the initial coordinates for the image
 x = 0
@@ -36,5 +36,4 @@ for img in img_list:
     pdf.image(path + img, x, y, w, h)
 
 # Output the PDF file
-pdf.output('output.pdf', 'F')
-
+pdf.output("output.pdf", "F")

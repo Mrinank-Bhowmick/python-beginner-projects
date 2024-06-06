@@ -56,6 +56,12 @@ def average():
 
 
 def factorial(num):
+    """
+    Function to calculate the factorial of a number.
+
+    Takes a number as an argument, calculates the factorial of the number,
+    and returns the result.
+    """
     answer = 1
     for i in range(num):
         answer *= i + 1
@@ -63,6 +69,12 @@ def factorial(num):
 
 
 def complex_arithmetic():
+    """
+    Function to execute complex arithmetic operations such as addition, subtraction, multiplication, and division.
+
+    Asks the user to choose the operation and input the complex numbers as real and imaginary parts,
+    performs the operation, and returns the result.
+    """
     print("Enter '1' for complex addition")
     print("Enter '2' for complex subtraction")
     print("Enter '3' for complex multiplication")
@@ -118,6 +130,12 @@ def complex_arithmetic():
 
 
 def binomial(num):
+    """
+    Function to calculate the binomial coefficient.
+
+    Takes two numbers as arguments, calculates the binomial coefficient using the formula n!/(k!(n-k)!),
+    and returns the result.
+    """
     result = factorial(num[0]) / (factorial(num[1]) * factorial(num[0] - num[1]))
     return result
 
