@@ -31,9 +31,9 @@ class Category:
 
     def __str__(self):
         if self.subcategory is None:
-            return f'{self.name}-NoSubcategory'
+            return f"{self.name}-NoSubcategory"
         else:
-            return f'{self.name}-{self.subcategory}'
+            return f"{self.name}-{self.subcategory}"
 
     def __eq__(self, other):
         return self.name == other.name and self.subcategory == other.subcategory
@@ -70,7 +70,14 @@ class Item:
         return "Uncategorized" if self.category is None else str(self.category)
 
     @classmethod
-    def create(cls, name: str, amount: float, description: str, date_str: str, category: Optional[Category] = None):
+    def create(
+        cls,
+        name: str,
+        amount: float,
+        description: str,
+        date_str: str,
+        category: Optional[Category] = None,
+    ):
         """
         Factory method to create an expense or income Item instance.
 
@@ -86,12 +93,27 @@ class Item:
         """
         item_id = str(uuid.uuid4())  # Generate a unique ID
         # item_id = str(name + '-' + date_str)  # Generate a unique ID
-        date = datetime.strptime(date_str, "%Y-%m-%d")  # Parse the date string into a datetime object
-        return cls(item_id=item_id, name=name, amount=amount, description=description, date=date, category=category)
+        date = datetime.strptime(
+            date_str, "%Y-%m-%d"
+        )  # Parse the date string into a datetime object
+        return cls(
+            item_id=item_id,
+            name=name,
+            amount=amount,
+            description=description,
+            date=date,
+            category=category,
+        )
 
     @classmethod
-    def create_expense_item(cls, name: str, amount: float, description: str, date_str: str,
-                            category: Optional[Category] = None):
+    def create_expense_item(
+        cls,
+        name: str,
+        amount: float,
+        description: str,
+        date_str: str,
+        category: Optional[Category] = None,
+    ):
         """
         Factory method to create an expense Item instance.
 
@@ -107,13 +129,21 @@ class Item:
         """
 
         if amount >= 0:
-            return cls.create(name, -abs(amount), description, date_str, category=category)
+            return cls.create(
+                name, -abs(amount), description, date_str, category=category
+            )
 
         return cls.create(name, amount, description, date_str, category=category)
 
     @classmethod
-    def create_income_item(cls, name: str, amount: float, description: str, date_str: str,
-                           category: Optional[Category] = None):
+    def create_income_item(
+        cls,
+        name: str,
+        amount: float,
+        description: str,
+        date_str: str,
+        category: Optional[Category] = None,
+    ):
         """
         Factory method to create an income Item instance.
 
@@ -144,11 +174,11 @@ class Item:
         data_dict = json.loads(json_str)
 
         # Convert date string back to datetime object
-        data_dict['date'] = datetime.strptime(data_dict['date'], "%Y-%m-%d %H:%M:%S")
+        data_dict["date"] = datetime.strptime(data_dict["date"], "%Y-%m-%d %H:%M:%S")
 
         # Check if category is present and reconstruct Category object
-        if data_dict['category']:
-            data_dict['category'] = Category(**data_dict['category'])
+        if data_dict["category"]:
+            data_dict["category"] = Category(**data_dict["category"])
 
         return cls(**data_dict)
 
@@ -163,7 +193,9 @@ class Item:
         Returns:
             str: JSON string representation of the Item object.
         """
-        return json.dumps(self.to_serializable_dict(), *args, cls=EnhancedJSONEncoder, **kwargs)
+        return json.dumps(
+            self.to_serializable_dict(), *args, cls=EnhancedJSONEncoder, **kwargs
+        )
 
     def to_serializable_dict(self) -> dict:
         """
@@ -176,11 +208,11 @@ class Item:
         data_dct = deepcopy(self.__dict__)
 
         # Check if category is not None
-        if data_dct['category']:
-            data_dct['category'] = asdict(data_dct['category'])
+        if data_dct["category"]:
+            data_dct["category"] = asdict(data_dct["category"])
 
         # Stringify Date
-        data_dct['date'] = str(data_dct['date'])
+        data_dct["date"] = str(data_dct["date"])
         return data_dct
 
 
@@ -261,7 +293,7 @@ class ItemsDB:
         """
         dct = item.to_serializable_dict()
         with TinyDB(self.db_path) as db:
-            db.upsert(dct, Query().item_id == str(dct['item_id']))
+            db.upsert(dct, Query().item_id == str(dct["item_id"]))
 
     def delete_items(self, cond: Query) -> None:
         """
@@ -312,7 +344,9 @@ class ItemsDB:
         """
         start_date = datetime.strptime(start, "%Y-%m-%d")
         end_date = datetime.strptime(end, "%Y-%m-%d")
-        return [item for item in self.get_all_items() if start_date <= item.date <= end_date]
+        return [
+            item for item in self.get_all_items() if start_date <= item.date <= end_date
+        ]
 
     def get_items_by_category(self, category_name: str) -> List[Item]:
         """
@@ -324,10 +358,15 @@ class ItemsDB:
         Returns:
             List[Item]: A list of items belonging to the specified category.
         """
-        return [item for item in self.get_all_items() if
-                item.category is not None and item.category.name == category_name]
+        return [
+            item
+            for item in self.get_all_items()
+            if item.category is not None and item.category.name == category_name
+        ]
 
-    def get_items_by_category_and_subcategory(self, category_name: str, subcategory_name: str) -> List[Item]:
+    def get_items_by_category_and_subcategory(
+        self, category_name: str, subcategory_name: str
+    ) -> List[Item]:
         """
         Retrieves items by category and subcategory names.
 
@@ -338,8 +377,12 @@ class ItemsDB:
         Returns:
             List[Item]: A list of items belonging to the specified category and subcategory.
         """
-        return [item for item in self.get_all_items() if
-                item.category.name == category_name and item.category.subcategory == subcategory_name]
+        return [
+            item
+            for item in self.get_all_items()
+            if item.category.name == category_name
+            and item.category.subcategory == subcategory_name
+        ]
 
     def get_items_uncategorized(self) -> List[Item]:
         """
@@ -361,8 +404,13 @@ class ItemsDB:
             List[Item]: A list of items without a subcategory within the specified category.
         """
         # This excludes uncategorized items (i.e. item.category is None)
-        return [item for item in self.get_all_items() if
-                item.category is not None and item.category.name == category_name and item.category.subcategory is None]
+        return [
+            item
+            for item in self.get_all_items()
+            if item.category is not None
+            and item.category.name == category_name
+            and item.category.subcategory is None
+        ]
 
     def get_items_with_subcategory(self, category_name: str) -> List[Item]:
         """
@@ -375,9 +423,13 @@ class ItemsDB:
             List[Item]: A list of items with a subcategory within the specified category.
         """
         # This excludes uncategorized items (i.e. item.category is None)
-        return [item for item in self.get_all_items() if
-                item.category is not None and item.category.name == category_name and item.category.subcategory is not
-                None]
+        return [
+            item
+            for item in self.get_all_items()
+            if item.category is not None
+            and item.category.name == category_name
+            and item.category.subcategory is not None
+        ]
 
     def get_category_names(self) -> Set[str]:
         """
@@ -387,7 +439,11 @@ class ItemsDB:
             Set[str]: A set of unique category names.
         """
         # This excludes the Items with No Category (i.e. item.category is None)
-        return {item.category.name for item in self.get_all_items() if item.category is not None}
+        return {
+            item.category.name
+            for item in self.get_all_items()
+            if item.category is not None
+        }
 
     def get_subcategory_names(self, category_name: str) -> Set[str]:
         """
@@ -400,9 +456,13 @@ class ItemsDB:
             Set[str]: A set of unique subcategory names within the specified category.
         """
         # This excludes items without subcategories
-        return {item.category.subcategory for item in self.get_all_items() if
-                item.category is not None and item.category.name == category_name and item.category.subcategory is not
-                None}
+        return {
+            item.category.subcategory
+            for item in self.get_all_items()
+            if item.category is not None
+            and item.category.name == category_name
+            and item.category.subcategory is not None
+        }
 
     def get_expense_items(self):
         """
