@@ -1,8 +1,8 @@
 -------------------------------------------------------------
-Weather Stats for - PATNA  || 04 Jun 2024 | 06:58:14 PM
+Weather Stats for - MELBOURNE  || 06 Jun 2024 | 08:10:00 PM
 -------------------------------------------------------------
-	Current temperature is : 36.96 °C
-	Current weather desc   : scattered clouds
-	Current Humidity       : 59 %
+	Current temperature is : 11.71 °C
+	Current weather desc   : few clouds
+	Current Humidity       : 84 %
 	Current wind speed     : 4.63 km/h 
-	Country Code    : IN 
+	Country Code    : AU 
