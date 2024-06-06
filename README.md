@@ -943,7 +943,7 @@
         <a href="https://github.com/ng-lis">
             <img src="https://avatars.githubusercontent.com/u/141615255?v=4" width="100;" alt="ng-lis"/>
             <br />
-            <sub><b>ng-lis</b></sub>
+            <sub><b>Ng-lis</b></sub>
         </a>
     </td>
     <td align="center">
