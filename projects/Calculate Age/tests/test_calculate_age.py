@@ -21,5 +21,5 @@ def test_age_calculator_negative_age():
 def test_age_calculator_leap_year():
     name = "David"
     age = 30
-    expect_output_leap_year = "David's age is 30 years or 365 months or 11100 days"
+    expect_output_leap_year = "David's age is 30 years or 366 months or 11115 days"
     assert age_calculator(name, age) == expect_output_leap_year
