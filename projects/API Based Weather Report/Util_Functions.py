@@ -5,8 +5,12 @@ def wind_degree_to_direction(str_wind_degree):
     """
     Convert wind degree to wind direction.
 
-    :param str_wind_degree: str, Wind degree from API (0 to 360)
-    :return: Wind direction as a string (e.g., N, NE, E, etc.)
+    Parameters:
+    str_wind_degree (str): Wind degree from API (0 to 360)
+
+    Returns:
+    str: Wind direction (e.g., N, NE, E, etc.)
+         Or message "API Wind Degree data format error!"
     """
     # convert wind degree from str to int.
     try:
@@ -26,9 +30,14 @@ def unix_timestamp_to_localtime(str_unix_timestamp, str_timezone_offset_seconds)
     """
     Convert unix timestamp to localtime (for sunrise and sunset).
 
-    :param str_unix_timestamp: str, Unix timestamp (e.g., "1717715516")
-    :param str_timezone_offset_seconds: str, timezone offset in second (e.g., "28800" represents UTC+8)
-    :return: local_time (e.g., "2024-06-07 07:11:56")
+    Parameters:
+    str_unix_timestamp (str): Unix timestamp (e.g., "1717715516")
+    str_timezone_offset_seconds (str): timezone offset in second (e.g., "28800" represents UTC+8)
+
+    Returns:
+    str: local_time (e.g., "2024-06-07 07:11:56")
+         Or message "API sunset/sunrise data format error!"
+         Or message "API timezone data format error!"
     """
     # Convert strings to integers
     try:
@@ -54,9 +63,14 @@ def convert_temperature(str_temperature_kelvin, temperature_unit):
     """
     Convert temperature in Kelvin degree to Celsius degree or Fahrenheit degree based on second parameter .
 
-    :param str_temperature_kelvin: str, temperature in Kelvin degree (e.g., "291.19")
-    :param temperature_unit: str, "C" for Celsius, "F" for Fahrenheit
-    :return: temperature (e.g., "21.07 °C" or "67.12 °F")
+    Parameters:
+    str_temperature_kelvin (str): temperature in Kelvin degree (e.g., "291.19")
+    temperature_unit (str): "C" for Celsius, "F" for Fahrenheit
+
+    Returns:
+    str: temperature (e.g., "21.07 °C" or "67.12 °F")
+         Or message "API temperature data format error!"
+         Or message "Temperature unit must either be 'C' or be 'F'!"
     """
     # Convert strings to integers
     try:

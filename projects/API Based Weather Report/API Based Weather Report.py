@@ -3,8 +3,17 @@ from datetime import datetime
 from Util_Functions import wind_degree_to_direction, unix_timestamp_to_localtime, convert_temperature
 
 
-# Function to fetch weather data from OpenWeatherMap API
 def fetch_weather(api_key, location):
+    """
+    Function to fetch weather data from OpenWeatherMap API.
+
+    Parameters:
+    api_key (str): API key.
+    location (str): City name.
+
+    Returns:
+    str: The JSON response string.
+    """
     try:
         # Constructing the API link with the provided API key and location
         complete_api_link = f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}"
@@ -24,8 +33,15 @@ def fetch_weather(api_key, location):
         return None
 
 
-# Function to write weather information to a text file
 def write_to_file(weather_data, temperature_unit):
+    """
+    Function to write weather information to a text file.
+
+    Parameters:
+    weather_data (str): The JSON API response string.
+    temperature_unit (str): 'C' for Celsius, 'F' for Fahrenheit.
+    """
+
     try:
         # Opening the file "weatherinfo.txt" in write mode
         with open("weatherinfo.txt", "w+") as f:
@@ -97,8 +113,10 @@ def write_to_file(weather_data, temperature_unit):
         print("Error writing to file:", e)
 
 
-# Main function
 def main():
+    """
+    Main function.
+    """
     # Printing welcome messages and instructions
     print("Welcome to the Weather Information App!")
     print("You need an API key to access weather data from OpenWeatherMap.")
@@ -106,7 +124,7 @@ def main():
         "You can obtain your API key by signing up at https://home.openweathermap.org/users/sign_up"
     )
 
-    # Prompting the user to input API key, city name, and
+    # Prompting the user to input API key, city name, and temperature unit
     api_key = input("Please enter your OpenWeatherMap API key: ")
     location = input("Enter the city name: ")
     temperature_unit = input("Enter the temperature unit. 'C' for Celsius and 'F' for Fahrenheit: ")
@@ -120,10 +138,12 @@ def main():
 
     # Checking if weather data was successfully fetched
     if weather_data:
+        # Checking if the API key is invalid
         if weather_data["cod"] == "401":
             print("Invalid API key.")
             return
 
+        # Checking if the city is not found
         if weather_data["cod"] == "404":
             print("City not found.")
             return
