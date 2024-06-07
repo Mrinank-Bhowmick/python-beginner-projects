@@ -31,8 +31,15 @@ def unix_timestamp_to_localtime(str_unix_timestamp, str_timezone_offset_seconds)
     :return: local_time (e.g., "2024-06-07 07:11:56")
     """
     # Convert strings to integers
-    unix_timestamp = int(str_unix_timestamp)
-    timezone_offset_seconds = int(str_timezone_offset_seconds)
+    try:
+        unix_timestamp = int(str_unix_timestamp)
+    except ValueError:
+        return "API sunset/sunrise data error!"
+
+    try:
+        timezone_offset_seconds = int(str_timezone_offset_seconds)
+    except ValueError:
+        return "API timezone data error!"
 
     # Convert Unix timestamp to UTC datetime
     utc_time = datetime.utcfromtimestamp(unix_timestamp)
