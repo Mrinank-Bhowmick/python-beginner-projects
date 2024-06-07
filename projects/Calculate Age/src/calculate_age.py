@@ -4,16 +4,16 @@ from utilize_date import judge_leap_year, month_days
 
 def age_calculator(name, age):
     """
-        Calculate user's age in years, month, and days
-        based on current date and print.
+    Calculate user's age in years, month, and days
+    based on current date and print.
 
-        Args:
-            name (str): user's name.
-            age (int): user's age in years.
+    Args:
+        name (str): user's name.
+        age (int): user's age in years.
 
-        Returns:
-            None.
-        """
+    Returns:
+        None.
+    """
     localtime = time.localtime(time.time())
 
     year = int(age)
@@ -36,7 +36,3 @@ def age_calculator(name, age):
     day += localtime.tm_mday
 
     return f"{name}'s age is {year} years or {month} months or {day} days"
-
-
-
-
