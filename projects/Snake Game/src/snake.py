@@ -3,6 +3,7 @@ from constants import GameSettings, Direction, Point
 
 class Snake:
     """Represents the snake in the game."""
+
     def __init__(self, init_length=3):
         """Initializes the snake.
 
@@ -11,8 +12,10 @@ class Snake:
         """
         self.head = Point(GameSettings.WIDTH / 2, GameSettings.HEIGHT / 2)
         self.block_size = GameSettings.BLOCK_SIZE
-        self.blocks = ([self.head] +
-                       [Point(self.head.x - (i * self.block_size), self.head.y) for i in range(1, init_length)])
+        self.blocks = [self.head] + [
+            Point(self.head.x - (i * self.block_size), self.head.y)
+            for i in range(1, init_length)
+        ]
         self.direction = Direction.RIGHT
 
     def move(self, direction):

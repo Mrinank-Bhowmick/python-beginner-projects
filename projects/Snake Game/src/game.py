@@ -8,6 +8,7 @@ from constants import GameSettings
 
 class Game:
     """Manages the gameplay logic and its user interactions."""
+
     def __init__(self):
         self.display = Display()
         self.snake = Snake()
@@ -41,10 +42,10 @@ class Game:
         """
         # Snake hits boundary
         if (
-                self.snake.head.x > self.display.width - self.snake.block_size
-                or self.snake.head.x < 0
-                or self.snake.head.y > self.display.height - self.snake.block_size
-                or self.snake.head.y < 0
+            self.snake.head.x > self.display.width - self.snake.block_size
+            or self.snake.head.x < 0
+            or self.snake.head.y > self.display.height - self.snake.block_size
+            or self.snake.head.y < 0
         ):
             return True
         # Snake hits itself
@@ -87,10 +88,22 @@ class Game:
 
     def place_food(self):
         """Randomly places the food on the screen."""
-        x = random.randint(0, (
-                self.display.width - GameSettings.BLOCK_SIZE) // GameSettings.BLOCK_SIZE) * GameSettings.BLOCK_SIZE
-        y = random.randint(0, (
-                self.display.height - GameSettings.BLOCK_SIZE) // GameSettings.BLOCK_SIZE) * GameSettings.BLOCK_SIZE
+        x = (
+            random.randint(
+                0,
+                (self.display.width - GameSettings.BLOCK_SIZE)
+                // GameSettings.BLOCK_SIZE,
+            )
+            * GameSettings.BLOCK_SIZE
+        )
+        y = (
+            random.randint(
+                0,
+                (self.display.height - GameSettings.BLOCK_SIZE)
+                // GameSettings.BLOCK_SIZE,
+            )
+            * GameSettings.BLOCK_SIZE
+        )
         self.food = Point(x, y)
         if self.food in self.snake.blocks:
             self.place_food()
@@ -117,9 +130,9 @@ class Game:
     def load_high_score(self):
         """Loads the high score from a JSON file."""
         try:
-            with open('high_score.json', 'r') as file:
+            with open("high_score.json", "r") as file:
                 data = json.load(file)
-                return data.get('high_score')
+                return data.get("high_score")
         except FileNotFoundError:
             return 0
 
@@ -128,5 +141,5 @@ class Game:
         high_score = self.load_high_score()
         if new_score > high_score:
             data = {"high_score": new_score}
-            with open('high_score.json', 'w') as file:
+            with open("high_score.json", "w") as file:
                 json.dump(data, file)
