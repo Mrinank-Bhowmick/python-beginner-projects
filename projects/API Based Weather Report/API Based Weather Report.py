@@ -72,7 +72,7 @@ def write_to_file(location, weather_data):
             # Writing wind direction information to the file
             if "wind" in weather_data and "deg" in weather_data["wind"]:
                 f.write(
-                    "\tCurrent wind direction   : " +
+                    "\tCurrent wind direction : " +
                     wind_degree_to_direction(weather_data["wind"]["deg"]) + " \n")
 
         # Printing confirmation message after writing to file
