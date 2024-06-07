@@ -28,7 +28,7 @@ def test_age_calculator_negative_age():
         assert str(e) == "Please input a positive number."
 
 
-@patch('time.time', return_value=1621848668.0)
+@patch("time.time", return_value=1621848668.0)
 def test_age_calculator_leap_year(mock_time):
     """
     Test the age_calculator function considering leap years
