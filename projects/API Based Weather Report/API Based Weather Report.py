@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+from Util_Functions import wind_degree_to_direction
 
 
 # Function to fetch weather data from OpenWeatherMap API
@@ -68,6 +69,12 @@ def write_to_file(location, weather_data):
                     )
                 )
 
+            # Writing wind direction information to the file
+            if "wind" in weather_data and "deg" in weather_data["wind"]:
+                f.write(
+                    "\tCurrent wind direction   : " +
+                    wind_degree_to_direction(weather_data["wind"]["deg"]) + " \n")
+
         # Printing confirmation message after writing to file
         print("Weather information written to weatherinfo.txt")
 
@@ -108,6 +115,7 @@ def main():
         print("Current weather desc  : " + weather_data["weather"][0]["description"])
         print("Current Humidity      :", weather_data["main"]["humidity"], "%")
         print("Current wind speed    :", weather_data["wind"]["speed"], "kmph")
+        print("Current wind direction:", wind_degree_to_direction(weather_data["wind"]["deg"]))
     else:
         # Printing error message if weather data fetching fails
         print("Failed to fetch weather data. Please check your input and try again.")
