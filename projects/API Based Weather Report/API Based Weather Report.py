@@ -33,7 +33,7 @@ def write_to_file(location, weather_data):
 
             # Writing header information to the file
             f.write("-------------------------------------------------------------\n")
-            f.write(f"Weather Stats for - {location.upper()}  || {date_time}\n")
+            f.write(f"Weather Stats for - {weather_data['name']} | {weather_data['sys']['country']} | {date_time}\n")
             f.write("-------------------------------------------------------------\n")
 
             # Writing temperature information to the file
@@ -98,6 +98,8 @@ def main():
         write_to_file(location, weather_data)
 
         # Printing weather information to console
+        print("Current City          : " + weather_data['name'] + ', ' +
+              weather_data['sys']['country'])
         print(
             "Current temperature is: {:.2f} °C".format(
                 weather_data["main"]["temp"] - 273.15
