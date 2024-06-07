@@ -25,7 +25,7 @@ def fetch_weather(api_key, location):
 
 
 # Function to write weather information to a text file
-def write_to_file(location, weather_data):
+def write_to_file(weather_data):
     try:
         # Opening the file "weatherinfo.txt" in write mode
         with open("weatherinfo.txt", "w+") as f:
@@ -114,8 +114,12 @@ def main():
 
     # Checking if weather data was successfully fetched
     if weather_data:
+        if weather_data["cod"] == "404":
+            print("City not found.")
+            return
+
         # Writing weather information to file
-        write_to_file(location, weather_data)
+        write_to_file(weather_data)
 
         # Printing weather information to console
         print("Current City          : " + weather_data['name'] + ', ' +

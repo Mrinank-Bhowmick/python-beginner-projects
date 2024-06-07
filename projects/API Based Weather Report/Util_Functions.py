@@ -24,7 +24,7 @@ def wind_degree_to_direction(str_wind_degree):
 
 def unix_timestamp_to_localtime(str_unix_timestamp, str_timezone_offset_seconds):
     """
-    Convert wind degree to wind direction.
+    Convert unix timestamp to localtime (for sunrise and sunset).
 
     :param str_unix_timestamp: str, Unix timestamp (e.g., "1717715516")
     :param str_timezone_offset_seconds: str, timezone offset in second (e.g., "28800" represents UTC+8)
