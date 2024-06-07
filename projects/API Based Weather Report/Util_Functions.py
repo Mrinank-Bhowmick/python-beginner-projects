@@ -60,7 +60,7 @@ def convert_temperature(str_temperature_kelvin, temperature_unit):
     """
     # Convert strings to integers
     try:
-        temperature_k = int(str_temperature_kelvin)
+        temperature_k = float(str_temperature_kelvin)
     except ValueError:
         return "API temperature data format error!"
 
