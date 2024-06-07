@@ -1,6 +1,6 @@
 import requests
 from datetime import datetime
-from Util_Functions import wind_degree_to_direction
+from Util_Functions import wind_degree_to_direction, unix_timestamp_to_localtime
 
 
 # Function to fetch weather data from OpenWeatherMap API
@@ -33,9 +33,10 @@ def write_to_file(location, weather_data):
             date_time = datetime.now().strftime("%d %b %Y | %I:%M:%S %p")
 
             # Writing header information to the file
-            f.write("-------------------------------------------------------------\n")
-            f.write(f"Weather Stats for - {weather_data['name']} | {weather_data['sys']['country']} | {date_time}\n")
-            f.write("-------------------------------------------------------------\n")
+            if "name" in weather_data and "sys" in weather_data and "country" in weather_data["sys"]:
+                f.write("-------------------------------------------------------------\n")
+                f.write(f"Weather Stats for - {weather_data['name']} | {weather_data['sys']['country']} | {date_time}\n")
+                f.write("-------------------------------------------------------------\n")
 
             # Writing temperature information to the file
             if "main" in weather_data and "temp" in weather_data["main"]:
@@ -74,6 +75,18 @@ def write_to_file(location, weather_data):
                 f.write(
                     "\tCurrent wind direction : " +
                     wind_degree_to_direction(weather_data["wind"]["deg"]) + " \n")
+
+            # Writing sunrise local time to the file
+            if "sys" in weather_data and "sunrise" in weather_data["sys"] and "timezone" in weather_data:
+                f.write(
+                    "\tToday's sunrise time   : " +
+                    unix_timestamp_to_localtime(weather_data["sys"]["sunrise"], weather_data["timezone"]) + " \n")
+
+            # Writing sunset local time to the file
+            if "sys" in weather_data and "sunset" in weather_data["sys"] and "timezone" in weather_data:
+                f.write(
+                    "\tToday's sunset time    : " +
+                    unix_timestamp_to_localtime(weather_data["sys"]["sunset"], weather_data["timezone"]) + " \n")
 
         # Printing confirmation message after writing to file
         print("Weather information written to weatherinfo.txt")
@@ -116,6 +129,10 @@ def main():
         print("Current Humidity      :", weather_data["main"]["humidity"], "%")
         print("Current wind speed    :", weather_data["wind"]["speed"], "kmph")
         print("Current wind direction:", wind_degree_to_direction(weather_data["wind"]["deg"]))
+        print("Today's sunrise time  :",
+              unix_timestamp_to_localtime(weather_data["sys"]["sunrise"], weather_data["timezone"]))
+        print("Today's sunset time   :",
+              unix_timestamp_to_localtime(weather_data["sys"]["sunset"], weather_data["timezone"]))
     else:
         # Printing error message if weather data fetching fails
         print("Failed to fetch weather data. Please check your input and try again.")
