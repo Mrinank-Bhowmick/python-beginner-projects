@@ -24,4 +24,4 @@ class Direction(Enum):
     DOWN = 4
 
 
-Point = namedtuple('Point', ['x', 'y'])
+Point = namedtuple("Point", ["x", "y"])

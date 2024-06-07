@@ -15,7 +15,8 @@ with open("projects/Chat-GPT-Discord-Bot/GPT_Parameters.json") as f:
     data = json.load(f)  # Loads the gpt system prompts
 
 char_limit = data["system_content"][0][
-    "character_limit_prompt"]  # Makes sure that the gpt output won't exceed the discord embed character limit of 4096 characters
+    "character_limit_prompt"
+]  # Makes sure that the gpt output won't exceed the discord embed character limit of 4096 characters
 
 try:
     token = os.getenv("BOT_TOKEN")  # returns a str
@@ -58,7 +59,9 @@ class MyClient(discord.Client):
     # This allows for faster bot testing and development.
     async def setup_hook(self):
         # This copies the global commands over to your guild(s).
-        self.tree.clear_commands(guild=discord_server_1)  # Prevents command duplication.
+        self.tree.clear_commands(
+            guild=discord_server_1
+        )  # Prevents command duplication.
         await self.tree.sync(guild=discord_server_1)
         self.tree.clear_commands(guild=discord_server_2)
         await self.tree.sync(guild=discord_server_2)  # Prevents command duplication.
@@ -108,9 +111,11 @@ async def send(interaction: discord.Interaction):
         for slash_command in client.tree.walk_commands():
             embed.add_field(
                 name=slash_command.name,
-                value=f"- {slash_command.description}\n-----------------------------------------"
-                if slash_command.description
-                else slash_command.name,
+                value=(
+                    f"- {slash_command.description}\n-----------------------------------------"
+                    if slash_command.description
+                    else slash_command.name
+                ),
                 inline=False,
             )
         # Send as followup message
@@ -433,8 +438,14 @@ async def send(interaction: discord.Interaction, text: str):  # noqa: F811
 @client.tree.command(name="gpt_general_question", description="For all your questions")
 @app_commands.rename(text="prompt")
 @app_commands.describe(text="What do you want to ask chatGPT?")
-@app_commands.describe(gpt_model="Possible options = gpt-4 or gpt-3.5 (gpt-3.5-turbo-16k abbreviated)")
-async def send(interaction: discord.Interaction, text: str, gpt_model: str,):  # noqa: F811
+@app_commands.describe(
+    gpt_model="Possible options = gpt-4 or gpt-3.5 (gpt-3.5-turbo-16k abbreviated)"
+)
+async def send(
+    interaction: discord.Interaction,
+    text: str,
+    gpt_model: str,
+):  # noqa: F811
     try:
         await interaction.response.defer(
             ephemeral=False
@@ -447,7 +458,7 @@ async def send(interaction: discord.Interaction, text: str, gpt_model: str,):  #
             return
         else:
             gpt_prompt = text
-            
+
         if gpt_model.lower() not in ("gpt-4", "gpt-3.5"):
             await interaction.followup.send(
                 "Invalid GPT model. Must be either gpt-4 or gpt-3.5."
@@ -458,7 +469,6 @@ async def send(interaction: discord.Interaction, text: str, gpt_model: str,):  #
                 gpt_model = "gpt-3.5-turbo-16k"
             else:
                 gpt_model = gpt_model.lower()
-            
 
         # It is best to use discord embeds for gpt commands as discord embed descriptions allow for 4096 characters instead of 2000 characters for normal messages
         embed = discord.Embed(
@@ -485,25 +495,38 @@ async def send(interaction: discord.Interaction, text: str, gpt_model: str,):  #
         await interaction.followup.send(
             "An error occurred while processing the command."
         )
-        
+
+
 # -------------------------- DALLE 3 ----------------------------------
 @client.tree.command(name="dalle_3", description="Generates an image with DALL·E 3")
 @app_commands.describe(prompt="Describe the image you want DALL·E 3 to create")
-@app_commands.describe(img_dimensions="Must be either 1024x1024, 1792x1024, or 1024x1792 for dall-e-3")
-@app_commands.describe(img_quality="Must be either hd or standard. HD = images with finer details and greater consistency across the image.")
-@app_commands.describe(img_style="Must be either vivid or natural. Vivid = hyper-real and dramatic images. Natural = more natural, less hyper-real looking images.")
-async def send(interaction: discord.Interaction, prompt: str, img_dimensions: str, img_quality: str, img_style: str):  # noqa: F811
+@app_commands.describe(
+    img_dimensions="Must be either 1024x1024, 1792x1024, or 1024x1792 for dall-e-3"
+)
+@app_commands.describe(
+    img_quality="Must be either hd or standard. HD = images with finer details and greater consistency across the image."
+)
+@app_commands.describe(
+    img_style="Must be either vivid or natural. Vivid = hyper-real and dramatic images. Natural = more natural, less hyper-real looking images."
+)
+async def send(
+    interaction: discord.Interaction,
+    prompt: str,
+    img_dimensions: str,
+    img_quality: str,
+    img_style: str,
+):  # noqa: F811
     try:
         await interaction.response.defer(
             ephemeral=False
         )  # Defer the response to prevent command timeout
-        
+
         # Get the current time
         current_time = datetime.now()
-        
+
         # Add 1 hour to the current time
         future_time = current_time + timedelta(hours=1)
-        
+
         if img_dimensions.lower() not in ("1024x1024", "1792x1024", "1024x1792"):
             await interaction.followup.send(
                 "Invalid image dimension. Must be either 1024x1024, 1792x1024, or 1024x1792."
@@ -511,7 +534,7 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
             return
         else:
             img_dimensions = img_dimensions.lower()
-            
+
         if img_quality.lower() not in ("hd", "standard"):
             await interaction.followup.send(
                 "Invalid image quality. Must be either hd or standard."
@@ -519,7 +542,7 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
             return
         else:
             img_quality = img_quality.lower()
-            
+
         if img_style.lower() not in ("vivid", "natural"):
             await interaction.followup.send(
                 "Invalid image style. Must be either vivid or natural."
@@ -527,35 +550,46 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
             return
         else:
             img_style = img_style.lower()
-            
-        loop = asyncio.get_event_loop()  # Prevents heartbeat block warning and bot disconnecting from discord error
-        image_url = await loop.run_in_executor(None, dalle3, prompt, img_quality, img_dimensions, img_style)  # Prevents heartbeat block warning and bot disconnecting from discord error
+
+        loop = (
+            asyncio.get_event_loop()
+        )  # Prevents heartbeat block warning and bot disconnecting from discord error
+        image_url = await loop.run_in_executor(
+            None, dalle3, prompt, img_quality, img_dimensions, img_style
+        )  # Prevents heartbeat block warning and bot disconnecting from discord error
 
         # Send as followup message
-        await interaction.followup.send(f"{image_url} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")
+        await interaction.followup.send(
+            f"{image_url} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>"
+        )
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")
         await interaction.followup.send(
             "An error occurred while processing the command."
         )
-        
+
+
 # -------------------------- DALLE 2 ----------------------------------
 @client.tree.command(name="dalle_2", description="Generates an image with DALL·E 2")
 @app_commands.describe(prompt="Describe the image you want DALL·E 2 to create")
-@app_commands.describe(img_dimensions="Must be either 256x256, 512x512, or 1024x1024 for dall-e-2")
-async def send(interaction: discord.Interaction, prompt: str, img_dimensions: str):  # noqa: F811
+@app_commands.describe(
+    img_dimensions="Must be either 256x256, 512x512, or 1024x1024 for dall-e-2"
+)
+async def send(
+    interaction: discord.Interaction, prompt: str, img_dimensions: str
+):  # noqa: F811
     try:
         await interaction.response.defer(
             ephemeral=False
         )  # Defer the response to prevent command timeout
-        
+
         # Get the current time
         current_time = datetime.now()
-        
+
         # Add 1 hour to the current time
         future_time = current_time + timedelta(hours=1)
-        
+
         if img_dimensions.lower() not in ("256x256", "512x512", "1024x1024"):
             await interaction.followup.send(
                 "Invalid image dimension. Must be either 256x256, 512x512, or 1024x1024."
@@ -563,12 +597,18 @@ async def send(interaction: discord.Interaction, prompt: str, img_dimensions: st
             return
         else:
             img_dimensions = img_dimensions.lower()
-            
-        loop = asyncio.get_event_loop()  # Prevents heartbeat block warning and bot disconnecting from discord error
-        image_url = await loop.run_in_executor(None, dalle2, prompt, img_dimensions)  # Prevents heartbeat block warning and bot disconnecting from discord error
+
+        loop = (
+            asyncio.get_event_loop()
+        )  # Prevents heartbeat block warning and bot disconnecting from discord error
+        image_url = await loop.run_in_executor(
+            None, dalle2, prompt, img_dimensions
+        )  # Prevents heartbeat block warning and bot disconnecting from discord error
 
         # Send as followup message
-        await interaction.followup.send(f"{image_url} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>")  # Convert future_time to unix timestamp.
+        await interaction.followup.send(
+            f"{image_url} IMAGE LINK EXPIRES IN <t:{int(time.mktime(future_time.timetuple()))}:R>"
+        )  # Convert future_time to unix timestamp.
     except Exception as e:
         # Handle exceptions
         print(f"An error occurred: {str(e)}")

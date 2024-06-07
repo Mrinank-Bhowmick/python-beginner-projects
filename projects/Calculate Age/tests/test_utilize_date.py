@@ -4,9 +4,9 @@ from utilize_date import judge_leap_year, month_days
 
 def test_judge_leap_year():
     """
-     judge_leap_year function tests whether a given year is a leap year.
+    judge_leap_year function tests whether a given year is a leap year.
 
-     A leap year is divisible by 4 and, if divisible by 100, must also be divisible by 400.
+    A leap year is divisible by 4 and, if divisible by 100, must also be divisible by 400.
     """
     assert judge_leap_year(2000) == True
     assert judge_leap_year(2008) == True

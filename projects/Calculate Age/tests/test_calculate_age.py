@@ -2,17 +2,19 @@ import time
 from unittest.mock import patch
 from calculate_age import age_calculator
 
-@patch('time.time', return_value=1621848668.0)
+
+@patch("time.time", return_value=1621848668.0)
 def test_age_calculator(mock_time):
     """
-     Test the age_calculator function
-     Mocks the current time and check if the age is calculated
-     based on current time
+    Test the age_calculator function
+    Mocks the current time and check if the age is calculated
+    based on current time
     """
     name = "Chloe"
     age = 30
     expect_output = "Chloe's age is 30 years or 365 months or 11102 days"
     assert age_calculator(name, age) == expect_output
+
 
 def test_age_calculator_negative_age():
     """

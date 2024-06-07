@@ -1,25 +1,31 @@
-# import the sqlite3 to reterive previous scores 
+# import the sqlite3 to reterive previous scores
 import sqlite3
+
+
 # create Conn to have the database file
 def create_connection(db_file):
-    """ create a database connection to the SQLite database """
+    """create a database connection to the SQLite database"""
     conn = None
     try:
         conn = sqlite3.connect(db_file)
     except sqlite3.Error as e:
         print(e)
     return conn
- # store the player's score with their name 
+
+
+# store the player's score with their name
 def save_score(conn, name, score):
     """
     Save the player's score to the database
     """
-    sql = ''' INSERT INTO scores(name, score)
-              VALUES(?,?) '''
+    sql = """ INSERT INTO scores(name, score)
+              VALUES(?,?) """
     cur = conn.cursor()
     cur.execute(sql, (name, score))
     conn.commit()
     return cur.lastrowid
+
+
 #  recall the previous scores to display them
 def get_all_scores(conn):
     """
@@ -30,6 +36,7 @@ def get_all_scores(conn):
 
     rows = cur.fetchall()
     return rows
+
 
 # The beginning of the game
 print("Welcome to AskPython Quiz")
@@ -60,7 +67,9 @@ if answer.lower() == "yes":
         print("Wrong Answer :(")  # User's answer is incorrect
 
     # Question 3
-    answer = input("Question 3: What is the name of your favourite website for learning Python?")
+    answer = input(
+        "Question 3: What is the name of your favourite website for learning Python?"
+    )
     if answer.lower() == "askpython":
         score += 1
         print("correct")  # User's answer is correct, increment the score
@@ -68,7 +77,11 @@ if answer.lower() == "yes":
         print("Wrong Answer :(")  # User's answer is incorrect
 
     # Display the result and user's score
-    print("Thank you for Playing this small quiz game, you attempted", score, "questions correctly!")
+    print(
+        "Thank you for Playing this small quiz game, you attempted",
+        score,
+        "questions correctly!",
+    )
     mark = int((score / total_questions) * 100)
     print(f"Marks obtained: {mark}%")
 
@@ -84,13 +97,13 @@ if answer.lower() == "yes":
     if conn is not None:
         # Save the player's score
         save_score(conn, player_name, player_score)
-        
+
         # Display all scores
         print("Previous scores:")
         scores = get_all_scores(conn)
         for row in scores:
             print(f"Name: {row[1]}, Score: {row[2]}, Date: {row[3]}")
-        
+
         conn.close()
     else:
         print("Error! Cannot create the database connection.")
