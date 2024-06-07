@@ -114,6 +114,10 @@ def main():
 
     # Checking if weather data was successfully fetched
     if weather_data:
+        if weather_data["cod"] == "401":
+            print("Invalid API key.")
+            return
+
         if weather_data["cod"] == "404":
             print("City not found.")
             return
