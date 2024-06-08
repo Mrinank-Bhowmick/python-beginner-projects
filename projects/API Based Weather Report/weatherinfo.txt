@@ -1,0 +1,8 @@
+-------------------------------------------------------------
+Weather Stats for - MELBOURNE  || 06 Jun 2024 | 08:10:00 PM
+-------------------------------------------------------------
+	Current temperature is : 11.71 °C
+	Current weather desc   : few clouds
+	Current Humidity       : 84 %
+	Current wind speed     : 4.63 km/h 
+	Country Code    : AU 

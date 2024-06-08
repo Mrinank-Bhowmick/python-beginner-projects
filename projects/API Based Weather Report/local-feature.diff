@@ -1,0 +1,646 @@
+diff --git a/projects/API Based Weather Report/API Based Weather Report.py b/projects/API Based Weather Report/API Based Weather Report.py
+deleted file mode 100644
+index 6bf0956..0000000
+--- a/projects/API Based Weather Report/API Based Weather Report.py	
++++ /dev/null
+@@ -1,116 +0,0 @@
+-import requests
+-from datetime import datetime
+-
+-
+-# Function to fetch weather data from OpenWeatherMap API
+-def fetch_weather(api_key, location):
+-    try:
+-        # Constructing the API link with the provided API key and location
+-        complete_api_link = f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}"
+-
+-        # Sending GET request to OpenWeatherMap API
+-        api_link = requests.get(complete_api_link)
+-
+-        # Parsing the JSON response
+-        api_data = api_link.json()
+-
+-        # Returning the fetched weather data
+-        return api_data
+-
+-    # Handling exceptions related to request errors
+-    except requests.exceptions.RequestException as e:
+-        print("Error fetching weather data:", e)
+-        return None
+-
+-
+-# Function to write weather information to a text file
+-def write_to_file(location, weather_data):
+-    try:
+-        # Opening the file "weatherinfo.txt" in write mode
+-        with open("weatherinfo.txt", "w+") as f:
+-            # Getting the current date and time
+-            date_time = datetime.now().strftime("%d %b %Y | %I:%M:%S %p")
+-
+-            # Writing header information to the file
+-            f.write("-------------------------------------------------------------\n")
+-            f.write(f"Weather Stats for - {location.upper()}  || {date_time}\n")
+-            f.write("-------------------------------------------------------------\n")
+-
+-            # Writing temperature information to the file
+-            if "main" in weather_data and "temp" in weather_data["main"]:
+-                f.write(
+-                    "\tCurrent temperature is : {:.2f} 째C\n".format(
+-                        weather_data["main"]["temp"] - 273.15
+-                    )
+-                )
+-
+-            # Writing weather description information to the file
+-            if "weather" in weather_data and weather_data["weather"]:
+-                f.write(
+-                    "\tCurrent weather desc   : "
+-                    + weather_data["weather"][0]["description"]
+-                    + "\n"
+-                )
+-
+-            # Writing humidity information to the file
+-            if "main" in weather_data and "humidity" in weather_data["main"]:
+-                f.write(
+-                    "\tCurrent Humidity       : {} %\n".format(
+-                        weather_data["main"]["humidity"]
+-                    )
+-                )
+-
+-            # Writing wind speed information to the file
+-            if "wind" in weather_data and "speed" in weather_data["wind"]:
+-                f.write(
+-                    "\tCurrent wind speed     : {} km/h \n".format(
+-                        weather_data["wind"]["speed"]
+-                    )
+-                )
+-
+-        # Printing confirmation message after writing to file
+-        print("Weather information written to weatherinfo.txt")
+-
+-    # Handling IOError when writing to file
+-    except IOError as e:
+-        print("Error writing to file:", e)
+-
+-
+-# Main function
+-def main():
+-    # Printing welcome messages and instructions
+-    print("Welcome to the Weather Information App!")
+-    print("You need an API key to access weather data from OpenWeatherMap.")
+-    print(
+-        "You can obtain your API key by signing up at https://home.openweathermap.org/users/sign_up"
+-    )
+-
+-    # Prompting the user to input API key and city name
+-    api_key = input("Please enter your OpenWeatherMap API key: ")
+-    location = input("Enter the city name: ")
+-
+-    # Fetching weather data using the provided API key and location
+-    weather_data = fetch_weather(api_key, location)
+-
+-    # Checking if weather data was successfully fetched
+-    if weather_data:
+-        # Writing weather information to file
+-        write_to_file(location, weather_data)
+-
+-        # Printing weather information to console
+-        print(
+-            "Current temperature is: {:.2f} 째C".format(
+-                weather_data["main"]["temp"] - 273.15
+-            )
+-        )
+-        print("Current weather desc  : " + weather_data["weather"][0]["description"])
+-        print("Current Humidity      :", weather_data["main"]["humidity"], "%")
+-        print("Current wind speed    :", weather_data["wind"]["speed"], "kmph")
+-    else:
+-        # Printing error message if weather data fetching fails
+-        print("Failed to fetch weather data. Please check your input and try again.")
+-
+-
+-# Ensuring the main function is executed when the script is run
+-if __name__ == "__main__":
+-    main()
+diff --git a/projects/API Based Weather Report/EndToEnd_test.py b/projects/API Based Weather Report/EndToEnd_test.py
+new file mode 100644
+index 0000000..dc8b01d
+--- /dev/null
++++ b/projects/API Based Weather Report/EndToEnd_test.py	
+@@ -0,0 +1,49 @@
++import unittest
++from unittest.mock import patch
++from io import StringIO
++from main import main
++
++class TestMainFunction(unittest.TestCase):
++
++    @patch('builtins.input', side_effect=["API_KEY", "London", "England"])
++    @patch('main.fetch_weather', return_value=(200, {
++        "main": {"temp": 280, "humidity": 80},
++        "weather": [{"description": "Cloudy"}],
++        "wind": {"speed": 4},
++        "sys": {"country": "GB"}
++    }))
++    @patch('main.write_to_file')
++    def test_main_success(self, mock_write_to_file, mock_fetch_weather, mock_input):
++        with patch('sys.stdout', new=StringIO()) as fake_out:
++            main()
++            output = fake_out.getvalue().strip()
++            self.assertIn("Current temperature is:", output)
++            self.assertIn("Current weather desc  :", output)
++            self.assertIn("Current Humidity      :", output)
++            self.assertIn("Current wind speed    :", output)
++            self.assertIn("Country Code          :", output)
++        mock_write_to_file.assert_called_once_with("London", {
++            "main": {"temp": 280, "humidity": 80},
++            "weather": [{"description": "Cloudy"}],
++            "wind": {"speed": 4},
++            "sys": {"country": "GB"}
++        })
++
++    @patch('builtins.input', side_effect=["API_KEY", "London", "England"])
++    @patch('main.fetch_weather', return_value=(404, {"message": "City not found"}))
++    def test_main_client_error(self, mock_fetch_weather, mock_input):
++        with patch('sys.stdout', new=StringIO()) as fake_out:
++            main()
++            output = fake_out.getvalue().strip()
++            self.assertIn("Failed to fetch weather data. Client error: Status Code 404 , message : City not found", output)
++
++    @patch('builtins.input', side_effect=["API_KEY", "London","England"])
++    @patch('main.fetch_weather', return_value=(500, None))
++    def test_main_server_error(self, mock_fetch_weather, mock_input):
++        with patch('sys.stdout', new=StringIO()) as fake_out:
++            main()
++            output = fake_out.getvalue().strip()
++            self.assertIn("Failed to fetch weather data. Server error: Status Code 500", output)
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/projects/API Based Weather Report/README.md b/projects/API Based Weather Report/README.md
+index 050d7b1..4ee3ccf 100644
+--- a/projects/API Based Weather Report/README.md	
++++ b/projects/API Based Weather Report/README.md	
+@@ -1,4 +1,4 @@
+-# Weather Information App
++# _Weather Information App_
+ 
+ Welcome to the Weather Information App! This application allows users to fetch current weather information for a specific city using the OpenWeatherMap API. The fetched data is then displayed on the console and saved to a text file for future reference.
+ 
+@@ -13,7 +13,14 @@ Welcome to the Weather Information App! This application allows users to fetch c
+ - Python 3.x installed on your system.
+ - OpenWeatherMap API key. You can obtain it by signing up at [OpenWeatherMap](https://home.openweathermap.org/users/sign_up).
+ 
+-## Usage
++## Tech
++- Python 3.x 
++- Docstring documentation
++- Json data
++- Python Unit Tests
++- Git Hub
++
++## Installation
+ 
+ 1. Obtain your OpenWeatherMap API key by signing up at [OpenWeatherMap](https://home.openweathermap.org/users/sign_up).
+ 
+@@ -22,6 +29,9 @@ Welcome to the Weather Information App! This application allows users to fetch c
+     ```bash
+     python weather_app.py
+     ```
++## Sequence Diagram
++ **Note:** The code has been broken into modules. Which constantly interacts with each other to provide various functionality.
++![Weather API](weatherapi.png)
+ 
+ ## Usage
+ 
+@@ -34,10 +44,19 @@ Welcome to the Weather Information App! This application allows users to fetch c
+     ```
+ 
+ 3. Follow the on-screen prompts to enter your API key and the city name for which you want to fetch weather information.
+-
++####  _user journey1_ : user provides country name along with citi location
++   **Note:** When entering the city name, ensure to provide the following:
++   - Exact City Name: Spell the city name correctly to ensure accurate results (e.g., "New York", "London").
++   - Country (Optional): User is asked to provide optional Country name (e.g., "USA","Australia").
++   - Special Characters: Input special characters or diacritics correctly if applicable (e.g., "Paris", "M체nchen").
++   - Alternative Names: Use alternative or local names if known (e.g., "Mumbai" for "Bombay").
++   - City Name with Spaces: Input the city name with spaces as it appears (e.g., "Los Angeles", "San Francisco").
++   - City District or Area (Optional): Specify a district or area within larger cities for more localized weather data (e.g., "Manhattan, New York", "Shinjuku, Tokyo").
++   - 
++####  _user journey2_ : when user provides only citi location
+    **Note:** When entering the city name, ensure to provide the following:
+    - Exact City Name: Spell the city name correctly to ensure accurate results (e.g., "New York", "London").
+-   - City Name and Country Code (Optional): Use the format "City, Country Code" to specify the country if needed (e.g., "London, UK", "Springfield, US").
++   - Country (Optional): Can press enter to optout the value.
+    - Special Characters: Input special characters or diacritics correctly if applicable (e.g., "Paris", "M체nchen").
+    - Alternative Names: Use alternative or local names if known (e.g., "Mumbai" for "Bombay").
+    - City Name with Spaces: Input the city name with spaces as it appears (e.g., "Los Angeles", "San Francisco").
+@@ -45,4 +64,4 @@ Welcome to the Weather Information App! This application allows users to fetch c
+ 
+ ## License
+ 
+-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
++This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+\ No newline at end of file
+diff --git a/projects/API Based Weather Report/TestCountryCode.py b/projects/API Based Weather Report/TestCountryCode.py
+new file mode 100644
+index 0000000..fa34b56
+--- /dev/null
++++ b/projects/API Based Weather Report/TestCountryCode.py	
+@@ -0,0 +1,15 @@
++import unittest
++from getCountryCode import extract_key_value_from_file
++class TestExtractKeyValueFromFile(unittest.TestCase):
++    def test_existing_key(self):
++        # Assuming 'countryCode.json' contains valid data
++        result = extract_key_value_from_file("usa")
++        self.assertEqual(result, "US")
++
++    def test_nonexistent_key(self):
++        # Assuming 'countryCode.json' contains valid data
++        result = extract_key_value_from_file("XYZ")
++        self.assertIsNone(result)
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/projects/API Based Weather Report/TestFetchWeather.py b/projects/API Based Weather Report/TestFetchWeather.py
+new file mode 100644
+index 0000000..f4c487c
+--- /dev/null
++++ b/projects/API Based Weather Report/TestFetchWeather.py	
+@@ -0,0 +1,93 @@
++import unittest
++from weather_api import fetch_weather
++
++class TestFetchWeather(unittest.TestCase):
++
++    # Test case for successful weather data retrieval
++    def test_successful_fetch(self):
++        api_key = "e082b74fb59e29a4838166304b19c678"
++        location = "Salem"
++        status_code, weather_data = fetch_weather(api_key, location, "USA")
++        self.assertEqual(status_code, 200)
++        #self.assertIsNotNone(weather_data)
++
++    # Test case for invalid API key
++    def test_invalid_api_key(self):
++        api_key = "INVALID_API_KEY"
++        location = "London"
++        status_code, weather_data = fetch_weather(api_key, location,"USA")
++        self.assertEqual(status_code, 401)
++
++    # Test case for invalid location
++    def test_invalid_location(self):
++        api_key = "e082b74fb59e29a4838166304b19c678"
++        location = "InvalidCityName"
++        status_code, weather_data = fetch_weather(api_key, location,"USA")
++        self.assertEqual(status_code, 404)
++
++    # Test case for missing API key
++    def test_missing_api_key(self):
++        api_key = ""
++        location = "London"
++        status_code, weather_data = fetch_weather(api_key, location,"USA")
++        self.assertNotEqual(status_code, 200)
++
++    # Test case for missing location
++    def test_missing_location(self):
++        api_key = "e082b74fb59e29a4838166304b19c678"
++        location = ""
++        status_code, weather_data = fetch_weather(api_key, location,"")
++        self.assertNotEqual(status_code, 200)
++
++    # Test case for invalid API key and location
++    def test_invalid_api_key_and_location(self):
++        api_key = "INVALID_API_KEY"
++        location = "InvalidCityName"
++        status_code, weather_data = fetch_weather(api_key, location,"USA")
++        self.assertNotEqual(status_code, 200)
++
++    # Test case for empty API key and location
++    def test_empty_api_key_and_location(self):
++        api_key = ""
++        location = ""
++        status_code, weather_data = fetch_weather(api_key, location,"USA")
++        self.assertNotEqual(status_code, 200)
++
++    # Test case for invalid API key format
++    def test_invalid_api_key_format(self):
++        api_key = "INVALID_API_KEY_FORMAT"
++        location = "London"
++        status_code, weather_data = fetch_weather(api_key, location,"USA")
++        self.assertNotEqual(status_code, 200)
++
++    # Test case for invalid location format
++    def test_invalid_location_format(self):
++        api_key = "e082b74fb59e29a4838166304b19c678"
++        location = "InvalidCityName123"
++        status_code, weather_data = fetch_weather(api_key, location,"USA")
++        self.assertNotEqual(status_code, 200)
++
++    # Test case for valid location with special characters
++    def test_valid_location_with_special_characters(self):
++        api_key = "e082b74fb59e29a4838166304b19c678"
++        location = "New%20York"
++        status_code, weather_data = fetch_weather(api_key, location,"USA")
++        self.assertEqual(status_code, 200)
++
++    # Test case for valid location with invalid country
++    def test_valid_location_with_invalid_country(self):
++        api_key = "e082b74fb59e29a4838166304b19c678"
++        location = "New%20York"
++        status_code, weather_data = fetch_weather(api_key, location, "India")
++        self.assertEqual(status_code, 404)
++
++        # Test case for valid location with invalid country
++
++    def test_invalid_location_with_valid_country(self):
++        api_key = "e082b74fb59e29a4838166304b19c678"
++        location = "Patna"
++        status_code, weather_data = fetch_weather(api_key, location, "USA")
++        self.assertEqual(status_code, 404)
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/projects/API Based Weather Report/countryCode.json b/projects/API Based Weather Report/countryCode.json
+new file mode 100644
+index 0000000..63a3795
+--- /dev/null
++++ b/projects/API Based Weather Report/countryCode.json	
+@@ -0,0 +1,5 @@
++{
++  "india": "IN",
++  "england": "UK",
++  "usa": "US"
++}
+\ No newline at end of file
+diff --git a/projects/API Based Weather Report/file_handler.py b/projects/API Based Weather Report/file_handler.py
+new file mode 100644
+index 0000000..a7f995d
+--- /dev/null
++++ b/projects/API Based Weather Report/file_handler.py	
+@@ -0,0 +1,64 @@
++"""
++file_handler.py - A module for writing weather information to a file.
++
++This module contains a function `write_to_file` that writes weather information
++to a text file named 'weatherinfo.txt'.
++
++Functions:
++    write_to_file(location, weather_data): Writes weather information to a file.
++
++
++"""
++
++from datetime import datetime
++
++
++def write_to_file(location, weather_data):
++    """
++    Writes weather information to a text file named 'weatherinfo.txt'.
++
++    Parameters:
++        location (str): The location for which weather information is being written.
++
++    Returns:
++        None
++
++    Raises:
++        IOError: If an error occurs while writing to the file.
++    """
++    try:
++        # Open the file in write mode (creates if not exists) and append if exists
++        with open("weatherinfo.txt", "w+") as f:
++            # Get current date and time
++            date_time = datetime.now().strftime("%d %b %Y | %I:%M:%S %p")
++
++            # Write header with location and date time
++            f.write("-------------------------------------------------------------\n")
++            f.write(f"Weather Stats for - {location.upper()}  || {date_time}\n")
++            f.write("-------------------------------------------------------------\n")
++
++            # Write temperature if available
++            if "main" in weather_data and "temp" in weather_data["main"]:
++                f.write("\tCurrent temperature is : {:.2f} 째C\n".format(weather_data["main"]["temp"] - 273.15))
++
++            # Write weather description if available
++            if "weather" in weather_data and weather_data["weather"]:
++                f.write("\tCurrent weather desc   : " + weather_data["weather"][0]["description"] + "\n")
++
++            # Write humidity if available
++            if "main" in weather_data and "humidity" in weather_data["main"]:
++                f.write("\tCurrent Humidity       : {} %\n".format(weather_data["main"]["humidity"]))
++
++            # Write wind speed if available
++            if "wind" in weather_data and "speed" in weather_data["wind"]:
++                f.write("\tCurrent wind speed     : {} km/h \n".format(weather_data["wind"]["speed"]))
++
++            # Write country code if available
++            if "sys" in weather_data and "country" in weather_data["sys"]:
++                f.write("\tCountry Code    : {} \n".format(weather_data["sys"]["country"]))
++
++        # Print confirmation message
++        print("Weather information written to weatherinfo.txt")
++    except IOError as e:
++        # Handle IO errors
++        print("Error writing to file:", e)
+diff --git a/projects/API Based Weather Report/getCountryCode.py b/projects/API Based Weather Report/getCountryCode.py
+new file mode 100644
+index 0000000..a338778
+--- /dev/null
++++ b/projects/API Based Weather Report/getCountryCode.py	
+@@ -0,0 +1,44 @@
++"""
++file_handler.py - A module for extracting a value from a JSON file based on a given key.
++
++This module contains a function `extract_key_value_from_file` that retrieves a value from a JSON file
++based on a given key.
++
++Functions:
++    extract_key_value_from_file(key): Extracts a value from a JSON file based on a given key.
++
++
++"""
++
++import json
++
++def extract_key_value_from_file(key):
++    """
++    Extracts a value from a JSON file based on a given key.
++
++    Parameters:
++        key (str): The key for which the value needs to be retrieved from the JSON file.
++
++    Returns:
++        The corresponding value from the JSON file for the given key, or None if the key is not found.
++
++    Raises:
++        FileNotFoundError: If the specified JSON file cannot be found.
++        json.JSONDecodeError: If the JSON file cannot be decoded.
++    """
++    try:
++        # Open the JSON file in read mode
++        with open("countryCode.json", 'r') as file:
++            # Load JSON data from the file
++            data = json.load(file)
++            # Retrieve the value for the given key from the JSON data
++            value = data.get(key)
++            return value
++    except FileNotFoundError as e:
++        # Handle file not found error
++        print("Error: File not found:", e)
++        return None
++    except json.JSONDecodeError as e:
++        # Handle JSON decoding error
++        print("Error: JSON decoding error:", e)
++        return None
+diff --git a/projects/API Based Weather Report/main.py b/projects/API Based Weather Report/main.py
+new file mode 100644
+index 0000000..5ae2529
+--- /dev/null
++++ b/projects/API Based Weather Report/main.py	
+@@ -0,0 +1,65 @@
++"""
++main.py - A module for fetching weather information using the OpenWeatherMap API and displaying it to the user.
++
++This module serves as the main entry point for the Weather Information App. It interacts with the user to obtain
++an API key and location information, fetches weather data using the OpenWeatherMap API, and displays the weather
++information to the user.
++
++Functions:
++    main(): Main function to run the Weather Information App.
++
++
++"""
++
++from weather_api import fetch_weather
++from file_handler import write_to_file
++
++
++def main():
++    """
++    Main function to run the Weather Information App.
++
++    This function interacts with the user to obtain an API key and location information.
++    It then fetches weather data using the OpenWeatherMap API and displays the weather information to the user.
++
++    Parameters:
++        None
++
++    Returns:
++        None
++
++    Raises:
++        None
++    """
++    print("Welcome to the Weather Information App!")
++    print("You need an API key to access weather data from OpenWeatherMap.")
++    print("You can obtain your API key by signing up at https://home.openweathermap.org/users/sign_up")
++
++    # Prompt user for API key, city name, and country (optional)
++    api_key = input("Please enter your OpenWeatherMap API key: ")
++    location = input("Enter the city name: ")
++    country = input("Enter Country (Optional): ")
++
++    # Fetch weather data from OpenWeatherMap API
++    status_code, weather_data = fetch_weather(api_key, location, country)
++
++    if status_code == 200:
++        # Write weather data to file
++        write_to_file(location, weather_data)
++
++        # Display weather information to the user
++        print("Current temperature is: {:.2f} 째C".format(weather_data["main"]["temp"] - 273.15))
++        print("Current weather desc  : " + weather_data["weather"][0]["description"])
++        print("Current Humidity      :", weather_data["main"]["humidity"], "%")
++        print("Current wind speed    :", weather_data["wind"]["speed"], "kmph")
++        print("Country Code          :", weather_data["sys"]["country"])
++    elif 400 <= status_code < 500:  # Check if status code is in the 4xx range (Client error)
++        print(
++            f"Failed to fetch weather data. Client error: Status Code {status_code}, message: {weather_data['message']}")
++    else:
++        print(f"Failed to fetch weather data. Server error: Status Code {status_code}")
++         # Check if status code is in the 5xx range (Server error)
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/projects/API Based Weather Report/weather_api.py b/projects/API Based Weather Report/weather_api.py
+new file mode 100644
+index 0000000..8ca6e9d
+--- /dev/null
++++ b/projects/API Based Weather Report/weather_api.py	
+@@ -0,0 +1,57 @@
++"""
++weather_api.py - A module for fetching weather data from the OpenWeatherMap API.
++
++This module contains a function `fetch_weather` that fetches weather data from the OpenWeatherMap API
++based on the provided location and country (if available).
++
++Functions:
++    fetch_weather(api_key, location, country): Fetches weather data from the OpenWeatherMap API.
++
++"""
++
++import requests
++from getCountryCode import extract_key_value_from_file
++
++
++def fetch_weather(api_key, location, country=None):
++    """
++    Fetches weather data from the OpenWeatherMap API based on the provided location and country (if available).
++
++    Parameters:
++        api_key (str): The API key required for accessing the OpenWeatherMap API.
++        location (str): The location for which weather data needs to be fetched.
++        country (str, optional): The country name corresponding to the location. This location is passed to another function
++                                 which fetches  country codes (ISO 3166-1 alpha-2) from a static json mapping file.
++                                 If not provided, the country code will be ignored.
++
++    Returns:
++        A tuple containing the HTTP status code of the API request and the weather data fetched from the API.
++        If an error occurs during the API request, None is returned.
++
++    Raises:
++        None
++    """
++    try:
++        # Get country code based on provided country or location
++        if country:
++            countryCode = extract_key_value_from_file(country.lower())
++        else:
++            countryCode = None
++
++        # Construct API link based on whether country code is available
++        if countryCode:
++            complete_api_link = f"https://api.openweathermap.org/data/2.5/weather?q={location},{countryCode}&appid={api_key}"
++        else:
++            complete_api_link = f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}"
++
++        # Fetch weather data from OpenWeatherMap API
++        api_link = requests.get(complete_api_link)
++        api_data = api_link.json()
++
++        # Return HTTP status code and weather data
++        return api_link.status_code, api_data
++
++    except requests.exceptions.RequestException as e:
++        # Handle request exceptions
++        print("Error fetching weather data:", e)
++        return None
+diff --git a/projects/API Based Weather Report/weatherapi.png b/projects/API Based Weather Report/weatherapi.png
+new file mode 100644
+index 0000000..d25ffad
+Binary files /dev/null and b/projects/API Based Weather Report/weatherapi.png differ
+diff --git a/projects/API Based Weather Report/weatherinfo.txt b/projects/API Based Weather Report/weatherinfo.txt
+new file mode 100644
+index 0000000..ac47179
+--- /dev/null
++++ b/projects/API Based Weather Report/weatherinfo.txt	
+@@ -0,0 +1,8 @@
++-------------------------------------------------------------
++Weather Stats for - PATNA  || 04 Jun 2024 | 06:58:14 PM
++-------------------------------------------------------------
++	Current temperature is : 36.96 캜
++	Current weather desc   : scattered clouds
++	Current Humidity       : 59 %
++	Current wind speed     : 4.63 km/h 
++	Country Code    : IN 
