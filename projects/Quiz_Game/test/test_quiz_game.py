@@ -12,9 +12,13 @@ class QuizGameTest(unittest.TestCase):
         self.assertEqual(questions[0]['question'], "Question 1: What is your Favourite programming language?")
         self.assertEqual(questions[0]['answer'], "python")
 
+    def test_start_game_yes(self):
+        result = self.system.start_game(start="yes")
+        self.assertTrue(result)
 
-
-
+    def test_start_game_no(self):
+        result = self.system.start_game(start="no")
+        self.assertFalse(result)
 
     def test_show_result_all_correct(self):
         mark = self.system.show_result(3,3)
