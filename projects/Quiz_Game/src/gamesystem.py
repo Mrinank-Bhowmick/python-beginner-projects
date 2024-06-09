@@ -6,7 +6,24 @@ class QuizGameSystem:
         print("Welcome to AskPython Quiz!!")
 
     def start_game(self):
-        return input("Are you ready to play the Quiz? (yes/no) :").lower() == "yes"
+        while True:
+            start = input("Are you ready to play the Quiz? (yes/no) :").lower()
+            if start == "yes":
+                return True
+
+            elif start == "no":
+                print("See you next time!!")
+                return False
+
+            else:
+                print("Invalid! Enter yes or no")
+
+
+
+
+
+
+        #return input("Are you ready to play the Quiz? (yes/no) :").lower() == "yes"
 
     def get_questions(self):
         return [
