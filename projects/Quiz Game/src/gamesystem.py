@@ -1,19 +1,27 @@
-import quiz_game as game
+def welcome_message():
+    print("Welcome to AskPython Quiz!!")
 
-game.welcome_message()
-start = game.start_game()
+def start_game():
+    return input("Are you ready to play the Quiz? (yes/no) :").lower() == "yes"
 
-if(start):
-    score = 0
-    total_questions = len(game.get_questions())
+def get_questions():
+    return [
+        {"question":"Question 1: What is your Favourite programming language?","answer":"python"},
+        {"question":"Question 2: Do you follow any author on AskPython?","answer":"yes"},
+        {"question":"Question 3: What is the name of your favourite website for learning Python?","answer":"askpython"},
+    ]
 
-    for question in game.get_questions():
-        score += game.ask_question(question["question"], question["answer"])
+def ask_question(question,coreect_answer):
+    answer = input(question)
+    if answer == coreect_answer:
+        print("correct")
+        return 1
+    else:
+        print("Wrong Answer :(")
+        return 0
 
 
-    game.show_result(score,total_questions)
-
-else:
-    print("See you next time")
-
-
+def show_result(score,total):
+    print(f"Thank you for Playing this small quiz game, you attempted{score}, questions correctly!",)
+    mark = int((score / total) * 100)
+    print(f"Marks obtained: {mark}%")
