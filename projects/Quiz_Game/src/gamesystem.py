@@ -5,9 +5,11 @@ class QuizGameSystem:
     def welcome_message(self):
         print("Welcome to AskPython Quiz!!")
 
-    def start_game(self):
+    def start_game(self, start = None):
         while True:
-            start = input("Are you ready to play the Quiz? (yes/no) :").lower()
+            if start == None:
+                start = input("Are you ready to play the Quiz? (yes/no) :").lower()
+
             if start == "yes":
                 return True
 
@@ -17,13 +19,7 @@ class QuizGameSystem:
 
             else:
                 print("Invalid! Enter yes or no")
-
-
-
-
-
-
-        #return input("Are you ready to play the Quiz? (yes/no) :").lower() == "yes"
+                start = None
 
     def get_questions(self):
         return [

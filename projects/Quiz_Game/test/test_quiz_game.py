@@ -13,6 +13,9 @@ class QuizGameTest(unittest.TestCase):
         self.assertEqual(questions[0]['answer'], "python")
 
 
+
+
+
     def test_show_result_all_correct(self):
         mark = self.system.show_result(3,3)
         self.assertEqual(mark, 100)
