@@ -11,7 +11,17 @@ def get_questions():
         {"question":"Question 3: What is the name of your favourite website for learning Python?","answer":"askpython"},
     ]
 
-def result(score,total):
+def ask_question(question,coreect_answer):
+    answer = input(question)
+    if answer == coreect_answer:
+        print("correct")
+        return 1
+    else:
+        print("Wrong Answer :(")
+        return 0
+
+
+def show_result(score,total):
     print(f"Thank you for Playing this small quiz game, you attempted{score}, questions correctly!",)
     mark = int((score / total) * 100)
     print(f"Marks obtained: {mark}%")
