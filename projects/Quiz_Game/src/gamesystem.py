@@ -18,7 +18,7 @@ class QuizGameSystem:
              "answer": "askpython"},
         ]
 
-    def ask_question(self,question, correct_answer):
+    def ask_question(self, question, correct_answer):
         answer = input(question)
         if answer == correct_answer:
             print("correct\n")
@@ -31,12 +31,13 @@ class QuizGameSystem:
         print(f"Thank you for Playing this small quiz game, you attempted {score}, questions correctly!\n")
         mark = int((score / total) * 100)
         print("<<<<<Correct answers>>>>>")
-        show_answer(self)
+        self.show_answer()
         print(f"Marks obtained: {mark}%\n")
+        return mark
 
-def show_answer(self):
-    count = 1
-    for question in self.questions:
-        answer = question["answer"]
-        print(f"Question {count}:{answer}")
-        count += 1
+    def show_answer(self):
+        count = 1
+        for question in self.questions:
+            answer = question["answer"]
+            print(f"Question {count}:{answer}")
+            count += 1
