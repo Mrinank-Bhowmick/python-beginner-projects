@@ -1,6 +1,10 @@
 import requests
 from datetime import datetime
-from Util_Functions import wind_degree_to_direction, unix_timestamp_to_localtime, convert_temperature
+from Util_Functions import (
+    wind_degree_to_direction,
+    unix_timestamp_to_localtime,
+    convert_temperature,
+)
 
 
 def fetch_weather(api_key, location):
@@ -49,17 +53,29 @@ def write_to_file(weather_data, temperature_unit):
             date_time = datetime.now().strftime("%d %b %Y | %I:%M:%S %p")
 
             # Writing header information to the file
-            if "name" in weather_data and "sys" in weather_data and "country" in weather_data["sys"]:
-                f.write("-------------------------------------------------------------\n")
-                f.write(f"Weather Stats for - {weather_data['name']} | {weather_data['sys']['country']} "
-                        f"| {date_time}\n")
-                f.write("-------------------------------------------------------------\n")
+            if (
+                "name" in weather_data
+                and "sys" in weather_data
+                and "country" in weather_data["sys"]
+            ):
+                f.write(
+                    "-------------------------------------------------------------\n"
+                )
+                f.write(
+                    f"Weather Stats for - {weather_data['name']} | {weather_data['sys']['country']} "
+                    f"| {date_time}\n"
+                )
+                f.write(
+                    "-------------------------------------------------------------\n"
+                )
 
             # Writing temperature information to the file
             if "main" in weather_data and "temp" in weather_data["main"]:
                 f.write(
                     "\tCurrent temperature is : "
-                    + convert_temperature(weather_data["main"]["temp"], temperature_unit)
+                    + convert_temperature(
+                        weather_data["main"]["temp"], temperature_unit
+                    )
                     + "\n"
                 )
 
@@ -90,20 +106,38 @@ def write_to_file(weather_data, temperature_unit):
             # Writing wind direction information to the file
             if "wind" in weather_data and "deg" in weather_data["wind"]:
                 f.write(
-                    "\tCurrent wind direction : " +
-                    wind_degree_to_direction(weather_data["wind"]["deg"]) + " \n")
+                    "\tCurrent wind direction : "
+                    + wind_degree_to_direction(weather_data["wind"]["deg"])
+                    + " \n"
+                )
 
             # Writing sunrise local time to the file
-            if "sys" in weather_data and "sunrise" in weather_data["sys"] and "timezone" in weather_data:
+            if (
+                "sys" in weather_data
+                and "sunrise" in weather_data["sys"]
+                and "timezone" in weather_data
+            ):
                 f.write(
-                    "\tToday's sunrise time   : " +
-                    unix_timestamp_to_localtime(weather_data["sys"]["sunrise"], weather_data["timezone"]) + " \n")
+                    "\tToday's sunrise time   : "
+                    + unix_timestamp_to_localtime(
+                        weather_data["sys"]["sunrise"], weather_data["timezone"]
+                    )
+                    + " \n"
+                )
 
             # Writing sunset local time to the file
-            if "sys" in weather_data and "sunset" in weather_data["sys"] and "timezone" in weather_data:
+            if (
+                "sys" in weather_data
+                and "sunset" in weather_data["sys"]
+                and "timezone" in weather_data
+            ):
                 f.write(
-                    "\tToday's sunset time    : " +
-                    unix_timestamp_to_localtime(weather_data["sys"]["sunset"], weather_data["timezone"]) + " \n")
+                    "\tToday's sunset time    : "
+                    + unix_timestamp_to_localtime(
+                        weather_data["sys"]["sunset"], weather_data["timezone"]
+                    )
+                    + " \n"
+                )
 
         # Printing confirmation message after writing to file
         print("Weather information written to weatherinfo.txt")
@@ -127,7 +161,9 @@ def main():
     # Prompting the user to input API key, city name, and temperature unit
     api_key = input("Please enter your OpenWeatherMap API key: ")
     location = input("Enter the city name: ")
-    temperature_unit = input("Enter the temperature unit. 'C' for Celsius and 'F' for Fahrenheit: ")
+    temperature_unit = input(
+        "Enter the temperature unit. 'C' for Celsius and 'F' for Fahrenheit: "
+    )
 
     if not (temperature_unit.upper() == "C" or temperature_unit.upper() == "F"):
         print("Temperature unit must either be 'C' or be 'F'.")
@@ -152,8 +188,12 @@ def main():
         write_to_file(weather_data, temperature_unit)
 
         # Printing weather information to console
-        print("Current City          : " + weather_data['name'] + ', ' +
-              weather_data['sys']['country'])
+        print(
+            "Current City          : "
+            + weather_data["name"]
+            + ", "
+            + weather_data["sys"]["country"]
+        )
         print(
             "Current temperature is: "
             + convert_temperature(weather_data["main"]["temp"], temperature_unit)
@@ -161,11 +201,22 @@ def main():
         print("Current weather desc  : " + weather_data["weather"][0]["description"])
         print("Current Humidity      :", weather_data["main"]["humidity"], "%")
         print("Current wind speed    :", weather_data["wind"]["speed"], "kmph")
-        print("Current wind direction:", wind_degree_to_direction(weather_data["wind"]["deg"]))
-        print("Today's sunrise time  :",
-              unix_timestamp_to_localtime(weather_data["sys"]["sunrise"], weather_data["timezone"]))
-        print("Today's sunset time   :",
-              unix_timestamp_to_localtime(weather_data["sys"]["sunset"], weather_data["timezone"]))
+        print(
+            "Current wind direction:",
+            wind_degree_to_direction(weather_data["wind"]["deg"]),
+        )
+        print(
+            "Today's sunrise time  :",
+            unix_timestamp_to_localtime(
+                weather_data["sys"]["sunrise"], weather_data["timezone"]
+            ),
+        )
+        print(
+            "Today's sunset time   :",
+            unix_timestamp_to_localtime(
+                weather_data["sys"]["sunset"], weather_data["timezone"]
+            ),
+        )
     else:
         # Printing error message if weather data fetching fails
         print("Failed to fetch weather data. Please check your input and try again.")

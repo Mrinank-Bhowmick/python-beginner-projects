@@ -19,8 +19,22 @@ def wind_degree_to_direction(str_wind_degree):
         return "API Wind Degree data format error!"
 
     directions = [
-        "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
-        "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"
+        "N",
+        "NNE",
+        "NE",
+        "ENE",
+        "E",
+        "ESE",
+        "SE",
+        "SSE",
+        "S",
+        "SSW",
+        "SW",
+        "WSW",
+        "W",
+        "WNW",
+        "NW",
+        "NNW",
     ]
     index = int((wind_degree + 11.25) // 22.5) % 16
     return directions[index]
@@ -56,7 +70,7 @@ def unix_timestamp_to_localtime(str_unix_timestamp, str_timezone_offset_seconds)
     # Apply timezone offset
     local_time = utc_time + timedelta(seconds=timezone_offset_seconds)
 
-    return local_time.strftime('%Y-%m-%d %H:%M:%S')
+    return local_time.strftime("%Y-%m-%d %H:%M:%S")
 
 
 def convert_temperature(str_temperature_kelvin, temperature_unit):
@@ -84,10 +98,10 @@ def convert_temperature(str_temperature_kelvin, temperature_unit):
         return "Temperature unit must either be 'C' or be 'F'!"
 
     # Converting
-    if unit == 'C':
+    if unit == "C":
         temperature_c = temperature_k - 273.15
         return f"{temperature_c:.2f} °C"
 
-    if unit == 'F':
+    if unit == "F":
         temperature_f = temperature_k * 9 / 5 - 459.67
         return f"{temperature_f:.2f} °F"
