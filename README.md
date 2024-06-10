@@ -864,7 +864,7 @@
         <a href="https://github.com/yanliutafewa">
             <img src="https://avatars.githubusercontent.com/u/141901817?v=4" width="100;" alt="yanliutafewa"/>
             <br />
-            <sub><b>yanliutafewa</b></sub>
+            <sub><b>Yanliutafewa</b></sub>
         </a>
     </td>
     <td align="center">
