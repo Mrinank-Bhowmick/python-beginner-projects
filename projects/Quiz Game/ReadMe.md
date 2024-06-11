@@ -3,7 +3,7 @@
 
 ## File structure
 ```bash
-Quiz_Game/
+Quiz Game/
 |--- src/
 |    |--- __init__.py
 |    |--- gameplay.py

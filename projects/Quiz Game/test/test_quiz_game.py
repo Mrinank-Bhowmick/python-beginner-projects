@@ -1,5 +1,5 @@
 import unittest
-from projects.Quiz_Game.src.gamesystem import QuizGameSystem
+from ..src.gamesystem import QuizGameSystem
 
 class QuizGameTest(unittest.TestCase):
     def setUp(self):
