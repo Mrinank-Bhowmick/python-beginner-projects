@@ -1,0 +1,3 @@
+Gender: Female
+Height: 160 cm
+Weight: 50 kg
