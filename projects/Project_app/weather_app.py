@@ -199,8 +199,7 @@ with st.spinner('Loading...'):
        
     # Concluding remarks
     st.write('Weather data source: [http://open-meteo.com](http://open-meteo.com) \n\n'+
-             'List of 40,000+ world cities: [https://simplemaps.com/data/world-cities](https://simplemaps.com/data/world-cities) \n\n' +
-             'Github repository: [streamlit-weather-app](https://github.com/Savvythelegend/Project_app)')
+             'List of 40,000+ world cities: [https://simplemaps.com/data/world-cities](https://simplemaps.com/data/world-cities) \n\n')
     st.write('Thanks for stopping by. Cheers!')
 
 
