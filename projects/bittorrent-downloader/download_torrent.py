@@ -17,23 +17,23 @@ def check_for_torrents(imap_address, email_address, password, verified_creds):
     imapObj = imapclient.IMAPClient(imap_address, ssl=True)
     # See https://support.google.com/accounts/answer/6010255 if (Login Error)
     imapObj.login(email_address, password)
-    imapObj.select_folder('INBOX', readonly=True)
-    UIDs = imapObj.search(['FROM ' + verified_creds['email']])
+    imapObj.select_folder("INBOX", readonly=True)
+    UIDs = imapObj.search(["FROM " + verified_creds["email"]])
 
     links = []
     if UIDs:
         for u in UIDs:
-            rawMessages = imapObj.fetch([u], ['BODY[]', 'FLAGS'])
-            message = pyzmail.PyzMessage.factory(rawMessages[u][b'BODY[]'])
+            rawMessages = imapObj.fetch([u], ["BODY[]", "FLAGS"])
+            message = pyzmail.PyzMessage.factory(rawMessages[u][b"BODY[]"])
             text = message.text_part.get_payload().decode(message.text_part.charset)
 
-            if verified_creds['password'] in text:
+            if verified_creds["password"] in text:
                 html = message.html_part.get_payload().decode(message.html_part.charset)
                 links.append(html)
 
         imapObj.delete_messages(UIDs)
         imapObj.expunge()
-    
+
     imapObj.logout()
 
     return links
@@ -50,23 +50,34 @@ def send_reminder(accountSID, authToken, myTwilioNumber, myCellPhone, message):
         None
     """
     twilioCli = Client(accountSID, authToken)
-    message = twilioCli.messages.\
-    create(body='Rain Alert! Water is (not) wet. Grab an Umbrella bro.',\
-           from_=myTwilioNumber, to=myCellPhone)
+    message = twilioCli.messages.create(
+        body="Rain Alert! Water is (not) wet. Grab an Umbrella bro.",
+        from_=myTwilioNumber,
+        to=myCellPhone,
+    )
 
 
 if __name__ == "__main__":
 
-    torrent_client = '' #enter path to qbittorent
-    email = input('Enter your email: ')
-    password = input('Enter your email password: ')
+    torrent_client = ""  # enter path to qbittorent
+    email = input("Enter your email: ")
+    password = input("Enter your email password: ")
 
-    links = check_for_torrents('imap.gmail.com', email, password,\
-         {'email': 'verified_email@ex.com', 'password': 'vpass'})
+    links = check_for_torrents(
+        "imap.gmail.com",
+        email,
+        password,
+        {"email": "verified_email@ex.com", "password": "vpass"},
+    )
 
     for l in links:
-        tProc = subprocess.Popen(torrent_client + ' ' + l)
+        tProc = subprocess.Popen(torrent_client + " " + l)
         tProc.wait()
-        message = 'Download Finished For: ' + l
-        send_reminder('A***************', 'A**************',\
-                      '+1**********', '+1**********', message)
+        message = "Download Finished For: " + l
+        send_reminder(
+            "A***************",
+            "A**************",
+            "+1**********",
+            "+1**********",
+            message,
+        )

@@ -1,0 +1,2 @@
+Flask==2.2.5
+ffmpeg-python==0.2.0

@@ -1,0 +1,2 @@
+selenium
+bs4

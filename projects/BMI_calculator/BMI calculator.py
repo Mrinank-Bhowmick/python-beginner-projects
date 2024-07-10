@@ -1,19 +1,20 @@
 import tabulate
 import csv
 
+
 def reference_chart():
     """
     This is a function used to tabulate the data
     of the bmi scale for the user, this requries a csv file 'bmi.csv' and two libraries "csv" and "tabulate".
     It won't take any arguments and won't return anything
     """
-    list2=[]
-    with open('bmi.csv') as file1:
-        list1=csv.reader(file1)
+    list2 = []
+    with open("bmi.csv") as file1:
+        list1 = csv.reader(file1)
         for line in list1:
             list2.append(line)
         print("Here You can take the reference chart \n")
-        print(tabulate.tabulate(list2[1:],headers=list2[0],tablefmt='fancy_grid'))
+        print(tabulate.tabulate(list2[1:], headers=list2[0], tablefmt="fancy_grid"))
 
 
 def calculate_bmi(height, weight):
