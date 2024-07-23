@@ -1,7 +1,7 @@
 # How to contribute
 First of all, thank you for taking the time to contribute to this project. We've tried to make a stable project and try to fix bugs and add new features continuously. You can help us do more.
 
-## Getting started
+## Getting started##
 
 ### Check out the projects folder
 
