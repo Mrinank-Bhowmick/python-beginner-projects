@@ -1,0 +1,1 @@
+In this I've created a countdown timer which works manually and its static.
