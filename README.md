@@ -832,8 +832,8 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/kanchanrai7">
-            <img src="https://avatars.githubusercontent.com/u/114416916?v=4" width="100;" alt="kanchanrai7"/>
+        <a href="https://github.com/kanchanraiii">
+            <img src="https://avatars.githubusercontent.com/u/114416916?v=4" width="100;" alt="kanchanraiii"/>
             <br />
             <sub><b>Kanchan Rai</b></sub>
         </a>
@@ -1320,8 +1320,8 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/Anand-Munjuluri">
-            <img src="https://avatars.githubusercontent.com/u/100225249?v=4" width="100;" alt="Anand-Munjuluri"/>
+        <a href="https://github.com/amunjuluri">
+            <img src="https://avatars.githubusercontent.com/u/100225249?v=4" width="100;" alt="amunjuluri"/>
             <br />
             <sub><b>Anand Munjuluri</b></sub>
         </a>
@@ -2051,10 +2051,10 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/NebulaAnish">
-            <img src="https://avatars.githubusercontent.com/u/50112251?v=4" width="100;" alt="NebulaAnish"/>
+        <a href="https://github.com/nebulaanish">
+            <img src="https://avatars.githubusercontent.com/u/50112251?v=4" width="100;" alt="nebulaanish"/>
             <br />
-            <sub><b>Anish Neupane</b></sub>
+            <sub><b>Balaram Neupane</b></sub>
         </a>
     </td>
     <td align="center">
@@ -2316,10 +2316,10 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/Abhay-Gupta008">
-            <img src="https://avatars.githubusercontent.com/u/110215279?v=4" width="100;" alt="Abhay-Gupta008"/>
+        <a href="https://github.com/abc-is-here">
+            <img src="https://avatars.githubusercontent.com/u/110215279?v=4" width="100;" alt="abc-is-here"/>
             <br />
-            <sub><b>Abhay-Gupta008</b></sub>
+            <sub><b>Abc</b></sub>
         </a>
     </td>
     <td align="center">
