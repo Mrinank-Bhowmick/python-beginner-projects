@@ -8,7 +8,9 @@ class TestSnake(unittest.TestCase):
         self.snake = Snake()
 
     def test_init(self):
-        self.assertEqual(self.snake.head, Point(GameSettings.WIDTH / 2, GameSettings.HEIGHT / 2))
+        self.assertEqual(
+            self.snake.head, Point(GameSettings.WIDTH / 2, GameSettings.HEIGHT / 2)
+        )
         self.assertEqual(self.snake.block_size, GameSettings.BLOCK_SIZE)
         self.assertEqual(len(self.snake.blocks), 3)
         self.assertEqual(self.snake.direction, Direction.RIGHT)
@@ -26,10 +28,10 @@ class TestSnake(unittest.TestCase):
             self.snake.head,
             Point(80, 100),
             Point(60, 100),
-            Point(100, 100)
+            Point(100, 100),
         ]
         self.assertTrue(self.snake.self_collision())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

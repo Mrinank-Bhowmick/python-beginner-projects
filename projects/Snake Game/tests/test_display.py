@@ -15,12 +15,14 @@ class TestDisplay(unittest.TestCase):
         self.display.width = 640
         self.display.height = 480
 
-    @patch('pygame.init')
-    @patch('pygame.font.Font')
-    @patch('pygame.display.set_mode')
-    @patch('pygame.display.set_caption')
-    @patch('pygame.time.Clock')
-    def test_init(self, mock_init, mock_font, mock_set_mode, mock_set_caption, mock_clock):
+    @patch("pygame.init")
+    @patch("pygame.font.Font")
+    @patch("pygame.display.set_mode")
+    @patch("pygame.display.set_caption")
+    @patch("pygame.time.Clock")
+    def test_init(
+        self, mock_init, mock_font, mock_set_mode, mock_set_caption, mock_clock
+    ):
         mock_init.return_value = True
         mock_font_instance = MagicMock()
         mock_font.return_value = mock_font_instance
@@ -39,12 +41,14 @@ class TestDisplay(unittest.TestCase):
         self.assertIsInstance(self.display.window, MagicMock)
         self.assertIsInstance(self.display.clock, MagicMock)
 
-    @patch('pygame.init')
-    @patch('pygame.display.set_mode')
-    @patch('pygame.display.set_caption')
-    @patch('pygame.font.Font')
-    @patch('pygame.time.Clock')
-    def test_init(self, mock_clock, mock_font, mock_set_caption, mock_set_mode, mock_init):
+    @patch("pygame.init")
+    @patch("pygame.display.set_mode")
+    @patch("pygame.display.set_caption")
+    @patch("pygame.font.Font")
+    @patch("pygame.time.Clock")
+    def test_init(
+        self, mock_clock, mock_font, mock_set_caption, mock_set_mode, mock_init
+    ):
         display = Display()
         mock_init.assert_called_once()
         mock_font.assert_called_once()
@@ -56,11 +60,13 @@ class TestDisplay(unittest.TestCase):
         self.assertIsInstance(display.window, MagicMock)
         self.assertIsInstance(display.clock, MagicMock)
 
-    @patch('pygame.draw.rect')
-    @patch('pygame.font.Font')
-    @patch('pygame.display.flip')
-    @patch('pygame.display.set_mode')
-    def test_update_ui(self, mock_set_mode, mock_display_flip, mock_font, mock_draw_rect):
+    @patch("pygame.draw.rect")
+    @patch("pygame.font.Font")
+    @patch("pygame.display.flip")
+    @patch("pygame.display.set_mode")
+    def test_update_ui(
+        self, mock_set_mode, mock_display_flip, mock_font, mock_draw_rect
+    ):
         mock_window = mock_set_mode.return_value
         mock_font_instance = mock_font.return_value
         mock_font_instance.render = MagicMock()
@@ -76,31 +82,39 @@ class TestDisplay(unittest.TestCase):
         mock_font_instance.render.assert_called()
         mock_display_flip.assert_called()
 
-    @patch('pygame.draw.rect')
+    @patch("pygame.draw.rect")
     def test_draw_snake(self, mock_draw_rect):
         snake = MagicMock()
-        snake.blocks = [Point(0, 0), Point(GameSettings.BLOCK_SIZE, 0), Point(2 * GameSettings.BLOCK_SIZE, 0)]
+        snake.blocks = [
+            Point(0, 0),
+            Point(GameSettings.BLOCK_SIZE, 0),
+            Point(2 * GameSettings.BLOCK_SIZE, 0),
+        ]
 
         self.display.draw_snake(snake)
 
         # Check for  correct snake block rendering
         mock_draw_rect.assert_any_call(
-            self.display.window, RgbColors.BLUE1, pygame.Rect(0, 0, GameSettings.BLOCK_SIZE, GameSettings.BLOCK_SIZE)
+            self.display.window,
+            RgbColors.BLUE1,
+            pygame.Rect(0, 0, GameSettings.BLOCK_SIZE, GameSettings.BLOCK_SIZE),
         )
         mock_draw_rect.assert_any_call(
             self.display.window, RgbColors.BLUE2, pygame.Rect(4, 4, 12, 12)
         )
 
-    @patch('pygame.draw.rect')
+    @patch("pygame.draw.rect")
     def test_draw_food(self, mock_draw_rect):
         food = Point(0, 0)
         self.display.draw_food(food)
         # Check for correct food rendering
         mock_draw_rect.assert_called_once_with(
-            self.display.window, RgbColors.RED, pygame.Rect(0, 0, GameSettings.BLOCK_SIZE, GameSettings.BLOCK_SIZE)
+            self.display.window,
+            RgbColors.RED,
+            pygame.Rect(0, 0, GameSettings.BLOCK_SIZE, GameSettings.BLOCK_SIZE),
         )
 
-    @patch('pygame.font.Font')
+    @patch("pygame.font.Font")
     def test_draw_score(self, mock_font):
         score = 10
         mock_font_instance = mock_font.return_value
@@ -116,8 +130,8 @@ class TestDisplay(unittest.TestCase):
         mock_font_instance.render.assert_called_once()
         mock_window_surface.blit.assert_called_once()
 
-    @patch('pygame.display.flip')
-    @patch('pygame.font.Font')
+    @patch("pygame.display.flip")
+    @patch("pygame.font.Font")
     def test_render_game_over(self, mock_font, mock_flip):
         mock_font_instance = mock_font.return_value
         mock_render = MagicMock()
@@ -132,8 +146,8 @@ class TestDisplay(unittest.TestCase):
         mock_window_surface.blit.assert_called_once()
         mock_flip.assert_called_once()
 
-    @patch('pygame.display.flip')
-    @patch('pygame.font.Font')
+    @patch("pygame.display.flip")
+    @patch("pygame.font.Font")
     def test_render_play_again(self, mock_font, mock_flip):
         mock_font_instance = mock_font.return_value
         mock_render = MagicMock()
@@ -147,7 +161,7 @@ class TestDisplay(unittest.TestCase):
         mock_window_surface.blit.assert_called_once()
         mock_flip.assert_called_once()
 
-    @patch('pygame.font.Font')
+    @patch("pygame.font.Font")
     def test_render_high_score(self, mock_font):
         high_score = 100
         mock_font_instance = mock_font.return_value
@@ -163,8 +177,8 @@ class TestDisplay(unittest.TestCase):
         mock_font_instance.render.assert_called_once()
         mock_window_surface.blit.assert_called_once()
 
-    @patch('pygame.display.flip')
-    @patch('pygame.font.Font')
+    @patch("pygame.display.flip")
+    @patch("pygame.font.Font")
     def test_render_new_high_score(self, mock_font, mock_flip):
         mock_font_instance = mock_font.return_value
         mock_render = MagicMock()
@@ -179,5 +193,5 @@ class TestDisplay(unittest.TestCase):
         mock_flip.assert_called_once()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
