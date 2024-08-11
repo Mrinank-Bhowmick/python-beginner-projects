@@ -1,8 +1,11 @@
+# import necessary dependencies
 from sys import exit
 import pygame
 
+# initialize the game
 pygame.init()
 
+# display game
 surface = pygame.display.set_mode((640, 640))
 pygame.display.set_caption("Chess")
 
@@ -23,6 +26,7 @@ validMoves = None
 turn = 1
 
 
+# define ValidMoveGenerator class
 class ValidMoveGenerator(object):
     def __init__(self):
         self.vMoves = []
@@ -282,6 +286,7 @@ class ValidMoveGenerator(object):
 validMoveGen = ValidMoveGenerator()
 
 
+# define Board class
 class Board(object):
     def __init__(self):
         self.sqs = [[], [], [], [], [], [], [], []]
@@ -559,6 +564,7 @@ def notResultsInCheck(x1, y1, x2, y2):
     return True
 
 
+# define Event object
 class Event(object):
     def __init__(self):
         self.selected = False
