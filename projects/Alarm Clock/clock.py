@@ -20,6 +20,7 @@ def get_time_of_day(hour):
 # Function to update the time display
 def update_time():
     current_time = strftime("%H:%M:%S %p")
+    
     hour = int(strftime("%H"))
     time_of_day = get_time_of_day(hour)
 
