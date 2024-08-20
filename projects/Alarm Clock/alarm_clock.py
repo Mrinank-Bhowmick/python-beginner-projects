@@ -6,7 +6,7 @@ from pygame import mixer
 
 # create object
 root = Tk()
-root.geometry("500x250")
+root.geometry("500x300")
 
 
 def Threading():
