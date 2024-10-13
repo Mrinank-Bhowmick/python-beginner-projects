@@ -19,7 +19,7 @@ Este projeto utiliza `yt-dlp` para baixar vídeos do YouTube com a resolução m
 
 1. Clone o repositório para sua máquina local.
    ```bash
-   git clone https://github.com/SeuUsuario/youtube_video_downloader.git
+   git clone https://github.com/Mrinank-Bhowmick/python-beginner-projects.git
    
 2. Navegue até o diretório do script
    ```bash
