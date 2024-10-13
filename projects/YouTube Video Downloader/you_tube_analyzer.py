@@ -1,6 +1,5 @@
 import yt_dlp
 
-
 def download_youtube_video(video_url):
     """Downloads a YouTube video using yt-dlp."""
 
@@ -24,14 +23,15 @@ def download_youtube_video(video_url):
             ydl_opts["format"] = format_id
         else:
             # Select the highest resolution format
-            highest_resolution = max(formats, key=lambda x: x.get("height", 0))
+            highest_resolution = max(formats, key=lambda x: (x.get("height") or 0))
             format_id = highest_resolution["format_id"]
             ydl_opts["format"] = format_id
 
-        # Download the video
-        ydl.download([video_url])
-        print("Download complete using yt-dlp!")
-
+        # Update options with selected format
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([video_url])
+        print("Downlaod complete using yt-dlp")    
+        
 
 if __name__ == "__main__":
     video_url = input("Enter the URL: ")
