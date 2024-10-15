@@ -44,3 +44,33 @@ h1{
     border-radius: 10px;
     border:1px solid #000000
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #f06, #4a90e2);
+    font-family: 'Arial', sans-serif;
+}
+
+.name-container {
+    text-align: center;
+}
+
+.name {
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+    background: -webkit-linear-gradient(#f06, #4a90e2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, text-shadow 0.3s;
+}
+
+.name:hover {
+    transform: scale(1.1);
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+}
