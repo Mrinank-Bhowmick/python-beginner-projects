@@ -1,7 +1,7 @@
 annotated-types==0.5.0
 anyio==3.7.1
 asyncpg==0.28.0
-certifi==2023.7.22
+certifi==2024.7.4
 charset-normalizer==3.3.0
 fastapi==0.109.1
 greenlet==2.0.2
