@@ -2039,7 +2039,7 @@
         <a href="https://github.com/paartheee">
             <img src="https://avatars.githubusercontent.com/u/66585214?v=4" width="100;" alt="paartheee"/>
             <br />
-            <sub><b>paartheee</b></sub>
+            <sub><b>Paartheee</b></sub>
         </a>
     </td></tr>
 <tr>
