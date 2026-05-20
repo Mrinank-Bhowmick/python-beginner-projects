@@ -1,0 +1,9 @@
+[project]
+name = "pybegin-worker"
+version = "0.1.0"
+description = "Cloudflare Worker backend for the python-beginner-projects sticker site"
+requires-python = ">=3.12"
+dependencies = [
+    "qrcode>=7.4",
+    "pillow",
+]

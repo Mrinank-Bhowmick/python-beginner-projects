@@ -1,0 +1,9 @@
+from collections.abc import Generator
+from typing import Any
+
+cloudflareWorkersModule: Any
+cloudflareSocketsModule: Any
+
+def doAnImport(module_name: str) -> Any: ...
+def patch_env_helper(kwds: Any) -> Generator[None]: ...
+def patchWaitUntil(ctx: Any) -> None: ...

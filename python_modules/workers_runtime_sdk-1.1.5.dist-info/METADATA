@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: workers-runtime-sdk
+Version: 1.1.5
+Summary: Python SDK for Cloudflare Workers
+Project-URL: Homepage, https://github.com/cloudflare/workers-py
+Project-URL: Bug Tracker, https://github.com/cloudflare/workers-py/issues
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+
+# workers-runtime-sdk
+
+Runtime SDK for Python Cloudflare Workers.
