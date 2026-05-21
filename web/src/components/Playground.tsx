@@ -6,14 +6,35 @@
 // (public/pyodide-worker.js); input() is bridged via a SharedArrayBuffer.
 // The editor lints against Pyodide's compile() — real syntax-error squiggles.
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import { linter, lintGutter, type Diagnostic } from "@codemirror/lint";
 import { Terminal } from "@xterm/xterm";
 import { FitAddon } from "@xterm/addon-fit";
 import "@xterm/xterm/css/xterm.css";
+import {
+  Play,
+  Square,
+  RotateCcw,
+  BookOpen,
+  ChevronDown,
+  ChevronRight,
+  Check,
+  Copy,
+  Eraser,
+  Code2,
+  ArrowUpRight,
+} from "lucide-react";
 import { pybeginPaper } from "@/lib/cmTheme";
+import ResizeHandle from "./ResizeHandle";
 
 type Status = "idle" | "running" | "waiting" | "done" | "error";
 
@@ -74,18 +95,33 @@ function WinDots() {
 
 const nl = (s: string) => s.replace(/\r?\n/g, "\r\n");
 
+const clamp = (v: number, lo: number, hi: number) =>
+  Math.max(lo, Math.min(hi, v));
+
+// Stable empty-array default so the prop reference doesn't change each render.
+const NO_PACKAGES: string[] = [];
+
 export default function Playground({
   project,
   initialCode,
-  packages = [],
+  packages = NO_PACKAGES,
+  readmeHtml,
 }: {
   project: PlaygroundProject;
   initialCode: string;
   packages?: string[];
+  readmeHtml?: string | null;
 }) {
   const [code, setCode] = useState(initialCode);
   const [status, setStatus] = useState<Status>("idle");
   const [copied, setCopied] = useState(false);
+  const [showReadme, setShowReadme] = useState(true);
+
+  // Resizable layout — editor/console split ratio and README panel height.
+  const [editorPct, setEditorPct] = useState(58);
+  const [readmeHeight, setReadmeHeight] = useState<number | null>(null);
+  const splitRef = useRef<HTMLDivElement | null>(null);
+  const readmeBodyRef = useRef<HTMLDivElement | null>(null);
 
   const workerRef = useRef<Worker | null>(null);
   const sabRef = useRef<SharedArrayBuffer | null>(null);
@@ -210,7 +246,9 @@ export default function Playground({
     term.loadAddon(fit);
     term.open(termHostRef.current);
     fit.fit();
-    term.writeln("\x1b[2;3m# Output appears here. Hit ▶ Run to start.\x1b[0m");
+    term.writeln(
+      "\x1b[2;3m# Output appears here. Hit Run code to start.\x1b[0m",
+    );
 
     term.onData((d) => {
       if (!runActiveRef.current) return;
@@ -265,7 +303,13 @@ export default function Playground({
   // can lint and the first Run is instant.
   useEffect(() => {
     ensureWorker();
-    return () => workerRef.current?.terminate();
+    return () => {
+      // Null the ref too — otherwise React StrictMode's mount/unmount/mount
+      // cycle leaves a terminated worker in the ref and ensureWorker reuses it,
+      // so the first Run posts to a dead worker and hangs on "Running…".
+      workerRef.current?.terminate();
+      workerRef.current = null;
+    };
   }, [ensureWorker]);
 
   // --- editor lint: round-trip the source to the worker's compile() check ---
@@ -361,6 +405,21 @@ export default function Playground({
     });
   };
 
+  // Drag the bar between editor and console — convert px delta to a percentage
+  // of the split container so the two panes keep filling the available width.
+  const resizeSplit = useCallback((dx: number) => {
+    const w = splitRef.current?.clientWidth ?? 1;
+    setEditorPct((p) => clamp(p + (dx / w) * 100, 24, 80));
+  }, []);
+
+  // Drag the bar under the README to set its panel height.
+  const resizeReadme = useCallback((dy: number) => {
+    setReadmeHeight((h) => {
+      const cur = h ?? readmeBodyRef.current?.offsetHeight ?? 240;
+      return clamp(cur + dy, 90, 560);
+    });
+  }, []);
+
   const lineCount = code.split("\n").length;
   const isRunning = status === "running" || status === "waiting";
 
@@ -374,20 +433,27 @@ export default function Playground({
             <h1 className="pg-proj-name">{project.name}</h1>
             <div className="pg-proj-meta">
               <span className="pill lang">Python</span>
-              <span className="pill">{project.deps}</span>
+              {project.deps && <span className="pill">{project.deps}</span>}
               <span className="pill">{project.lines} lines</span>
               {project.blurb && (
                 <span className="pg-proj-blurb">· {project.blurb}</span>
               )}
             </div>
-            {project.author && project.folderUrl && (
+            {project.folderUrl && (
               <a
                 className="pg-credit"
                 href={project.folderUrl}
                 target="_blank"
                 rel="noreferrer"
               >
-                🧑‍💻 Original project by @{project.author} — view source on GitHub ↗
+                <Code2 size={14} strokeWidth={2.25} aria-hidden="true" />
+                <span>
+                  {project.author
+                    ? `Original project by @${project.author} — `
+                    : ""}
+                  view source on GitHub
+                </span>
+                <ArrowUpRight size={13} strokeWidth={2.25} aria-hidden="true" />
               </a>
             )}
           </div>
@@ -399,21 +465,83 @@ export default function Playground({
           </div>
           {!isRunning ? (
             <button className="pg-btn run" onClick={run}>
-              <span className="ic">▶</span> Run code
+              <Play size={15} strokeWidth={2.5} fill="currentColor" />
+              Run code
             </button>
           ) : (
             <button className="pg-btn stop" onClick={stop}>
-              <span className="ic">■</span> Stop
+              <Square size={14} strokeWidth={2.5} fill="currentColor" />
+              Stop
             </button>
           )}
           <button className="pg-btn" onClick={reset} title="Reset to original">
-            <span className="ic">↻</span> Reset
+            <RotateCcw size={14} strokeWidth={2.5} />
+            Reset
           </button>
         </div>
       </div>
 
+      {/* README — collapsible, resizable strip above the editor */}
+      {readmeHtml && (
+        <div className={`pg-readme-bar${showReadme ? " open" : ""}`}>
+          <button
+            className="pg-readme-toggle"
+            onClick={() => setShowReadme((v) => !v)}
+            aria-expanded={showReadme}
+          >
+            <BookOpen
+              className="pg-readme-emoji"
+              size={15}
+              strokeWidth={2.25}
+              aria-hidden="true"
+            />
+            <span className="pg-readme-label">README</span>
+            <span className="pg-readme-hint">
+              {showReadme ? "" : "— what this project does"}
+            </span>
+            <span className="pg-readme-btn">
+              {showReadme ? (
+                <ChevronDown size={14} strokeWidth={2.5} />
+              ) : (
+                <ChevronRight size={14} strokeWidth={2.5} />
+              )}
+              {showReadme ? "Collapse" : "Expand"}
+            </span>
+          </button>
+          {showReadme && (
+            <>
+              <div
+                ref={readmeBodyRef}
+                className="pg-readme-content s-readme"
+                style={
+                  readmeHeight
+                    ? { height: readmeHeight, maxHeight: "none" }
+                    : undefined
+                }
+                dangerouslySetInnerHTML={{ __html: readmeHtml }}
+              />
+              <ResizeHandle
+                orientation="y"
+                className="pg-resize-readme"
+                onResize={resizeReadme}
+                ariaLabel="Resize README panel"
+              />
+            </>
+          )}
+        </div>
+      )}
+
       {/* editor + console */}
-      <div className="pg-split row">
+      <div
+        className="pg-split row"
+        ref={splitRef}
+        style={
+          {
+            "--pg-ed-grow": editorPct,
+            "--pg-co-grow": 100 - editorPct,
+          } as CSSProperties
+        }
+      >
         {/* editor */}
         <div className="pg-window pg-editor">
           <div className="pg-winbar">
@@ -424,7 +552,11 @@ export default function Playground({
             <div className="spacer" />
             <span className="pill">{lineCount} lines</span>
             <button className="iconbtn" onClick={copyCode} title="Copy code">
-              {copied ? "✓" : "⧉"}
+              {copied ? (
+                <Check size={15} strokeWidth={2.5} />
+              ) : (
+                <Copy size={15} strokeWidth={2.25} />
+              )}
             </button>
           </div>
           <div className="pg-editor-body">
@@ -439,6 +571,14 @@ export default function Playground({
           </div>
         </div>
 
+        {/* drag bar between editor and console */}
+        <ResizeHandle
+          orientation="x"
+          className="pg-resize-split"
+          onResize={resizeSplit}
+          ariaLabel="Resize editor and console"
+        />
+
         {/* console — real terminal */}
         <div className="pg-window pg-console">
           <div className="pg-winbar">
@@ -452,7 +592,7 @@ export default function Playground({
               onClick={() => termRef.current?.clear()}
               title="Clear console"
             >
-              ⌫
+              <Eraser size={15} strokeWidth={2.25} />
             </button>
           </div>
           <div className="pg-console-body">

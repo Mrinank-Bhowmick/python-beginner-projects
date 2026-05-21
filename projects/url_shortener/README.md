@@ -31,3 +31,6 @@ I built code quality tools into project (linting, formatting, type annotation ch
 
 Author: [justinjohnson-dev](https://github.com/justinjohnson-dev)
 Last Update: 05/25/2024
+## Pyodide-runnable
+
+No — it uses `pyshorteners`/`requests` to call a live URL-shortening API and depends on `pywin32`.

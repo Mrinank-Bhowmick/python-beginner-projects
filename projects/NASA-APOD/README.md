@@ -11,3 +11,7 @@ pip install -r requirements.txt
 2. Pass it in `credentials.py`
 3. Run the application `python main.py`
 
+
+## Pyodide-runnable
+
+No — it makes network requests to the NASA APOD API and downloads the image file with `wget`.

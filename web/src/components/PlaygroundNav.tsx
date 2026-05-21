@@ -1,6 +1,7 @@
 // Slim top nav for the full-bleed playground workspace.
 
 import Link from "next/link";
+import { Star } from "lucide-react";
 import StickerLogo from "./StickerLogo";
 import { REPO_URL } from "@/lib/data";
 
@@ -26,7 +27,8 @@ export default function PlaygroundNav() {
       </div>
       <div className="pg-nav-right">
         <a className="pg-star-btn" href={REPO_URL} target="_blank" rel="noreferrer">
-          ★ Star · 2.3k
+          <Star size={13} strokeWidth={2.25} fill="currentColor" />
+          Star · 2.3k
         </a>
       </div>
     </nav>

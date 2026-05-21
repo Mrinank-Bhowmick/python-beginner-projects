@@ -1,5 +1,4 @@
 import random
-import os
 
 
 def toss_coin():
@@ -11,8 +10,6 @@ def main():
     while True:
         flag = False  # Declaring a variable which will be used afterwards to break out of 2 nested while loops
         # at the same time
-        # Clears the shell/terminal (where all the text is)
-        os.system("cls")
 
         answer = input("Pick a side for the coin toss (heads/tails): ")
 

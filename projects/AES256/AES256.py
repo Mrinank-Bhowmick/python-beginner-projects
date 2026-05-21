@@ -1,16 +1,8 @@
 # Imports
 import hashlib
 from base64 import b64encode, b64decode
-import os
-from Cryptodome.Cipher import AES
-from Cryptodome.Random import get_random_bytes
-import platform
-
-# Clear the console screen
-if platform.system() == "Windows":
-    os.system("cls")
-else:
-    os.system("clear")
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
 
 
 # Start of Encryption Function

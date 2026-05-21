@@ -60,3 +60,7 @@ To deploy this project just run .py files.
 - [@siddharth9300](https://github.com/siddharth9300)
 
   
+
+## Pyodide-runnable
+
+No — both scripts connect to a MySQL database via `mysql.connector`, which requires a live database server unavailable in Pyodide.

@@ -18,3 +18,8 @@ The purpose of this game is to beat the dealer, which can be done in various way
 -----------------------------------------------------------------------------------------------------------------
 
 PLEASE NOTE: For simplicity, this program does not include advanced moves, such as double downs, splits and surrenders. The program also currently lacks proper linting, debugging and optimization.
+
+
+## Pyodide-runnable
+
+Yes - pure-stdlib console card game using only random and input()/print().

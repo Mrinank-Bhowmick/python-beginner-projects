@@ -25,3 +25,7 @@ Each eye is represented by 6 (x, y)-coordinates, starting at the left-corner of 
 
 
 
+
+## Pyodide-runnable
+
+No — it uses `dlib`, `OpenCV`, and a video/webcam stream, none of which are available in Pyodide.

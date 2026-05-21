@@ -7,3 +7,8 @@ This Python script periodically moves the mouse and performs a click action. Itâ
 - Simulates a mouse click periodically
 - Prevents idle status on Microsoft Teams
 
+
+
+## Pyodide-runnable
+
+No - relies on pyautogui to control the real mouse and keyboard, which has no meaning in a browser.

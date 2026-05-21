@@ -14,3 +14,7 @@
 # Output:
 
 ![output](./output.gif)
+
+## Pyodide-runnable
+
+No - uses the curses library for terminal UI, which is not available in Pyodide.

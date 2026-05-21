@@ -31,3 +31,8 @@ The Unofficial Whisper API provides transcription output in various formats:
     Text: The transcribed text as a plain text string.
     VTT (WebVTT): Transcribed text with timestamps in the WebVTT format for easy integration with video players.
     SRT (SubRip): Transcribed text with timestamps in the SubRip format, suitable for subtitles.
+
+
+## Pyodide-runnable
+
+No - it is a Flask web server that also depends on OpenAI Whisper, neither of which runs under Pyodide.

@@ -63,3 +63,7 @@ If the eye is closed, the eye aspect ratio will again remain approximately const
 
 
 
+
+## Pyodide-runnable
+
+No — it uses `dlib`, `OpenCV`, a live webcam, audio playback, and threading.

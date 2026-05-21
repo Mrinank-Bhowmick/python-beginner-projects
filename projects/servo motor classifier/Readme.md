@@ -11,3 +11,18 @@ Servos are basic components of many machines. There are different classes of ser
 - Numpy
 - Pandas
 - Scikit-learn
+
+## How to run
+
+```
+pip install pandas numpy scikit-learn matplotlib
+python main.py
+```
+
+## Dependencies
+
+pandas, numpy, scikit-learn, matplotlib
+
+## Pyodide-runnable
+
+No — it downloads a CSV over the network with `pd.read_csv(<url>)` and renders a Matplotlib window, neither of which works in Pyodide.

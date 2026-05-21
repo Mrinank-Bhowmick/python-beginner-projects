@@ -52,3 +52,6 @@ python app.py
 <br>
 
 **Made with 💙 by [Vishvam](https://github.com/Vishvam10)**
+## Pyodide-runnable
+
+No — it uses Selenium and `requests` to scrape a live website and download images.

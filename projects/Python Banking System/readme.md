@@ -20,3 +20,17 @@ The Python Banking System is a simple console-based banking application that all
 - Check your account balance at any time.
 - View your transaction history.
 
+## How to run
+
+```sh
+python Banking.py
+```
+
+## Dependencies
+
+Standard library only.
+
+## Pyodide-runnable
+
+Yes - it is a pure-stdlib console program using only `input()`/`print()` and the `random` module.
+

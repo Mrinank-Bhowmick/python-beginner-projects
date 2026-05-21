@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import TryItPanel from "./TryItPanel";
 import ProjectCredit from "./ProjectCredit";
+import RunnableBadge from "./RunnableBadge";
 import { REPO_URL } from "@/lib/data";
 import type { Project } from "@/types";
 
@@ -43,6 +43,7 @@ export default function ProjectModal({
           <span className="s-meta-pill">{p.lines} lines</span>
           <span className="s-meta-pill dep">{p.deps}</span>
           <span className="s-meta-pill dep">{p.cat}</span>
+          {p.playground && <RunnableBadge size="sm" />}
         </div>
         <ProjectCredit author={p.author} />
         <div className="s-modal-code">
@@ -54,7 +55,6 @@ export default function ProjectModal({
           </div>
           <div>$ python {p.id}.py</div>
         </div>
-        {p.runnable && <TryItPanel project={p} />}
         <div className="s-modal-actions">
           {p.playground && (
             <Link className="s-btn-pri" href={`/playground/${p.id}`}>

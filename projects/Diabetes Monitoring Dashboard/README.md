@@ -46,3 +46,7 @@ streamlit run webApp.py
 ```
 
 The application will deploy a webapp on localhost which then can be accesed through web browsers (Chrome recommended!) by any client on that network.
+
+# Pyodide-runnable
+
+No — it runs a Streamlit web server, makes network requests, uses scikit-learn, and calls the OpenAI API.

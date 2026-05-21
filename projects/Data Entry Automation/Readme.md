@@ -8,3 +8,6 @@ _-> bs4_
 _-> time_
 
 If you find any Difficulty in understanding things, then check for the docs of these library.
+## Pyodide-runnable
+
+No — it uses `selenium` to drive a Chrome browser, plus `requests` for web scraping.

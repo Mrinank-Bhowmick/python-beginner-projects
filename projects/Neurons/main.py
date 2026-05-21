@@ -1,20 +1,10 @@
-import os
 import random
-import sys
 import time
 from enum import Enum
 from shutil import get_terminal_size
 
 
 TICKS_PER_SECOND = 60
-
-
-def clear() -> None:
-    """Clear the terminal based on OS."""
-    if sys.platform == "nt":
-        os.system("cls")
-    else:
-        os.system("clear")
 
 
 class Direction(Enum):
@@ -103,7 +93,6 @@ def main() -> None:
     grid.set_neuron(15, 15)  # Example placement
     grid.set_neuron(35, 35)
     while grid.neurons:
-        clear()
         print(grid)  # Output the string representation of the grid
         grid.tick()
         time.sleep(1 / TICKS_PER_SECOND)

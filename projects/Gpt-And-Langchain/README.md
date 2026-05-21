@@ -43,5 +43,9 @@ SERPAPI_API_KEY = 'SERP API Key'
 py telegram-bot.py
 ```
 
+## Pyodide-runnable
+
+No — it runs a Telegram bot and calls the OpenAI, Notion, and SerpAPI services over the network, none of which is available in a browser sandbox.
+
 
 

@@ -1,6 +1,7 @@
 "use client";
 
 import type { Project } from "@/types";
+import RunnableBadge from "./RunnableBadge";
 
 export default function ProjectCard({
   p,
@@ -33,11 +34,7 @@ export default function ProjectCard({
       <div className="s-card-meta">
         <span className="s-meta-pill">{p.lines} lines</span>
         <span className="s-meta-pill dep">{p.deps}</span>
-        {p.playground ? (
-          <span className="s-meta-pill play">▶ Playground</span>
-        ) : (
-          p.runnable && <span className="s-meta-pill run">▶ Try it</span>
-        )}
+        {p.playground && <RunnableBadge size="sm" />}
       </div>
     </div>
   );

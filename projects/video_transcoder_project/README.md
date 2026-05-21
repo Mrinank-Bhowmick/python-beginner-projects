@@ -45,3 +45,7 @@
 This is a basic implementation; additional features like error handling, security measures, and frontend enhancements can be added for a more robust application.
 
 Feel free to modify the code and folder structure according to your project requirements.
+
+## Pyodide-runnable
+
+No — it is a Flask web server that transcodes videos with FFmpeg.

@@ -12,3 +12,7 @@ Please note that this a sample project to understand the concepts of SQL and web
 2. Run: `python3 main.py`
   
 If everything works successfully, the website will be available on the localhost server -> http://127.0.0.1:5000/
+
+## Pyodide-runnable
+
+No — it runs a Flask web server, which requires a server process and cannot run in the Pyodide browser sandbox.

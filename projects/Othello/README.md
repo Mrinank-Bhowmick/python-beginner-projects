@@ -55,3 +55,7 @@ Currently the algorithm makes use of the following heuristics for a position's e
    ```
 5. Navigate to the `src` directory, run the `main.py` file and play the game!
 > P.S. You can change color modes using the 'L' key!
+
+## Pyodide-runnable
+
+No — it is a `pygame` GUI game that requires a display window and local image/font assets.

@@ -39,3 +39,10 @@ This will happen if you’re using an IDE other than replit (e.g., VSCode, PyCha
 # Solution
 
 [https://replit.com/@appbrewery/blind-auction-completed](https://replit.com/@appbrewery/blind-auction-completed?v=1)
+
+
+## Pyodide-runnable
+
+Yes — `main.py` is a pure-stdlib console program (`art.py` is a local module in
+this folder). The instructions above mention a `replit` `clear()` call, but the
+code here doesn't use it.

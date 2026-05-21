@@ -1,50 +1,65 @@
 "use client";
 
-// Playground sidebar — searchable, with collapsible category groups
-// (open by default, collapse state persisted to localStorage; an active
-// search force-opens every group so matches stay visible).
+// Playground sidebar — lists every project in the repo, searchable.
+// Projects are split into two collapsible groups:
+//   • Runnable    → open live in the in-browser playground
+//   • Desktop     → can't run in-browser; link to the project's detail page
+// Collapse state is persisted to localStorage; an active search force-opens
+// every group so matches stay visible.
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import { CATEGORIES, PROJECTS } from "@/lib/data";
+import { Search, X } from "lucide-react";
+import { CATALOG } from "@/lib/catalog";
+import ResizeHandle from "./ResizeHandle";
 
-const PLAYABLE = PROJECTS.filter((p) => p.playground);
+const SIDE_MIN = 210;
+const SIDE_MAX = 520;
 
 interface SideItem {
   id: string;
   name: string;
   emoji: string;
-  lines: number;
   href: string;
+  runnable: boolean;
 }
 
-interface SideGroup {
-  id: string;
-  label: string;
-  items: SideItem[];
-}
+const RUNNABLE_ITEMS: SideItem[] = CATALOG.filter((p) => p.hasPlayground).map(
+  (p) => ({
+    id: p.id,
+    name: p.name,
+    emoji: p.emoji,
+    href: `/playground/${p.id}`,
+    runnable: true,
+  }),
+);
 
-const GROUPS: SideGroup[] = [
+const DESKTOP_ITEMS: SideItem[] = CATALOG.filter((p) => !p.hasPlayground).map(
+  (p) => ({
+    id: p.id,
+    name: p.name,
+    emoji: p.emoji,
+    href: `/projects/${p.id}`,
+    runnable: false,
+  }),
+);
+
+const GROUPS: { id: string; label: string; items: SideItem[] }[] = [
   {
     id: "scratch",
     label: "Scratchpad",
     items: [
-      { id: "scratch", name: "Blank scratchpad", emoji: "✏️", lines: 9, href: "/playground" },
+      {
+        id: "scratch",
+        name: "Blank scratchpad",
+        emoji: "✏️",
+        href: "/playground",
+        runnable: true,
+      },
     ],
   },
-  ...CATEGORIES.filter((c) => c.id !== "all")
-    .map((c) => ({
-      id: c.id,
-      label: c.name,
-      items: PLAYABLE.filter((p) => p.cat === c.id).map((p) => ({
-        id: p.id,
-        name: p.name,
-        emoji: p.emoji,
-        lines: p.lines,
-        href: `/playground/${p.id}`,
-      })),
-    }))
-    .filter((g) => g.items.length > 0),
+  { id: "runnable", label: "Runnable in browser", items: RUNNABLE_ITEMS },
+  { id: "desktop", label: "Desktop projects", items: DESKTOP_ITEMS },
 ];
 
 function Chevron() {
@@ -67,12 +82,16 @@ export default function PlaygroundSidebar({
   activeId?: string;
 }) {
   const [q, setQ] = useState("");
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  // Desktop group is huge — start it collapsed unless the user changed it.
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({
+    desktop: true,
+  });
+  // User-draggable sidebar width — resets to the default on every refresh.
+  const [width, setWidth] = useState(280);
 
-  // Load persisted collapse state once on mount.
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("pg_collapsed_v1");
+      const saved = localStorage.getItem("pg_collapsed_v2");
       if (saved) setCollapsed(JSON.parse(saved));
     } catch {
       /* ignore */
@@ -83,7 +102,7 @@ export default function PlaygroundSidebar({
     setCollapsed((prev) => {
       const next = { ...prev, [gid]: !prev[gid] };
       try {
-        localStorage.setItem("pg_collapsed_v1", JSON.stringify(next));
+        localStorage.setItem("pg_collapsed_v2", JSON.stringify(next));
       } catch {
         /* ignore */
       }
@@ -94,28 +113,33 @@ export default function PlaygroundSidebar({
     !q || it.name.toLowerCase().includes(q.toLowerCase());
 
   return (
-    <aside className="pg-side">
+    <aside
+      className="pg-side"
+      style={{ ["--pg-side-w"]: `${width}px` } as CSSProperties}
+    >
       <div className="pg-side-head">
         <div className="pg-side-title">Playground</div>
         <div className="pg-side-sub">
-          {PLAYABLE.length} runnable · in-browser CPython
+          {CATALOG.length} projects · {RUNNABLE_ITEMS.length} runnable
         </div>
       </div>
       <div className="pg-side-search">
-        <span aria-hidden="true">🔍</span>
+        <Search size={14} strokeWidth={2.25} aria-hidden="true" />
         <input
-          placeholder="Filter projects…"
+          placeholder="Search all projects…"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          aria-label="Filter playground projects"
+          aria-label="Search playground projects"
         />
         {q && (
-          <span
-            style={{ cursor: "pointer", opacity: 0.5 }}
+          <button
+            type="button"
+            className="pg-side-search-clear"
             onClick={() => setQ("")}
+            aria-label="Clear search"
           >
-            ✕
-          </span>
+            <X size={14} strokeWidth={2.5} />
+          </button>
         )}
       </div>
       <div className="pg-side-list">
@@ -124,7 +148,10 @@ export default function PlaygroundSidebar({
           if (items.length === 0) return null;
           const isCollapsed = !q && !!collapsed[g.id];
           return (
-            <div key={g.id} className={`pg-group ${isCollapsed ? "collapsed" : ""}`}>
+            <div
+              key={g.id}
+              className={`pg-group ${isCollapsed ? "collapsed" : ""}`}
+            >
               <button
                 className="pg-group-h"
                 onClick={() => toggle(g.id)}
@@ -136,7 +163,7 @@ export default function PlaygroundSidebar({
               </button>
               <div
                 className="pg-group-items"
-                style={{ maxHeight: isCollapsed ? 0 : items.length * 46 + 8 }}
+                style={{ maxHeight: isCollapsed ? 0 : items.length * 42 + 8 }}
               >
                 {items.map((it) => (
                   <Link
@@ -146,7 +173,13 @@ export default function PlaygroundSidebar({
                   >
                     <span className="em">{it.emoji}</span>
                     <span className="nm">{it.name}</span>
-                    <span className="ln">{it.lines}ln</span>
+                    {it.runnable && it.id !== "scratch" && (
+                      <span
+                        className="pg-run-dot"
+                        title="Runs in the browser"
+                        aria-label="Runnable"
+                      />
+                    )}
                   </Link>
                 ))}
               </div>
@@ -158,6 +191,14 @@ export default function PlaygroundSidebar({
         <span className="dot" />
         <span>Pyodide · CPython 3.x</span>
       </div>
+      <ResizeHandle
+        orientation="x"
+        className="pg-side-resize"
+        ariaLabel="Resize sidebar"
+        onResize={(dx) =>
+          setWidth((w) => Math.max(SIDE_MIN, Math.min(SIDE_MAX, w + dx)))
+        }
+      />
     </aside>
   );
 }

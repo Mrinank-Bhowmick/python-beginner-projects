@@ -43,3 +43,7 @@ python xls_to_xlsx.py
 
 ## Author
 [odhy](https://github.com/odhyp)
+
+## Pyodide-runnable
+
+No — it depends on `pywin32` and automates the desktop Microsoft Excel application.

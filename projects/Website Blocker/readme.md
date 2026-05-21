@@ -22,3 +22,6 @@ We need to know the following python modules to build the python website blocker
 1.  **file handling:**  file handling is used to do the modifications to the hosts file.
 2.  **time:**  The time module is used to control the frequency of the modifications to the hosts file.
 3.  **datetime:**  The datetime module is used to keep track of the free time and working time.
+## Pyodide-runnable
+
+No — it modifies the operating system `hosts` file, which is not accessible in the browser sandbox.

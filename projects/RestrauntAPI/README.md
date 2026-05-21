@@ -20,3 +20,22 @@ This endpoint is used to create orders.
 View Past Orders:
 - Endpoint: GET http://127.0.0.1:8000/orders/<email-id_of_user_whose_orders_are_to_be_seen>/
 You can use this endpoint to view the previous orders of a user by providing their email address.
+
+## How to run
+
+```sh
+pip install -r requirements.txt
+cd Restraunt_API
+python manage.py migrate
+python manage.py runserver
+```
+
+## Dependencies
+
+- Django
+- djangorestframework
+- Pillow
+
+## Pyodide-runnable
+
+No - it is a Django web application that requires a running HTTP server and database, which cannot run in the browser sandbox.

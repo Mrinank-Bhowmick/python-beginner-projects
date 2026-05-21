@@ -58,3 +58,7 @@ System (CAS) that allows users to perform various mathematical computations. The
 ## License
 
 [![License](https://img.shields.io/static/v1?label=Licence&message=GPL-3-0&color=blue)](https://opensource.org/license/GPL-3-0)
+
+## Pyodide-runnable
+
+No — it uses the `dearpygui` GUI toolkit and makes HTTP requests to the Newton API.

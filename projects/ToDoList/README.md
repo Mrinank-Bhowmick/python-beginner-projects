@@ -19,3 +19,10 @@ To run the program, you will need Python installed on your computer. Once you ha
 ```bash
 python to_do_list.py
 python3 to_do_list.py
+```
+
+## Pyodide-runnable
+
+No — `to_do_list.py` is a Telegram bot built on the `telebot` library; it
+needs network access and a bot token, so it cannot run in the browser
+playground. Run it on a desktop Python environment.

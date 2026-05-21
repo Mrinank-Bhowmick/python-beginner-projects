@@ -78,6 +78,10 @@ We welcome contributions to improve and expand this Random Quote Generator proje
 
 7. Wait for your pull request to be reviewed and merged.
 
+## Pyodide-runnable
+
+No - it builds a Tkinter GUI and uses `requests` to call an external API, neither of which works in the browser sandbox.
+
 ## Acknowledgments
 
 - Thanks to [Quotable API](https://quotable.io/) for providing the quotes.

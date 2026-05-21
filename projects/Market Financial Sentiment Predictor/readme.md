@@ -6,3 +6,15 @@ All day various news about companies comes and not all people can track this new
 - Numpy
 - Pandas
 - Scikit-learn
+
+## How to run
+
+```
+pip install numpy pandas scikit-learn
+python main.py
+```
+
+Requires the bundled `Financial Market News.csv` dataset.
+
+## Pyodide-runnable
+No — it depends on scikit-learn and reads a CSV dataset from the local disk.

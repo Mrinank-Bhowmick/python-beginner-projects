@@ -43,6 +43,11 @@ Welcome to the Weather Information App! This application allows users to fetch c
    - City Name with Spaces: Input the city name with spaces as it appears (e.g., "Los Angeles", "San Francisco").
    - City District or Area (Optional): Specify a district or area within larger cities for more localized weather data (e.g., "Manhattan, New York", "Shinjuku, Tokyo").
 
+## Pyodide-runnable
+
+No. The app calls the OpenWeatherMap HTTP API at runtime, which is blocked from
+the in-browser Pyodide playground.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

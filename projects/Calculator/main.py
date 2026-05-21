@@ -1,10 +1,7 @@
-"""imports the os and time modules from the Python Standard Library.
-The os module provides a way of using operating system dependent functionality,
-like reading or writing to the file system.
+"""imports the time module from the Python Standard Library.
 The time module provides various time-related functions, like getting the current
 time or pausing the execution of the script."""
 
-import os
 import time
 
 
@@ -172,7 +169,6 @@ while c != "-1":
             continue
         res = factorial(num)
     elif c == "7":
-        os.system("cls||clear")
         res = complex_arithmetic()
     elif c == "8":
         num = list(map(int, input("Enter the number separated by space").split()))
@@ -185,7 +181,5 @@ while c != "-1":
         break
     else:
         print("Sorry, invalid option!")
-    os.system("cls||clear")
     print(f"The answer is {res}")
     time.sleep(2)
-    os.system("cls||clear")

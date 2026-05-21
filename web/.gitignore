@@ -32,8 +32,6 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
-# NEXT_PUBLIC_API_BASE is a public URL, not a secret — keep it in version control.
-!.env.production
 
 # vercel
 .vercel
@@ -41,5 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-.env.production

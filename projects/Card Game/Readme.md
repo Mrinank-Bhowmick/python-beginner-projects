@@ -41,3 +41,7 @@ War is over. Alice wins
 
 
 ## ENJOY THE GAME
+
+## Pyodide-runnable
+
+Yes - pure-stdlib console card game using only random and re.

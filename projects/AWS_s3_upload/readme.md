@@ -11,3 +11,7 @@ boto3 (pip install boto3) <br />
 
 ### Author Name
 Yashvardhan Singh https://github.com/pythonicboat
+
+## Pyodide-runnable
+
+No - uses boto3 to make network calls to the AWS S3 API.

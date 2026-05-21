@@ -19,3 +19,6 @@
 
 - Edit the `messages` variable to change the list of messages to send.
 - Adjust the sleep interval for message timing..
+
+## Pyodide-runnable
+No — it uses pyautogui to control the keyboard and opens WhatsApp Web in a desktop browser.

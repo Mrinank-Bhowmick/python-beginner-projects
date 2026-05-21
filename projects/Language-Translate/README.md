@@ -20,3 +20,6 @@ options:
                         Language to translate from.
   --to_lang TO_LANG     Language to translate to. (defaults to English)
 ```
+
+## Pyodide-runnable
+No — the `translate` library makes live HTTP requests to an online translation service.

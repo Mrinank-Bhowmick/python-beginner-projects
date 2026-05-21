@@ -30,3 +30,7 @@ pytest
 From IDE right click and run.(As per the IDE options)  
 
 From terminal python main.py
+
+## Pyodide-runnable
+
+No - it depends on the `wordcloud` package and opens a `matplotlib` GUI window, which are not supported in the Pyodide sandbox.

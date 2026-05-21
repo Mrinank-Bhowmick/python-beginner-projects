@@ -47,3 +47,6 @@ The script offers a set of conversation questions and answers to engage in inter
 ## Grammar Exercises
 
 The grammar exercise section contains fill-in-the-blank sentences to help you improve your grasp of grammar rules. You can extend this section by adding more sentences and exercises to the `grammar_exercise` list in the script.
+
+## Pyodide-runnable
+No — the pronunciation feature uses speech_recognition with a microphone, which is unavailable in Pyodide.

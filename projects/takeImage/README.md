@@ -6,3 +6,7 @@ The default path would be your current directory.
 
 You can also give name to your image using following command:
 > python3 take_pictures_from_webcam.py --name ImageName
+
+## Pyodide-runnable
+
+No — it captures frames from a webcam with OpenCV (`cv2.VideoCapture`) and shows GUI windows, neither of which works in the browser sandbox.

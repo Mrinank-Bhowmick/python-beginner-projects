@@ -35,3 +35,6 @@ This Python script is designed to convert a PDF file into a plain text (.txt) fi
 - [pi1814](https://github.com/pi1814)
 
 This script simplifies the process of converting PDF files to text. If you encounter any issues or have suggestions for improvements, please don't hesitate to reach out to the author on their GitHub page. Feel free to customize and use this script for your PDF to text conversion needs.
+## Pyodide-runnable
+
+No — it is a PyQt5 desktop GUI application and reads PDF files from the local filesystem.

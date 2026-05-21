@@ -115,3 +115,8 @@ and click ``Copy Server ID`` as shown below:
 
 ### Note on GPT ``Credit balance``:
 Ensure you have an available ``Credit balance``. You can check on the ``Billing`` page in ``Settings`` or by clicking [Here](https://platform.openai.com/settings/organization/billing/overview). If you do not have a ``Credit balance`` you will need to add money (credit) to your account otherwise this discord bot's chat GPT functionality will not work.
+
+
+## Pyodide-runnable
+
+No - it is a Discord bot that needs discord.py, network access, and the OpenAI API.

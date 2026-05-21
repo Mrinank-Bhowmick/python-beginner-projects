@@ -1,7 +1,3 @@
-from replit import clear
-
-# HINT: You can call clear() to clear the output in the console.
-
 from art import logo
 
 print(logo)
@@ -31,4 +27,4 @@ while not bidding_finished:
         find_highest_bidder(bids)
         bidding_finished = True
     elif should_continue == "yes":
-        clear()
+        print()

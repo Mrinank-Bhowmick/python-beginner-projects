@@ -14,3 +14,7 @@ python ./server.py
 # then run the client
 python ./client.py
 ```
+
+## Pyodide-runnable
+
+No — it opens real TCP sockets for client/server networking, which is not available in the browser sandbox.

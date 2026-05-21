@@ -27,3 +27,7 @@ This application allows users to input their weight on Earth and then calculates
 - Python 3 and above
 - Tkinter (Python GUI library)
 
+
+## Pyodide-runnable
+
+No — it uses `tkinter`, a desktop GUI toolkit unavailable in the browser.

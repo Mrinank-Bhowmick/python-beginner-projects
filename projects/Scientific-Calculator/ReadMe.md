@@ -2,3 +2,17 @@
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/89387048/196713806-d9a3febc-5896-4ef7-a31d-373ee533347f.png)
+
+## How to run
+
+```sh
+python Scientific_CalC.py
+```
+
+## Dependencies
+
+Standard library only (uses `tkinter` and `math`).
+
+## Pyodide-runnable
+
+No - it builds a Tkinter GUI, which is not available in the browser sandbox.

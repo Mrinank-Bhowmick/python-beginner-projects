@@ -55,3 +55,8 @@ A Bitcoin Transaction has a miner’s fee attached with it and every transaction
 Mining is achieved by finding the correct hash which has a preset number of zeros in the beginning and it also signifies the difficulty level. 
 
 
+
+
+## Pyodide-runnable
+
+Yes - it only uses hashlib and time from the standard library.

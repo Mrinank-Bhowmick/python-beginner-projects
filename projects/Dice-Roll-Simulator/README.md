@@ -32,3 +32,7 @@ This script requires Python to be installed on your system. It also uses the `ra
 
 Contributions are welcome! If you find any bugs or have suggestions for improvement, please open an issue or create a pull request on the [GitHub repository](https://github.com/example/dice-roller).
 
+
+## Pyodide-runnable
+
+Yes — it is a pure-stdlib console program using only the `random` module and `input`/`print`.

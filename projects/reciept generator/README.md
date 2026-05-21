@@ -39,3 +39,11 @@ With more contribution, this can be a very memorable open source project.
 
 ### Contributor
  This project is contributed by [@Subha-5](https://github.com/Subha-5)
+
+## Dependencies
+
+- fpdf
+
+## Pyodide-runnable
+
+No - it depends on the `fpdf` package (not bundled with Pyodide) to render a PDF receipt.

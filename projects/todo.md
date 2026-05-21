@@ -1,0 +1,293 @@
+# Projects TODO
+
+Working checklist for processing every project folder, one at a time.
+
+## Task per project
+
+For each folder below:
+
+1. **Read the project** — understand what it does and what it depends on.
+2. **Pyodide assessment** — decide if it can run in the browser playground
+   (Pyodide = CPython in WebAssembly: pure-stdlib console code works; no GUI,
+   no sockets, no threads-heavy or hardware/file-system-dependent code).
+   - If it **can run as-is or with small modifications** → make those edits so it
+     runs under Pyodide (keep behavior the same; prefer stdlib `input()`/`print()`).
+   - If it **cannot** (pygame, tkinter, OpenCV, network, OS automation, etc.) →
+     leave the code unchanged.
+3. **Add `README.md`** to the folder — what the project does, how to run it,
+   dependencies, and whether it's Pyodide-runnable.
+4. Tick the box here and note the outcome (`pyodide` / `modified` / `desktop-only`).
+
+> Process in order. Do not modify unrelated projects in the same change.
+
+## Checklist
+
+- [x] Adjactive_compartive_superlative — desktop-only (nltk corpus download)
+- [x] Advisor — desktop-only (tkinter + network)
+- [x] AES256 — modified (removed os.system clear; pyodide via pycryptodome)
+- [x] Alarm Clock — desktop-only (tkinter + pygame + threads)
+- [x] Amazon Product Availbility Checker — desktop-only (network scraping)
+- [x] AnalogClock — desktop-only (tkinter canvas)
+- [x] API Based Weather Report — desktop-only (OpenWeather HTTP API)
+- [x] Audio Converter — desktop-only (pydub + disk files)
+- [x] AudioAPI — desktop-only (Flask + Whisper)
+- [x] Audiobook — desktop-only (pyttsx3 + PDFs)
+- [x] AudioRecorder — desktop-only (microphone)
+- [x] AutoGui — desktop-only (pyautogui)
+- [x] AWS_s3_upload — desktop-only (boto3/AWS)
+- [x] Battleship — modified (removed os.system clears; pyodide)
+- [x] BFS visualizer — desktop-only (curses UI)
+- [x] Bigram_Autocomplete — pyodide
+- [x] Bitcoin Mining — pyodide
+- [x] bittorrent-downloader — desktop-only (IMAP/subprocess/Twilio)
+- [x] BlackJack — pyodide
+- [x] Blender_tools — desktop-only (Blender bpy)
+- [x] Blind Auction — pyodide
+- [x] Blind_Auction — modified (removed unused distutils; pyodide)
+- [x] BMI WebApp — desktop-only (PyWebIO)
+- [x] BMI_calculator — desktop-only (tabulate + bmi.csv)
+- [x] Book Data Extractor — desktop-only (scraping + xlsx)
+- [x] Browser — desktop-only (PyQt5 WebEngine)
+- [x] Budget-manager — desktop-only (tkinter + SQLite)
+- [x] caesar_cipher — pyodide
+- [x] Calculate Age — pyodide
+- [x] Calculator — modified (removed os.system clears; pyodide)
+- [x] Calculator-GUI-With-Python — desktop-only (Kivy)
+- [x] Calendar — pyodide
+- [x] Captcha_Genrator — desktop-only (tkinter)
+- [x] car game — desktop-only (pygame)
+- [x] Card Game — pyodide
+- [x] career-guide-bot — desktop-only (source file empty)
+- [x] character-picture-grid — pyodide
+- [x] Chat Application — desktop-only (TCP sockets)
+- [x] Chat-GPT-Discord-Bot — desktop-only (Discord + OpenAI)
+- [x] Chess — desktop-only (pygame)
+- [x] chore-assignment-emailer — desktop-only (smtplib)
+- [x] Code_Reviewer — desktop-only (disk files + pycodestyle)
+- [x] Coin Flip — modified (removed os.system clear; pyodide)
+- [x] Collatz_Conjecture — pyodide
+- [x] Comics_Scraper — desktop-only (xkcd scrape + files)
+- [x] comma-code — pyodide
+- [x] computer-algebra — desktop-only (dearpygui + API)
+- [x] Connect Four — desktop-only (pygame)
+- [x] Conway’s-Game-Of-Life — desktop-only (matplotlib animation)
+- [x] Countdown — pyodide
+- [x] CRUD-with-postgresql — desktop-only (PostgreSQL)
+- [x] currency converter — desktop-only (tkinter + API)
+- [x] CustomEncryptionDecryption — desktop-only (PyJWT + env/files)
+- [x] custom-invitations — desktop-only (python-docx)
+- [x] custom-seating-cards — desktop-only (Pillow assets)
+- [x] Data Entry Automation — desktop-only (selenium)
+- [x] Data_Abstractor — desktop-only (Flask server)
+- [x] Desktop Weather Notifier — desktop-only (API + OS notifications)
+- [x] Desktop-Notification — desktop-only (win10toast)
+- [x] Diabetes Monitoring Dashboard — desktop-only (Streamlit + ML)
+- [x] Dice Simulator — pyodide
+- [x] Dice-Roll-Simulator — pyodide
+- [x] dictionary.com-scraper — desktop-only (scrape + gtts)
+- [x] Discord Bot — desktop-only (Discord gateway)
+- [x] DnD Dice — pyodide
+- [x] Drowsiness Detector — desktop-only (dlib/OpenCV/webcam)
+- [x] duplicate_search — desktop-only (filesystem)
+- [x] Encryptor and Decryptor — desktop-only (tkinter)
+- [x] English Thesaurus — desktop-only (relative-path data.json)
+- [x] excel-to-csv-converter — desktop-only (disk scan + openpyxl)
+- [x] Expense-Tracker — desktop-only (tkinter + reportlab)
+- [x] Eye Blink Detection — desktop-only (dlib/OpenCV/webcam)
+- [x] facebook_video_downloader — desktop-only (network + downloads)
+- [x] facerecoginition — desktop-only (OpenCV webcam)
+- [x] fantasy-game-inventory — pyodide
+- [x] Fidget Spinner Game — desktop-only (turtle)
+- [x] File_Organizer — desktop-only (filesystem)
+- [x] fill-gaps — desktop-only (filesystem)
+- [x] Find_imbd_rating — desktop-only (IMDb scraping)
+- [x] find-unneeded-files — desktop-only (filesystem walk)
+- [x] Flappybird_game — desktop-only (pygame)
+- [x] Full_Calendar — desktop-only (tkinter)
+- [x] Game of Cricket — pyodide
+- [x] game-snake_water_gun — pyodide
+- [x] goodreads-quotes-scraper — desktop-only (Selenium scraping)
+- [x] GPA-Calculator — pyodide
+- [x] Gpt-And-Langchain — desktop-only (Telegram bot + APIs)
+- [x] Gradient-Image — desktop-only (OpenCV GUI)
+- [x] Guess Number — pyodide (v2 is tkinter)
+- [x] Guess The Word — pyodide
+- [x] GUI based image display and transfer in python — desktop-only (tkinter)
+- [x] HandCricket — pyodide
+- [x] HandTrack — desktop-only (webcam + MediaPipe)
+- [x] Hangman — pyodide
+- [x] healthmanagementsystem — desktop-only (disk files)
+- [x] Higher-Lower — pyodide
+- [x] hill_cipher — desktop-only (MySQL)
+- [x] Historical Data Breaches — desktop-only (HIBP API)
+- [x] Image compressor — desktop-only (Pillow + filedialog)
+- [x] Image Manipulation — desktop-only (Pillow + disk)
+- [x] Image Sketcher — desktop-only (OpenCV webcam)
+- [x] Image to PDF Converter — desktop-only (disk I/O)
+- [x] Image to text generation project — desktop-only (PyTorch notebook)
+- [x] Image Toonification — desktop-only (OpenCV + disk)
+- [x] ImagegenChatbot — desktop-only (OpenAI API)
+- [x] image-site-downloader — desktop-only (live HTTP)
+- [x] Image-to-art — desktop-only (Pillow + image files)
+- [x] Image-Upscale — desktop-only (PyTorch + image files)
+- [x] indeed-scraper — desktop-only (HTTP scraping)
+- [x] Instagram Post Creation — desktop-only (Pillow + image I/O)
+- [x] instant-messenger-bot — desktop-only (pyautogui automation)
+- [x] Internet Speed Tester — desktop-only (network measurement)
+- [x] Internet-speed-test — desktop-only (network measurement)
+- [x] inventory management — desktop-only (tkinter + MySQL)
+- [x] Inverse Matrix Calculator — pyodide
+- [x] IP Blacklist Checker — desktop-only (live API)
+- [x] IPv4_Calculator-main — pyodide
+- [x] JARVIS.PY — desktop-only (mic/TTS/browser)
+- [x] Jokenpo — pyodide
+- [x] Jokey — desktop-only (JokeAPI HTTP)
+- [x] KbdXylo — desktop-only (pynput + audio)
+- [x] Language_learning_assistant — desktop-only (mic)
+- [x] Language-Translate — desktop-only (HTTP)
+- [x] linkedin-scrape — desktop-only (Selenium)
+- [x] link-verification — desktop-only (HTTP)
+- [x] Live AQI — desktop-only (tkinter + API)
+- [x] Loan Calculator — pyodide
+- [x] Location Search App (GUI) — desktop-only (tkinter)
+- [x] looking-busy — desktop-only (pyautogui)
+- [x] love-calculator — pyodide
+- [x] Lyrics-Extractor — desktop-only (Search API)
+- [x] Madlibs Generator — desktop-only (tkinter)
+- [x] Make-API — desktop-only (Flask server)
+- [x] Market Financial Sentiment Predictor — desktop-only (sklearn + CSV)
+- [x] Mastermind — pyodide
+- [x] maths — pyodide
+- [x] Medium Article Reader — desktop-only (HTTP/OpenAI + TTS)
+- [x] Merge PDFs — desktop-only (filesystem + pikepdf)
+- [x] Message-Spam — desktop-only (pyautogui + WhatsApp Web)
+- [x] Minecraft-in-Python-main — desktop-only (ursina 3D engine)
+- [x] Mineral Processing Technology-Image Analytics — desktop-only (OpenCV + disk)
+- [x] minesweeper — pyodide
+- [x] ML-Notebooks_Beginners — desktop-only (Jupyter notebook)
+- [x] Mobile Document Scanner — desktop-only (OpenCV GUI)
+- [x] Mongo CRUD — desktop-only (MongoDB)
+- [x] MorseCode Translator — pyodide
+- [x] Morse-Code-Translator — pyodide
+- [x] MotivateBot — desktop-only (OpenAI API)
+- [x] Movie recommendation — desktop-only (scikit-learn)
+- [x] MovieApi_and_ML — desktop-only (Django + sklearn)
+- [x] movie-rater — desktop-only (FastAPI + TMDB)
+- [x] MQTT Client — desktop-only (MQTT broker network)
+- [x] multiplayer_socket — desktop-only (TCP sockets)
+- [x] Music Player — desktop-only (tkinter + pygame)
+- [x] NASA-APOD — desktop-only (network + download)
+- [x] Neurons — modified (removed os.system clear; pyodide)
+- [x] Number Guessing App — pyodide
+- [x] Online Trivia — desktop-only (opentdb API)
+- [x] OpenCV_color_detect_in_live_feed — desktop-only (webcam)
+- [x] Organize_Directory — desktop-only (filesystem)
+- [x] Othello — desktop-only (pygame)
+- [x] Otp_Generator — pyodide
+- [x] OTP-Verfication-System — desktop-only (Gmail SMTP)
+- [x] Password Projects — mixed (Generator/Hashing/Meter/strong-detector pyodide; Breach/Manager/WiFi desktop-only)
+- [x] PDF_Reader — desktop-only (OpenAI + LangChain)
+- [x] pdf_to_text — desktop-only (PyQt5)
+- [x] pdf-paranoia — desktop-only (filesystem PDFs)
+- [x] Personal-Finance-tracker — pyodide
+- [x] Pig_latin — pyodide
+- [x] ping_pong — desktop-only (turtle)
+- [x] Pokemon Battle — pyodide
+- [x] PONG — desktop-only (pygame)
+- [x] Port_Scaner — desktop-only (TCP sockets)
+- [x] prettified-stopwatch — desktop-only (pyperclip clipboard)
+- [x] Print_Colored_Text — desktop-only (colorama)
+- [x] ProjectEuler — pyodide
+- [x] proxy-scrapper — desktop-only (live HTTP)
+- [x] Python Banking System — pyodide
+- [x] Python story generator — desktop-only (tkinter)
+- [x] QRCode Scanner — desktop-only (OpenCV webcam)
+- [x] QRCode-Generator — desktop-only (qrcode + disk)
+- [x] qr-code-generator-with-window-and-simple-ui — desktop-only (tkinter)
+- [x] Qt5_YouTube — desktop-only (PyQt5 + network)
+- [x] QuickWordCloud — desktop-only (wordcloud + matplotlib)
+- [x] Quiz Game — pyodide
+- [x] Random-Quote-Generator — desktop-only (tkinter + API)
+- [x] reciept generator — desktop-only (fpdf)
+- [x] reddit-scraper — desktop-only (live HTTP)
+- [x] regex-search — desktop-only (filesystem walk)
+- [x] regex-strip — pyodide
+- [x] Rename_Images — desktop-only (filesystem)
+- [x] Resize_Image — desktop-only (pillow + disk)
+- [x] RestrauntAPI — desktop-only (Django)
+- [x] reuters-scraper — desktop-only (live HTTP)
+- [x] Rock_Paper_Scissors — pyodide
+- [x] Roll_A_dice — desktop-only (MySQL)
+- [x] Rubik-tracking — desktop-only (OpenCV webcam)
+- [x] Sales Optimizer — desktop-only (sklearn + matplotlib)
+- [x] scheduledShutdown — desktop-only (os.system shutdown)
+- [x] Scientific-Calculator — desktop-only (tkinter)
+- [x] scrap-ycombinator — desktop-only (live HTTP)
+- [x] ScreenRecorder — desktop-only (pyautogui + win32)
+- [x] Seek_with_hand_track — desktop-only (webcam + mediapipe)
+- [x] Selfie_with_Python — desktop-only (OpenCV webcam)
+- [x] Send-Email — desktop-only (SMTP)
+- [x] servo motor classifier — desktop-only (network CSV + matplotlib)
+- [x] Simple-Plagiarism-Checker-Project — desktop-only (Flask server)
+- [x] SketchifyMe — desktop-only (OpenCV GUI)
+- [x] Skycast — desktop-only (Streamlit + API)
+- [x] Slice-Audio — desktop-only (pydub/ffmpeg)
+- [x] SMS_ChatBot — desktop-only (Flask + Twilio/OpenAI)
+- [x] Snake Game — desktop-only (pygame)
+- [x] snake_water_gun_game — desktop-only (rich package)
+- [x] Social_media_content_creation — desktop-only (no Python code)
+- [x] Socket — desktop-only (TCP sockets)
+- [x] SongsMashup — desktop-only (Flask + downloads)
+- [x] Space Shooter — desktop-only (pygame)
+- [x] space_battle — desktop-only (pygame)
+- [x] Speed-Type-test — desktop-only (pygame)
+- [x] Split_Tip — pyodide
+- [x] sponge-bob — desktop-only (turtle)
+- [x] Spotify Player — desktop-only (Spotify/Twilio APIs)
+- [x] Stock-Market-Dashboard — desktop-only (Streamlit)
+- [x] student-management-system — desktop-only (MySQL)
+- [x] Subnetting Flsm — pyodide
+- [x] Subtitle_synchronizer.py — desktop-only (disk .srt files)
+- [x] Sudoku_solver — pyodide
+- [x] Sudoku-Solver — desktop-only (pygame)
+- [x] takeImage — desktop-only (OpenCV webcam)
+- [x] TennisTournamentSim — pyodide
+- [x] Tesla — desktop-only (pygame)
+- [x] Tetris Game — desktop-only (pygame)
+- [x] Text Editor — desktop-only (tkinter)
+- [x] Text Summarizer — desktop-only (spaCy model)
+- [x] Text to Speech — desktop-only (gTTS + playback)
+- [x] Text_to_SpreadSheet — desktop-only (disk walk + xlsx)
+- [x] TextDetection — desktop-only (Google Vision API)
+- [x] Text-to-Image Generation Project — desktop-only (GPU DL notebook)
+- [x] text-translate — desktop-only (network + tkinter/gtts)
+- [x] Tic-Tac-Toe — pyodide
+- [x] TicTacToe-TylerPear — pyodide
+- [x] Tile Matching — desktop-only (tkinter)
+- [x] Timer — pyodide
+- [x] Tkinter — desktop-only (tkinter)
+- [x] ToDoList — pyodide
+- [x] Turtle Pattern — desktop-only (turtle)
+- [x] Turtle_Graphics — desktop-only (turtle)
+- [x] Twitter-Bot — desktop-only (Telegram API)
+- [x] Type Racer Game — desktop-only (tkinter)
+- [x] url_shortener — desktop-only (API + pywin32)
+- [x] Video Reversal — desktop-only (OpenCV video)
+- [x] video_transcoder_project — desktop-only (Flask + FFmpeg)
+- [x] Video-subtitle-generator — desktop-only (Whisper + FFmpeg)
+- [x] Voice-to-Text — desktop-only (microphone)
+- [x] Watermarker — desktop-only (Pillow + matplotlib)
+- [x] Weather — desktop-only (live web API)
+- [x] Web Scraping Jujustu Kaisen Manga — desktop-only (Selenium)
+- [x] WebButtonSimpelGUI — desktop-only (tkinter)
+- [x] web-crawler(movie extract) — desktop-only (live HTTP)
+- [x] Website Blocker — desktop-only (hosts file)
+- [x] Weights_in_different_planets_GUI — desktop-only (tkinter)
+- [x] what-for-dinner — desktop-only (TheMealDB API)
+- [x] Windows Logo — desktop-only (turtle)
+- [x] Wine_quality_predictor — desktop-only (sklearn + CSV)
+- [x] Word_Predictor — desktop-only (reads local file)
+- [x] Worksheet_to_text — desktop-only (reads local xlsx)
+- [x] World-Cup-Player-Comparison — desktop-only (live HTTP)
+- [x] xls_to_xlsx — desktop-only (pywin32 + Excel)
+- [x] YouTube Video Downloader — desktop-only (yt-dlp)

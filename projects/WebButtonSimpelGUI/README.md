@@ -9,3 +9,7 @@ The project demonstrates how to create a basic GUI application using Tkinter and
 To run the project, ensure you have the necessary dependencies installed (Tkinter and Pillow) and execute the script. The main window with the buttons will appear, allowing you to interact with the application.
 
 Feel free to clone or download the repository and modify the code according to your requirements.
+
+## Pyodide-runnable
+
+No — it uses `tkinter` and `webbrowser`, a desktop GUI that opens external browser pages.

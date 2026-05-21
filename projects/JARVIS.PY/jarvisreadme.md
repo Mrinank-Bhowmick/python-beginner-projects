@@ -18,3 +18,6 @@ To get wikipedia data
 
 To get funny jokes
 `pip install pyjokes`
+
+## Pyodide-runnable
+No — it relies on a microphone, text-to-speech, web browser control, and file-system access.

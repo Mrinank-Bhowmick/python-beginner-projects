@@ -21,3 +21,7 @@ You can use pip - pip install pydub
 More information on pydub here - https://pypi.org/project/pydub/
 Use the python script slicingAudio.py
 
+
+## Pyodide-runnable
+
+No — pydub depends on ffmpeg and reads/writes mp3 files on the local disk, which is unavailable in Pyodide.

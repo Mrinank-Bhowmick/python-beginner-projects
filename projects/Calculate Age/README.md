@@ -30,3 +30,8 @@ $ python calculate.py
 ## *Author Name*
 
 [Yash Upadhyay](https://github.com/xlo-u)
+
+
+## Pyodide-runnable
+
+Yes - pure-stdlib console program using only the calendar/time modules and input()/print().

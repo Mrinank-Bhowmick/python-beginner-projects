@@ -32,3 +32,7 @@ That's it! You've successfully run the text summarizer project. It will tokenize
 Make sure to replace **"text_summarizer.py"** with the name you've given to your Python script if it's different.
 
 ### HAPPY CODING ALL ☺️
+
+## Pyodide-runnable
+
+No — it depends on spaCy and the large `en_core_web_md` language model, which are not available in Pyodide.

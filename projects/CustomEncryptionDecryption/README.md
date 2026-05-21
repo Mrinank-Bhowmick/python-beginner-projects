@@ -57,3 +57,7 @@
     Thank you for using this program. If you have any issues or questions, feel free to open an issue or contact me.
 
     Happy encrypting and decrypting! 🚀
+
+# Pyodide-runnable
+
+    No — it depends on `PyJWT` and `python-dotenv` (not available in Pyodide) and reads environment variables and a cipher-text file.

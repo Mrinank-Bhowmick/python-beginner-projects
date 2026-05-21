@@ -93,3 +93,6 @@ python3 main.py
 Now take out your phone and text your Twilio Phone Number a question or prompt so that OpenAI can answer it or generate text!
 
 ![picture alt](https://assets.cdn.prod.twilio.com/images/Screenshot_2023-01-12_at_1.44.48_PM.format-webp.webp)
+## Pyodide-runnable
+
+No — it is a Flask web server that integrates the Twilio SMS API and the OpenAI API, all requiring network access and a server that Pyodide cannot provide.

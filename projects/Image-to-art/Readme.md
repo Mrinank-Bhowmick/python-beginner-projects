@@ -11,3 +11,6 @@ Don't forget to save image to be coverted to ascii art in this directory as 'tes
 ### How to run the script
 <!--Remove the below lines and add yours -->
 Open and run this script easily with the Python IDLE or the command line by running the following command on this directory: python3 ascii_art.py.
+
+## Pyodide-runnable
+No — it depends on the Pillow imaging library and reads/writes image files from the local disk.

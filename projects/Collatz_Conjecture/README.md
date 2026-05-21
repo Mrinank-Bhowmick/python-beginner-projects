@@ -27,3 +27,6 @@ The provided code defines a Collatz class that initializes with a positive integ
 
 - If the input is not a valid integer, a ValueError exception is raised, prompting the user to enter a valid integer.
 - If the iterator reaches 1, a StopIteration exception is raised, indicating the end of the sequence.
+## Pyodide-runnable
+
+Yes — it is a pure-stdlib console program; the iterator and `input`/`print` work unchanged in the browser.

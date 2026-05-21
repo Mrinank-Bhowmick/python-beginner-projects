@@ -20,3 +20,7 @@ This file includes the detailed and concise explanation of the project code as f
 ## Note: Remember that running a Twitter bot should comply with Twitter's terms of service and automation rules. Be cautious not to exceed rate limits or engage in spammy behavior.
 
 
+
+## Pyodide-runnable
+
+No — it is a Telegram bot that connects to the Telegram API over the network.

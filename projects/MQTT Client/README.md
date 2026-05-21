@@ -31,3 +31,6 @@ python3 MqttClient.py
 
 ## Code Running
 ![Running Code](docs/imgs/running_code.png)
+## Pyodide-runnable
+
+No — it connects over the network to an external MQTT broker, which is not possible in a browser sandbox.

@@ -1,28 +1,47 @@
+import fs from "fs";
+import path from "path";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { marked } from "marked";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
-import TryItPanel from "@/components/TryItPanel";
-import ProjectCredit from "@/components/ProjectCredit";
-import { PROJECTS, REPO_URL, getProject } from "@/lib/data";
+import RunnableBadge from "@/components/RunnableBadge";
+import { REPO_URL } from "@/lib/data";
+import { CATALOG, getCatalogProject, catalogFolderUrl } from "@/lib/catalog";
 
 interface Params {
   params: Promise<{ id: string }>;
 }
 
-// Pre-render one static page per project.
+// Read a project's README from projects/<folder>/ at build time and render it
+// to HTML. The catalog lives in web/, the projects/ folder is one level up.
+function readReadmeHtml(folder: string): string | null {
+  const dir = path.join(process.cwd(), "..", "projects", folder);
+  for (const name of ["README.md", "readme.md", "Readme.md"]) {
+    const file = path.join(dir, name);
+    if (fs.existsSync(file)) {
+      const md = fs.readFileSync(file, "utf8");
+      return marked.parse(md, { async: false }) as string;
+    }
+  }
+  return null;
+}
+
+// Pre-render one static page per catalog project.
 export function generateStaticParams() {
-  return PROJECTS.map((p) => ({ id: p.id }));
+  return CATALOG.map((p) => ({ id: p.id }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { id } = await params;
-  const p = getProject(id);
+  const p = getCatalogProject(id);
   if (!p) return { title: "Project not found" };
   const title = `${p.name} — Python beginner project`;
-  const description = `${p.blurb} A ${p.lines}-line Python project (${p.deps}). ${
-    p.playground ? "Edit and run it live in your browser." : "Read the code on GitHub."
+  const description = `${p.blurb} ${
+    p.hasPlayground
+      ? "Edit and run it live in your browser."
+      : "Read the code and README on GitHub."
   }`;
   return {
     title,
@@ -40,8 +59,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function ProjectPage({ params }: Params) {
   const { id } = await params;
-  const p = getProject(id);
+  const p = getCatalogProject(id);
   if (!p) notFound();
+
+  const readmeHtml = readReadmeHtml(p.folder);
+  const folderUrl = catalogFolderUrl(p);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -51,11 +73,6 @@ export default async function ProjectPage({ params }: Params) {
     programmingLanguage: "Python",
     codeRepository: REPO_URL,
     url: `https://pybegin.pages.dev/projects/${p.id}/`,
-    author: {
-      "@type": "Person",
-      name: p.author,
-      url: `https://github.com/${p.author}`,
-    },
   };
 
   return (
@@ -79,47 +96,79 @@ export default async function ProjectPage({ params }: Params) {
             <p className="s-proj-blurb">{p.blurb}</p>
             <div className="s-proj-meta">
               <span className="s-meta-pill">{p.lines} lines</span>
-              <span className="s-meta-pill dep">{p.deps}</span>
-              <span className="s-meta-pill dep">{p.cat}</span>
-              {p.playground && <span className="s-meta-pill play">▶ Playground</span>}
-            </div>
-            <div style={{ marginBottom: 22 }}>
-              <ProjectCredit author={p.author} />
+              {p.runnable ? (
+                <RunnableBadge />
+              ) : (
+                <span className="s-meta-pill desk">🖥 Desktop only</span>
+              )}
             </div>
             <div className="s-proj-actions">
-              {p.playground && (
+              {p.hasPlayground && (
                 <Link className="s-btn-pri" href={`/playground/${p.id}`}>
                   ▶ Open in playground
                 </Link>
               )}
               <a
                 className="s-btn-sec"
-                href={REPO_URL}
+                href={folderUrl}
                 target="_blank"
                 rel="noreferrer"
               >
-                View on GitHub →
+                View source folder on GitHub →
               </a>
+              {p.author && (
+                <a
+                  className="s-proj-credit"
+                  href={`https://github.com/${p.author}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="s-proj-credit-by">contributed by</span>
+                  <img
+                    src={`https://github.com/${p.author}.png?size=48`}
+                    alt=""
+                    width={22}
+                    height={22}
+                  />
+                  @{p.author}
+                </a>
+              )}
             </div>
-            {p.runnable && <TryItPanel project={p} />}
           </div>
 
           <aside className="s-proj-side">
             <h3>Run it locally</h3>
             <div className="s-proj-code">
-              <div className="c-accent">$ git clone python-beginner-projects.git</div>
-              <div className="c-dim">$ cd projects/{p.id}</div>
-              <div>$ python {p.id}.py</div>
+              <div className="c-accent">
+                $ git clone python-beginner-projects.git
+              </div>
+              <div className="c-dim">$ cd &quot;projects/{p.folder}&quot;</div>
+              <div>$ python ...</div>
             </div>
-            <p style={{ fontSize: 14, color: "rgba(29,24,48,0.7)", marginTop: 16 }}>
-              {p.playground
-                ? "This project is pure Python — you can also edit and run it right here in the browser playground, no install needed."
-                : "This project needs a desktop Python environment (it uses " +
-                  p.deps +
-                  "). Clone the repo to run it."}
+            <p
+              style={{
+                fontSize: 14,
+                color: "rgba(29,24,48,0.7)",
+                marginTop: 16,
+              }}
+            >
+              {p.runnable
+                ? "This project is pure-Python — you can also edit and run it right here in the browser playground, no install needed."
+                : "This project needs a desktop Python environment. Clone the repo and follow the README below to run it."}
             </p>
           </aside>
         </article>
+
+        {readmeHtml ? (
+          <section
+            className="s-readme"
+            dangerouslySetInnerHTML={{ __html: readmeHtml }}
+          />
+        ) : (
+          <section className="s-readme">
+            <p>This project does not have a README yet.</p>
+          </section>
+        )}
 
         <SiteFooter />
       </div>

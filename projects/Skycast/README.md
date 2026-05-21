@@ -73,3 +73,6 @@ Contributions to SkyCast are welcome! Here are some ways you can contribute:
 - Fix bugs and issues reported by users.
 
 Thank you for your contributions to SkyCast! 🌤️
+## Pyodide-runnable
+
+No — it is a Streamlit web app that also makes live HTTP requests to the Weatherbit API; neither Streamlit's server nor network calls run under Pyodide.

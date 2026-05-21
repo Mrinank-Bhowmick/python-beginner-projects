@@ -38,3 +38,8 @@ The Career Guide is a Python-based interactive program that helps users explore 
 ## DEMO
 <img width="290" alt="image" src="https://github.com/ShivaNagachander/python-beginner-projects/assets/123239393/45ac0f22-7331-4055-97c2-053231561f56">
 
+
+
+## Pyodide-runnable
+
+No - the carreer_guide.py source file is empty, so there is nothing to run.

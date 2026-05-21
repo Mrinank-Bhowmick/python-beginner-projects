@@ -21,3 +21,7 @@ The projects are:
 
 6. [WiFi Password Generator](https://github.com/u749929/python-beginner-projects/tree/main/projects/Password%20Projects/WiFi%20Password%20Generator)
     * This program will attempt to get the password for the conected wifi network and retunr this password to the user. If no password is found, the program will return nothing.
+
+## Pyodide-runnable
+
+Mixed — see each sub-project README. The console tools (Password Generator, Password Hashing, Password Meter, strong-password-detector) run in Pyodide; Password Breach Frequency needs network access, Password Manager is a tkinter GUI, and the WiFi Password Generator uses Windows-only OS commands.

@@ -23,3 +23,6 @@ choco install ffmpeg
 scoop install ffmpeg
 
 ```
+## Pyodide-runnable
+
+No — it uses OpenAI Whisper and FFmpeg to transcribe local audio/video files.

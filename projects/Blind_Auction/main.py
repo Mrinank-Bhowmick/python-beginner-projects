@@ -1,6 +1,3 @@
-# Importing the required module
-from distutils.command.install_scripts import install_scripts
-
 # Importing the logo from the 'art' module
 from art import logo
 

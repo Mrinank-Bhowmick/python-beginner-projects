@@ -43,3 +43,8 @@ These tools can be installed as add-ons or ran as scripts. Each tool has a panel
 * While in Blender use the text editor to open the tool you want to use.
 
 * Then either click the run script operator (the **arrow** icon in header) or use **alt+p** shortcut.
+
+
+## Pyodide-runnable
+
+No - these are Blender add-ons that import the bpy module, which only exists inside Blender.

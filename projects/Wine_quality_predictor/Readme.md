@@ -19,3 +19,6 @@ During production of wine there may occur an reduction in quality due to some er
 - Numpy
 - Pandas
 - Scikit-learn - Support Machine Vector
+## Pyodide-runnable
+
+No — it reads a local CSV with `pandas` and trains a `scikit-learn` model; scikit-learn is not available in Pyodide and the script reads from the real filesystem.

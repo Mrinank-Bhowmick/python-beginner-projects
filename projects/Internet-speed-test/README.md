@@ -48,3 +48,6 @@ pip3 install speedtest-cli
 ![Shreejan-35](https://github.com/Shreejan-35)
 
 That's all.
+
+## Pyodide-runnable
+No — it uses the speedtest library to measure real network speed against remote servers.

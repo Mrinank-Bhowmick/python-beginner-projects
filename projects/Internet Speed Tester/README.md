@@ -10,3 +10,6 @@ Check the Download and Upload Speed of your Internet Connection.
 ```
 ./main.py
 ```
+
+## Pyodide-runnable
+No — it uses the speedtest library to measure real network speed against remote servers.

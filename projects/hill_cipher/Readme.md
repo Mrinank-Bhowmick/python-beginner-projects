@@ -13,3 +13,7 @@
   <h2>Aid for Exceptions/Errors</h2>
   <p> Try: pip intall mysql or/and pip install mysql-connector-python</p>
 </html>
+
+## Pyodide-runnable
+
+No — it connects to a local MySQL database via `mysql.connector`, which is not available in a browser sandbox.

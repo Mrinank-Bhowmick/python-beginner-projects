@@ -55,3 +55,8 @@ The main function to execute the BMI calculation and interpretation.
 ## Error Handling
 
 The script handles invalid input, ensuring that only numerical values for height and weight are accepted.
+
+
+## Pyodide-runnable
+
+No - it depends on the third-party tabulate package and reads the bmi.csv file from the local filesystem.

@@ -36,3 +36,6 @@ Before you begin, ensure you have met the following requirements:
     uvicorn main:app --reload
 
     ```
+## Pyodide-runnable
+
+No — it is a FastAPI web server that makes network requests to The Movie Database API.

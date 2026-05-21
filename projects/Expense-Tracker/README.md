@@ -114,3 +114,7 @@ which would use dummy data to test the app.
   expenses to a preferred currency.
 
 
+
+## Pyodide-runnable
+
+No — it is a `customtkinter`/`tkinter` GUI application and also depends on `reportlab`, `pandas`, and `XlsxWriter`.

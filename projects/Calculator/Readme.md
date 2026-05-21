@@ -30,3 +30,8 @@ To exit the calculator, enter `-1` when prompted for your choice.
 
 This calculator clears the console after each operation for a better user experience.
 
+
+
+## Pyodide-runnable
+
+Yes - pure-stdlib console calculator (os.system screen-clears were removed).

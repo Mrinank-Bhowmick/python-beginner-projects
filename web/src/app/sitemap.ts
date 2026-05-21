@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { PROJECTS } from "@/lib/data";
+import { CATALOG } from "@/lib/catalog";
 
 const BASE = "https://pybegin.pages.dev";
 
@@ -11,13 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/`, lastModified: now, priority: 1 },
     { url: `${BASE}/playground/`, lastModified: now, priority: 0.8 },
   ];
-  for (const p of PROJECTS) {
+  for (const p of CATALOG) {
     entries.push({
       url: `${BASE}/projects/${p.id}/`,
       lastModified: now,
       priority: 0.7,
     });
-    if (p.playground) {
+    if (p.hasPlayground) {
       entries.push({
         url: `${BASE}/playground/${p.id}/`,
         lastModified: now,

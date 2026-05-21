@@ -59,3 +59,7 @@ Read the input images for the challenge form the “input” folder, process eac
 
 
 
+
+## Pyodide-runnable
+
+No — it requires the OpenCV (`cv2`) library, which is not available in Pyodide, and reads/writes image files from the real filesystem.

@@ -14,3 +14,7 @@ Web application of Plagiarism Checker using Python-Flask. TF-IDF and cosine simi
 3. While Flask addresses itself as a "micro-framework", it is not lacking in features or power, especially with a clutch of extensions to support features such as authentication, databases and so on
 4. Comprehensive documentation available
 
+
+## Pyodide-runnable
+
+No — it is a Flask web server application, and Flask cannot serve requests under Pyodide in the browser.

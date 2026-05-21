@@ -10,3 +10,7 @@ This is a Python program used to simulate a coin toss, in which a user is asked 
 4. After the end of each round, you will be asked if you want to play again. Type "yes" to continue playing or "no" to exit the program.
 
 Enjoy!
+
+## Pyodide-runnable
+
+Yes — it is a pure-stdlib console program that only uses `random` and `input`/`print`.

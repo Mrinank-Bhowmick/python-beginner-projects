@@ -1,19 +1,25 @@
-# AES 256 Encryption and Decryption Algorithm in Python
+# AES 256 Encryption and Decryption
 
-This is a beginner friendly project for understanding Encryption/Decryption using AES Encryption Cipher in Python
+A beginner-friendly console project demonstrating AES-256 encryption and
+decryption in Python. It uses AES in GCM mode (authenticated encryption) with a
+key derived from your password via `scrypt`.
 
-## Requirements
-1. Cryptodome <br>
-` pip install pycryptodome `
+Choose `1` to encrypt a message (prints the cipher text, salt, nonce and tag) or
+`2` to decrypt by entering those values back.
 
-2. PyCryptodomex <br>
-`pip install pycryptodomex `
+## How to run
 
-## Setup
-1. Python3.x version should be installed in your system.
-2. Install all requirements.
-3. Clone the repository.
-4. Run Python File `python3 AES256.py`
+```bash
+pip install pycryptodomex
+python AES256.py
+```
 
-## Demo!
-![Screenshot 2022-10-20 134838](https://user-images.githubusercontent.com/99896373/196895153-c0e40bb4-95e8-4d98-86bd-eb0f051c218a.png)
+## Dependencies
+
+- `pycryptodomex` — the `Cryptodome` AES implementation
+
+## Pyodide-runnable
+
+Yes. `pycryptodome` is available in the Pyodide playground, and the program is a
+pure `input()`/`print()` console app. The screen-clearing `os.system` call was
+removed so it runs cleanly in-browser.

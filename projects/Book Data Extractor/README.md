@@ -12,3 +12,7 @@ The extracted book information will be saved in this file.
 Excel File:
 
 You can find the extracted book data in the books.xlsx file in the project folder.
+
+## Pyodide-runnable
+
+No - uses requests to scrape Goodreads and writes an .xlsx file with openpyxl.

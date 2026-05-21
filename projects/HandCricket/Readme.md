@@ -33,7 +33,7 @@ This is a simple command-line-based Hand Cricket game implemented in Python. It 
 3. Run the game using Python:
 
    ```bash
-   python hand_cricket.py
+   python main.py
    ```
 
 4. Follow the on-screen instructions to play the game.
@@ -59,3 +59,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ## Acknowledgments
 - This game was inspired by the popular hand cricket game played by many cricket enthusiasts.
 - Special thanks to the Python community for providing helpful libraries and resources.
+
+## Pyodide-runnable
+
+Yes — console game using only `input()`/`print()` and the standard-library `random` and `time` modules.

@@ -27,3 +27,8 @@ python pdf_text_to_speech.py
 ## How it Works
 
 The script takes a PDF file as input, extracts the text content from each page, and uses `pyttsx3` to read it out loud. The playback can be stopped at any time by pressing the 'q' key.
+
+
+## Pyodide-runnable
+
+No - depends on pyttsx3 (offline TTS engine), the keyboard library, and reads PDFs from the local disk.

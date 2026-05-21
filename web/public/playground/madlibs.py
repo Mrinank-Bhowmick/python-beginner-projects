@@ -1,12 +1,14 @@
-# Madlibs Generator
-# Fill in a few words and get back a silly story.
+# === Madlibs Generator · annotated for the pyBegin playground ===
+# A beginner-friendly walkthrough — original project by @ZackeryRSmith.
 
+# Ask the user for the five story ingredients
 adjective = input("Give me an adjective: ")
 animal = input("Give me an animal: ")
 verb = input("Give me a verb (ending in -ing): ")
 place = input("Give me a place: ")
 adverb = input("Give me an adverb: ")
 
+# Print the completed silly story
 print()
 print("=== Your story ===")
 print()

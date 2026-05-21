@@ -14,3 +14,7 @@ To get started with these projects, simply clone this repository and navigate to
 We welcome contributions! If you have a project idea related to social media content creation, feel free to add it to this folder.
 
 Happy coding!
+
+## Pyodide-runnable
+
+No — this folder is a placeholder containing no Python code to run.

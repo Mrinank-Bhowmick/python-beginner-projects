@@ -1,4 +1,3 @@
-import os
 from random import randint
 
 board = []
@@ -7,7 +6,6 @@ size = 5
 
 def new_game():
     global size
-    os.system("cls" if os.name == "nt" else "clear")
     answer = input("Do you want to start a new game of Battleship? ").lower()
 
     if answer not in ["yes", "y", "no", "n"]:
@@ -16,7 +14,6 @@ def new_game():
         if answer == "yes" or answer == "y":
             while True:
                 try:
-                    os.system("cls" if os.name == "nt" else "clear")
                     size = int(
                         input(
                             "Enter a number between 5 and 15.\n\nThis will determine how big the playing board is and how many turns you have to find the Battleship. (5 rows, 5 columns, 5 turns, etc.): "
@@ -35,10 +32,8 @@ def new_game():
                 board.append(["O"] * size)
             game()
         elif answer == "no" or answer == "n":
-            os.system("cls" if os.name == "nt" else "clear")
             print("Thank you for playing!\n")
             input("Press the 'Enter' key to exit the game.")
-            os.system("cls" if os.name == "nt" else "clear")
             quit()
 
 
@@ -57,7 +52,6 @@ def random_col(board):
 
 def game():
     global board
-    os.system("cls" if os.name == "nt" else "clear")
     print(
         "Welcome to Battleship.\n\nA ship, one cell long, has been randomly placed on the below %dx%d grid.\nYou have %d turns to find it.\n"
         % (size, size, size)
@@ -102,7 +96,6 @@ def game():
 
         # Checks if Player wins
         if guess_row == ship_row and guess_col == ship_col:
-            os.system("cls" if os.name == "nt" else "clear")
             input(
                 "Congratulations! You sank my battleship!\n\nPress enter to continue."
             )
@@ -116,11 +109,9 @@ def game():
                 print("Oops, that's not even in the ocean.")
             # Player previously guessed their current guesses
             elif board[guess_row][guess_col] == "X":
-                os.system("cls" if os.name == "nt" else "clear")
                 print("You guessed that one already. Good job, you wasted a turn.\n")
                 print_board(board)
             else:  # User misses
-                os.system("cls" if os.name == "nt" else "clear")
                 print("Miss!\n")
                 board[guess_row][guess_col] = "X"
                 print_board(board)

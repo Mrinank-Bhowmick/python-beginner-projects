@@ -57,3 +57,8 @@ Py-Battleship is built with the following tools and libraries: <ul><li>Python</l
 [![License](https://img.shields.io/static/v1?label=Licence&message=GPL-3-0&color=blue)](https://opensource.org/license/GPL-3-0)
 
 
+
+
+## Pyodide-runnable
+
+Yes - the top-level main.py is a pure-stdlib console game (os.system screen-clears were removed); battleship_v2 is also a stdlib-only CLI game.

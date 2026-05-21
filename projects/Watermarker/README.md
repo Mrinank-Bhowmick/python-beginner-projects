@@ -98,3 +98,7 @@ pip install -r requirements.txt
 ### **`If you are asked to make changes on the same feature, repeat steps 8 to 13 to add more commits to your pull request.`**
 
 "https://github.com/highb33kay/Watermarker.git"
+
+## Pyodide-runnable
+
+No — it reads local image files with Pillow and uses `matplotlib`, walking the real filesystem.

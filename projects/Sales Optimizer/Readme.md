@@ -17,3 +17,14 @@ The retail stores always face a problem of tension between demand and supply. So
 - Pandas
 - Seaborn
 - Scikit-learn
+
+## How to run
+
+```sh
+pip install numpy pandas seaborn scikit-learn matplotlib
+python main.py
+```
+
+## Pyodide-runnable
+
+No - it depends on `seaborn`, `scikit-learn`, and `matplotlib` GUI plotting, which are not available in the Pyodide sandbox.

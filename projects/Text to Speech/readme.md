@@ -11,3 +11,7 @@
 
 - gTTS
 - os
+
+## Pyodide-runnable
+
+No — gTTS sends text to Google's Translate TTS API over the network and writes/plays an mp3 file locally.
