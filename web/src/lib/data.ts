@@ -41,7 +41,7 @@ export const CATEGORIES: Category[] = [
 export const CONTRIBUTORS: Contributor[] = [
   { handle: "Mrinank-Bhowmick", name: "Mrinank Bhowmick", commits: 412, role: "maintainer" },
   { handle: "ibra-kdbra", name: "Ibra-kdbra", commits: 38 },
-  { handle: "PythonicBoat", name: "Yashvardhan Singh", commits: 27 },
+  { handle: "itsyashvardhan", name: "Yashvardhan Singh", commits: 27 },
   { handle: "Alby084", name: "Alby084", commits: 24 },
   { handle: "ca20110820", name: "Cedric Anover", commits: 21 },
   { handle: "kanchanraiii", name: "Kanchan Rai", commits: 18 },

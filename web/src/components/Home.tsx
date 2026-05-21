@@ -5,6 +5,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { Bookmark } from "lucide-react";
 import StickerLogo from "./StickerLogo";
 import ScribbleSvg from "./ScribbleSvg";
 import HeroStickers from "./HeroStickers";
@@ -13,7 +14,21 @@ import ProjectModal from "./ProjectModal";
 import SiteFooter from "./SiteFooter";
 import { CATEGORIES, CONTRIBUTORS, PATHS, PROJECTS, REPO_URL, getProject } from "@/lib/data";
 import { getBookmarks, toggleBookmark } from "@/lib/bookmarks";
-import type { Project } from "@/types";
+import contributors from "@/lib/contributors.json";
+import type { Project, RepoContributor } from "@/types";
+
+const CREW = contributors as RepoContributor[];
+
+// Resolve a handle to its GitHub avatar. Uses the direct avatars.github URL
+// (not github.com/<handle>.png — that 302-redirects and the redirect is
+// blocked by the site's COEP: require-corp header).
+const AVATARS = new Map(
+  contributors.map((c) => [c.handle.toLowerCase(), c.avatar]),
+);
+const avatarFor = (handle: string, size: number) => {
+  const url = AVATARS.get(handle.toLowerCase());
+  return url ? `${url}&s=${size}` : `https://github.com/${handle}.png`;
+};
 
 const ACCENT = "#ff7a59";
 const SORTS = ["default", "alpha", "short", "bookmarks"] as const;
@@ -81,16 +96,29 @@ export default function Home() {
             <button onClick={() => scrollTo("crew")}>Contribute</button>
           </div>
           <div className="s-nav-right">
-            <div
-              className={`s-bm-count ${bm.length ? "has" : ""}`}
-              title="Bookmarks"
+            <button
+              type="button"
+              className={`s-bm-btn${showBmOnly ? " active" : ""}`}
+              aria-pressed={showBmOnly}
+              title={
+                showBmOnly
+                  ? "Showing saved projects — click to show all"
+                  : "Show your saved projects"
+              }
               onClick={() => {
                 setShowBmOnly((v) => !v);
                 scrollTo("gallery");
               }}
             >
-              ★<span style={{ fontSize: 11, marginLeft: 2 }}>{bm.length}</span>
-            </div>
+              <Bookmark
+                size={15}
+                strokeWidth={2.5}
+                fill={bm.length ? "currentColor" : "none"}
+                aria-hidden="true"
+              />
+              <span className="s-bm-n">{bm.length}</span>
+              <span className="s-bm-word">saved</span>
+            </button>
             <a className="s-cta" href={REPO_URL} target="_blank" rel="noreferrer">
               ★ Star · 2.3k
             </a>
@@ -305,7 +333,13 @@ export default function Home() {
           </div>
           <div className="s-contributors">
             <div className="s-contrib lead">
-              <div className="s-avatar">{CONTRIBUTORS[0].name[0]}</div>
+              <img
+                className="s-avatar"
+                src={avatarFor(CONTRIBUTORS[0].handle, 200)}
+                alt=""
+                width={84}
+                height={84}
+              />
               <div className="s-cname">{CONTRIBUTORS[0].name}</div>
               <div className="s-chandle">@{CONTRIBUTORS[0].handle}</div>
               <p className="s-quote">
@@ -315,9 +349,22 @@ export default function Home() {
               </p>
               <div className="s-badge">Maintainer · 412 commits</div>
             </div>
-            {CONTRIBUTORS.slice(1, 13).map((c) => (
-              <div key={c.handle} className="s-contrib">
-                <div className="s-avatar">{c.name[0]}</div>
+            {CREW.slice(1, 31).map((c) => (
+              <a
+                key={c.handle}
+                className="s-contrib"
+                href={`https://github.com/${c.handle}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  className="s-avatar"
+                  src={`${c.avatar}&s=120`}
+                  alt=""
+                  width={56}
+                  height={56}
+                  loading="lazy"
+                />
                 <div className="s-cname">{c.name.split(" ")[0]}</div>
                 <div className="s-chandle">
                   @
@@ -325,14 +372,11 @@ export default function Home() {
                     ? c.handle.slice(0, 12) + "…"
                     : c.handle}
                 </div>
-                <div className="s-commits">{c.commits} ★</div>
-              </div>
+              </a>
             ))}
           </div>
           <div className="s-more">
-            <a href={`${REPO_URL}/graphs/contributors`}>
-              See all 241 contributors →
-            </a>
+            <Link href="/contributors">See all contributors →</Link>
           </div>
         </section>
 

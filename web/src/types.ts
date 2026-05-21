@@ -55,6 +55,13 @@ export interface Contributor {
   role?: string;
 }
 
+/** One entry in the full contributor list (scraped from the README). */
+export interface RepoContributor {
+  handle: string;
+  name: string;
+  avatar: string;
+}
+
 export interface Stats {
   projects: number;
   contributors: number;
