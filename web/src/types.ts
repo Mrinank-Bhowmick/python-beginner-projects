@@ -12,6 +12,8 @@ export interface Project {
   emoji: string;
   /** GitHub handle of the contributor who first added this project. */
   author: string;
+  /** Folder path under projects/ in the repo (for the source link). */
+  repoPath: string;
   /** Has a server-backed "Try it" demo via the Cloudflare Worker. */
   runnable?: boolean;
   /** Can run fully in-browser via Pyodide (pure-stdlib console programs). */

@@ -850,6 +850,12 @@ a { color: inherit; }
   font-size: 12px; color: var(--pg-muted); margin-left: 4px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.pg-credit {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 6px; font-size: 11px; font-weight: 600;
+  color: var(--pg-muted); text-decoration: none;
+}
+.pg-credit:hover { color: var(--pg-accent); text-decoration: underline; }
 .pg-toolbar-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .pg-status {
   display: flex; align-items: center; gap: 8px;

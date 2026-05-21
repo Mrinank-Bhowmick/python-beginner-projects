@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import PlaygroundNav from "@/components/PlaygroundNav";
 import PlaygroundSidebar from "@/components/PlaygroundSidebar";
 import Playground, { type PlaygroundProject } from "@/components/Playground";
-import { PROJECTS, getProject } from "@/lib/data";
+import { PROJECTS, getProject, projectFolderUrl } from "@/lib/data";
 
 interface Params {
   params: Promise<{ id: string }>;
@@ -64,6 +64,8 @@ export default async function ProjectPlaygroundPage({ params }: Params) {
     deps: p.deps,
     lines: p.lines,
     blurb: p.blurb,
+    author: p.author,
+    folderUrl: projectFolderUrl(p),
   };
 
   return (

@@ -47,6 +47,9 @@ export interface PlaygroundProject {
   deps: string;
   lines: number;
   blurb: string;
+  /** Contributor handle + link to the project's source folder on GitHub. */
+  author?: string;
+  folderUrl?: string;
 }
 
 const SAB_SIZE = 8 + 8192;
@@ -377,6 +380,16 @@ export default function Playground({
                 <span className="pg-proj-blurb">· {project.blurb}</span>
               )}
             </div>
+            {project.author && project.folderUrl && (
+              <a
+                className="pg-credit"
+                href={project.folderUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                🧑‍💻 Original project by @{project.author} — view source on GitHub ↗
+              </a>
+            )}
           </div>
         </div>
         <div className="pg-toolbar-right">
