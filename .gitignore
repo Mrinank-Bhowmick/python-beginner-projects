@@ -158,3 +158,10 @@ cython_debug/
 
 #.DS_Store
 .DS_Store
+
+# Next.js frontend (web/) — the Python `lib/` rule above would otherwise
+# swallow web/src/lib, so explicitly un-ignore it.
+!web/src/lib/
+web/node_modules/
+web/.next/
+web/out/

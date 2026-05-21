@@ -1,0 +1,12 @@
+# Cross-origin isolation — enables SharedArrayBuffer, which the Pyodide
+# playground uses to bridge a blocking input() to the terminal.
+# The site loads no cross-origin subresources except the Pyodide CDN
+# (which sends CORP headers), so applying this site-wide is safe and keeps
+# client-side navigation isolated.
+/*
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+
+# The generated social image has no file extension; label its content type.
+/opengraph-image
+  Content-Type: image/png
