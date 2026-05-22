@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://pybegin.pages.dev">
-    <img src="https://raw.githubusercontent.com/Mrinank-Bhowmick/python-beginner-projects/main/Banner.png" height="405" width="720" alt="pyBegin — Python Beginner Projects">
+    <img src="https://raw.githubusercontent.com/Mrinank-Bhowmick/python-beginner-projects/refs/heads/main/Banner.png" height="405" width="720" alt="pyBegin — Python Beginner Projects">
   </a>
 </h1>
 
