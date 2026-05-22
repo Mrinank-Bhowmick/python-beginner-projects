@@ -25,8 +25,7 @@ import {
   Square,
   RotateCcw,
   BookOpen,
-  ChevronDown,
-  ChevronRight,
+  PanelLeftClose,
   Check,
   Copy,
   Eraser,
@@ -115,13 +114,13 @@ export default function Playground({
   const [code, setCode] = useState(initialCode);
   const [status, setStatus] = useState<Status>("idle");
   const [copied, setCopied] = useState(false);
-  const [showReadme, setShowReadme] = useState(true);
+  const [readmeOpen, setReadmeOpen] = useState(true);
 
-  // Resizable layout — editor/console split ratio and README panel height.
+  // Resizable layout — README pane width (%) and editor/console height (%).
+  const [readmePct, setReadmePct] = useState(38);
   const [editorPct, setEditorPct] = useState(58);
-  const [readmeHeight, setReadmeHeight] = useState<number | null>(null);
   const splitRef = useRef<HTMLDivElement | null>(null);
-  const readmeBodyRef = useRef<HTMLDivElement | null>(null);
+  const rightColRef = useRef<HTMLDivElement | null>(null);
 
   const workerRef = useRef<Worker | null>(null);
   const sabRef = useRef<SharedArrayBuffer | null>(null);
@@ -405,19 +404,18 @@ export default function Playground({
     });
   };
 
-  // Drag the bar between editor and console — convert px delta to a percentage
-  // of the split container so the two panes keep filling the available width.
-  const resizeSplit = useCallback((dx: number) => {
+  // Drag the vertical bar between the README pane and the editor column —
+  // px delta as a percentage of the whole workspace width.
+  const resizeReadme = useCallback((dx: number) => {
     const w = splitRef.current?.clientWidth ?? 1;
-    setEditorPct((p) => clamp(p + (dx / w) * 100, 24, 80));
+    setReadmePct((p) => clamp(p + (dx / w) * 100, 18, 62));
   }, []);
 
-  // Drag the bar under the README to set its panel height.
-  const resizeReadme = useCallback((dy: number) => {
-    setReadmeHeight((h) => {
-      const cur = h ?? readmeBodyRef.current?.offsetHeight ?? 240;
-      return clamp(cur + dy, 90, 560);
-    });
+  // Drag the horizontal bar between editor and console — px delta as a
+  // percentage of the right column's height.
+  const resizeEditor = useCallback((dy: number) => {
+    const h = rightColRef.current?.clientHeight ?? 1;
+    setEditorPct((p) => clamp(p + (dy / h) * 100, 20, 82));
   }, []);
 
   const lineCount = code.split("\n").length;
@@ -481,122 +479,123 @@ export default function Playground({
         </div>
       </div>
 
-      {/* README — collapsible, resizable strip above the editor */}
-      {readmeHtml && (
-        <div className={`pg-readme-bar${showReadme ? " open" : ""}`}>
-          <button
-            className="pg-readme-toggle"
-            onClick={() => setShowReadme((v) => !v)}
-            aria-expanded={showReadme}
-          >
-            <BookOpen
-              className="pg-readme-emoji"
-              size={15}
-              strokeWidth={2.25}
-              aria-hidden="true"
-            />
-            <span className="pg-readme-label">README</span>
-            <span className="pg-readme-hint">
-              {showReadme ? "" : "— what this project does"}
-            </span>
-            <span className="pg-readme-btn">
-              {showReadme ? (
-                <ChevronDown size={14} strokeWidth={2.5} />
-              ) : (
-                <ChevronRight size={14} strokeWidth={2.5} />
-              )}
-              {showReadme ? "Collapse" : "Expand"}
-            </span>
-          </button>
-          {showReadme && (
+      {/* workspace — README on the left, editor stacked over console */}
+      <div className="pg-split row" ref={splitRef}>
+        {/* README — collapsible left pane */}
+        {readmeHtml &&
+          (readmeOpen ? (
             <>
-              <div
-                ref={readmeBodyRef}
-                className="pg-readme-content s-readme"
-                style={
-                  readmeHeight
-                    ? { height: readmeHeight, maxHeight: "none" }
-                    : undefined
-                }
-                dangerouslySetInnerHTML={{ __html: readmeHtml }}
-              />
+              <section
+                className="pg-window pg-readme-pane"
+                style={{ flexGrow: readmePct } as CSSProperties}
+              >
+                <div className="pg-winbar">
+                  <WinDots />
+                  <div className="filename">
+                    README<span className="dim">· what to build</span>
+                  </div>
+                  <div className="spacer" />
+                  <button
+                    className="iconbtn"
+                    onClick={() => setReadmeOpen(false)}
+                    title="Collapse README"
+                    aria-label="Collapse README"
+                  >
+                    <PanelLeftClose size={15} strokeWidth={2.25} />
+                  </button>
+                </div>
+                <div
+                  className="pg-readme-body s-readme"
+                  dangerouslySetInnerHTML={{ __html: readmeHtml }}
+                />
+              </section>
               <ResizeHandle
-                orientation="y"
-                className="pg-resize-readme"
+                orientation="x"
+                className="pg-resize-split"
                 onResize={resizeReadme}
                 ariaLabel="Resize README panel"
               />
             </>
-          )}
-        </div>
-      )}
-
-      {/* editor + console */}
-      <div
-        className="pg-split row"
-        ref={splitRef}
-        style={
-          {
-            "--pg-ed-grow": editorPct,
-            "--pg-co-grow": 100 - editorPct,
-          } as CSSProperties
-        }
-      >
-        {/* editor */}
-        <div className="pg-window pg-editor">
-          <div className="pg-winbar">
-            <WinDots />
-            <div className="filename">
-              {project.id}.py<span className="dim">· Python 3.x</span>
-            </div>
-            <div className="spacer" />
-            <span className="pill">{lineCount} lines</span>
-            <button className="iconbtn" onClick={copyCode} title="Copy code">
-              {copied ? (
-                <Check size={15} strokeWidth={2.5} />
-              ) : (
-                <Copy size={15} strokeWidth={2.25} />
-              )}
-            </button>
-          </div>
-          <div className="pg-editor-body">
-            <CodeMirror
-              value={code}
-              height="100%"
-              theme={pybeginPaper}
-              extensions={cmExtensions}
-              onChange={setCode}
-              basicSetup={{ tabSize: 4, highlightActiveLine: true }}
-            />
-          </div>
-        </div>
-
-        {/* drag bar between editor and console */}
-        <ResizeHandle
-          orientation="x"
-          className="pg-resize-split"
-          onResize={resizeSplit}
-          ariaLabel="Resize editor and console"
-        />
-
-        {/* console — real terminal */}
-        <div className="pg-window pg-console">
-          <div className="pg-winbar">
-            <WinDots />
-            <div className="filename">
-              Console<span className="dim">· terminal</span>
-            </div>
-            <div className="spacer" />
+          ) : (
             <button
-              className="iconbtn"
-              onClick={() => termRef.current?.clear()}
-              title="Clear console"
+              className="pg-readme-rail"
+              onClick={() => setReadmeOpen(true)}
+              title="Show README"
+              aria-label="Show README"
             >
-              <Eraser size={15} strokeWidth={2.25} />
+              <BookOpen size={16} strokeWidth={2.25} aria-hidden="true" />
+              <span className="pg-readme-rail-label">README</span>
             </button>
+          ))}
+
+        {/* editor + console, stacked vertically */}
+        <div
+          className="pg-right-col"
+          ref={rightColRef}
+          style={
+            {
+              flexGrow: readmeHtml && readmeOpen ? 100 - readmePct : 100,
+              "--pg-ed-grow": editorPct,
+              "--pg-co-grow": 100 - editorPct,
+            } as CSSProperties
+          }
+        >
+          {/* editor */}
+          <div className="pg-window pg-editor">
+            <div className="pg-winbar">
+              <WinDots />
+              <div className="filename">
+                {project.id}.py<span className="dim">· Python 3.x</span>
+              </div>
+              <div className="spacer" />
+              <span className="pill">{lineCount} lines</span>
+              <button className="iconbtn" onClick={copyCode} title="Copy code">
+                {copied ? (
+                  <Check size={15} strokeWidth={2.5} />
+                ) : (
+                  <Copy size={15} strokeWidth={2.25} />
+                )}
+              </button>
+            </div>
+            <div className="pg-editor-body">
+              <CodeMirror
+                value={code}
+                height="100%"
+                theme={pybeginPaper}
+                extensions={cmExtensions}
+                onChange={setCode}
+                basicSetup={{ tabSize: 4, highlightActiveLine: true }}
+              />
+            </div>
           </div>
-          <div className="pg-console-body">
-            <div className="pg-term" ref={termHostRef} />
+
+          {/* drag bar between editor and console */}
+          <ResizeHandle
+            orientation="y"
+            className="pg-resize-vert"
+            onResize={resizeEditor}
+            ariaLabel="Resize editor and console"
+          />
+
+          {/* console — real terminal */}
+          <div className="pg-window pg-console">
+            <div className="pg-winbar">
+              <WinDots />
+              <div className="filename">
+                Console<span className="dim">· terminal</span>
+              </div>
+              <div className="spacer" />
+              <button
+                className="iconbtn"
+                onClick={() => termRef.current?.clear()}
+                title="Clear console"
+              >
+                <Eraser size={15} strokeWidth={2.25} />
+              </button>
+            </div>
+            <div className="pg-console-body">
+              <div className="pg-term" ref={termHostRef} />
+            </div>
           </div>
         </div>
       </div>

@@ -32,6 +32,25 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+
+/* ---- Thin, subtle scrollbars site-wide ---- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(29, 24, 48, 0.3) transparent;
+}
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(29, 24, 48, 0.26);
+  border-radius: 99px;
+  border: 2.5px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(29, 24, 48, 0.46);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner { background: transparent; }
 body {
   background: var(--s-bg);
   background-image:
@@ -674,9 +693,41 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
   display: flex; flex-direction: column;
   background: rgba(255, 255, 255, 0.45);
 }
-.pg-side-head { padding: 18px 18px 12px; }
+.pg-side-head {
+  padding: 18px 18px 12px;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+}
 .pg-side-title { font-family: var(--pg-display); font-size: 22px; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
 .pg-side-sub { font-size: 12px; color: var(--pg-muted); margin-top: 4px; }
+.pg-side-collapse {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 9px;
+  display: grid; place-items: center;
+  background: var(--pg-paper); color: var(--pg-ink);
+  border: var(--pg-border-thin); box-shadow: 2px 2px 0 var(--pg-ink);
+  transition: transform .1s, box-shadow .1s;
+}
+.pg-side-collapse:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--pg-ink); }
+.pg-side-collapse:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--pg-ink); }
+
+/* collapsed sidebar → slim rail */
+.pg-side.railed {
+  width: 50px; flex-shrink: 0;
+  align-items: center; gap: 16px; padding-top: 16px;
+}
+.pg-side-expand {
+  flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px;
+  display: grid; place-items: center;
+  background: var(--pg-accent); color: var(--pg-ink);
+  border: var(--pg-border-thin); box-shadow: 2px 2px 0 var(--pg-ink);
+  transition: transform .1s, box-shadow .1s;
+}
+.pg-side-expand:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--pg-ink); }
+.pg-side-expand:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--pg-ink); }
+.pg-side-rail-label {
+  writing-mode: vertical-rl;
+  font-family: var(--pg-mono); font-size: 11px; font-weight: 800;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--pg-muted);
+}
 .pg-side-search {
   margin: 0 14px 12px;
   padding: 10px 14px; border-radius: var(--pg-radius-pill);
@@ -795,9 +846,16 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
 .pg-btn.stop { background: #ffb4a8; }
 .pg-btn .ic { font-size: 13px; }
 
-/* editor + console split */
+/* workspace split — README pane | editor-over-console column */
 .pg-split { flex: 1; display: flex; gap: 0; min-height: 0; }
 .pg-split.row { flex-direction: row; }
+
+/* right column: editor stacked over console */
+.pg-right-col {
+  flex: 60 1 0; min-width: 0; min-height: 0;
+  display: flex; flex-direction: column;
+}
+
 .pg-window {
   display: flex; flex-direction: column; min-height: 0;
   background: var(--pg-dark);
@@ -830,14 +888,14 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
 .pg-winbar .iconbtn:hover { background: rgba(29,24,48,0.1); border-color: var(--pg-ink); }
 
 /* editor pane */
-.pg-editor { flex: var(--pg-ed-grow, 1.55) 1 0; min-width: 0; }
+.pg-editor { flex: var(--pg-ed-grow, 58) 1 0; min-width: 0; min-height: 96px; }
 .pg-editor-body { flex: 1; min-height: 0; min-width: 0; display: flex; }
 .pg-editor-body > * { flex: 1; min-width: 0; height: 100%; }
 .pg-editor-body .cm-editor { height: 100%; }
 .pg-editor-body .cm-scroller { font-size: 13.5px; padding: 6px 0; }
 
 /* console pane */
-.pg-console { flex: var(--pg-co-grow, 1) 1 0; min-width: 280px; }
+.pg-console { flex: var(--pg-co-grow, 42) 1 0; min-width: 0; min-height: 96px; }
 .pg-console-body {
   flex: 1; min-height: 0; display: flex;
   background: var(--pg-dark);
@@ -851,8 +909,12 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
 /* responsive */
 @media (max-width: 1200px) {
   .pg-split.row { flex-direction: column; gap: 14px; }
-  .pg-split.row .pg-editor { flex: 1.4 1 0; }
-  .pg-split.row .pg-console { flex: 1 1 0; min-height: 200px; min-width: 0; }
+  .pg-readme-pane { min-width: 0; min-height: 200px; max-height: 40vh; }
+  .pg-readme-rail {
+    width: 100%; flex-direction: row; align-self: auto;
+    margin-right: 0; padding: 10px 14px;
+  }
+  .pg-readme-rail-label { writing-mode: horizontal-tb; }
   .pg-resize-split { display: none; }
 }
 @media (max-width: 1100px) { .pg-side { width: 240px; } }
@@ -860,6 +922,11 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
   .pg-app { height: auto; min-height: 100vh; }
   .pg-main { flex-direction: column; }
   .pg-side { width: 100%; }
+  .pg-side.railed {
+    width: 100%; flex-direction: row; align-items: center;
+    gap: 12px; padding: 12px 16px;
+  }
+  .pg-side.railed .pg-side-rail-label { writing-mode: horizontal-tb; }
   .pg-side-resize { display: none; }
   .pg-nav-mid { display: none; }
   .pg-split.row { min-height: 70vh; }
@@ -991,59 +1058,44 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
   text-transform: uppercase; color: rgba(29, 24, 48, 0.55);
 }
 
-/* ---- Playground: collapsible README strip (above the editor) ---- */
-.pg-readme-bar {
-  flex-shrink: 0;
+/* ---- Playground: README pane (left side of the workspace) ---- */
+.pg-readme-pane {
+  flex: 38 1 0; min-width: 240px;
+  background: var(--pg-paper);
+}
+.pg-readme-pane .pg-winbar { background: var(--pg-paper-yellow); }
+/* shares the .s-readme class for typography — strip its card chrome so it
+   doesn't draw a second box inside the pane window */
+.pg-readme-body {
+  flex: 1; min-height: 0; overflow: auto;
+  padding: 22px 26px; background: var(--pg-paper);
+  border: 0; border-radius: 0; box-shadow: none; margin: 0;
+}
+.pg-readme-body > :first-child { margin-top: 0; }
+.pg-readme-body h1 { font-size: 22px; }
+.pg-readme-body h2 { font-size: 18px; }
+.pg-readme-body h3 { font-size: 15px; }
+
+/* collapsed README → slim clickable rail */
+.pg-readme-rail {
+  flex-shrink: 0; width: 46px; align-self: stretch;
+  margin-right: 14px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  padding: 16px 0; cursor: pointer;
+  background: var(--pg-paper); color: var(--pg-ink);
   border: var(--pg-border); border-radius: var(--pg-radius);
-  background: var(--pg-paper); box-shadow: var(--pg-shadow);
-  overflow: hidden;
-}
-.pg-readme-toggle {
-  display: flex; align-items: center; gap: 8px; width: 100%;
-  padding: 10px 18px; cursor: pointer;
-  background: var(--pg-paper-warm); border: 0;
-  font-family: var(--s-display, var(--pg-mono));
-  font-size: 13px; font-weight: 800; color: var(--pg-ink);
-  text-align: left;
-}
-.pg-readme-bar.open .pg-readme-toggle {
-  border-bottom: var(--pg-border-thin);
-}
-.pg-readme-emoji { color: var(--pg-accent); }
-.pg-readme-label { letter-spacing: -0.01em; }
-.pg-readme-hint {
-  font-family: var(--pg-mono); font-size: 11px; font-weight: 600;
-  color: var(--pg-muted);
-}
-/* The clearly-visible collapse / expand button at the end of the header */
-.pg-readme-btn {
-  margin-left: auto;
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 5px 11px 5px 8px; border-radius: var(--pg-radius-pill);
-  border: var(--pg-border-thin); background: var(--pg-paper);
-  box-shadow: 2px 2px 0 var(--pg-ink);
-  font-family: var(--pg-mono); font-size: 11px; font-weight: 800;
-  letter-spacing: 0.02em; text-transform: uppercase;
-  color: var(--pg-ink);
+  box-shadow: var(--pg-shadow);
   transition: transform .1s, box-shadow .1s;
 }
-.pg-readme-toggle:hover .pg-readme-btn {
-  transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--pg-ink);
+.pg-readme-rail:hover {
+  transform: translate(-1px, -1px); box-shadow: 6px 6px 0 var(--pg-ink);
 }
-.pg-readme-toggle:active .pg-readme-btn {
-  transform: translate(2px, 2px); box-shadow: 0 0 0 var(--pg-ink);
+.pg-readme-rail > svg { color: var(--pg-accent); flex-shrink: 0; }
+.pg-readme-rail-label {
+  writing-mode: vertical-rl;
+  font-family: var(--pg-mono); font-size: 11px; font-weight: 800;
+  letter-spacing: 0.16em; text-transform: uppercase;
 }
-.pg-readme-bar.open .pg-readme-btn { background: var(--pg-accent); }
-.pg-readme-content {
-  margin: 0; border: 0; border-radius: 0; box-shadow: none;
-  background: var(--pg-paper);
-  max-height: 23vh; overflow: auto;
-  padding: 18px 26px;
-}
-.pg-readme-content > :first-child { margin-top: 0; }
-.pg-readme-content h1 { font-size: 22px; }
-.pg-readme-content h2 { font-size: 18px; }
-.pg-readme-content h3 { font-size: 15px; }
 
 /* ---- Playground: draggable resize handles ---- */
 .pg-resize {
@@ -1066,7 +1118,7 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
   opacity: 1; background: var(--pg-accent);
 }
 
-/* between editor and console */
+/* between README pane and the editor column */
 .pg-resize-split {
   width: 16px; align-self: stretch;
   display: flex; align-items: center; justify-content: center;
@@ -1074,6 +1126,15 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
 .pg-resize-split .pg-resize-grip { width: 4px; height: 40px; }
 .pg-resize-split:hover .pg-resize-grip,
 .pg-resize-split.dragging .pg-resize-grip { height: 60px; }
+
+/* between editor and console (stacked) */
+.pg-resize-vert {
+  height: 16px; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+.pg-resize-vert .pg-resize-grip { width: 40px; height: 4px; }
+.pg-resize-vert:hover .pg-resize-grip,
+.pg-resize-vert.dragging .pg-resize-grip { width: 60px; }
 
 /* sidebar right edge */
 .pg-side-resize {
@@ -1084,13 +1145,3 @@ a.s-contrib { display: block; text-decoration: none; color: inherit; }
 .pg-side-resize:hover .pg-resize-grip,
 .pg-side-resize.dragging .pg-resize-grip { height: 72px; }
 
-/* under the README panel */
-.pg-resize-readme {
-  height: 13px; width: 100%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--pg-paper-warm);
-  border-top: var(--pg-border-thin);
-}
-.pg-resize-readme .pg-resize-grip { width: 46px; height: 4px; opacity: 0.32; }
-.pg-resize-readme:hover .pg-resize-grip,
-.pg-resize-readme.dragging .pg-resize-grip { width: 70px; }

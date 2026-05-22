@@ -9,7 +9,7 @@
 
 import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import { Search, X } from "lucide-react";
+import { Search, X, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { CATALOG } from "@/lib/catalog";
 import ResizeHandle from "./ResizeHandle";
 
@@ -86,6 +86,8 @@ export default function PlaygroundSidebar({
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({
     desktop: true,
   });
+  // Whole-sidebar collapse — folds the panel down to a slim rail.
+  const [railed, setRailed] = useState(false);
   // User-draggable sidebar width — resets to the default on every refresh.
   const [width, setWidth] = useState(280);
 
@@ -93,10 +95,36 @@ export default function PlaygroundSidebar({
     try {
       const saved = localStorage.getItem("pg_collapsed_v2");
       if (saved) setCollapsed(JSON.parse(saved));
+      setRailed(localStorage.getItem("pg_side_railed") === "1");
     } catch {
       /* ignore */
     }
   }, []);
+
+  const setRail = (v: boolean) => {
+    setRailed(v);
+    try {
+      localStorage.setItem("pg_side_railed", v ? "1" : "0");
+    } catch {
+      /* ignore */
+    }
+  };
+
+  if (railed) {
+    return (
+      <aside className="pg-side railed">
+        <button
+          className="pg-side-expand"
+          onClick={() => setRail(false)}
+          title="Show project list"
+          aria-label="Show project list"
+        >
+          <PanelLeftOpen size={18} strokeWidth={2.25} />
+        </button>
+        <span className="pg-side-rail-label">Projects</span>
+      </aside>
+    );
+  }
 
   const toggle = (gid: string) =>
     setCollapsed((prev) => {
@@ -118,10 +146,20 @@ export default function PlaygroundSidebar({
       style={{ ["--pg-side-w"]: `${width}px` } as CSSProperties}
     >
       <div className="pg-side-head">
-        <div className="pg-side-title">Playground</div>
-        <div className="pg-side-sub">
-          {CATALOG.length} projects · {RUNNABLE_ITEMS.length} runnable
+        <div className="pg-side-head-text">
+          <div className="pg-side-title">Playground</div>
+          <div className="pg-side-sub">
+            {CATALOG.length} projects · {RUNNABLE_ITEMS.length} runnable
+          </div>
         </div>
+        <button
+          className="pg-side-collapse"
+          onClick={() => setRail(true)}
+          title="Hide project list"
+          aria-label="Hide project list"
+        >
+          <PanelLeftClose size={16} strokeWidth={2.25} />
+        </button>
       </div>
       <div className="pg-side-search">
         <Search size={14} strokeWidth={2.25} aria-hidden="true" />
