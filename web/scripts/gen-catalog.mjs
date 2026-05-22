@@ -215,20 +215,7 @@ function parseReadme(file) {
     .trim();
   if (blurb.length > 150) blurb = blurb.slice(0, 147).trimEnd() + "…";
 
-  // Pyodide-runnable verdict
-  let runnable = false;
-  const idx = lines.findIndex((l) =>
-    /^#+\s*pyodide-runnable/i.test(l.trim()),
-  );
-  if (idx >= 0) {
-    for (let i = idx + 1; i < lines.length; i++) {
-      const l = lines[i].trim();
-      if (!l) continue;
-      runnable = /^(yes|partly)/i.test(l);
-      break;
-    }
-  }
-  return { name, blurb, runnable };
+  return { name, blurb };
 }
 
 const folders = fs
@@ -257,13 +244,11 @@ for (const folder of folders) {
 
   let name = folder;
   let blurb = "";
-  let verdictRunnable = false;
   const readmeFile = findReadme(dir);
   if (readmeFile) {
     const parsed = parseReadme(readmeFile);
     name = parsed.name || folder;
     blurb = parsed.blurb;
-    verdictRunnable = parsed.runnable;
   }
 
   const mainPy = findMainPy(dir, folder);
@@ -271,14 +256,16 @@ for (const folder of folders) {
     ? fs.readFileSync(mainPy, "utf8").split(/\r?\n/).length
     : 0;
 
-  const runnable = curated ? curated.playground : verdictRunnable;
-  const emoji = curated ? curated.emoji : emojiFor(name, blurb);
-  const author = AUTHORS[folder];
-
   // A project is playable iff a hand-written annotated tutorial file exists
   // at public/playground/<id>.py. The originals in projects/ are never copied.
+  // This file is authored only for projects whose todo.json status is
+  // runnable/modified/partial, so `hasPlayground` is the catalog's runnable flag.
   const pgFile = path.join(PLAYGROUND_DIR, `${id}.py`);
   const hasPlayground = fs.existsSync(pgFile);
+
+  const runnable = curated ? curated.playground : hasPlayground;
+  const emoji = curated ? curated.emoji : emojiFor(name, blurb);
+  const author = AUTHORS[folder];
 
   entries.push({
     id, folder, name, blurb, emoji, runnable, hasPlayground, lines,
