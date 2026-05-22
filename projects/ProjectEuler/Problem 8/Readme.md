@@ -1,5 +1,12 @@
 # Largest product in a series
 
+## Example
+
+```text
+$ python p8.py
+23514624000
+```
+
 The four adjacent digits in the $1000$ digit number that have the greatest product are $9 \times 9 \times 8 \times 9 = 5832$.
 
 

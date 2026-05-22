@@ -12,6 +12,19 @@ Used to store vertex offsets between a meshes shape keys in it's UV layers. Opti
 
 Used to store vertex offsets and normals of selected mesh objects per frame into image textures.
 
+## Example
+
+1. Open Blender and go to **Edit > Preferences > Add-ons > Install**, then
+   select `mesh_morpher.py` (or `vertex_animation.py`).
+2. Enable the add-on by ticking the checkbox next to its name.
+3. In the 3D Viewport, open the sidebar (**N** key) and navigate to the
+   **Unreal Tools** tab to find the tool's panel.
+4. For **Mesh Morpher**: select a mesh with shape keys and click the operator
+   button to bake the vertex offsets into UV layers.
+5. For **Vertex Animation**: select mesh objects, set the frame range, and run
+   the operator to export per-frame vertex data into image textures ready for
+   use in a game engine vertex shader.
+
 ## Getting Started
 
 These tools can be installed as add-ons or ran as scripts. Each tool has a panel located in the 3D View's sidebar under the Unreal Tools tab.
@@ -43,8 +56,3 @@ These tools can be installed as add-ons or ran as scripts. Each tool has a panel
 * While in Blender use the text editor to open the tool you want to use.
 
 * Then either click the run script operator (the **arrow** icon in header) or use **alt+p** shortcut.
-
-
-## Pyodide-runnable
-
-No - these are Blender add-ons that import the bpy module, which only exists inside Blender.

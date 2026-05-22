@@ -9,6 +9,16 @@ Welcome to the Loan Calculator project! This Python program calculates the month
 - [Contributing](#contributing)
 - [License](#license)
 
+## Example
+
+```text
+Welcome to the Loan Calculator!
+Enter the loan amount: $10000
+Enter the annual interest rate (as a percentage): 5.5
+Enter the loan term (in months): 24
+Your monthly payment will be: $441.17
+```
+
 ## Getting Started
 
 To use the Loan Calculator, follow these steps:
@@ -37,6 +47,3 @@ To use the Loan Calculator, follow these steps:
 - The program will calculate and display the monthly payment amount.
 
 Enjoy using the Loan Calculator! If you have any questions or encounter any issues, please feel free to reach out or open an issue.
-
-## Pyodide-runnable
-Yes — it is a pure-stdlib console program using only input() and print().

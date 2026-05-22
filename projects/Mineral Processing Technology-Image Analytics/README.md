@@ -54,12 +54,15 @@ Example –
 
 Read the input images for the challenge form the “input” folder, process each image based on the calculations mentioned and save the output image in the “output” folder.
 
+## Example
 
-
-
-
-
-
-## Pyodide-runnable
-
-No — it requires the OpenCV (`cv2`) library, which is not available in Pyodide, and reads/writes image files from the real filesystem.
+1. Place particle images (`.jpg` or `.png`) in the `input/` folder.
+2. Run `python code.py`.
+3. For each image, the script detects particle contours and overlays the following measurements in red:
+   - Minimum enclosing circle drawn around each particle.
+   - `Total surface area: 3142.50` (pixel area of the contour).
+   - `Centroid: (128, 95)` marker dot at the particle centre.
+   - `Total Perimeter: 201.34` along the contour edge.
+   - `Major Axis Length: 87.21` as a red line through the longest internal axis.
+4. Annotated images are saved to the `output/` folder with the same filenames.
+5. `Processing complete.` is printed when all images are done.

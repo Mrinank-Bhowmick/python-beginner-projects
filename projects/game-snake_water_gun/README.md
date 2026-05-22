@@ -14,7 +14,3 @@
 1. Python Should be installed in your system
 2. Just download the game.py file and open it (bydefault it should be open in terminal).
 * If you do not have or not want to install python in your system, you can download the game.exe file and directly run that executable file. 
-
-## Pyodide-runnable
-
-Yes — `game.py` is a console game using only `input()`/`print()` and the standard-library `random` module.

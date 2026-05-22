@@ -15,6 +15,3 @@ This will launch the interactive program, which will request the password from t
 Enter password: 12345678
 Your password hash has appeared 5,172,909 times in known data breaches.
 ```
-## Pyodide-runnable
-
-No — it queries the HaveIBeenPwned API over the network using `requests`.

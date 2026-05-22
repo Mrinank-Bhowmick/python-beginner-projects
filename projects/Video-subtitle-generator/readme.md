@@ -1,3 +1,25 @@
+## Example
+
+```text
+Please enter the path of the audio file: lecture.mp3
+Please enter the output file type (SRT is selected by default):
+1.SRT
+2.JSON
+3.TXT
+1
+Please enter the name of the whisper model you want to use (base is selected by default):
+1.Tiny
+2.Base
+3.Small
+4.Medium
+5.Large
+2
+Whisper model loaded.
+Your subtitles are ready. You can find them in lecture.srt
+```
+
+The generated `SrtFiles/lecture.srt` file contains timestamped subtitle entries for each spoken segment.
+
 ## Required Modules
 
 ```
@@ -23,6 +45,3 @@ choco install ffmpeg
 scoop install ffmpeg
 
 ```
-## Pyodide-runnable
-
-No — it uses OpenAI Whisper and FFmpeg to transcribe local audio/video files.

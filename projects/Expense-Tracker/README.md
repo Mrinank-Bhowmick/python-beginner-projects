@@ -112,9 +112,3 @@ which would use dummy data to test the app.
   Excel for easy sharing or printing.
 - [ ] Currency Converter: For users dealing with multiple currencies, this feature provides an option to convert
   expenses to a preferred currency.
-
-
-
-## Pyodide-runnable
-
-No — it is a `customtkinter`/`tkinter` GUI application and also depends on `reportlab`, `pandas`, and `XlsxWriter`.

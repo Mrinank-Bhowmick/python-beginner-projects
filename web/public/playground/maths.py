@@ -3,15 +3,6 @@
 
 from cmath import sqrt
 
-
-# Print a welcome banner
-print("----------------")
-print("created by: ")
-print("https://github.com/ChefYeshpal")
-print("for: hacktober")
-print("----------------")
-
-
 # Basic arithmetic helper functions
 def add(x, y):
     return x + y

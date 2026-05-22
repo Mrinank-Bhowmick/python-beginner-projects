@@ -2,7 +2,13 @@
 
 An OpenCV demo that captures live webcam frames and renders them as a pencil-sketch effect using grayscale conversion, Gaussian blur, and Canny edge detection.
 
-## How to run
+## Example
+
+1. Run `python main.py` with a webcam connected.
+2. A window titled "Output" opens showing your live webcam feed rendered as a pencil-sketch effect (grayscale edges on a white background).
+3. Press Enter to close the window and stop the program.
+
+## How to run on localhost
 
 ```
 pip install opencv-python numpy
@@ -13,7 +19,3 @@ python main.py
 
 - opencv-python
 - numpy
-
-## Pyodide-runnable
-
-No — it uses OpenCV webcam capture and GUI windows, which are not available in a browser.

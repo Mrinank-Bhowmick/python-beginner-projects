@@ -2,7 +2,17 @@
 
 A next-word prediction tool that learns from an exported WhatsApp chat. It reads a `Chats.txt` file, builds word-frequency and next-word tables, and predicts the most likely words to follow a given word.
 
-## How to run
+## Example
+
+With `Chats.txt` in place, running `python main.py` loads the chat, builds word-frequency tables, and prints the 3 most likely words to follow `"good"`:
+
+```text
+['morning', 'night', 'luck']
+```
+
+The predictions reflect the actual words that most frequently appear after `"good"` in the exported chat file.
+
+## How to run on localhost
 
 ```bash
 pip install pandas
@@ -14,7 +24,3 @@ Place an exported WhatsApp chat as `Chats.txt` in the same folder.
 ## Dependencies
 
 - pandas
-
-## Pyodide-runnable
-
-No — although `pandas` is available in Pyodide, the script reads a local `Chats.txt` file from the real filesystem, which is not present in the browser sandbox.

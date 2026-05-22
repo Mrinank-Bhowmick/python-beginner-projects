@@ -20,6 +20,12 @@ The Random Quote Generator is a simple Python application that fetches and displ
 - Tkinter library (usually included with Python)
 - Requests library (for making HTTP requests)
 
+## Example
+
+1. The window titled "Random Quote Generator" opens and immediately fetches a quote from the Quotable API, displaying it in the label, for example: `"The only way to do great work is to love what you do." - Steve Jobs`
+2. Click "Get a New Quote" to fetch and display another random quote with its author.
+3. If the internet connection is unavailable, the label shows: `Failed to fetch a quote. Check your internet connection.`
+
 ## Getting Started
 
 1. Clone this repository to your local machine.
@@ -77,11 +83,6 @@ We welcome contributions to improve and expand this Random Quote Generator proje
 6. Create a pull request from your branch to the main repository.
 
 7. Wait for your pull request to be reviewed and merged.
-
-## Pyodide-runnable
-
-No - it builds a Tkinter GUI and uses `requests` to call an external API, neither of which works in the browser sandbox.
-
 ## Acknowledgments
 
 - Thanks to [Quotable API](https://quotable.io/) for providing the quotes.

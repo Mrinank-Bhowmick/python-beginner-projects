@@ -3,6 +3,14 @@
 
 [![N|Solid](https://imgs.search.brave.com/TwFKAEHis0XNgwUaDKCTjeG0Hs2V46pM9vMyV9-1zGo/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjEv/MTAvUHl0aG9uLVN5/bWJvbC03MDB4Mzk0/LnBuZw)
 
+## Example
+
+1. Start the Flask server with `python main.py` (or `python3 main.py`).
+2. In a second terminal run `ngrok http 5000` and copy the forwarding URL.
+3. Paste the ngrok URL into your Twilio phone number's "A Message Comes In" webhook field.
+4. Text your Twilio number from your phone — for example: `What is the capital of France?`
+5. The server receives the SMS, forwards the text to OpenAI's API, and replies via Twilio with the generated answer (e.g. `The capital of France is Paris.`).
+
 ## PREREQUISITIES
 * A Twilio account - sign up for a free one here - https://www.twilio.com/try-twilio
 * A Twilio phone number with SMS capabilities - learn how to buy a Twilio Phone Number here - https://support.twilio.com/hc/en-us/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console
@@ -93,6 +101,3 @@ python3 main.py
 Now take out your phone and text your Twilio Phone Number a question or prompt so that OpenAI can answer it or generate text!
 
 ![picture alt](https://assets.cdn.prod.twilio.com/images/Screenshot_2023-01-12_at_1.44.48_PM.format-webp.webp)
-## Pyodide-runnable
-
-No — it is a Flask web server that integrates the Twilio SMS API and the OpenAI API, all requiring network access and a server that Pyodide cannot provide.

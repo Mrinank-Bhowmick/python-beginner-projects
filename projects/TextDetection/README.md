@@ -2,7 +2,20 @@
 
 A script that detects and prints text found in an image using the Google Cloud Vision API.
 
-## How to run
+## Example
+
+```text
+python TextDetection.py sign.jpg
+
+OPEN
+Mon-Fri 9am-5pm
+Sat 10am-3pm
+Closed Sunday
+```
+
+Each detected text annotation from the image is printed on its own line.
+
+## How to run on localhost
 
 ```
 pip install google-cloud-vision
@@ -14,7 +27,3 @@ Requires Google Cloud credentials configured in the environment.
 ## Dependencies
 
 google-cloud-vision
-
-## Pyodide-runnable
-
-No — it calls the Google Cloud Vision API over the network and requires cloud authentication.

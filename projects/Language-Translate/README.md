@@ -6,6 +6,14 @@ A simple script to help translate your text into different languages.
 - Install Python if you already haven't.
 - Install all required dependencies by running ``pip install -r requirements.txt``.
 
+## Example
+
+```text
+$ python3 language_translate.py --from_lang Spanish --to_lang English
+Enter text to translate: Hola, ¿cómo estás?
+Hello, how are you?
+```
+
 ## Usage
 ```bash
 python3 language_translate.py
@@ -20,6 +28,3 @@ options:
                         Language to translate from.
   --to_lang TO_LANG     Language to translate to. (defaults to English)
 ```
-
-## Pyodide-runnable
-No — the `translate` library makes live HTTP requests to an online translation service.

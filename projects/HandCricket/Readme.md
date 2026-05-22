@@ -12,6 +12,37 @@ This is a simple command-line-based Hand Cricket game implemented in Python. It 
 - Realistic cricket scoring and gameplay.
 
 
+## Example
+
+```text
+Welcome Hand Cricket
+You will be playing against another player
+Enter the number of overs (1-10): 2
+Toss time!
+Choose heads (1) or tails (2): 1
+It's Heads!
+Player 1 won the toss!
+Player 1, choose 1 to bat first, 2 to bowl first: 1
+Select difficulty level (1-Easy, 2-Medium, 3-Hard): 1
+
+Match Summary
+=============
+Overs: 2
+
+Over 1, Player 1: 10 wickets left, Player 2: 10 wickets left
+Player's turn - Batting
+Over 1, Ball 1: Enter your shot (1-6): 4
+You chose 4, Opponent chose 2
+Player's score is 4
+...
+Match Result
+============
+Player 1's score = 28
+Player 2's score = 19
+Player 1 won
+Thank you for playing and have a good day :)
+```
+
 ### Installation
 1. Clone this repository to your local machine:
 
@@ -59,7 +90,3 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ## Acknowledgments
 - This game was inspired by the popular hand cricket game played by many cricket enthusiasts.
 - Special thanks to the Python community for providing helpful libraries and resources.
-
-## Pyodide-runnable
-
-Yes — console game using only `input()`/`print()` and the standard-library `random` and `time` modules.

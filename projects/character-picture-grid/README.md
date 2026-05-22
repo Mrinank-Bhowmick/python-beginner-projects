@@ -2,7 +2,20 @@
 
 A small utility that rotates a 2D character grid 90 degrees and prints the resulting picture to the console.
 
-## How to run
+## Example
+
+Running the script prints the built-in grid rotated 90 degrees:
+
+```text
+..OO.OO..
+.OOOOOOO.
+.OOOOOOO.
+..OOOOO..
+...OOO...
+....O....
+```
+
+## How to run on localhost
 
 ```
 python character-picture-grid.py
@@ -11,7 +24,3 @@ python character-picture-grid.py
 ## Dependencies
 
 Standard library only.
-
-## Pyodide-runnable
-
-Yes - it is a pure-stdlib console program that only prints to standard output.

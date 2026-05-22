@@ -10,10 +10,18 @@
   <a href="url">https://dev.mysql.com/downloads/installer/</a>
   <p style="font-size:18px"> After the setup checkout the 'requirements.py' file and run the code in your python compiler ;)</p>
   
+  <h2>Example</h2>
+  <p>Encrypting a three-character message:</p>
+  <pre>
+enter your message: cat
+ encrypted output: xqv
+  </pre>
+  <p>Decrypting the cipher text (using <code>decryption.py</code>):</p>
+  <pre>
+enter the coded text: xqv
+ decrypted output: cat
+  </pre>
+
   <h2>Aid for Exceptions/Errors</h2>
   <p> Try: pip intall mysql or/and pip install mysql-connector-python</p>
 </html>
-
-## Pyodide-runnable
-
-No — it connects to a local MySQL database via `mysql.connector`, which is not available in a browser sandbox.

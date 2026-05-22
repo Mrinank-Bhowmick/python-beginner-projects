@@ -2,7 +2,17 @@
 
 Retrieves the saved Wi-Fi passwords on a Windows machine. It runs `netsh wlan` commands to list the stored wireless profiles and prints each network name alongside its password.
 
-## How to run
+## Example
+
+```text
+HomeNetwork                   |  MySecretPass123
+OfficeWifi                    |  workpassword99
+GuestNetwork                  |
+```
+
+Each saved wireless profile is printed with its name left-aligned in a 30-character column, followed by `|` and its stored password. Profiles that have no saved password (open networks) show an empty value.
+
+## How to run on localhost
 
 ```
 python wifi.py
@@ -13,7 +23,3 @@ python wifi.py
 ## Dependencies
 
 Standard library only (`subprocess`).
-
-## Pyodide-runnable
-
-No — it shells out to Windows-only `netsh` system commands via `subprocess`, which the browser sandbox cannot run.

@@ -17,6 +17,34 @@ This is a Python script for a language learning assistant that helps users pract
 - random
 - speech_recognition
 
+## Example
+
+```text
+AI Language Learning Assistant: Vocabulary Quiz
+What does 'ocean' mean? a large body of salt water
+Correct!
+What does 'mountain' mean? a big rock
+Wrong. The correct answer is: a large natural elevation of the earth's surface
+Quiz completed! Your score: 1/2
+
+AI Language Learning Assistant: Grammar Exercise
+He ___ to the store every day. goes
+Correct!
+They ___ in the park yesterday. play
+Wrong. The correct answer is: played
+Grammar exercise completed! Your score: 1/2
+
+AI Language Learning Assistant: Interactive Conversation Practice
+Type 'exit' to end the conversation.
+ChatBot: What is your favorite color? blue
+ChatBot: My favorite color is blue.
+ChatBot: Do you enjoy learning new things? exit
+
+AI Language Learning Assistant: Pronunciation Errors Detection
+Speak a sentence for pronunciation evaluation:
+There might be some pronunciation errors. Keep practicing!
+```
+
 ## Getting Started
 
 1. Clone this repository to your local machine.
@@ -47,6 +75,3 @@ The script offers a set of conversation questions and answers to engage in inter
 ## Grammar Exercises
 
 The grammar exercise section contains fill-in-the-blank sentences to help you improve your grasp of grammar rules. You can extend this section by adding more sentences and exercises to the `grammar_exercise` list in the script.
-
-## Pyodide-runnable
-No — the pronunciation feature uses speech_recognition with a microphone, which is unavailable in Pyodide.

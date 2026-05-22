@@ -1,4 +1,12 @@
 
+## Example
+
+1. Start the Flask app (`python app.py`) and open `http://127.0.0.1:5000/` in a browser.
+2. The page shows a form to upload a raw video file.
+3. Select a video (e.g. `clip.avi`) and submit the form.
+4. The backend transcodes the video to the target format (e.g. 1080p MP4) using FFmpeg.
+5. A download link for the transcoded file is shown on the page.
+
 ## Components
 
 ### Flask App (`flask_app/`)
@@ -45,7 +53,3 @@
 This is a basic implementation; additional features like error handling, security measures, and frontend enhancements can be added for a more robust application.
 
 Feel free to modify the code and folder structure according to your project requirements.
-
-## Pyodide-runnable
-
-No — it is a Flask web server that transcodes videos with FFmpeg.

@@ -33,6 +33,13 @@ System (CAS) that allows users to perform various mathematical computations. The
     pip install -r requirements.txt
     ```
 
+## Example
+
+1. Run `python main.py`. A DearPyGui window opens with an **Input** panel (radio buttons for operations and a text field) and an **Output** panel below it.
+2. Select the `derive` radio button, type `x^3` in the expression field, and click **Evaluate**. The Output panel displays `3 x^2`.
+3. Select `integrate`, type `x^2`, and click **Evaluate**. The Output panel displays `1/3 x^3`.
+4. Select `factor`, type `x^2 - 4`, and click **Evaluate**. The Output panel displays `(x - 2) (x + 2)`.
+
 ## Usage
 
 1. Run the main script `main.py`:
@@ -58,7 +65,3 @@ System (CAS) that allows users to perform various mathematical computations. The
 ## License
 
 [![License](https://img.shields.io/static/v1?label=Licence&message=GPL-3-0&color=blue)](https://opensource.org/license/GPL-3-0)
-
-## Pyodide-runnable
-
-No — it uses the `dearpygui` GUI toolkit and makes HTTP requests to the Newton API.

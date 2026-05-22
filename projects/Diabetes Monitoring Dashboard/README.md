@@ -27,6 +27,13 @@ Here are some performance metrics for our model:
 
 - SVM F1 Score: 0.6464646464646464
 
+## Example
+
+1. Run `streamlit run webApp.py`. The dashboard opens in a browser.
+2. Fill in the real-time health parameters requested by the form (e.g. blood glucose level, age, BMI).
+3. Click the predict button. The SVM model returns a prediction — either diabetic or non-diabetic — along with a confidence indicator.
+4. The integrated ChatGPT panel (via the OpenAI API key set in `chat.py`) provides personalised lifestyle improvement suggestions based on the result.
+
 # Requirements
 
 Install the till-needed packages using the command :
@@ -46,7 +53,3 @@ streamlit run webApp.py
 ```
 
 The application will deploy a webapp on localhost which then can be accesed through web browsers (Chrome recommended!) by any client on that network.
-
-# Pyodide-runnable
-
-No — it runs a Streamlit web server, makes network requests, uses scikit-learn, and calls the OpenAI API.

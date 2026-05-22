@@ -15,10 +15,25 @@ During production of wine there may occur an reduction in quality due to some er
 - alchol
 - quality
 
+## Example
+
+Running `python main.py` trains an SVM classifier on `WhiteWineQuality.csv` and prints a confusion matrix and classification report showing per-quality-class precision, recall, and F1 scores:
+
+```text
+[[  0   0   1   0   0   0]
+ [  0   5  12   3   0   0]
+ ...
+ ]
+              precision    recall  f1-score   support
+           3       0.00      0.00      0.00         1
+           4       0.45      0.25      0.32        20
+           5       0.58      0.72      0.64       326
+           6       0.55      0.54      0.55       399
+           7       0.47      0.38      0.42       141
+           8       0.33      0.08      0.13        37
+```
+
 ## Libraries Used:
 - Numpy
 - Pandas
 - Scikit-learn - Support Machine Vector
-## Pyodide-runnable
-
-No — it reads a local CSV with `pandas` and trains a `scikit-learn` model; scikit-learn is not available in Pyodide and the script reads from the real filesystem.

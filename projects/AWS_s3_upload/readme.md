@@ -1,17 +1,30 @@
-
 ## Simple Python script for AWS S3 file upload.
 
 ### Prerequisites
+
 boto3 (pip install boto3) <br />
 
-### How to run the script
+### Example
+
+After filling in the credentials and file details in `main.py` and running
+`python main.py`, the console prints:
+
+```text
+Upload Successful
+```
+
+If the local file cannot be found the output is:
+
+```text
+The file was not found
+```
+
+### How to run on localhost the script
+
 - Specify both ACCESS_KEY and SECRET_KEY. You can get them both on your AWS account in "My Security Credentials" section. <br />
 - Specify the local file name, bucket name and the name that you want the file to have inside s3 bucket using LOCAL_FILE, BUCKET_NAME and S3_FILE_NAME variables. <br />
 - Run "python main.py" <br />
 
 ### Author Name
+
 Yashvardhan Singh https://github.com/pythonicboat
-
-## Pyodide-runnable
-
-No - uses boto3 to make network calls to the AWS S3 API.

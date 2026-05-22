@@ -1,3 +1,12 @@
+## Example
+
+```text
+start mining
+Yay! Successfully mined bitcoins with nonce value:481749
+end mining. Mining took: 3.271 seconds
+0000003f2a7c9b1e4d8f05a62cb17e9340dcf1b8a53e72690f4c81d256e7b0a4
+```
+
 ## Introduction
 Bitcoin is the latest trend in the cryptocurrency world which aims to disrupt
 the centralized banking system of the world by making it decentralized. 
@@ -53,10 +62,3 @@ A Bitcoin Transaction has a miner’s fee attached with it and every transaction
 ![alt text](https://editor.analyticsvidhya.com/uploads/41762BItcoin%20Mining%202.png)
 
 Mining is achieved by finding the correct hash which has a preset number of zeros in the beginning and it also signifies the difficulty level. 
-
-
-
-
-## Pyodide-runnable
-
-Yes - it only uses hashlib and time from the standard library.

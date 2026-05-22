@@ -10,6 +10,13 @@ pip install numpy
 
 pip install pyautogui
 
+## Example
+
+1. Run `python main.py`. The script immediately starts capturing screenshots of your full screen at 30 fps.
+2. After 10 seconds the recording stops automatically.
+3. A file named `ScreenRecord.mp4` appears in the project folder.
+4. The console prints `____Screen Recording finished________`.
+
 # Now run the main.py 
 
 ## Great.............You Did it, Check your folder and find "ScreenRecord.mp4" file
@@ -20,7 +27,3 @@ pip install pyautogui
 - pywin32
 - numpy
 - pyautogui
-
-## Pyodide-runnable
-
-No - it captures the real screen with `pyautogui` and uses Windows-specific `win32api`, neither of which works in the browser sandbox.

@@ -2,6 +2,26 @@
 
 **This is a internet speed tester made in python**
 
+## Example
+
+```text
+Loading server list...
+
+Choosing best server...
+Found: speedtest.lon1.linode.com:8080 located in United Kingdom
+What speed do you want to test:  
+    
+    1) Download Speed  
+    
+    2) Upload Speed  
+    
+    3) Ping 
+    
+    Your Choice: 1
+Performing download test...
+Download speed:  85.34 Mbit/s
+```
+
 ## Getting Started
 
 - Clone this repo
@@ -48,6 +68,3 @@ pip3 install speedtest-cli
 ![Shreejan-35](https://github.com/Shreejan-35)
 
 That's all.
-
-## Pyodide-runnable
-No — it uses the speedtest library to measure real network speed against remote servers.

@@ -9,6 +9,41 @@
     # Copy code
         pip install -r requirements.txt
 
+## Example
+
+```text
+Welcome to Custom Encryption & Decryption Program!
+
+Do you already have a CIPHER TEXT ?
+    a. Press 'c' to continue with the default CIPHER TEXT
+    b. Press 'y' if you already have a CIPHER TEXT
+    c. Press 'g' to generate a CIPHER TEXT
+    d. Press 'r' to report a BUG
+
+You have chosen: g
+
+Your CIPHER TEXT has been generated successfully! and added into the 'cipher_text.txt' file!
+
+Please choose one option from below:
+    a. Press 'e' to ENCRYPT a TEXT
+    b. Press 'd' to DECRYPT a ENCRYPTED TEXT
+    c. Press 'q' to QUIT the program ?
+
+You have chosen: e
+
+Please enter your text : Hello World
+
+Your ENCRYPTED TEXT text is:  dGhpcyBpcyBhbiBleGFtcGxl...
+
+Do you want to continue to the program ?
+    a. Press 'c' to continue!
+    b. Press 'any other key' to quit the program!
+
+You have chosen: q
+
+Thanks for using custom encryption & decryption program! Have great day :)
+```
+
 # Getting Started
     Clone the Repository:
 
@@ -57,7 +92,3 @@
     Thank you for using this program. If you have any issues or questions, feel free to open an issue or contact me.
 
     Happy encrypting and decrypting! 🚀
-
-# Pyodide-runnable
-
-    No — it depends on `PyJWT` and `python-dotenv` (not available in Pyodide) and reads environment variables and a cipher-text file.

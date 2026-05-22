@@ -2,6 +2,13 @@
 
 A python program that allows users to generate watermarked images.
 
+## Example
+
+1. Place your JPEG images in an `images/` folder and your watermark image as `mord.png` in the project root.
+2. Run `python main.py`. The script opens each `images/*.jpeg` file, resizes the watermark to at most 500×50 pixels, and pastes it at position (20, 20) on the image.
+3. Watermarked copies are saved to the `output/` folder (created automatically if it does not exist).
+4. The script prints the list of processed image objects when done.
+
 ## DEPENDENCIES
 
 Pillow
@@ -98,7 +105,3 @@ pip install -r requirements.txt
 ### **`If you are asked to make changes on the same feature, repeat steps 8 to 13 to add more commits to your pull request.`**
 
 "https://github.com/highb33kay/Watermarker.git"
-
-## Pyodide-runnable
-
-No — it reads local image files with Pillow and uses `matplotlib`, walking the real filesystem.

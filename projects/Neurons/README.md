@@ -2,7 +2,19 @@
 
 A terminal animation that simulates "neurons" on a grid. Each neuron randomly dies or moves in one of four directions on every tick, producing an evolving pattern printed to the terminal.
 
-## How to run
+## Example
+
+The terminal fills with a live-updating grid of block characters (`██`) representing neurons. On each tick every neuron either dies or moves one cell in a random direction, producing a shifting, organic-looking pattern that runs until all neurons have died, then restarts.
+
+```text
+                                                        ██
+              ██
+                                    ██
+        ██                ██
+                    ██
+```
+
+## How to run on localhost
 
 ```
 python main.py
@@ -11,7 +23,3 @@ python main.py
 ## Dependencies
 
 Standard library only.
-
-## Pyodide-runnable
-
-Yes — after a small edit removing the `os.system` terminal-clear (and the now-unused `os`/`sys` imports), it is a pure-stdlib program that only prints to the console.

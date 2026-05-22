@@ -2,6 +2,15 @@
 
 Web application of Plagiarism Checker using Python-Flask. TF-IDF and cosine similarity is a very common technique. It allows the system to quickly retrieve documents similar to a search query. Similarly, based on the same concept instead of retrieving documents similar to a query, it checks for how similar the query is to the existing database file. 
 
+## Example
+
+1. Run `python plag.py` and open `http://127.0.0.1:5000` in a browser.
+2. Type or paste a passage into the query text box and submit the form.
+3. The app compares the query against `database1.txt` using TF-IDF cosine similarity.
+4. The page refreshes and displays a result such as:
+
+   `Input query text matches 73.45% with database.`
+
 ## Steps:
 1. User enters a query
 2. Query gets processed (Uppercase to lowercase, Removal of punctuationmarks, etc.)
@@ -13,8 +22,3 @@ Web application of Plagiarism Checker using Python-Flask. TF-IDF and cosine simi
 2. Easy to  work with (Same syntax as of Python)
 3. While Flask addresses itself as a "micro-framework", it is not lacking in features or power, especially with a clutch of extensions to support features such as authentication, databases and so on
 4. Comprehensive documentation available
-
-
-## Pyodide-runnable
-
-No — it is a Flask web server application, and Flask cannot serve requests under Pyodide in the browser.

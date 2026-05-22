@@ -9,6 +9,15 @@ This code snippet is a simple implementation of an iterator that generates the C
 ### Overview
 
 The provided code defines a Collatz class that initializes with a positive integer n and implements the iterator pattern to generate the Collatz sequence. The `__next__()` method computes the next number in the sequence according to the rules above. It raises a StopIteration exception when the sequence reaches 1.
+
+## Example
+
+```text
+To generate a Collatz Sequence,
+Please enter a positive integer number: 6
+3 10 5 16 8 4 2 1 
+```
+
 #### Usage
 
 1. When executed, the script prompts the user for a positive integer.
@@ -16,17 +25,13 @@ The provided code defines a Collatz class that initializes with a positive integ
 3. The sequence ends when the iterator reaches 1, triggering the StopIteration exception.
 4. If an invalid input is entered (like a non-integer), a ValueError is raised, prompting the user with an error message.
 
-#### How to Run
+#### How to run on localhost
 
 - Run the script in your Python environment.
 - In terminal write this command
- > python collatz.py
-
+  > python collatz.py
 
 #### Error Handling
 
 - If the input is not a valid integer, a ValueError exception is raised, prompting the user to enter a valid integer.
 - If the iterator reaches 1, a StopIteration exception is raised, indicating the end of the sequence.
-## Pyodide-runnable
-
-Yes — it is a pure-stdlib console program; the iterator and `input`/`print` work unchanged in the browser.

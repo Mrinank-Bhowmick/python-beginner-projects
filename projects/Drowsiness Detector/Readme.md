@@ -39,31 +39,23 @@ The return value of the eye aspect ratio will be approximately constant when the
 If the eye is closed, the eye aspect ratio will again remain approximately constant, but will be much smaller than the ratio when the eye is open.
 
 
+## Example
+
+```text
+$ python main.py --shape-predictor shape_predictor_68_face_landmarks.dat \
+                 --alarm alarm.wav --webcam 0
+
+[INFO} loading facial landmark predictor...
+[INFO] starting video stream thread...
+```
+
+1. A webcam window opens titled "Frame" showing the live video feed with green contours drawn around detected eye regions.
+2. The current Eye Aspect Ratio (EAR) is displayed in the top-right corner of the frame.
+3. If the driver's eyes remain closed long enough (EAR stays below 0.3 for 48 consecutive frames), the text **"DROWSINESS ALERT!"** appears in red and the alarm audio file plays in a background thread.
+4. Press `q` to quit the window.
+
 ## Command Line Argument
 
 <li>--shape-predictor : This is the path to dlib’s pre-trained facial landmark detector. You can download the detector along with the source code to this tutorial by using the “Downloads” section at the bottom of this blog post.
 <li>--alarm : Here you can optionally specify the path to an input audio file to be used as an alarm.
 <li>--webcam : This integer controls the index of your built-in webcam/USB camera.</li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Pyodide-runnable
-
-No — it uses `dlib`, `OpenCV`, a live webcam, audio playback, and threading.

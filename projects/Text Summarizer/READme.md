@@ -3,6 +3,18 @@ Long texts can be condensed into concise, understandable summaries using a Pytho
 
 <br>
 
+## Example
+
+```text
+Enter the text: Artificial intelligence is transforming industries worldwide.
+Companies are investing heavily in machine learning to automate tasks.
+Researchers continue to develop new models that improve accuracy and efficiency.
+The impact of AI on jobs and society remains a topic of debate.
+
+Artificial intelligence is transforming industries worldwide.
+Researchers continue to develop new models that improve accuracy and efficiency.
+```
+
 **To run the text summarizer project follow these instructions. This project uses Python and the spaCy library for text processing. Here's a step-by-step guide for someone who is not familiar with the process:**
 
 Step 1: Install Required Libraries<br>
@@ -32,7 +44,3 @@ That's it! You've successfully run the text summarizer project. It will tokenize
 Make sure to replace **"text_summarizer.py"** with the name you've given to your Python script if it's different.
 
 ### HAPPY CODING ALL ☺️
-
-## Pyodide-runnable
-
-No — it depends on spaCy and the large `en_core_web_md` language model, which are not available in Pyodide.

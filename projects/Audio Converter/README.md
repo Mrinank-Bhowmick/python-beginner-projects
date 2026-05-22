@@ -10,14 +10,17 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install pydub.
 pip install pydub
 ```
 
+## Example
+
+```text
+$ python audioconverter.py song.mp3 wav
+Converting from mp3 to wav
+File saved to /home/user/music/song.wav
+```
+
 ## Usage
 
 ```bash
 python audioconverter.py <path to audio file> <format>
 ```
 Run `ffmpeg -formats` to view supported formats, since Pydub uses ffmpeg.
-
-
-## Pyodide-runnable
-
-No - uses the pydub package and reads/converts audio files from disk via sys.argv, which is not available in a browser sandbox.

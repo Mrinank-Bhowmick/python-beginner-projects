@@ -8,6 +8,15 @@ This Python script uses `pyttsx3` and `PyPDF2` to read the text content of a PDF
 - `PyPDF2`: A library to handle PDF files.
 - `keyboard`: A library to listen for keyboard events.
 
+## Example
+
+```text
+Enter your PDF file name: sample.pdf
+```
+
+The program begins reading the PDF aloud, page by page, using the system
+text-to-speech engine. Press **q** at any time to stop playback.
+
 ## Usage
 
 1. Install the required libraries using pip:
@@ -27,8 +36,3 @@ python pdf_text_to_speech.py
 ## How it Works
 
 The script takes a PDF file as input, extracts the text content from each page, and uses `pyttsx3` to read it out loud. The playback can be stopped at any time by pressing the 'q' key.
-
-
-## Pyodide-runnable
-
-No - depends on pyttsx3 (offline TTS engine), the keyboard library, and reads PDFs from the local disk.

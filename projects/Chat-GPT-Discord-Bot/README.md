@@ -60,6 +60,17 @@ If you want to change your ``.env`` file name as well add this reference to the 
 dotenv_path = os.path.join("path/to/env", "Env_Name_Here.env")
 ```
 
+## Example
+
+Once the bot is running and invited to your server, use slash commands in any channel:
+
+1. Type `/test_bot` — the bot replies privately with `Hello, @YourName`.
+2. Type `/ping` — the bot replies privately with e.g. `Pong! Latency: 42ms`.
+3. Type `/gpt_general_question prompt:What is the speed of light? gpt_model:gpt-3.5` — the bot posts an embed titled `General Question - "What is the speed of light?"` containing the ChatGPT answer.
+4. Type `/gpt_correct_grammar text_to_correct:their going to the store` — the bot returns a grammar-corrected version in an embed.
+5. Type `/dalle_3 prompt:a sunset over mountains img_dimensions:1024x1024 img_quality:standard img_style:vivid` — the bot posts a link to the generated image with an expiry countdown.
+6. Type `/help` to see a list of all available commands.
+
 # How to run
 
 Open a new command line in the same folder as the main.py script (Make sure python is installed and/or your python venv is active) and type:
@@ -115,8 +126,3 @@ and click ``Copy Server ID`` as shown below:
 
 ### Note on GPT ``Credit balance``:
 Ensure you have an available ``Credit balance``. You can check on the ``Billing`` page in ``Settings`` or by clicking [Here](https://platform.openai.com/settings/organization/billing/overview). If you do not have a ``Credit balance`` you will need to add money (credit) to your account otherwise this discord bot's chat GPT functionality will not work.
-
-
-## Pyodide-runnable
-
-No - it is a Discord bot that needs discord.py, network access, and the OpenAI API.

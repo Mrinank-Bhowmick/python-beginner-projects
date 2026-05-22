@@ -25,6 +25,3 @@ $ python hashing_passwords.py Github
 < hash-type : sha256 >
 1720d8eaff790da6af4406905ba663d0cc6a6cea2b3e54e7384ac334a037f59d
 ```
-## Pyodide-runnable
-
-Yes — it is a pure-stdlib program; the password is supplied via command-line arguments rather than `input()`.

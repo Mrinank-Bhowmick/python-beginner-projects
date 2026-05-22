@@ -29,6 +29,16 @@ Before you begin, ensure you have met the following requirements:
     pip install -r requirements.txt
 
     ```
+## Example
+
+Once the server is running, interact with the API at `http://127.0.0.1:8000`:
+
+```text
+GET  /movies          → returns a list of popular movies from TMDB
+GET  /movies/550      → returns details for the movie with id 550
+POST /movies/550/rate?rating=8 → responds with {"message": "Movie rated successfully."}
+```
+
 4. ## Running the Application
     ### To run the FastAPI application, use the following command: 
 
@@ -36,6 +46,3 @@ Before you begin, ensure you have met the following requirements:
     uvicorn main:app --reload
 
     ```
-## Pyodide-runnable
-
-No — it is a FastAPI web server that makes network requests to The Movie Database API.

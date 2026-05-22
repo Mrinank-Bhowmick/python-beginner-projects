@@ -2,6 +2,15 @@
 
 A python script to download Facebook videos.
 
+## Example
+
+```text
+Enter the link of the video: https://www.facebook.com/watch/?v=123456789
+Downloading...
+```
+
+The video is saved to the `downloads/` folder in the current directory.
+
 ## Installation
 
 ```
@@ -15,7 +24,3 @@ python facebook_video_downloader.py
 ```
 
 The script will save the video in the downloads folder of the current directory.
-
-## Pyodide-runnable
-
-No — it makes network requests to Facebook and downloads video files to disk using `requests` and `wget`.

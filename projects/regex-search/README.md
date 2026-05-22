@@ -2,7 +2,17 @@
 
 A console tool that prompts for a regular expression and prints every line in the `.txt` files of a folder that matches it.
 
-## How to run
+## Example
+
+```text
+enter regex: \bpython\b
+This is a python tutorial.
+Learn python programming today.
+```
+
+The tool searches all `.txt` files in the current directory and prints every line that matches the supplied regular expression.
+
+## How to run on localhost
 
 ```sh
 python regex-search.py
@@ -11,7 +21,3 @@ python regex-search.py
 ## Dependencies
 
 Standard library only (uses `os` and `re`).
-
-## Pyodide-runnable
-
-No - it walks the real filesystem with `os.listdir` to find and open `.txt` files on disk, which is not available in the browser sandbox.

@@ -2,6 +2,28 @@
 
 The Password Projects directory contains several mini-projects related to passwords and their security.
 
+## Example
+
+The sub-projects are independent console programs. For example, running the Password Generator:
+
+```text
+$ python "Password Generator/main.py"
+_____________________________________
+| Welcome to this Password Generator |
+-------------------------------------
+
+how long do you want your password to be (minimum of 8 number)12
+
+Enter the length of password: 12
+
+Your password is: aB3$kL!mQr9p
+__________________________________________
+| Thanks for using the Password Generator |
+------------------------------------------
+```
+
+See each sub-project's own README for its specific usage and output.
+
 The projects are:
 
 1. [Password Breach Frequency](https://github.com/u749929/python-beginner-projects/tree/main/projects/Password%20Projects/Password%20Breach%20Frequency)
@@ -21,7 +43,3 @@ The projects are:
 
 6. [WiFi Password Generator](https://github.com/u749929/python-beginner-projects/tree/main/projects/Password%20Projects/WiFi%20Password%20Generator)
     * This program will attempt to get the password for the conected wifi network and retunr this password to the user. If no password is found, the program will return nothing.
-
-## Pyodide-runnable
-
-Mixed — see each sub-project README. The console tools (Password Generator, Password Hashing, Password Meter, strong-password-detector) run in Pyodide; Password Breach Frequency needs network access, Password Manager is a tkinter GUI, and the WiFi Password Generator uses Windows-only OS commands.

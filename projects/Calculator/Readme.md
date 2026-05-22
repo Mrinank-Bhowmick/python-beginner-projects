@@ -2,12 +2,36 @@
 
 This Python script is a simple calculator that allows for basic arithmetic operations such as addition, subtraction, multiplication, division, and average calculation. It takes user input to perform the desired operation and displays the result.
 
+## Example
+
+```text
+Enter '1' for addition
+Enter '2' for subtraction
+Enter '3' for multiplication
+Enter '4' for division
+Enter '5' for average
+...
+Enter '-1' to exit.
+
+Your choice is: 1
+Enter all numbers separated by space: 4 8 15 16
+The answer is 43
+
+Your choice is: 4
+Enter first number: 20
+Enter second number: 8
+The answer is 2.5
+
+Your choice is: -1
+Thank you for using the calculator!
+```
+
 ## Usage
 
 1. Run the script:
 
     ```bash
-    python calculator.py
+    python main.py
     ```
 
 2. Follow the prompts to choose an operation and input the required numbers.
@@ -29,9 +53,3 @@ To exit the calculator, enter `-1` when prompted for your choice.
 ## Note
 
 This calculator clears the console after each operation for a better user experience.
-
-
-
-## Pyodide-runnable
-
-Yes - pure-stdlib console calculator (os.system screen-clears were removed).

@@ -25,6 +25,28 @@ Web scraping is an essential tool for gathering data and there are plenty of exa
 
 
 
+## Example
+
+Running `python app.py` executes three stages and prints progress messages to the console:
+
+```text
+1/7 Website loading . . .
+2/7 Website loaded . . .
+3/7 List elements found . . .
+4/7 Iterating through links . . .
+5/7 Iterating through links completed . . .
+6/7 Writing link to files . . .
+7/7 Writing link to files completed . . .
+******************* CHAPTER NO ******************* 1
+Downloading Images . . .
+Downloaded images
+...
+Zipping chapter_1/chapter_1_0.jpg . . .
+Zipping chapter_1/chapter_1_1.jpg . . .
+```
+
+Chapter images are saved in per-chapter folders and then zipped into `Jujutsu_Kaisen.cbz`.
+
 # Usage
 
 Install the following packages :
@@ -52,6 +74,3 @@ python app.py
 <br>
 
 **Made with 💙 by [Vishvam](https://github.com/Vishvam10)**
-## Pyodide-runnable
-
-No — it uses Selenium and `requests` to scrape a live website and download images.

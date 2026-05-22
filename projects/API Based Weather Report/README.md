@@ -13,6 +13,26 @@ Welcome to the Weather Information App! This application allows users to fetch c
 - Python 3.x installed on your system.
 - OpenWeatherMap API key. You can obtain it by signing up at [OpenWeatherMap](https://home.openweathermap.org/users/sign_up).
 
+## Example
+
+```text
+Welcome to the Weather Information App!
+You need an API key to access weather data from OpenWeatherMap.
+You can obtain your API key by signing up at https://home.openweathermap.org/users/sign_up
+Please enter your OpenWeatherMap API key: YOUR_API_KEY
+Enter the city name: London
+Enter the temperature unit. 'C' for Celsius and 'F' for Fahrenheit: C
+Current City          : London, GB
+Current temperature is: 15.2 C
+Current weather desc  : light rain
+Current Humidity      : 82 %
+Current wind speed    : 5.1 kmph
+Current wind direction: SW
+Today's sunrise time  : 05:12:34
+Today's sunset time   : 20:45:12
+Weather information written to weatherinfo.txt
+```
+
 ## Usage
 
 1. Obtain your OpenWeatherMap API key by signing up at [OpenWeatherMap](https://home.openweathermap.org/users/sign_up).
@@ -42,12 +62,6 @@ Welcome to the Weather Information App! This application allows users to fetch c
    - Alternative Names: Use alternative or local names if known (e.g., "Mumbai" for "Bombay").
    - City Name with Spaces: Input the city name with spaces as it appears (e.g., "Los Angeles", "San Francisco").
    - City District or Area (Optional): Specify a district or area within larger cities for more localized weather data (e.g., "Manhattan, New York", "Shinjuku, Tokyo").
-
-## Pyodide-runnable
-
-No. The app calls the OpenWeatherMap HTTP API at runtime, which is blocked from
-the in-browser Pyodide playground.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

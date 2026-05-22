@@ -17,6 +17,14 @@ SkyCast is a Python application that allows users to retrieve weather informatio
 - Display data including temperature, wind speed, cloud coverage, visibility, weather description, wind direction, UV index, and dew point for each day.
 - Visualize the temperature forecast on a line chart.
 
+## Example
+
+1. Run `streamlit run skycast.py`. The SkyCast web app opens in your browser.
+2. In the sidebar, select "Today's Weather", type `London` in the city name field, and click Submit.
+3. The main panel shows current conditions for London, GB — temperature, wind speed, cloud coverage, visibility, weather description, wind direction, UV index, and dew point.
+4. Switch the sidebar option to "Forecast Weather", enter `Tokyo`, set days to `3`, and click Submit.
+5. The app displays per-day forecast cards for three days and renders a line chart of temperature (min/max/average) over those dates.
+
 ## Installation
 
 1. Clone the repository:
@@ -73,6 +81,3 @@ Contributions to SkyCast are welcome! Here are some ways you can contribute:
 - Fix bugs and issues reported by users.
 
 Thank you for your contributions to SkyCast! 🌤️
-## Pyodide-runnable
-
-No — it is a Streamlit web app that also makes live HTTP requests to the Weatherbit API; neither Streamlit's server nor network calls run under Pyodide.

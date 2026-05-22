@@ -20,7 +20,35 @@ The Python Banking System is a simple console-based banking application that all
 - Check your account balance at any time.
 - View your transaction history.
 
-## How to run
+## Example
+
+```text
+Python Banking System
+1. Create Account
+2. Perform Transaction
+3. Check Balance
+4. Transaction History
+5. Exit
+Enter your choice: 1
+Enter your name: Alice
+Enter initial balance: 1000
+Account created successfully. Account Number: 47382910
+
+Enter your choice: 2
+Enter account number: 47382910
+Enter transaction type (deposit/withdraw): deposit
+Enter transaction amount: 500
+Transaction completed.
+
+Enter your choice: 3
+Enter account number: 47382910
+Account Balance: $1500.0
+
+Enter your choice: 5
+Exiting the Python Banking System. Goodbye!
+```
+
+## How to run on localhost
 
 ```sh
 python Banking.py
@@ -29,8 +57,3 @@ python Banking.py
 ## Dependencies
 
 Standard library only.
-
-## Pyodide-runnable
-
-Yes - it is a pure-stdlib console program using only `input()`/`print()` and the `random` module.
-

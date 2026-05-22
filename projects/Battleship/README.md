@@ -27,6 +27,43 @@ The game handles incorrect entries and can be replayed repeatedly.
 
 
 
+## Example
+
+```text
+Do you want to start a new game of Battleship? yes
+Enter a number between 5 and 15.
+
+This will determine how big the playing board is and how many turns you have to find the Battleship. (5 rows, 5 columns, 5 turns, etc.): 5
+Welcome to Battleship.
+
+A ship, one cell long, has been randomly placed on the below 5x5 grid.
+You have 5 turns to find it.
+
+O O O O O
+O O O O O
+O O O O O
+O O O O O
+O O O O O
+
+Turn 1 of 5
+
+Guess Row: 3
+Guess Column: 2
+Miss!
+
+O O O O O
+O O O O O
+O O O O O
+O O X O O
+O O O O O
+
+Turn 2 of 5
+
+Guess Row: 1
+Guess Column: 4
+Congratulations! You sank my battleship!
+```
+
 ## Installation
 
 Download main.py, change to the directory where you downloaded the file and run it using `python3 main.py`
@@ -55,10 +92,3 @@ Py-Battleship is built with the following tools and libraries: <ul><li>Python</l
 ## License
 
 [![License](https://img.shields.io/static/v1?label=Licence&message=GPL-3-0&color=blue)](https://opensource.org/license/GPL-3-0)
-
-
-
-
-## Pyodide-runnable
-
-Yes - the top-level main.py is a pure-stdlib console game (os.system screen-clears were removed); battleship_v2 is also a stdlib-only CLI game.

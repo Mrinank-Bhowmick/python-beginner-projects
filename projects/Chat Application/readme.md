@@ -39,8 +39,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 Feel free to expand and customize this code to build more advanced chat applications with additional features, security, and user interfaces. If you have questions or encounter issues, please create an issue in the [GitHub repository](https://github.com/yourusername/chat-application).
 
 Enjoy exploring the world of chat systems with Python!
-
-
-## Pyodide-runnable
-
-No - it uses raw TCP sockets and threading to run a network chat server and client.

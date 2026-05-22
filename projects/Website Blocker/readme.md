@@ -3,6 +3,19 @@ The objective of Python website blocker is to block some certain websites which 
 In this, we will block the access to the list of some particular websites during the working hours so that the user can only access those websites during the free time only.
 The working time in this python application is considered from 9 AM to 5 PM. The time period except that time will be considered as free time.
 
+## Example
+
+Run the script as root/administrator. It checks the time every 5 seconds and prints its status:
+
+```text
+Working hours...
+Working hours...
+Fun hours...
+Fun hours...
+```
+
+During working hours (8:00–16:00) it appends lines like `127.0.0.1 www.facebook.com` to the hosts file for each site in the block list. Outside those hours it removes those entries so the sites become accessible again.
+
 ### The hosts file
 
 >To block the access to a specific website on the computer, we need to configure the  **hosts**  file.
@@ -22,6 +35,3 @@ We need to know the following python modules to build the python website blocker
 1.  **file handling:**  file handling is used to do the modifications to the hosts file.
 2.  **time:**  The time module is used to control the frequency of the modifications to the hosts file.
 3.  **datetime:**  The datetime module is used to keep track of the free time and working time.
-## Pyodide-runnable
-
-No — it modifies the operating system `hosts` file, which is not accessible in the browser sandbox.

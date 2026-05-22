@@ -38,14 +38,14 @@ DATABASE_ID = 'Notion Database ID'
 SERPAPI_API_KEY = 'SERP API Key'
 ```
 
+## Example
+
+1. Start the bot with `py telegram-bot.py`.
+2. Open Telegram and send `/start` to the bot — it replies "Howdy, how are you doing?".
+3. Send `/Notion` — the bot prompts "split differnet data with *,*".
+4. Reply with your content; the bot uses the LangChain/OpenAI pipeline to generate a title and YouTube URL, then creates a Notion page with those values.
+
 ### Runnning in local Host
 ```
 py telegram-bot.py
 ```
-
-## Pyodide-runnable
-
-No — it runs a Telegram bot and calls the OpenAI, Notion, and SerpAPI services over the network, none of which is available in a browser sandbox.
-
-
-

@@ -2,7 +2,6 @@
 ![pywin32 Version](https://img.shields.io/pypi/v/pywin32?label=pywin32)
 [![View My Profile](https://img.shields.io/badge/View-My_Profile-green?logo=GitHub)](https://github.com/odhyp)
 
-
 # XLS TO XLSX
 
 <div align="center">
@@ -15,12 +14,26 @@
 </div>
 
 ## Description
+
 A simple Python script that converts Microsoft Excel '.xls' file to '.xlsx' file.
 
 ## Languages or Frameworks Used
+
 This script requires [Python 3](https://www.python.org/downloads/) and [pywin32](https://pypi.org/project/pywin32/).
 
-## How to run
+## Example
+
+```text
+Input the '.xls' file path:
+C:\Users\user\Documents\report.xls
+Successfully converts report.xls
+Do you want to delete the old report.xls file (y/n)? y
+Successfully removes report.xls
+```
+
+The converted file `report.xlsx` is saved in the same directory as the input file.
+
+## How to run on localhost
 
 1. Ensure you have [Python 3](https://www.python.org/downloads/) installed on your system.
 2. Navigate to this project directory or where `xls_to_xlsx.py` is saved.
@@ -42,8 +55,5 @@ python xls_to_xlsx.py
 8. Input either 'y' to delete the old '.xls' file or 'n' to keep it instead.
 
 ## Author
+
 [odhy](https://github.com/odhyp)
-
-## Pyodide-runnable
-
-No — it depends on `pywin32` and automates the desktop Microsoft Excel application.

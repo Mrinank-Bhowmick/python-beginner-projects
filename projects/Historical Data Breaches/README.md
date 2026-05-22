@@ -63,7 +63,3 @@ Data contained in breach:
  * Social media profiles
  * Usernames
 ```
-
-## Pyodide-runnable
-
-No — it fetches data from the HaveIBeenPwned API over the network, which is not available in a browser sandbox.

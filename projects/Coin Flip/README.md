@@ -2,6 +2,19 @@
 
 This is a Python program used to simulate a coin toss, in which a user is asked to pick a side (heads or tails), and the program selects a result at random between the two options. If the user's choice matches the result, they win the coin toss. 
 
+## Example
+
+```text
+Pick a side for the coin toss (heads/tails): heads
+You got... tails
+OOF. Better luck next time.
+Wanna play again? (yes/no): yes
+Pick a side for the coin toss (heads/tails): tails
+You got... tails
+Nice, you won the coin toss!!
+Wanna play again? (yes/no): no
+```
+
 ### How to Play
 
 1. When the program is initiated, you will be prompted to choose either "heads" or "tails".
@@ -10,7 +23,3 @@ This is a Python program used to simulate a coin toss, in which a user is asked 
 4. After the end of each round, you will be asked if you want to play again. Type "yes" to continue playing or "no" to exit the program.
 
 Enjoy!
-
-## Pyodide-runnable
-
-Yes — it is a pure-stdlib console program that only uses `random` and `input`/`print`.

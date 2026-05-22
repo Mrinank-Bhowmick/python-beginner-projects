@@ -2,7 +2,19 @@
 
 A simple console countdown timer: enter a number of seconds and it counts down in `MM:SS` format, printing "Time Up" when finished.
 
-## How to run
+## Example
+
+```text
+Enter the time in seconds: 10
+00:10
+00:09
+00:08
+...
+00:01
+Time Up
+```
+
+## How to run on localhost
 
 ```
 python countdown.py
@@ -11,7 +23,3 @@ python countdown.py
 ## Dependencies
 
 Standard library only (`time`).
-
-## Pyodide-runnable
-
-Yes — it uses only `time` and `print`/`input`; note that `time.sleep` blocks, so the countdown updates will appear all at once at the end in a browser console.

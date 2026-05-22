@@ -1,3 +1,15 @@
+## Example
+
+When the script is started (with valid API credentials), it prints `Testing The bot` and begins streaming tweets in English that contain `#Python`, `#python`, `#programming`, or `#coding`. For each original tweet (not a retweet or reply) it prints the tweet text and then `Retweeted`. If the rate limit is hit, it prints `Error 420: Enhance Your Calm - Rate Limited` and stops the stream.
+
+```text
+Testing The bot
+Just finished a fun #Python project — built a web scraper from scratch!
+Retweeted
+#programming tip: name your variables clearly, your future self will thank you.
+Retweeted
+```
+
 ## TWITTER-BOT
 
 This basic python project involves creating a Twitter bot using Tweepy to retweet tweets that contain certain hashtags related to Python and programming. 
@@ -18,9 +30,3 @@ This file includes the detailed and concise explanation of the project code as f
 5. Make sure to replace "enter your API key here", "enter your API secret key here", "enter your access token here", and "enter your access token secret here" with your actual Twitter API credentials.
 
 ## Note: Remember that running a Twitter bot should comply with Twitter's terms of service and automation rules. Be cautious not to exceed rate limits or engage in spammy behavior.
-
-
-
-## Pyodide-runnable
-
-No — it is a Telegram bot that connects to the Telegram API over the network.

@@ -17,6 +17,25 @@ Before using the Unofficial Whisper API, ensure you have the following prerequis
    ```bash
    pip install Flask
 
+## Example
+
+1. Start the server by running `python transcription.py`. Flask listens on
+   `http://localhost:5000`.
+2. From another terminal, send an audio file with:
+   ```
+   curl -X POST -F "audio=@recording.mp3" http://localhost:5000/transcribe
+   ```
+3. The server loads the Whisper model, transcribes the audio, and returns a
+   `subtitles.vtt` file as a download containing timestamped transcript
+   segments, e.g.:
+   ```
+   WEBVTT
+
+   1
+   0:00:00.000 --> 0:00:04.000
+   Hello, welcome to the demonstration.
+   ```
+
 ## Getting Started
 
 1. Clone the repository
@@ -31,8 +50,3 @@ The Unofficial Whisper API provides transcription output in various formats:
     Text: The transcribed text as a plain text string.
     VTT (WebVTT): Transcribed text with timestamps in the WebVTT format for easy integration with video players.
     SRT (SubRip): Transcribed text with timestamps in the SubRip format, suitable for subtitles.
-
-
-## Pyodide-runnable
-
-No - it is a Flask web server that also depends on OpenAI Whisper, neither of which runs under Pyodide.

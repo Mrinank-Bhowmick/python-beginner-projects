@@ -83,7 +83,3 @@ python main.py
 ```
 
 It's done! Now you can use the CLI.
-
-## Pyodide-runnable
-
-No — it requires a PostgreSQL database connection via `psycopg2`, which cannot run in the browser.

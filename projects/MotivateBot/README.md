@@ -2,7 +2,16 @@
 
 Generates an inspirational message using the OpenAI GPT API. Given a prompt, it calls the OpenAI completion endpoint and prints the generated motivational text.
 
-## How to run
+## Example
+
+The script uses the fixed prompt `"You are capable of achieving great things because"` and prints the GPT-generated continuation, for example:
+
+```text
+you have the resilience to face challenges head-on and the creativity to find
+solutions where others see only obstacles.
+```
+
+## How to run on localhost
 
 ```
 pip install openai
@@ -17,7 +26,3 @@ python main.py
 ## Dependencies
 
 - openai
-
-## Pyodide-runnable
-
-No — it makes network requests to the OpenAI API, which is not possible from a browser sandbox.

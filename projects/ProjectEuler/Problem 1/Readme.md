@@ -1,3 +1,10 @@
+## Example
+
+```text
+$ python p1.py
+233168
+```
+
 ## Multiples of 3 and 5
 
 ---

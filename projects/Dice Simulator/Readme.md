@@ -3,6 +3,27 @@ Dual Dice Simulator
 
 <br>
 
+## Example
+
+```text
+Roll the dice? (y/n) : y
+dice rolled 3 and 5
+ __________
+|          |
+|   3  ●   |
+|    ●     |
+|  ●       |
+|__________|
+ __________
+|          |
+|  ● 5  ●  |
+|    ●     |
+|  ●    ●  |
+|__________|
+
+Roll again? (y/n): n
+```
+
 ## Project Description :
 A simple python program which uses basic concepts to show a simulation of two dices on the screen with their valid output.
 
@@ -17,7 +38,3 @@ A simple python program which uses basic concepts to show a simulation of two di
 - Very Useful when you doubt the judgement and choice of traditional physical dices.
 - Run the dice any number of times till the end of the game
 - Any further improvements in this project are fully welcomed.
-
-## Pyodide-runnable
-
-Yes — it is a pure-stdlib console program using only `random` and `input`/`print`.

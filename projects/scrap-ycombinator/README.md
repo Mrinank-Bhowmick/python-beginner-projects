@@ -2,7 +2,16 @@
 
 Scrapes article titles and links from the Hacker News (Y Combinator) front page and writes them to `ycombinatornews.csv`.
 
-## How to run
+## Example
+
+```text
+$ python main.py
+Done
+```
+
+After running, a file `ycombinatornews.csv` is created in the same directory containing two columns — `ARTICLE TITLE` and `ARTICLE LINKS` — with one row per story scraped from the Hacker News front page.
+
+## How to run on localhost
 
 ```sh
 pip install requests beautifulsoup4 lxml
@@ -15,7 +24,3 @@ python main.py
 - beautifulsoup4
 - lxml
 - csv (standard library)
-
-## Pyodide-runnable
-
-No - it uses `requests` to fetch a live website over the network, which is blocked in the browser sandbox.

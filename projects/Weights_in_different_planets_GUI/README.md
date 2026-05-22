@@ -13,6 +13,14 @@ This application allows users to input their weight on Earth and then calculates
 - **Real-time Calculation**: The weight on each planet is calculated instantly as the user selects a planet.
 - **Stylish Design**: The application features colorful buttons and labels to enhance the visual experience.
 
+## Example
+
+1. The window opens titled "Weights in different planet" with a red label "Enter Weight in earth:" and an input field.
+2. Type `70` (kilograms) in the entry field.
+3. Click the green "Mercury" button — the label below shows `Your Weight In Mercury: 26.46`.
+4. Click the red "Mars" button — the label updates to `Your Weight In Mars: 26.53`.
+5. Click the yellow "Moon" button — the label updates to `Your Weight In Moon: 11.61`.
+
 ## Usage
 
 1. Enter your weight in the provided input field.
@@ -26,8 +34,3 @@ This application allows users to input their weight on Earth and then calculates
 
 - Python 3 and above
 - Tkinter (Python GUI library)
-
-
-## Pyodide-runnable
-
-No — it uses `tkinter`, a desktop GUI toolkit unavailable in the browser.

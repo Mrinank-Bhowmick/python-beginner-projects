@@ -46,6 +46,15 @@ Currently the algorithm makes use of the following heuristics for a position's e
 - Mobility
 - Corner Values
 
+## Example
+
+1. Run `python main.py` from the `src/` directory; a 1200×800 pygame window titled "Othello/Reversi" opens showing a mode-selection screen.
+2. Press `H` to start a two-player game, or `A` to play against the computer (minimax AI).
+3. The 8×8 board appears with two black and two white discs in the centre. Legal moves for the current player are shown as translucent circles.
+4. Click a highlighted square to place your disc and flip the opponent's outflanked discs.
+5. Press `L` at any time to toggle between light and dark colour themes.
+6. When no moves remain for either player, a win/draw/loss screen fades in; press `R` to restart or `Q` to quit.
+
 ### How to Play the Game 🎮
 1. Download the source code. (Either clone the repository or download the whole code from GitHub)
 2. Make sure to install Python3 on your Computer along with `pip`. (Python3.10+ is required)
@@ -55,7 +64,3 @@ Currently the algorithm makes use of the following heuristics for a position's e
    ```
 5. Navigate to the `src` directory, run the `main.py` file and play the game!
 > P.S. You can change color modes using the 'L' key!
-
-## Pyodide-runnable
-
-No — it is a `pygame` GUI game that requires a display window and local image/font assets.

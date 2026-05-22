@@ -6,7 +6,36 @@ Two implementations of the classic 3×3 game:
 - **`TicTacToe-GUI/`** — a Tkinter version (`tic tac.py`, plus a one-player mode
   in `oneplayermode.py`) using `X.png` / `O.jpg` images.
 
-## How to run
+## Example
+
+**Terminal version:**
+
+```text
+Welcome to Tic Tac Toe!
+Do you want to be X or O?
+X
+The player will go first.
+   |   |
+-----------
+   |   |
+-----------
+   |   |
+What is your next move? (1-9)
+5
+   |   |
+-----------
+   | X |
+-----------
+   |   |
+...
+Hooray! You have won the game!
+Do you want to play again? (yes or no)
+no
+```
+
+**GUI version:** A Tkinter window opens with a 3×3 grid of buttons; click a cell to place your mark (X or O image tile), and the computer responds immediately.
+
+## How to run on localhost
 
 ```bash
 python Tic-Tac-Toe-Terminal/main.py     # terminal version
@@ -17,8 +46,3 @@ python TicTacToe-GUI/tic\ tac.py        # GUI version
 
 - Terminal version: standard library only.
 - GUI version: `tkinter` (ships with the standard Python installer).
-
-## Pyodide-runnable
-
-Partly. The terminal version (`Tic-Tac-Toe-Terminal/main.py`) is pure-stdlib and
-runs in the in-browser Pyodide playground. The Tkinter GUI version does not.

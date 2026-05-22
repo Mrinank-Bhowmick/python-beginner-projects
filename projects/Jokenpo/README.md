@@ -2,7 +2,27 @@
 
 A console card-based rock-paper-scissors game (in Portuguese) where you can play against the computer or watch a simulated match between two players.
 
-## How to run
+## Example
+
+```text
+Escolha um opção:
+1 - Jogar
+2 - Simular um jogo
+0 - Sair
+
+Digite: 1
+====== JOGAR ======
+Digite seu nome: Alice
+Suas Cartas:  Stone Paper Scissors
+Escolha sua carta: 0
+Stone  x  Paper
+Suas Cartas:  Paper Scissors
+Escolha sua carta: 1
+Stone  x  Scissors  Paper  x  Scissors
+Jogador 1 - Venceu
+```
+
+## How to run on localhost
 
 ```
 python main.py
@@ -11,6 +31,3 @@ python main.py
 ## Dependencies
 
 Standard library only.
-
-## Pyodide-runnable
-Yes — it is a pure-stdlib console game using only input() and print().
