@@ -26,3 +26,23 @@ When you're done, submit a pull request asking for one of the maintainers to che
 ### Documentation
 
 Any piece of code that might be challenging to understand is accompanied by comments. If you add new code or modify existing code in a way that affects its functionality or requires changes in its usage, you must document these changes.
+
+### Safety and legal checklist
+
+By contributing, you confirm that you have the right to submit your code,
+documentation, data, images, audio, and other materials under this repository's
+license.
+
+Do not submit:
+
+- API keys, passwords, tokens, credentials, private data, or regulated data.
+- Copyrighted images, audio, text, datasets, or code unless you have permission
+  and include the required attribution/license.
+- Malware, credential-stealing code, phishing code, spam tools, unlawful
+  scraping, unauthorized automation, or code intended to harm people or systems.
+- Projects that require users to violate third-party terms of service.
+
+If a project needs secrets, include only placeholders or a `.env.example` file.
+If a project uses third-party APIs, scraping, bots, automation, datasets, or
+media assets, document the source, license/terms, and safe usage limits in that
+project's README.

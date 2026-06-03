@@ -44,6 +44,30 @@ python main.py
 
 Every project lives in its own folder under [`projects/`](./projects), each with a `README.md` explaining what it does and how to run it.
 
+## ⚖️ Safety, legal, and privacy notice
+
+This is a personal hobby project for learning and portfolio demonstration. It is
+not a professional product, managed service, or source of legal, financial,
+medical, security, or business advice.
+
+All code and content are provided **as is**, without warranty. Some projects may
+use APIs, automation, scraping, bots, databases, media files, encryption,
+networking, or health/ML-style examples. Before running or reusing anything, you
+are responsible for checking the code, complying with applicable laws, respecting
+third-party terms, protecting credentials, and testing safely in your own
+environment.
+
+Do not add secrets, private data, copyrighted material without permission,
+malware, credential-stealing code, unlawful scraping, harmful automation, or
+anything that violates another person&apos;s rights.
+
+See:
+
+- [`TERMS.md`](./TERMS.md)
+- [`PRIVACY.md`](./PRIVACY.md)
+- [`DISCLAIMER.md`](./DISCLAIMER.md)
+- [`LICENSE`](./LICENSE)
+
 ## 🤝 Contributing
 
 New projects and improvements are very welcome — this is a friendly place for your first open-source contribution.
