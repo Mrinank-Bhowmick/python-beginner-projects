@@ -24,10 +24,6 @@ higher-risk topics. These examples are educational only. You are responsible for
 checking the code, complying with applicable laws and third-party terms, and
 using safe test environments.
 
-If Indian law applies, this disclaimer should be read subject to rights and
-liabilities that cannot legally be excluded. Nothing here is intended to
-absolutely restrict a person from approaching a competent court or authority.
-
 If you believe this project contains a legal, copyright, privacy, or security
 issue, please contact me through the repository issue tracker or the contact
 method listed on the project page.

@@ -11,9 +11,6 @@ This is a personal hobby project created for learning, education, and portfolio
 demonstration. It is not a commercial service, professional product, or managed
 platform.
 
-These terms are intended to reduce legal risk, not to prevent anyone from using
-rights that cannot be waived under applicable law.
-
 ## No Professional Advice
 
 The content in this project is for general educational and demonstration
@@ -85,12 +82,6 @@ misrepresent this project as professional advice or a guaranteed product.
 Do not use this project for unlawful scraping, spam, phishing, credential theft,
 unauthorized automation, harassment, surveillance, or any activity that violates
 the rights of others.
-
-## India
-
-If Indian law applies, these terms should be read subject to rights and
-liabilities that cannot legally be excluded. Nothing here is intended to
-absolutely restrict a person from approaching a competent court or authority.
 
 ## Changes
 

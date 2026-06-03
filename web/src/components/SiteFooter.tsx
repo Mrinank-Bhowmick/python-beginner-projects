@@ -5,7 +5,7 @@ export default function SiteFooter() {
     <footer className="s-footer">
       <div>
         Built with <span className="s-heart">♥</span> &amp; the standard library ·
-        MIT licensed · Educational project · No warranty
+        MIT licensed
       </div>
       <div className="s-footer-links">
         <a href={REPO_URL}>GitHub</a>

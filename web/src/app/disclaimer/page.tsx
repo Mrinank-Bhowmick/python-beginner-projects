@@ -50,12 +50,6 @@ export default function DisclaimerPage() {
           and third-party terms, and using safe test environments.
         </p>
 
-        <p>
-          If Indian law applies, this disclaimer should be read subject to rights
-          and liabilities that cannot legally be excluded. Nothing here is
-          intended to absolutely restrict a person from approaching a competent
-          court or authority.
-        </p>
       </main>
       <SiteFooter />
     </div>
